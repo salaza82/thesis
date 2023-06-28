@@ -29,12 +29,15 @@
 \usepackage{arydshln}
 \usepackage[normalem]{ulem}
 \usepackage{lineno}
+\usepackage{authblk}
 \linenumbers
 
 \def\J {\ensuremath{J}\xspace}
 \def\GS {\ensuremath{\mathcal{GS}}\xspace}
 \def\B {\ensuremath{\mathcal{B}}\xspace}
 \newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
+\newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
+\newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
 
 \newcommand\CellTop{\rule{0pt}{2.35ex}}
 \newcommand\CellTopTwo{\rule{0pt}{2.8ex}}
@@ -56,7 +59,9 @@
 \Crefformat{pluralfigure}{#2\black{Figures~}#1#3}
 
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
-\author{Daniel Nicholas Salazar-Gallegos}
+\author[1]{Daniel Nicholas Salazar-Gallegos}
+\affil[1]{HAWC}
+\affil[1]{IC3}
 
 \begin{document}
 \maketitle
@@ -92,11 +97,13 @@ Roommate
 \section{List of Tables\label{sec:lo_Tbl}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/ListofTables.tex}
+\pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{List of Figures\label{sec:lo_Fig}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/ListofFigures.tex}
+\pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction\label{sec:intro}}
