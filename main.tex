@@ -4,16 +4,15 @@
 
 % \usepackage[utf8]{inputenc} % allow  utf-8 inpute
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-% \usepackage{lmodern}        % to have \textasciitilde vertically centered
-% \usepackage{hyperref}       % hyperlinks
-% \usepackage{url}            % simple URL typesetting
-% \usepackage{booktabs}       % professional-quality tables
-% \usepackage{amsfonts}       % blackboard math symbols
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
 % \usepackage{amssymb}
-% \usepackage{amsmath}
+\usepackage{amsmath}
 % \usepackage{bm}
-% \usepackage{units}
-% \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{units}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
 % \usepackage{microtype}      % microtypography
 % \usepackage{lipsum}
 \usepackage{xcolor}
@@ -35,15 +34,12 @@
 \usepackage{dark_matter}
 % \linenumbers
 
-
-
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
 \author{Daniel Nicholas Salazar-Gallegos}
 \dualmajor{Physics}{Computational Mathematics in Science and Engineering}
 \date{Today}
 
 \begin{document}
-\newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
 
 \frontmatter
 \maketitlepage
@@ -88,10 +84,10 @@ Roommate
 \listoffigures
 \input{chapters/ListofFigures.tex}
 
-% \begin{abbreviations}
-    % \abbrev{MSU}{Michigan State University}
-    % \abbrev{LANL}{Los Alamos National Laboratory}
-% \end{abbreviations}
+\begin{abbreviations}
+    \abbrev{MSU}{Michigan State University}
+    \abbrev{LANL}{Los Alamos National Laboratory}
+\end{abbreviations}
 
 \mainmatter
 
@@ -114,6 +110,11 @@ Is the text not rendering right? Ah ok it knows im basically drafting the doc st
 \chapter{High Altitude Water Cherenkov (HAWC) Observatory\label{sec:hawc}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/hawc.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Neural Networks for Gamma/Hadron Separation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/NeuralNetworks4GHseparation.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{IceCube\label{sec:ice3}}
