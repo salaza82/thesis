@@ -1,82 +1,68 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[PhD]{msu-thesis}
 
-\pdfoutput=1
+% \pdfoutput=1
 
-\usepackage[utf8]{inputenc} % allow  utf-8 inpute
+% \usepackage[utf8]{inputenc} % allow  utf-8 inpute
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{lmodern}        % to have \textasciitilde vertically centered
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{bm}
-\usepackage{units}
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
-\usepackage{lipsum}
+% \usepackage{lmodern}        % to have \textasciitilde vertically centered
+% \usepackage{hyperref}       % hyperlinks
+% \usepackage{url}            % simple URL typesetting
+% \usepackage{booktabs}       % professional-quality tables
+% \usepackage{amsfonts}       % blackboard math symbols
+% \usepackage{amssymb}
+% \usepackage{amsmath}
+% \usepackage{bm}
+% \usepackage{units}
+% \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+% \usepackage{microtype}      % microtypography
+% \usepackage{lipsum}
 \usepackage{xcolor}
-\usepackage{tabularx,caption,booktabs}
-\usepackage{gensymb}
-\usepackage{mathrsfs}
-\usepackage{mathtools}
-\usepackage{xspace}
-\usepackage{multirow}
-\usepackage{afterpage}
-\usepackage{geometry}
-\usepackage{pdflscape}
-\usepackage{arydshln}
-\usepackage[normalem]{ulem}
-\usepackage{lineno}
-\usepackage{authblk}
-\linenumbers
-
-\def\J {\ensuremath{J}\xspace}
-\def\GS {\ensuremath{\mathcal{GS}}\xspace}
-\def\B {\ensuremath{\mathcal{B}}\xspace}
-\newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
-\newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
-\newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
-
-\newcommand\CellTop{\rule{0pt}{2.35ex}}
-\newcommand\CellTopTwo{\rule{0pt}{2.8ex}}
-\newcommand\CellTopThree{\rule{0pt}{3.2ex}}
-\newcommand\CellTopFour{\rule{0pt}{3.6ex}}
-
-% Use \cref instead of \ref to get clever and coherent referencing
-% \Cref for the beginning of a sentence, \cref in the middle of the sentence
+% \usepackage{tabularx,caption,booktabs}
+% \usepackage{gensymb}
+% \usepackage{mathrsfs}
+% \usepackage{mathtools}
+% \usepackage{xspace}
+% \usepackage{multirow}
+% \usepackage{afterpage}
+% \usepackage{geometry}
+% \usepackage{pdflscape}
+% \usepackage{arydshln}
+% \usepackage[normalem]{ulem}
+% \usepackage{lineno}
+% \usepackage{authblk}
+\usepackage{newtxtext,newtxmath}
 \usepackage[capitalize]{cleveref}
-\crefformat{section}{Sec.~#2#1#3}
-\Crefformat{section}{Section~#2#1#3}
-\crefformat{appendix}{App.~#2#1#3}
-\Crefformat{appendix}{Appendix~#2#1#3}
-\crefformat{table}{Tab.~#2#1#3}
-\Crefformat{table}{Table~#2#1#3}
-\crefformat{pluralequation}{#2\black{Eqs.~(}#1\black{)}#3}
-\Crefformat{pluralequation}{#2\black{Equations~(}#1\black{)}#3}
-\crefformat{pluralfigure}{#2\black{Figs.~}#1#3}
-\Crefformat{pluralfigure}{#2\black{Figures~}#1#3}
+\usepackage{dark_matter}
+% \linenumbers
+
+
 
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
-\author[1]{Daniel Nicholas Salazar-Gallegos}
-\affil[1]{HAWC}
-\affil[1]{IC3}
+\author{Daniel Nicholas Salazar-Gallegos}
+\dualmajor{Physics}{Computational Mathematics in Science and Engineering}
+\date{Today}
 
 \begin{document}
-\maketitle
+\newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
 
-\pagebreak
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\abstract{I did Dark Matter with HAWC and IceCube. I also used Graph Neural Networks}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagebreak
+\frontmatter
+\maketitlepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Acknowledgments}
+\begin{abstract}
+    I did Dark Matter with HAWC and IceCube. I also used Graph Neural Networks
+\end{abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+\makecopyrightpage
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Acknowledgments}
+\DoubleSpacing
 I love my friends.
 Thanks to everyone that helped me figure this out.
 Amazing thanks to the people at LANL who supported me.
@@ -86,55 +72,63 @@ Jenny and her child Kaydince
 Kirsten, Pat, Andrea
 Family.
 Roommate
-
-\pagebreak
-
-\tableofcontents
-
-\pagebreak
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{List of Tables\label{sec:lo_Tbl}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+\SingleSpacing
+
+\tableofcontents*
+\clearpage
+
+\listoftables
 \input{chapters/ListofTables.tex}
-\pagebreak
+\clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{List of Figures\label{sec:lo_Fig}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
 \input{chapters/ListofFigures.tex}
-\pagebreak
+
+% \begin{abbreviations}
+    % \abbrev{MSU}{Michigan State University}
+    % \abbrev{LANL}{Los Alamos National Laboratory}
+% \end{abbreviations}
+
+\mainmatter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction\label{sec:intro}}
+\chapter{Introduction\label{sec:intro}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Is the text not rendering right? Ah ok it knows im basically drafting the doc still
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Dark Matter in the Cosmos\label{sec:dm_cosmos}}
+\chapter{Dark Matter in the Cosmos\label{sec:dm_cosmos}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/DarkMatterintheCosmos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Detecting High Energy Neutral Messengers\label{sec:multmessenger}}
+\chapter{Detecting High Energy Neutral Messengers\label{sec:multmessenger}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/DetectingHighEnergyNeutralMessengers.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{High Altitude Water Cherenkov (HAWC) Observatory\label{sec:hawc}}
+\chapter{High Altitude Water Cherenkov (HAWC) Observatory\label{sec:hawc}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/hawc.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{IceCube\label{sec:ice3}}
+\chapter{IceCube\label{sec:ice3}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Glory Duck\label{sec:glory_duck}}
+\chapter{Glory Duck\label{sec:glory_duck}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Nu Duck\label{sec:nu_duck}}
+\chapter{Nu Duck\label{sec:nu_duck}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Your bibliography command here
+% e.g. \bibliography{your-bib-file}) if using natbib
+% e.g. \printbibliography if using biblatex
 
 \end{document}
