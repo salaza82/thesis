@@ -6,7 +6,9 @@
 
 \newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
 \newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
-\newcommand{\todo}{\color{purple}FILL THIS IN LATER.\color{black}}
+\newcommand{\todo}[1]{
+    \color{purple}TODO #1\color{black}
+    }
 \newcommand{\eqin}{\color{green}INSERT EQN HERE.\color{black}}
 \newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
 
@@ -27,3 +29,13 @@
 \Crefformat{pluralequation}{#2\black{Equations~(}#1\black{)}#3}
 \crefformat{pluralfigure}{#2\black{Figs.~}#1#3}
 \Crefformat{pluralfigure}{#2\black{Figures~}#1#3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EVERYTHING BELOW ARE EQUATIONS FOR THE PAPER
+
+\newcommand{\emptyeq}[1]{
+    \begin{equation}
+        \eqin #1
+    \end{equation}
+}
