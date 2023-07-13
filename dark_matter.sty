@@ -4,12 +4,7 @@
 \def\GS {\ensuremath{\mathcal{GS}}\xspace}
 \def\B {\ensuremath{\mathcal{B}}\xspace}
 
-\newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
-\newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
-\newcommand{\todo}[1]{
-    \color{purple}TODO #1\color{black}
-    }
-\newcommand{\eqin}{\color{green}INSERT EQN HERE.\color{black}}
+
 \newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
 
 \newcommand\CellTop{\rule{0pt}{2.35ex}}
@@ -32,10 +27,29 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Place holder Macros
+\newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
+
+\newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
+
+\newcommand{\todo}[1]{
+    \color{purple}TODO: #1\color{black}
+}
+
+\newcommand{\tmpfig}[1]{
+    \begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.15]{figures/prettypluto.jpg}
+        \caption{\todo{#1} \ns \fu}
+    }
+    \end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EVERYTHING BELOW ARE EQUATIONS FOR THE PAPER
 
-\newcommand{\emptyeq}[1]{
+\newcommand{\eqin}[1]{
     \begin{equation}
-        \eqin #1
+        \color{green}INSERT #1 HERE.\color{black}
     \end{equation}
 }
