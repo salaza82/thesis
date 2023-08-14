@@ -28,13 +28,15 @@
 % \usepackage{pdflscape}
 % \usepackage{arydshln}
 % \usepackage[normalem]{ulem}
-% \usepackage{lineno}
+\usepackage{lineno}
 % \usepackage{authblk}
 \usepackage{newtxtext,newtxmath}
 \usepackage{graphicx}
 \usepackage[capitalize]{cleveref}
 \usepackage{dark_matter}
-% \linenumbers
+\usepackage{biblatex}
+\addbibresource{references.bib}
+\linenumbers
 
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
 \author{Daniel Nicholas Salazar-Gallegos}
@@ -131,7 +133,8 @@ Is the text not rendering right? Ah ok it knows im basically drafting the doc st
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Your bibliography command here
-% e.g. \bibliography{your-bib-file}) if using natbib
-% e.g. \printbibliography if using biblatex
+% \bibliographystyle{JHEP}
+\bibliography{references}
+% \printbibliography{chapters/referencwes.bib}
 
 \end{document}
