@@ -34,8 +34,8 @@
 \usepackage{graphicx}
 \usepackage[capitalize]{cleveref}
 \usepackage{dark_matter}
-\usepackage{biblatex}
-\addbibresource{references.bib}
+\usepackage[style=numeric,sorting=none]{biblatex}
+\addbibresource{refs.bib}
 \linenumbers
 
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
@@ -132,9 +132,12 @@ Is the text not rendering right? Ah ok it knows im basically drafting the doc st
 \chapter{Nu Duck\label{sec:nu_duck}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\backmatter
+\SingleSpacing
+% \bibliography{references}
 % Your bibliography command here
 % \bibliographystyle{JHEP}
-\bibliography{references}
-% \printbibliography{chapters/referencwes.bib}
+% \printbibliography{references}
+\printbibliography
 
 \end{document}
