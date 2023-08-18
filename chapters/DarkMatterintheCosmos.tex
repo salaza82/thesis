@@ -89,44 +89,67 @@ The following subsections sample some of the compelling evidence supporting DM.
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{First Clues: Stellar Velocities\label{sec:ev4dm_stars}}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-Ok so someone \fu \ns started taking measurments with at.
-They were curious about what speed stars were orbitting the galaxies they were contained in.
-These measurements were done for things close by.
-At the time we were even that sure galaxies were a thing.
-Bu with the basical knowlwedge we had we used the virial theorem with the velocities of the stars to measure the mass inderectly of the galaxies.
 
-\eqin{The Virial Eqn}
+Zwicky's, and later Rubin's, measurement of the stellar velocities were built upon the Virial theorem, shown as \virialtheorem
+Where \textit{T} is the kinetic energy and \textit{V} is the potential energy in a self-gravitating system.
+The potential was defined as the classical Netwon's law of gravity from stars and gas contained in the observed galaxies \newtongravity
+Zwicky et. al. measured just the velocities of stars apparent in optical wavelengths \cite{Zwicky:1933}.
+Rubin et. al. added by measuring the velocity of the hydrogen gas via the 21 cm emmission line of Hydrogen \cite{Rubin:1978}.
+The velocities of the stars and gas are used to infer the total mass of galaxies and galaxy clusters via \cref{eq:virialtheorem}.
+An inferred mass is also made from the luminosity of the selected sources.
+The two inferences are compared to each other as a luminosity to mass ratio and typically yields \cite{Greene:cosmology_dm}\masslightratio
+$M_{\sun}$ and $L_{\sun}$ referring to stellar mass and stellar luminosity respectively.
+These ratios clearly indicate a discrepancy in apparent light and mass from stars and gas and their velocities.
 
-\todo{explain the virial equation}
-\ns you probably want to source the theory behind why this important
+Rubin et.al. \cite{Rubin:1978} demonstrated that the discrepancy was unlikely to be an under-estimation of the mass of the stars and gas.
+The inferred 'dark' mass was up to 5 times more than the luminous mass.
+This dark mass also needed to extend well beyond the extent of the luminous matter.
 
-The verdict wasnt clear however until Vera Rubin made some awesome discoveries with more precise equipment and 21cm lines of Hydrogren gas in the galaxies.
-This really showed that there was some unexplained discrepancy between how much mass we were seeing in the stars and the mass measured indirectly.
-The issue is that it we're pretty sure now that we're not just under-estimating the mass of the stars \ns.
-The difference in mass was up to 5x which is way way too much for what our uncertainties were (somewhere around 20\%)\ns.
+\begin{figure}[h]
+    \centering{
+    \includegraphics[scale=0.8]{figures/NGC6503_rotcurve.png}
+    \caption{Rotation curve fit to NGC 6503 from \cite{Begeman:rot_curves}. Dashed line is the contribution from visible matter. Dotted curves are from gas. Dash-dot curves are from dark matter (DM). Solid line is the composite contribution from all matter and DM sources. Data are indicated with bold dots with error bars. Data agree strongly with matter + DM composite prediction}
+    \label{fig:gal_rot_curve}
+    }
+\end{figure}
 
-\tmpfig{velocity dispersion old here.}
-
-Nowadays we have more measurements of the stellar velocities and have even discovered small DM dense bodies called dwarf spheroidals (dSph)
-These measurements have been made by the community \fu and there are compiled lists of how much DM these objects have.
-Most of these measurements are made from newtonian virial theorem measurments.
-There has since emerged new evidence.
-These innovative techs are discussed in the following sections. The evidence cullminates into a story of particle dark matter.
+\cref{fig:gal_rot_curve}: features one of many observations made on the stellar velocities within galaxies.
+The measured roation curves mostly feature a flattening of velocities at higher radius which is not expected if the gravity was only coming from gas and luminous matter.
+The extension of the flat velocity region also indicates that the DM is distributed far from the center of the galaxy.
+Modern velocity measurements include significantly larger objects, galactic clusters, and smaller objects, dwarf galaxies.
+Yet, measurements along this regime are leveraging the virial theorem with Newtonian potential energies.
+We know Netwonian gravity is not a comprehensive description of gravity.
+New observational techniques have been developed since 1978, and those are discussed in the following sections.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Mounting Evidence for Dark Matter\label{sec:ev4dm_more}}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-Modern evidence for dark matter comes from new avenues.
-We got microlensing which supports DM in the general relativity sector.
-The Cosmic Microwave Background shows that the universe has DM in it from a very early stage.
-The CMB is the primordial light from the young universe.
-Basically a baby photo.
-Then we have computational models where we model the universe.
-Then we look at how the simulated universes look like compared to what we see.
-From those simulations we infer how much dark matter is in the universe.
-The fuller explinations and shortcoming of each of these methods is explained further in this section.
 
-someone took a an observation of the bullet cluster.
+Modern evidence for dark matter comes from new avenues beyond stellar velocities.
+Gravitational micro-lensing from DM is a new channel from general relativity.
+The Cosmic Microwave Background shows that the universe had DM in it from a very early stage.
+Computational resources have expanded greatly in recent decades enabling universe models that again support the need for DM in the evolution of the universe.
+
+General relativity predicts abberations in light caused by massive objects.
+In recent decades we have been able to measure the lensing effects from compact objects and DM haloes.
+\cref{fig:grav_lensing_explained} shows how different compact bodies change the final image of a far away galaxy resulting from gravitational lensing.
+Gravitational lensing developed our understanding of dark matter in two important ways.
+
+\begin{figure}[h!]
+    \centering{
+        \includegraphics[scale=0.19]{figures/heic0404b.jpg}
+        \caption{Light from distant galaxy is bent in different way depending on the distribution of mass between the galaxy and Earth. Yellow dashed lines indicate where the light would have gone if the matter was not present.}
+        \label{fig:grav_lensing_explained}
+    }
+\end{figure}
+
+First, micro-lensing observations, or the lack of them, of our Milky Way halo resulted in a conspicuous absence of massive astrophysical compact halo objects (MACHOs).
+The hypothesis was that 'dark matter' could be accounted for by sufficiently dim compact objects.
+Such objects include things like planets, brown dwarves, black holes, or neutron stars.
+Whenever these objects passed in front of a large luminous source, such as the Large Magelenic Clouds, a variation in light should be observed \cite{Hooper:DMHistory}.
+The MACHO and EROS collaborations performed this observation and did not find a substantial contribution to the DM Milky Way halo from MACHOs.
+They measured that MACHOs of mass range 0.15 to 0.9 $M_{\sun}$ contributes to an upper limit of 8\% of the DM halo mass \cite{Tisserand:MACHO}.
+
 The microlensing of galaxy clusters are some of the most damning evidence that DM is actually matter and not just a flaw in our gravitational theories.
 There were two galaxy clusters \fu.
 They clearly passed through each other at some point in the past and are in the process of merging \ns.
@@ -135,7 +158,6 @@ The first was the microlensing of light around the galaxies due to their gravita
 When celestial bodies are large enough, the gravity they exert bends space and time itself.
 This bending effects light and will deflect light in a smilar way to how lenses will bend light.
 
-\tmpfig{gravitational lensing figure compared to glass lensing.}
 
 With a sufficient understanding of light sources behind a celestial body, you can reconstruct the countours of the gravitational lenses.
 The gradient of the contours then tells you how dense the matter is and where it is.
@@ -155,6 +177,12 @@ This measurement didn't really tell us what exactly, but it did suggest that thi
 If it did, then it would have been more aligned with where the x-ray emmision was.
 There's been other studies of galaxies with similar results altho there are a handful that resemble something we expect for strongly self-interacting DM. \ns.
 This result really makes it hard to argue that DM is somehow something amiss in our gravitational theories.
+
+The CMB is the primordial light from the young universe.
+Basically a baby photo.
+Then we look at how the simulated universes look like compared to what we see.
+From those simulations we infer how much dark matter is in the universe.
+The fuller explinations and shortcoming of each of these methods is explained further in this section.
 
 we got the CMB and geometry of the universe.
 So there's this thing called the cosmic Microwave Background (CMB).

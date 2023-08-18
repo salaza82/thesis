@@ -24,6 +24,7 @@
 
 \newcommand{\sv}{\langle \sigma \mathit{v} \rangle}
 \newcommand{\lcdm}{$\Lambda$\textbf{CDM}}
+\newcommand{\sun}{\odot}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Place holder Macros
@@ -50,5 +51,23 @@
 \newcommand{\eqin}[1]{
     \begin{equation}
         \color{green}INSERT #1 HERE.\color{black}
+    \end{equation}
+}
+
+\newcommand{\virialtheorem}{
+    \begin{equation}\label{eq:virialtheorem}
+        2T+V=0.
+    \end{equation}
+}
+
+\newcommand{\newtongravity}{
+    \begin{equation}\label{eq:newtongrav}
+        V=-\frac{1}{2}\sum_i\sum_{j\neq1}\frac{m_i m_j}{r_{ij}}.
+    \end{equation}
+}
+
+\newcommand{\masslightratio}{
+    \begin{equation}
+        \frac{M}{L} \sim 400\frac{M_{\sun}}{L_{\sun}}
     \end{equation}
 }
