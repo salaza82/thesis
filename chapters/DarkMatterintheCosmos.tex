@@ -122,7 +122,7 @@ We know Netwonian gravity is not a comprehensive description of gravity.
 New observational techniques have been developed since 1978, and those are discussed in the following sections.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{Mounting Evidence for Dark Matter\label{sec:ev4dm_more}}
+\subsection{Evidence for Dark Matter: Micro-lensing\label{sec:ev4dm_lens}}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
 Modern evidence for dark matter comes from new avenues beyond stellar velocities.
@@ -138,7 +138,7 @@ Gravitational lensing developed our understanding of dark matter in two importan
 \begin{figure}[h!]
     \centering{
         \includegraphics[scale=0.19]{figures/heic0404b.jpg}
-        \caption{Light from distant galaxy is bent in different way depending on the distribution of mass between the galaxy and Earth. Yellow dashed lines indicate where the light would have gone if the matter was not present.}
+        \caption{Light from distant galaxy is bent in different way depending on the distribution of mass between the galaxy and Earth. Yellow dashed lines indicate where the light would have gone if the matter was not present \cite{eas:grav_lensing}.}
         \label{fig:grav_lensing_explained}
     }
 \end{figure}
@@ -153,76 +153,87 @@ They measured that MACHOs of mass range 0.15 to 0.9 $M_{\sun}$ contributes to an
 \begin{figure}[ht]
     \centering{
         \includegraphics[scale=0.425]{figures/bullet_cluster.png}
-        \caption{Woooow}
+        \caption{(left) Optical image of galactic cluster. (right) X-ray image of the cluster with redder meaning hotter and higher baryon density. (both) Green contours are reconstruction of gravity contours from micro-lensing. White rings are the best fit mass maxima at 68.3\%, 95.5\%, and 99.7\% confidence. Maxima of the clusters are clearly separated from x-ray maxima. \cite{Clowe:BulletCluster}}
         \label{fig:bullet_cluster}
     }
 \end{figure}
 
 Gravitational lensing can also be applied towards galaxy clusters for DM searches.
-The observation of two merging galactic clusters in 2006 provided a compelling arguement for particle DM outside the Standard Model.
+The observation of two merging galactic clusters in 2006, shown in \cref{fig:bullet_cluster}, provided a compelling arguement for particle DM outside the Standard Model.
 These clusters merged recently in astrophysical time scales.
-As a result fo the they're recent merge, the stars and galaxies are separated from the intergalactic gas.
+They're recent merge separated the stars and galaxies are separated from the intergalactic gas.
 For these clusters, the hot, intergalactic gas is responsible for most of the mass in the systems \cite{Hooper:DMHistory}.
-The hot gas emits x-rays we observe at Earth.
-
-passed through each other at some point in the past and are in the process of merging \ns.
+The hot gas is observed from its x-rays emmision.
 Two observations of the clusters were made independantly of each other.
 The first was the microlensing of light around the galaxies due to their gravitational influences.
 When celestial bodies are large enough, the gravity they exert bends space and time itself.
 This bending effects light and will deflect light in a smilar way to how lenses will bend light.
+With a sufficient understanding of light sources behind a celestial body, we can reconstruct the countours of the gravitational lenses.
+The gradient of the contours then indicates how dense the matter is and where it is.
 
-
-With a sufficient understanding of light sources behind a celestial body, you can reconstruct the countours of the gravitational lenses.
-The gradient of the contours then tells you how dense the matter is and where it is.
-
-They then made measurements of the x-ray emmision from the clusters.
-The idea is that since these galaxies are mostly gass and are merging, then they should be getting hotter.
+The x-ray emmision can then be observed from the clusters.
+Since these galaxies are mostly gas and are merging, then the gas should be getting hotter.
 If they're merging, the x-ray emmisions should be the strongest where the gas is mostly moving through each other.
-The x-rays basically map out where the gas is in these merging galaxies.
+Hence, X-ray emmision maps out where the gas is in the merging galaxy cluster.
 
-\tmpfig{bullet cluster photo.}
+The micro-lensing and x-ray observations were done on the Bullet cluster featured on \cref{fig:bullet_cluster}.
+The x-ray emmisions does not align with the gravitational countours from microlensing.
+The incongruence in mass density and baryon density suggests that there is a lot of matter somewhere that does not interact with light.
+Moreover, this dark matter is can not be baryonic \cite{Clowe:BulletCluster}.
+The Bullet Cluster measurement did not really tell us what DM is exactly, but it did give the clue that DM also does not interact with itself very strongly.
+If DM did interact strongly with itself, then it would have been more aligned with the x-ray emmision \cite{Clowe:BulletCluster}.
+There have been follow-up studies of galaxy clusters with similar results.
+The Bullet Cluster and others like it provide a strong case against something possibly amiss in our gravitational theories.
 
-The dope super interesting thing is that the map of the x-ray emmisions totally doesnt align with the gravitational countours from the microlensing.
-This incongruence is really telling that there is a lot of matter somewhere that we jsut cannot see.
-Moreover this matter is NOT BARYONIC.
-So then what is it?
-This measurement didn't really tell us what exactly, but it did suggest that this DM also doesn't interact with itself very strongly.
-If it did, then it would have been more aligned with where the x-ray emmision was.
-There's been other studies of galaxies with similar results altho there are a handful that resemble something we expect for strongly self-interacting DM. \ns.
-This result really makes it hard to argue that DM is somehow something amiss in our gravitational theories.
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+\subsection{Evidence for Dark Matter: Cosmic Microwave Background\label{sec:ev4dm_cmb}}
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
-The CMB is the primordial light from the young universe.
-Basically a baby photo.
+\begin{figure}[ht]
+    \centering{
+        \includegraphics[scale=0.215]{figures/Planck_CMB_pillars.jpg}
+        \caption{Plank CMB sky. Sky map features small variations in temperature in primordial light. These anisotropies can be used to make inferences about the universe's energy budget. \cite{Plank:CMB}}
+        \label{fig:CMB}
+    }
+\end{figure}
+
+The Cosmic Microwave Background (CMB) is the primordial light from the early universe when Hydrogen atoms formed from the free electron and proton soup in the early universe.
+The CMB is the earliest light we can observe; released when the universe was about 380,000 years old.
 Then we look at how the simulated universes look like compared to what we see.
-From those simulations we infer how much dark matter is in the universe.
-The fuller explinations and shortcoming of each of these methods is explained further in this section.
+\cref{fig:CMB} is the most recent CMB image from the Plank observatory \cite{Plank:CMB}.
+Redder regions indicate a slightly hotter region of the early universe and blue indicates colder.
 
-we got the CMB and geometry of the universe.
-So there's this thing called the cosmic Microwave Background (CMB).
-It's the universes baby photo from when all of the hydrogen de-ionized to form atoms.
-This happened cause it was cold enough finally from the expansion of the universe.
-The recombination happened someitme around less than 1 mil years after the universe was born \fu \ns.
-when hydrogen absorbs an electron, it releases a photon of a specific wavelength.
-This wavelength amounts to 13 ev or so according to the qm eqn\dots
+\begin{figure}[ht]
+    \centering{
+        \includegraphics[scale=0.4]{figures/multipole.png}
+        \caption{Observed Cosmic Microwave Background power spectrum as a function of multipole momentfrom Plank \cite{Plank:CMB}. Blue line is best fit model from \lcdm. Red points and lines are data and error respectively. }
+        \label{fig:multipole}
+    }
+\end{figure}
 
-\eqin{hydrogen energy level}
+To measure the DM, Dark Energy, and matter fractions of the universe from the CMB, the image is deconstructed into a power spectrum versus spherical multipole moments.
+\lcdm~provides the best fit to the power spectra of the CDM as shown in \cref{fig:multipole}.
+The CMB power spectrum is very senstive to the fraction of each energy contribtion in the early universe.
+Low \textit{l} modes are dominated by variations in gravitational potential.
+Intermediate \text{l} emerge from oscillations in photon-baryon fluid from competing baryon pressures and gravity.
+High \textit{l} is a damped region from the diffusion of photons during electron-proton recombination. \cite{Greene:cosmology_dm}
 
-However the universe has been expnding since it's creation.
-In fact the time and space itself is exanding away from us for as long as the universe is old.
-This red-shifts the combination light into the Microwave frequencies.
-This is the light we can detect with microwave observatories and is what was first detected by so and so in the 19?? \ns \fu
-This make a microwave image seen below after we subtract the average of the image.
-
-\tmpfig{CMB photo}
-
-We can do a funny thing with the photo but it's fairly straight forward.
-Shove the photo into a spherical harmonic decomposition.
-This gives you the vibrational modes of the CMB and therefore the early universe.
-The important thing to note is that the harmoincs are based on primordial baryonic acoustic oscillations \fu
-This is directly linked with the energy density of the universe and how these couple.
-It's a cosmology and geometry thing.
-
-\tmpfig{Planl harmonics of CMB}
+\begin{figure}
+    \centering{
+        \begin{subfigure}[0.33\textwidth]
+            \includegraphics[scale=0.1]{figures/LCDM_multipole/frame_00_delay-0.2s.png}
+        \end{subfigure}
+        \begin{subfigure}[0.33\textwidth]
+            \includegraphics[scale=0.1]{figures/LCDM_multipole/frame_06_delay-0.2s.png}
+        \end{subfigure}
+        \begin{subfigure}[0.33\textwidth]
+            \includegraphics[scale=0.1]{figures/LCDM_multipole/frame_16_delay-0.2s.png}
+        \end{subfigure}
+        % \includegraphics{}
+        \caption{All the modes}
+        \label{fig:CMB_vibratemodes}
+    }
+\end{figure}
 
 The harmnics would look very different for a universe with less dmm (see fig bla) or a lot more dm (see fig bla)
 
