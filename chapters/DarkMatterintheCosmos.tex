@@ -107,7 +107,7 @@ This dark mass also needed to extend well beyond the extent of the luminous matt
 
 \begin{figure}[h]
     \centering{
-    \includegraphics[scale=0.8]{figures/NGC6503_rotcurve.png}
+    \includegraphics[scale=0.7]{figures/NGC6503_rotcurve.png}
     \caption{Rotation curve fit to NGC 6503 from \cite{Begeman:rot_curves}. Dashed line is the contribution from visible matter. Dotted curves are from gas. Dash-dot curves are from dark matter (DM). Solid line is the composite contribution from all matter and DM sources. Data are indicated with bold dots with error bars. Data agree strongly with matter + DM composite prediction}
     \label{fig:gal_rot_curve}
     }
@@ -270,7 +270,15 @@ Because there are no DM candidates within the SM, the DM problem strongly hints 
 \subsection{Shake it, Break it, Make it\label{sec:bop_it}}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
-When considering DM that couples in some way with the SM, the interactions are roughly demonstrated by interaction demonstrated in \cref{fig:break_it}
+\begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.38]{figures/DM_with_SM.png}
+        \caption{Simplified Feynman diagram demonstrating with different ways DM can interact with SM particles. The 'X's refer to the DM particles whereas the SM refer to fundamental particles in the SM. The large circle in the center indicates the vertex of interaction and is purposely left vague. The colored arrows refer to different directions of time as well as their respective labels. The arrows indicate the initial and final state of the DM -SM interaction in time.}
+        \label{fig:break_it}
+    }
+\end{figure}
+
+When considering DM that couples in some way with the SM, the interactions are roughly demonstrated by interaction demonstrated in \cref{fig:break_it}.
 The figure is a simplified Feynman diagram where the arrow of time represents the interaction modes of: \textbf{Shake it, Break it, Make it}.
 
 \textbf{Shake it} refers to the direct detection of dark matter.
@@ -281,84 +289,123 @@ The hope is that the momentum imparted onto the SM particle is sufficiently high
 Because we cannot create the DM in the lab, a direct detection experiment must wait until DM is incident on the detector.
 Most direct detection experiments are therfore placed in low-background environments with inert detection media like the noble gas Xenon. \cite{Cooley:dd_dm}
 
-\begin{figure}[h]
-    \centering{
-        \includegraphics[scale=0.43]{figures/DM_with_SM.png}
-        \caption{Simplified Feynman diagram demonstrating with different ways DM can interact with SM particles. The 'X's refer to the DM particles whereas the SM refer to fundamental particles in the SM. The large circle in the center indicates the vertex of interaction and is purposely left vague. The colored arrows refer to different directions of time as well as their respective labels. The arrows indicate the initial and final state of the DM -SM interaction in time.}
-    }\label{fig:break_it}
-\end{figure}
-
 \textbf{Make it} refers to the production of DM from SM initial states.
 The experiment starts with particles in the SM.
 These SM particles are accelerated to incredibly high energies and then collided with each other.
-In the confluence of energy DM, hopefully, emerges as a byproduct of the SM annihilation.
-Often it is the collider experiments that are able to generate energies high enough to probe DM.
+In the confluence of energy, DM hopefully emerges as a byproduct of the SM annihilation.
+Often it is the collider experiments that are able to generate energies high enough to probe DM production.
 These experiments include the world-wide collaborations ATLAS and CMS at CERN where protons are collided together at extreme energies.
 The DM searches however are complex.
 DM likely does not interact with the detectors and lives long enough to escape the detection apparati of CERN's colliders.
-This means any DM search with production searches for an excess of events with missing energy in the events.
-The missing energy with no particle tracks implies a neutral particle carried the energy out of the detector.
-However, there are other neutral particles in the SM and so any analysis have to discriminate between SM signatures of missing energy and a potential DM candidate.
+This means any DM production expirement searches for an excess of events with missing momentum or energy in the events.
+An example event with missing transverse momentum is shown in \cref{fig:met_atlas}.
+The missing momentum with no particle tracks implies a neutral particle carried the energy out of the detector.
+However, there are other neutral particles in the SM, like neutrons or neutrinos, so any analysis have to account for SM signatures of missing momentum. \cite{atlas:met_dm_precise}
 
-\tmpfig{A particle event in CMS/ATLAS with Missing E}
+\begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.435]{figures/MET_ATLAS.png}
+        \caption{A single jet event in ATLAS detector from 2017 \cite{atlas:dm_precise}. Jet momentum observed to be 1.9 TeV. Missing transverse momentum observed to be 1.9 TeV as the initial momentum of the event was 0. Implied MET is shown as a red dashed line in event display.}
+        \label{fig:met_atlas}
+    }
+\end{figure}
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Break it: Standard Model Signatures of Indirect Dark Matter Searches\label{sec:break_it}}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
-\textbf{Break it} refers to the creation of SM particles from the dark sector, and it is the primary concern of this thesis.
-The interaction begins with dark matter or in the dark sector.
-The hypothesis is that this DM will either annihilate with itself or decay and produce a SM byproduct which we can detect.
-This method is often refered to the Indirect detection of DM because we have no lab to directly control or manipulate the DM.
-Therefor most DM primary observations will be performed from observations of known DM densities among the cosmos.
-The strength is that we have the entireity of the universe and it's lifespan to use as the detector or particle accelerator.
+\textbf{Break it} refers to the creation of SM particles from the dark sector, and it is the primary focus of this thesis.
+The interaction begins with DM or in the dark sector.
+The hypothesis is that this DM will either annihilate with itself or decay and produce a SM byproduct.
+This method is often refered to the Indirect Detection of DM because we have no lab to directly control or manipulate the DM.
+Therefor most DM primary observations will be performed from observations of known DM densities among the astrophysical sources.
+The strength is that we have the whole of the universe and it's 13.6 billion year lifespan to use as the detector or particle accelerator.
 Additionally, locations of dark matter are also well understood since it was astrophysical observations that presented the problem of DM in the first place.
 
+\begin{figure}[ht]
+    \centering{
+        \includegraphics[scale=0.4]{figures/DM_annihilation.png}
+        \caption{More detailed pseudo-Feynman diagram of particle cascade from dark matter annihilation into 2 quarks. The quarks hadronize and down to stable particles like \textgamma~or the anti-proton ($p^-$). Diagram pulled from ICRC 2021 presentation on DM annihilation search \cite{2021ICRC:glory_duck}.}
+        \label{fig:id_dm_ann}
+    }
+\end{figure}
+
 However, anything can happen in the universe.
-So there are many difficult to deconvolve backgrounds when searching for a DM signal.
+There are many difficult to deconvolve backgrounds when searching for DM.
 Once prominant example is the galactic center.
 There's a lot of DM there since the Milky Way definitely has a lot of DM.
 But any signal coming from there is hard to parse apart from the extreme environment of our supermassive black hole, Sagitatrius A*
-In fact, there has been known \textgamma -ray excesses from the galactic center \ns, yet the environment presents a difficult problem in sussing out what the fuck is actually going on.
-Despite the challenges, any DM model that yields evidence in the other observation two methods, \textbf{Shake it or Make it} must be corraborated with indirect observations of the known DM overdensities.
-Without corroborating Evidence, DM observation in the lab is hard pressed to demonstrate that it is the model contributing to the DM seen at the universal scale.
+Despite the challenges, any DM model that yields evidence in the other observation two methods, \textbf{Shake it or Make it} must be corraborated with indirect observations of the known DM sources.
+Without corroborating evidence, DM observation in the lab is hard-pressed to demonstrate that it is the model contributing to the DM seen at the universal scale.
 
 In the case of WIMP DM, signals are typically described in terms of primary SM particles produced from a DM decay or annihilation.
-These particles are then simulated to stable final states such as: $\gamma, \nu, p, \text{or } e$ which can traverse galactic lengths to reach the earth.
+The SM initial state particles are then simulated to stable final states such as the $\gamma, \nu, p, \text{or } e$ which can traverse galactic lengths to reach Earth.
 
-\tmpfig{particle cascade from DM}
+\cref{fig:id_dm_ann} shows the quagmire of SM particles that emerges from SM initial states that are not stable.
+There are many different particles with varying energies that can be produced in such an interaction.
+For any arbitrary DM source and stable SM particle, the SM flux from DM annihilating to some neutral particle in the SM, $\phi$, from a region in the sky is described by the following
+\iddmannilation
+In \cref{eq:id_dm_flux}, $\sv$ is the velocity-weighted annihilation cross-section of DM to the SM.
+$m_\chi$ refers to the mass of DM, noted with greek letter $\chi$.
+$\frac{dN_{\phi}}{dE_\phi}$ is the N particle flux weighted by the particle energy.
+An example is provided in \cref{fig:dm_decay_spectra} for the $\gamma$ final state.
+The integrated terms are performed over the solid angle, $d\Omega$, and line of sight, l.o.s.
+$\rho$ is the density of DM for a location $(r, \theta')$ in the sky.
+The terms left of the '$\times$' are often refered to as the particle physics component.
+The terms on the right are refered to as the astrophysical component.
+For decaying DM, the equation changes to\dots
+\iddmdecay
+In \cref{eq:id_dm_decay}, $\tau$ is the decay lifetime of the DM.
+Just as in \cref{eq:id_dm_flux}, the left and right terms are the particle physics and the astrophysical components respectively.
+The integrated astrophysical component of \cref{eq:id_dm_flux} is often called the J-Factor.
+Whereas the integrated astrophysical component of \cref{eq:id_dm_decay} is often called the D-Factor.
 
-The figure shows the quagmire of SM particles that emerges from SM initial states that are not stable.
-There's a lot of different things with different energies that can pop out.
+\begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.65]{figures/bb_decay_hdm.png}
+        \caption{Dark Matter (DM) decay spectrum for $b\bar{b}$ initial state and $\gamma$ final state. Redder spectra are for larger DM masses. Bluer spectra are light DM masses. $x$ is a unitless factor defined as the ratio of the mass of DM, $m_\chi$, and the final state particle energy $E_{\gamma}$. Figure from \cite{Rodd:HDM_spec}.}
+        \label{fig:dm_decay_spectra}
+    }
+\end{figure}
 
-For any neutral messenger, the DM flux from DM annihilating to some particle in the SM, \textphi, from a region in the sky is
+Exact DM DM $\rightarrow$ SM SM branching ratios are not known, so it is usually assumed to go 100\% into a SM particle/anti-particle.
+Additionaly, when a DM annihilation or decay produces one of the neutral, long-lived SM particles ($\nu$ or $\gamma$), the particle can be traced back to a DM source.
+For DM above GeV energies, there are very few SM processes that can produce particles with such a high energy.
+Seeing such a signal would almost certainly be an indication of the presence of dark matter.
+The universe forunately provides us with the largest volume and lifetime ever for a particle physics experiment.
 
-\eqin{DM ann flux equation}
 
-\todo{explain the equation}
-And for decay it is\dots
+% TODO YOU STOPPED HERE
+%-----------------------------------------------------------------------------------%
+\section{Sources for Indirect Dark Matter Searches\label{sec:dm_targets}}
+%-----------------------------------------------------------------------------------%
 
-\eqin{DM decay flux eq}
+We of course have to know where to look.
+Thankfully, we have a good idea of where.
+Out first detection of DM relied on optical observations.
+Since then, we've developed new techniques to find large DM dense regions.
+We first found out about DM through observing galactic rotation curves.
+This includes our nearest galaxy, the Milky Way.
+The Milky Way thus is the largest nearby DM dense region to look at.
+Additionally, the DM halo surrounding the Milky Way is somewhat clumpy \ns.
+There are regions in the DM halo of the Milky Way that have more DM than others and it's captured gas over time.
+In some cases these sub-haloes were dense enough to creat stars.
+These apparent sub galaxies are known was dwarf spheroidal galaxies and are the main sources studied in this thesis.
 
-\todo{explain the equation}
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+\subsection{Dwarf Spheroidal Galaxies\label{sec:dSphs}}
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
-The integral over a line of sight is a simplification made because we mostly observe a 2d surface with our Astrophysics experiments.
-This also translates the equation into observables in our detector like solid angle.
-The spectral shape is mostly determined by the SM primary products.
-From HDMSpectra, they look like the following figures for the bb, tau, and Z spectra.
+The way we look for dwarf spheroidal galaxies (dSph's) is through mostly Newtonian physics.
+We use either the virial theorem to determine the DM density of the dSph's or a Jeans analysis /ns.
+DSphs tend to be ideal sources to look at for DM searches.
+The reason is that these environments are fairly quiet.
+Unlike the galactic center, the most active components of dSph's are the stars within them.
+There are few compact objects, like black holes, and much less gas that would contribute to a large backgrounds.
+The DM to mass ratio here is also massive. \ns.
+The signal to background ratio is really large and we expect a lot of signal from how much dark matter there is.
+All this together means that dSph's are among the best sources to look at for indirect DM searches.
 
-\tmpfig{HDMSpectra: bb, tautau, WW}
-
-Additionaly, when DM primarily goes into one of the neutral messengers (nu or gamma), the spectra will typically have a line feature.
-These messengers are very unlikely to be attentuated in any way from their primary state.
-These line spectra are usually considered smoking gun signals as their energy will be half the COM of the DM -> SM process.
-For DM in the GeV+ scale, there is no similar SM process and so seeing the signal would almost certainly be an indication of the presence of dark matter.
-
-\tmpfig{Line spectra, nu and gamma}
-
-We forunately have the largest volume and lifetime ever for a particle physics experiment in the universe.
-This means we can do some pretty cool shit very efficiently.
-The drawn back are the backgrounds.
 %-----------------------------------------------------------------------------------%
 \section{Multi-Messenger Dark Matter \label{sec:mult-messengerDM}}
 %-----------------------------------------------------------------------------------%
@@ -404,32 +451,3 @@ This means observatories that can see the neutral messengers are especially good
 % Each of these observatories already independatly search for DM \ns.
 
 % \tmpfig{Sensitivities for HAWC and IC with IC?}
-
-%-----------------------------------------------------------------------------------%
-\section{Search Targets for Dark Matter\label{sec:dm_targets}}
-%-----------------------------------------------------------------------------------%
-We of course have to know where to look.
-Thankfully, we have a good idea of where.
-Out first detection of DM relied on optical observations.
-Since then, we've developed new techniques to find large DM dense regions.
-We first found out about DM through observing galactic rotation curves.
-This includes our nearest galaxy, the Milky Way.
-The Milky Way thus is the largest nearby DM dense region to look at.
-Additionally, the DM halo surrounding the Milky Way is somewhat clumpy \ns.
-There are regions in the DM halo of the Milky Way that have more DM than others and it's captured gas over time.
-In some cases these sub-haloes were dense enough to creat stars.
-These apparent sub galaxies are known was dwarf spheroidal galaxies and are the main sources studied in this thesis.
-
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{Dwarf Spheroidal Galaxies\label{sec:dSphs}}
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-
-The way we look for dwarf spheroidal galaxies (dSph's) is through mostly Newtonian physics.
-We use either the virial theorem to determine the DM density of the dSph's or a Jeans analysis /ns.
-DSphs tend to be ideal sources to look at for DM searches.
-The reason is that these environments are fairly quiet.
-Unlike the galactic center, the most active components of dSph's are the stars within them.
-There are few compact objects, like black holes, and much less gas that would contribute to a large backgrounds.
-The DM to mass ratio here is also massive. \ns.
-The signal to background ratio is really large and we expect a lot of signal from how much dark matter there is.
-All this together means that dSph's are among the best sources to look at for indirect DM searches.
