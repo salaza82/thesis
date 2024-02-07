@@ -1,16 +1,16 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data and Background}
+\section{Dataset and Background \label{sec:gd_databgd}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Files}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
-    \item Detector Resolution: \texttt{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse\\
+    \item Detector Resolution: \url{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse\\
     \_10pctlogchargesmearing\_0.63qe\_25kHzNoise\_run5481\_curvature0\_index3.root}
-    \item Data Map: \texttt{maps-20180119/liff/maptree\_1024.root}
+    \item Data Map: \url{maps-20180119/liff/maptree\_1024.root}
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,212 +20,99 @@
 The maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20). They were generated from pass 4.0 reconstruction.
 The analysis is performed using the $f_{hit}$ energy binning scheme with bins [1-9] similar to what was done for the Crab and previous HAWC dSph analysis. \cite{Abeysekara_2017,Albert_2018}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Background Estimation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This analysis was done on dwarf spheroidal (dSph) galaxies because of their large dark matter (DM) content relative to baryonic.
+We consider the following to estimate the background to this study.
+
+\begin{itemize}
+    \item The dSphs are small in HAWC's field of view, so the analysis is not sensitive to large or small scale anisotropies.
+    \item The dSphs used in this analysis are off the galactic plane.
+    \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain gamma-ray sources.
+\end{itemize}
+
+Therefor we make no additional assumptions of the background coming from our sources and use HAWC's standard direct integration method for background estimation.
+It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
+This was investigated and its impact on the flux is basically zero.
+Supporting information on this is in \todo{refer to appdx}
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Background Estimation}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This analysis was done on dwarf spheroidal (dSph) galaxies because of their large dark matter (DM) content relative to baryonic.
-% We consider the following to estimate the background to this study.
+\subsection{Software Tools and Development}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{itemize}
-%     \item The dSphs are small in HAWC's field of view, so the analysis is not sensitive to large or small scale anisotropies.
-%     \item The dSphs used in this analysis are off the galactic plane.
-%     \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain gamma-ray sources.
-% \end{itemize}
-% Therefor we make no additional assumptions of the background coming from our sources and use HAWC's standard direct integration method for background estimation.
-% It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
-% This was investigated and its impact on the flux is basically zero.
-% Supporting information on this is in \cref{sec:appen_ics}.
+This analysis was performed using HAL and 3ML, in Python version 2.\cite{Abeysekara_2017, vianello2015multimission}
+Dan developed a source model to implement the \emph{Poor Particle Physicists' Cookbook} (PPPC) \cite{Cirelli_2011} into HAWC software.
+This model and corresponding Monte Carlo simulation was consolidated into a dictionary for other collaborators.
+A NumPy version of this dictionary was made for both Py2 and Py3.
+The code base for creating this dictionary is also in Dan's sandbox:
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Software Tools and Development}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This analysis was performed using HAL and 3ML, in Python version 2.\cite{Abeysekara_2017, vianello2015multimission}
-% Dan developed a source model to implement the \emph{Poor Particle Physicists' Cookbook} (PPPC) \cite{Cirelli_2011} into HAWC software.
-% This model and corresponding Monte Carlo simulation was consolidated into a dictionary for other collaborators.
-% A NumPy version of this dictionary was made for both Py2 and Py3.
-% The code base for creating this dictionary is also in Dan's sandbox:
+\begin{itemize}
+    \item Py2: \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc/-/tree/master/GD_spectrum}{Dictionary Generator (Deprecated)}
+    \item Py3: \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/pppc2dict}{PPPC2Dict}
+\end{itemize}
 
-% \begin{itemize}
-%     \item Py2: \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc/-/tree/master/GD_spectrum}{Dictionary Generator (Deprecated)}
-%     \item Py3: \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/pppc2dict}{PPPC2Dict}
-% \end{itemize}
+The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the Crab paper\cite{Abeysekara_2017}.
+The PPPC model selected for this analysis included electroweak corrections.
+Dictionaries for the non-electroweak model were generated but not used for this analysis.
+The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
+The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
+These files can also be used for decay channels and the PPPC describes how. \cite{Cirelli_2011}.
+Python's pickle is not backwards compatible, so scripts run in Py3 are not able to use dictionaries generated using Py2 and vice-versa.
 
-% The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the Crab paper\cite{Abeysekara_2017}.
-% The PPPC model selected for this analysis included electroweak corrections.
-% Dictionaries for the non-electroweak model were generated but not used for this analysis.
-% The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
-% The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
-% These files can also be used for decay channels and the PPPC describes how. \cite{Cirelli_2011}.
-% Python's pickle is not backwards compatible, so scripts run in Py3 are not able to use dictionaries generated using Py2 and vice-versa.
+All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project. They're broad descriptions are as follows:
 
-% All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project. They're broad descriptions are as follows:
+\begin{itemize}
+    \item \texttt{GD\_mass\_profiles}: scripts that generate .fits maps for HAWC HAL according to \cite{Geringer-Sameth:2014yza}. Also contains simple plots of these maps.
+    \item \texttt{GD\_spectrum}: scripts that generate NumPy dictionaries of PPPC gamma spectra \cite{Cirelli_2011}.
+    \item \texttt{analysis\_scripts}: HAL scripts for performing likelihood computation on HAWC data or simulation with GD spectra and mass profiles.
+    \item \texttt{pointing}: HAL scripts used to compare the impact of point systematic.
+    \item \texttt{poisson\_maps}: scripts for generating and managing poisson trials used for this study.
+\end{itemize}
 
-% \begin{itemize}
-%     \item \texttt{GD\_mass\_profiles}: scripts that generate .fits maps for HAWC HAL according to \cite{Geringer-Sameth:2014yza}. Also contains simple plots of these maps.
-%     \item \texttt{GD\_spectrum}: scripts that generate NumPy dictionaries of PPPC gamma spectra \cite{Cirelli}.
-%     \item \texttt{analysis\_scripts}: HAL scripts for performing likelihood computation on HAWC data or simulation with GD spectra and mass profiles.
-%     \item \texttt{pointing}: HAL scripts used to compare the impact of point systematic.
-%     \item \texttt{poisson\_maps}: scripts for generating and managing poisson trials used for this study.
-% \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Analysis}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Monte Carlo Simulation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The expected differential photon flux from a DM-DM annihilation to standard model
+particles over solid angle is described by the familiar equation.
+\iddmannilation[\gamma]
+Where \sv~is the velocity weighted annihilation cross-section.
+$\frac{dN}{dE}$ is the expected differential number of photons produced at each energy per annihilation.
+$M_\chi$ is the rest mass of the supposed DM particle.
+$J$ is the astrophysical J-factor and is defined as
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Monte Carlo Simulation}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The expected differential photon flux from a DM-DM annihilation to standard model
-% particles over solid angle is described by the familiar equation.
+$\rho_{\chi}$ is the DM density.
+For this value, we import the PPPC with electroweak corrections \cite{Cirelli_2011}.
+The spectrum is implemented as a model script in astromodels for 3ML.
+The J-factor profiles for each source is imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
+Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
+However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
+We create NSIDE $16384$ maps of the J-factors for each dSph.
+These maps are integrated over every spatial bin and passed to the fitting software.
+Plots of these maps are provided for each source in the sandbox directory: \texttt{GD\_mass\_profiles}.
 
-% \begin{equation}
-%     \label{eq:DM_flux}
-%     \frac{d\Phi}{dE} = \frac{J\langle \sigma v \rangle}{8\pi M^{2}_{\chi}} \frac{dN(M_\chi, \textrm{SM Channel})}{dE}.
-% \end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Source Selection and Annihilation Channels}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Where $\langle \sigma v\rangle$ is the velocity weighted annihilation cross-section.
-% $\frac{dN}{dE}$ is the expected differential number of photons produced at each energy per annihilation.
-% $M_\chi$ is the rest mass of the supposed DM particle.
-% $J$ is the astrophysical J-factor and is defined as
+We use many of the dSph presented in our previous dSph DM search \cite{Albert_2018}.
+HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
+A full description of all sources used in Glory Duck is found in \cref{tab:J_factor}.
+Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its J-factor.
+Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
+Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
 
-% \begin{equation}
-%     \label{eq:Jfac}
-%     J = \int \int \rho^2_{\chi}(l, \Omega) dl d\Omega
-% \end{equation}
+The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}, e\bar{e}, \mu\bar{\mu}, \tau\bar{\tau}, t\bar{t}, W^+W^-, \textrm{and }ZZ$.
+A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \cref{tab:tabSummary}.
 
-% $\rho_{\chi}$ is the DM density.
-% For this value, we import the PPPC with electroweak corrections \cite{Cirelli_2011}.
-% The spectrum is implemented as a model script in astromodels for 3ML.
-% The J-factor profiles for each source is imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
-% Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
-% However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
-% We create NSIDE $16384$ maps of the J-factors for each dSph.
-% These maps are integrated over every spatial bin and passed to the fitting software.
-% Plots of these maps are provided for each source in the sandbox directory: \texttt{GD\_mass\_profiles}.
+\input{tables/gd_exp_sens_summary.tex}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Source Selection and Annihilation Channels}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% We use many of the dSph presented in our previous dSph DM search \cite{Albert_2018}.
-% HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
-% A full description of all sources used in Glory Duck is found in \cref{tab:J_factor}.
-% Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its J-factor.
-% Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
-% Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
-
-% The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}, e\bar{e}, \mu\bar{\mu}, \tau\bar{\tau}, t\bar{t}, W^+W^-, \textrm{and }ZZ$.
-% A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \cref{tab:tabSummary}.
-
-% \afterpage{%
-%     \newgeometry{margin=2.5cm} % modify this if you need even more space
-%     \begin{landscape}
-
-% \vspace*{\fill}
-% \begin{table}
-% \caption{Summary of dSph observations by each experiment used in this work. A `-' indicates the experiment did not observe the dSph for this study. For {\it Fermi}-LAT, the exposure at 1~GeV is given. For HAWC, $|\Delta\theta|$ is the absolute difference between the source declination and HAWC latitude. HAWC is more sensitive to sources with smaller $|\Delta\theta|$. For IACTs, we show the zenith angle range, the total exposure, the energy range, the angular radius $\theta$  of the signal or ON region, the ratio of exposures between the background-control (OFF) and signal (ON) regions ($\tau$), and the significance of gamma-ray excess in standard deviations, $\sigma$.}
-% \centering
-% {\begin{tabular}{c ? c ? c ? c c c c c c c }
-% \hline
-% \hline
-% & \multicolumn{1}{c?}{Fermi-LAT}  & \multicolumn{1}{c?}{HAWC} & \multicolumn{7}{c}{H.E.S.S, MAGIC, VERITAS} \\
-% \hline
-% Source name & Exposure ($10^{11}$ s m$^2$) & $|\Delta\theta|$ (\degree) & IACT & Zenith (\degree) & Exposure (h) & Energy range (GeV) & $\theta$ (\degree) & $\tau$ & S ($\sigma$) \\
-% \hline\hline
-% Bo\"{o}tes I            & $2.6$ & $4.5$ & VERITAS  & $15-30$ & $14.0$ & $100 $-$ 41000$ & $0.10$ & $8.6$ & $-1.0$  \\
-% Canes Venatici I        & $2.9$ & $14.6$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Canes Venatici II       & $2.9$ & $15.3$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Carina                  & $3.1$ & $-$ & H.E.S.S. & $27-46$ & $23.7$ & $310 - 70000$ & $0.10$ & $18.0$ & $-0.3$  \\
-% \hdashline
-% \multirow{2}{*}{Coma Berenices}          & \multirow{2}{*}{$2.7$} & \multirow{2}{*}{$4.9$} & H.E.S.S. & $47-49$ & $11.4$ & $550 - 70000$ & $0.10$ & $14.4$ & $-0.4$  \\
-%                                          & & & MAGIC & $5 - 37 $ & $49.5$ & $60 - 10000$ & $0.17$ & $1.0$ & $-$\\
-% \hdashline
-% \multirow{2}{*}{Draco}                   & \multirow{2}{*}{$3.8$} & \multirow{2}{*}{$38.1$} & MAGIC & $29 - 45$ & $52.1$ & $70 - 10000$ & $0.22$ & $1.0$ & $-$  \\
-%                                          & & & VERITAS & $25-40$ & $49.8$ & $120 - 70000$ & $0.10$ & $9.0$ & $-1.0$ \\
-% \hdashline
-% Fornax                  & $2.7$ & $-$ & H.E.S.S. & $11-25$ & $6.8$ & $230 - 70000$ & $0.10$ & $45.5$ & $-1.5$ \\
-% Hercules                & $2.8$ & $6.3$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Leo I                   & $2.5$ & $6.7$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Leo II                  & $2.6$ & $3.1$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Leo IV                  & $2.4$ & $19.5$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ \\
-% Leo V                   & $2.4$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Leo T                   & $2.6$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Sculptor                & $2.7$ & $-$ & H.E.S.S. & $10-46$ & $11.8$ & $200 - 70000$ & $0.10$ & $19.8$ & $-2.2$  \\
-% \hdashline
-% \multirow{2}{*}{Segue I}& \multirow{2}{*}{$2.5$} & \multirow{2}{*}{$2.9$} & MAGIC & $13-37$ & $158.0$ & $60 - 10000$ & $0.12$ & $1.0$ & $-0.5$ \\
-%                         & & & VERITAS & $15-35$ & $92.0$ & $80 - 50000$ & $0.10$ & $7.6$ & $0.7$ \\
-% \hdashline
-% Segue II                & $2.7$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ \\
-% Sextans                 & $2.4$ & $20.6$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Ursa Major I            & $3.4$ & $32.9$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$  \\
-% Ursa Major II           & $4.0$ & $44.1$ & MAGIC & $35-45$ & $94.8$ & $120 - 10000$ & $0.30$ & $1.0$ & $-2.1$  \\
-% Ursa Minor              & $4.1$ & $-$ &  VERITAS & $35-45$ & 60.4 & $160-93000$ & 0.10 & 8.4 & $-0.1$ \\
-% \hline
-% \end{tabular}}
-% \label{tab:tabSummary}
-% \end{table}
-% \vspace*{\fill}
-
-% \end{landscape}
-% \restoregeometry
-% }
-
-% \begin{table}[ht]
-% \captionsetup{font=small}
-% \centering
-% \caption{Summary of the relevant properties of the dSphs used in the present work. Column 1 lists the dSphs. Columns 2 and 3 present their heliocentric distance and galactic coordinates, respectively. Columns 4 and 5 report the \J-factors of each source given from the \GS and \B independent studies and their estimated $\pm 1\sigma$ uncertainties. The values $\log_{10}J$~(\GS set) correspond to the mean \J-factor values  for a source extension truncated at the outermost observed star. The values $\log_{10}J$~(\B set)  are provided for a source extension at the tidal radius of each dSph. \textbf{Bolded sources are within HAWC's field of view and provided to the Glory Duck analysis.}}
-% \small{\begin{tabular}{ccccc}
-% \hline
-% \hline
-% \CellTopTwo{}
-% Name & Distance & $l, b$ & $\log_{10}J$~(\GS set) & $\log_{10}J$~(\B set)\\
-% & \scriptsize{(kpc)} &  \scriptsize{($\degree$)} & \scriptsize{$\log_{10}(\rm{GeV}^2 \rm{cm}^{-5}\rm{sr})$} & \scriptsize{$\log_{10}(\rm{GeV}^2 \rm{cm}^{-5}\rm{sr})$}  \\
-% \hline
-% \CellTopTwo{}
-% \textbf{Bo\"otes} I & $66$ & $358.08,\: 69.62$ & $18.24^{+0.40}_{-0.37}$ & $18.85^{+1.10}_{-0.61}$  \\
-% \CellTopTwo{}
-% \textbf{Canes Venatici I} & $218$ & $74.31,\: 79.82$ & $17.44^{+0.37}_{-0.28}$ & $17.63^{+0.50}_{-0.20}$  \\
-% \CellTopTwo{}
-% \textbf{Canes Venatici II} & $160$ & $113.58,\: 82.70$ & $17.65^{+0.45}_{-0.43}$ & $18.67^{+1.54}_{-0.97}$  \\
-% \CellTopTwo{}
-% Carina & $105$ & $260.11,\: -22.22$ & $17.92^{+0.19}_{-0.11}$ & $18.02^{+0.36}_{-0.15}$ \\
-% \CellTopTwo{}
-% \textbf{Coma Berenices} & $44$ & $241.89,\: 83.61$ & $19.02^{+0.37}_{-0.41}$ & $20.13^{+1.56}_{-1.08}$  \\
-% \CellTopTwo{}
-% \textbf{Draco} & $76$ & $86.37,\: 34.72$ & $19.05^{+0.22}_{-0.21}$ &  $19.42^{+0.92}_{-0.47}$  \\
-% \CellTopTwo{}
-% Fornax & $147$ & $237.10,\: -65.65$ & $17.84^{+0.11}_{-0.06}$ &  $17.85^{+0.11}_{-0.08}$  \\
-% \CellTopTwo{}
-% \textbf{Hercules} & $132$ & $28.73,\: 36.87$ & $16.86^{+0.74}_{-0.68}$ &  $17.70^{+1.08}_{-0.73}$  \\
-% \CellTopTwo{}
-% \textbf{Leo I} & $254$ & $225.99,\: 49.11$ & $17.84^{+0.20}_{-0.16}$ &  $17.93^{+0.65}_{-0.25}$  \\
-% \CellTopTwo{}
-% \textbf{Leo II} & $233$ & $220.17,\: 67.23$ & $17.97^{+0.20}_{-0.18}$ &  $18.11^{+0.71}_{-0.25}$  \\
-% \CellTopTwo{}
-% \textbf{Leo IV} & $154$ & $265.44,\: 56.51$ & $16.32^{+1.06}_{-1.70}$ & $16.36^{+1.44}_{-1.65}$  \\
-% \CellTopTwo{}
-% Leo V & $178$ & $261.86,\: 58.54$ & $16.37^{+0.94}_{-0.87}$ & $16.30^{+1.33}_{-1.16}$  \\
-% \CellTopTwo{}
-% Leo T & $417$ & $214.85,\: 43.66$ & $17.11^{+0.44}_{-0.39}$ & $17.67^{+1.01}_{-0.56}$  \\
-% \CellTopTwo{}
-% Sculptor & $86$ & $287.53,\: -83.16$ & $18.57^{+0.07}_{-0.05}$ &  $18.63^{+0.14}_{-0.08}$  \\
-% \CellTopTwo{}
-% \textbf{Segue I} & $23$ & $220.48,\: 50.43$ & $19.36^{+0.32}_{-0.35}$ &  $17.52^{+2.54}_{-2.65}$  \\
-% \CellTopTwo{}
-% Segue II & $35$ & $149.43,\: -38.14$ & $16.21^{+1.06}_{-0.98}$ & $19.50^{+1.82}_{-1.48}$  \\
-% \CellTopTwo{}
-% \textbf{Sextans} & $86$ & $243.50,\: 42.27$ & $17.92^{+0.35}_{-0.29}$ &  $18.04^{+0.50}_{-0.28}$  \\
-% \CellTopTwo{}
-% \textbf{Ursa Major I} & $97$ & $159.43,\: 54.41$ & $17.87^{+0.56}_{-0.33}$ & $18.84^{+0.97}_{-0.43}$  \\
-% \CellTopTwo{}
-% \textbf{Ursa Major II} & $32$ & $152.46,\: 37.44$ & $19.42^{+0.44}_{-0.42}$ & $20.60^{+1.46}_{-0.95}$  \\
-% \CellTopTwo{}
-% Ursa Minor & $76$ & $104.97,\: 44.80$ & $18.95^{+0.26}_{-0.18}$ & $19.08^{+0.21}_{-0.13}$  \\
-% \hline
-% \hline
-% \CellTopTwo{}
-% \end{tabular}}
-% \label{tab:J_factor}
-% \end{table}
+\input{tables/gd_src_summary.tex}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsection{Likelihood Methods}
