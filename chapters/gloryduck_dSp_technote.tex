@@ -102,48 +102,37 @@ Plots of these maps are provided for each source in the sandbox directory: \text
 
 We use many of the dSph presented in our previous dSph DM search \cite{Albert_2018}.
 HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
-A full description of all sources used in Glory Duck is found in \cref{tab:J_factor}.
+A full description of all sources used in Glory Duck is found in \Cref{tab:gd_J_factor}.
 Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its J-factor.
 Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
 Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
 
 The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}, e\bar{e}, \mu\bar{\mu}, \tau\bar{\tau}, t\bar{t}, W^+W^-, \textrm{and }ZZ$.
-A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \cref{tab:tabSummary}.
+A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
 
 \input{tables/gd_exp_sens_summary.tex}
-
 \input{tables/gd_src_summary.tex}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Likelihood Methods}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \label{sec:ll_methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Likelihood Methods} \label{sec:ll_methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins 1-9.
-% This analysis was performed using HAL and 3ML, in Python2.\cite{Abeysekara_2017, vianello2015multimission}
-% With these tools we compute the max from the likelihood profiles and perform a ratio test to calculate the significance of each source.
-% This analysis is identical to the previous dSph analysis \cite{Albert_2018} except the sources are treated as extended.
-% For the vast majority of our sources, this extension is no greater than 2 degrees.
-% We calculate the likelihood of each source and model, assuming events are Poisson distributed, with
+We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins 1-9.
+This analysis was performed using HAL and 3ML, in Python2 \cite{Abeysekara_2017, vianello2015multimission}.
+With these tools we compute the max from the likelihood profiles and perform a ratio test to calculate the significance of each source.
+This analysis is identical to the previous dSph analysis \cite{Albert_2018} except the sources are treated as extended.
+For the vast majority of our sources, this extension is no greater than 2 degrees.
+We calculate the likelihood of each source and model, assuming events are Poisson distributed, with
+\hwcpsLLH
 
-% \begin{equation}
-%     \label{Eq:Likelihood_profile}
-%     \mathcal{L}=\prod_i \frac{(B_i+S_i)^{N_i}e^{-(B_i+S_i)}}{N_i !}.
-% \end{equation}
-
-% $S_i$ is the sum of expected number of signal counts.
-% $B_i$ is the number of background counts observed.
-% $N_i$ is the total number of counts.
-% The \textit{i}th bin is iterated over spatial and $f_{\textrm{hit}}$.
-% Then we combine the profiles across all five experiments.
-% The profile likelihood ratio $\lambda$ as a function of annihilation cross-section $\sv$ is computed by:
-
-% \begin{equation}
-%     \label{Eq:likelihood_test}
-%     \lambda \left( \sv \mid \bm{\mathcal{D}_{\text{dSphs}}} \right) = \frac{\mathcal{L} \left( \sv ; \bm{\hat{\hat{\nu}}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)}{\mathcal{L} \left( \widehat{\sv} ; \bm{\hat{\nu}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)} ,
-% \end{equation}
-
-% for a considered annihilation channel and DM mass.
+$S_i$ is the sum of expected number of signal counts.
+$B_i$ is the number of background counts observed.
+$N_i$ is the total number of counts.
+The \textit{i}th bin is iterated over spatial and $f_{\textrm{hit}}$.
+Then we combine the profiles across all five experiments.
+The profile likelihood ratio $\lambda$ as a function of annihilation cross-section \sv is computed by:
+\gdLLHratio
+for a considered annihilation channel and DM mass.
 
 % % Section pasted from paper
 % As mentioned previously, each experiment computes the $\mathcal{L}_{lk}$ from Eq.~\ref{Eq:Likelihood_profile} differently.
