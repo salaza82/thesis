@@ -74,7 +74,7 @@
     \end{equation}
 }
 
-\newcommand{\iddmannilation}[1][\phi]{
+\newcommand{\iddmannilation}[2][\phi]{
     \begin{equation}\label{eq:id_dm_flux}
         \frac{d\Phi_#1}{dE_{#1}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_#1}{dE_#1} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho^2_\chi dl(r,\theta')}}
     \end{equation}
@@ -99,7 +99,31 @@
 }
 
 \newcommand{\gdLLHratio}{
-    \begin{equation} \label{Eq:gd_LLH_test}
+    \begin{equation} \label{eq:gd_LLH_test}
         \lambda \left( \svtex \mid \bm{\mathcal{D}_{\text{dSphs}}} \right) = \frac{\mathcal{L} \left( \svtex ; \bm{\hat{\hat{\nu}}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)}{\mathcal{L} \left( \widehat{\svtex} ; \bm{\hat{\nu}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)}
     \end{equation}
+}
+
+\newcommand{\gdJointLLH}{
+    \begin{equation} \label{eq:gdJointLLH}
+    \small{
+        \mathcal{L}_{lk} \left( \svtex ; J_l, \bm{\nu_{lk}} \mid \bm{\mathcal{D}_{lk}} \right) = \\
+        \prod_{i=1}^{N_{\text{E'}}} \prod_{j=1}^{N_{\text{P'}}} \Big[ \mathcal{P} (s_{lk,ij}(\svtex, J_l, \bm{\nu_{lk}}) + b_{lk,ij}(\bm{\nu_{lk}}) \mid N_{lk,ij}) \Big] \\
+        \times \mathcal{L}_{lk,\bm{\nu}} \left( \bm{\nu_{lk}} \mid \bm{\mathcal{D}_{\nu_{lk}}} \right)
+    }
+    \end{equation}
+}
+
+\newcommand{\gdExpectedNS}{
+\begin{equation} \small{
+    \label{eq:gd_expected_ns}
+    s_{ij}(\svtex, J) = \int_{E'_{\text{min},i}}^{E'_{\text{max},i}} \text{d}E' \int_{P'_{\text{min},j}}^{P'_{\text{max},j}} \text{d}\Omega' \int_{0}^{\infty} \text{d}E \int_{\Delta\Omega_{tot}} \text{d}\Omega \int_{0}^{T_{\text{obs}}} \text{d}t \frac{\text{d}^{2}\Phi (\svtex, J)}{\text{d}E \text{d}\Omega} \text{IRF} \left( E', P' \mid E, P, t \right)
+}
+\end{equation}
+}
+
+\newcommand{\gdTS}{
+\begin{equation} \label{eq:gd_TS}
+    \textrm{TS} = -2\ln\left(\frac{\mathcal{L}}{\mathcal{L}^{\textrm{max}}}\right).
+\end{equation}
 }
