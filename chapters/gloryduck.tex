@@ -251,7 +251,7 @@ For hadronic and bosonic DM, the IACTs and $Fermi$-LAT both contribute strongly.
 We notice that the limits computed using the \B set of \J-factor are always better compared to the ones calculated with the \GS set.
 For the $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, and $t\bar{t}$ channels, the ratio between the limits computed with the two sets of \J-factor is varying between a factor of \textasciitilde3 and \textasciitilde5 depending on the energy, with the largest ratio around 10~TeV.
 For the channels $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$, the ratio lies between \textasciitilde2 to \textasciitilde6, being maximum around 1~TeV.
-Examining \cref{fig:comparison_J_1,fig:comparison_J_2} in \cref{app:J_factors}, these differences are explained by the fact that the \B set provides higher \J-factors for the majority of the studied dSphs, with the notable exception of Segue~I.
+Examining \Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2} in \Cref{sec:gd_jfactor_systematic}, these differences are explained by the fact that the \B set provides higher \J-factors for the majority of the studied dSphs, with the notable exception of Segue~I.
 The variation on the ratio of the limits for the two sets is due to different dSph dominating the limits depending on the energy.
 This pushes the range of thermal cross-section which can be excluded to higher mass.
 This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor
@@ -259,7 +259,7 @@ This comparison demonstrates the magnitude of systematic uncertainties associate
 This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor calculation.
 The \GS and \B sets present a difference in the limits for all channels of about
 % (to be calculated by people having the numbers in hand)}.
-This difference is explained, see  \cref{fig:comparison_J_1,fig:comparison_J_2} in Appendix, by the fact that the \B set provides higher \J factors for all dSph except for Segue~I. This pushes the range of thermal cross-section which can be excluded to higher mass.
+This difference is explained, see  \Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2} in Appendix, by the fact that the \B set provides higher \J factors for all dSph except for Segue~I. This pushes the range of thermal cross-section which can be excluded to higher mass.
 
 \begin{figure}[h!]
 \centering{
@@ -312,155 +312,185 @@ This difference is explained, see  \cref{fig:comparison_J_1,fig:comparison_J_2} 
 \label{fig:limits-comparison}
 \end{figure}
 
-% \afterpage{\clearpage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix: HAWC Systematics} \label{sec:hawc_systematic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Discussion and Conclusions\label{sec:conclusions}}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Inverse Compton Scattering} \label{sec:gd_ics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The DM-DM annihilation channels produce many high energy electrons regardless of the primary annihilation channel.
+These high energy electrons can produce high energy gamma-rays through Inverse Compton Scattering (ICS).
+If this effect is strong, it would change the morphology of the source and increase the total expected gamma-ray counts from any source.
+The PPPC \cite{Cirelli_2011} provides tools in Mathematica for calculating the impact of ICS for an arbitrary location in the sky for a specified annihilation channel.
+We calculated the change in gamma-ray counts for DM annihilation to primary $e\bar{e}$ for RA and Dec corresponding to Segue1 and Coma Berenices.
+These dSphs were chosen because they are the strongest contributors to the limit.
+$e\bar{e}$ was selected because it would have the largest number of high energy electrons.
+The effect was found to be on the order of $~10^{-7}$ on the gamma-ray spectrum.
+As a result, this systematic is not considered in our analysis.
 
-% In this multi-instrument analysis, we have used observations of 20 dSphs from the gamma-ray telescopes {\it Fermi}-LAT, H.E.S.S., MAGIC, VERITAS, and HAWC to perform a collective DM search annihilation signals. The data were combined across sources and detectors to significantly increase the sensitivity of the search. We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross section for seven potential DM annihilation channels.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Point Source Versus Extended Source Limits}\label{sec:gd_ext_limitvs_ptsrc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% {\it Fermi}-LAT brings the most stringent constraints for continuum channels below approximately 1~TeV. the remaining detectors dominate at higher energies. Overall, for multi-TeV DM mass, the combined DM constraints from all five telescopes are 2-3 times stronger than any individual telescope for multi-TeV DM.
+The previous DM search toward dSph approximated the dSphs as point sources \cite{Albert_2018}.
+In this analysis, the dSphs are implemented as extended with J-factor distributions following those produced by \cite{Geringer-Sameth:2014yza}.
+The resolution of the cited map is much finer than HAWC's angular resolution.
+The vast majority of the J-factor distribution is represented on the central HAWC pixel of the dSph spatial map.
+However, the neighboring 8 pixels are not negligible and contribute to our limit.
 
-% Derived from observations of many dSphs, our results produce robust limits given the DM content of the dSphs is relatively well constrained. The obtained limits span the largest mass range of any WIMP DM search. Our combined analysis improves the sensitivity over previously published results from each detectors which produces the most stringent limits on DM annihilation from dSphs. These results are based on deep exposures of the most promising known dSphs with the currently most sensitive gamma-ray instruments. Therefore, our results constitute a legacy of a generation of gamma-ray instruments on WIMP DM searches towards dSphs. Our results will remain the reference in the field until a new generation of more sensitive gamma-ray instruments begin operations, or until new dSphs with higher \J-factors are discovered.
+\begin{figure}[ht]
+\centering{
+    \includegraphics[scale=0.19]{figures/glory_duck/hawc/95Lim_Segue1_ExtVsPt.pdf}}
+    \caption{Comparisons of the combined limits at 95\% confidence level for a point source analysis and extended source using ~\cite{Geringer-Sameth:2014yza} \GS J-factor distributions and PPPC \cite{Cirelli_2011} annihilation spectra. Shown are the limits for Segue1 which will have the most significant impact on the combined limit. 6 of the 7 DM annihilation channels are shown. Solid lines are extended source studies. Dashed lines are point source studies. Overall, the extended source analysis improves the limit by a factor of 2.}
+\label{fig:Seg1point_versus_extended}
+\end{figure}
 
-% This analysis serves as a proof of concept for future multi-instrument and multi-messenger combination analyses. With this collaborative effort, we have managed to sample over four orders in magnitude in gamma-ray energies with distinct observational techniques. Determining the nature of DM continues to be an elusive and difficult problem. Larger datasets with diverse measurement techniques could be essential to tackling the DM problem. Our collaborative work could be extended in the future to include  other gamma-ray detectors such as LHAASO~\cite{2019arXiv190502773B}, CTA~\cite{CTAConsortium:2018tzg}, and SWGO~\cite{abreu2019southern}. A future collaboration using similar techniques as the ones described in this paper could grow even beyond gamma rays. The models we used for this study include annihilation channels with neutrinos in the final state. Advanced studies could aim to merge our results with those from neutrino observatories with large data sets. Efforts are already underway to add data from the IceCube, ANTARES, and KM3NeT observatories to these gamma-ray results.
+\begin{figure}[h]
+\centering{
+    \includegraphics[scale=0.19]{figures/glory_duck/hawc/95Lim_ComaBerenices_ExtVsPt.pdf}}
+    \caption{Same as \cref{fig:Seg1point_versus_extended} on Coma Berenices. This dSph also contributes significantly to the limit. The limits are identical in this case.}
+\label{fig:ComaBpoint_versus_extended}
+\end{figure}
 
-% From this work, a selection of the best candidates for observations, according to the latest knowledge on stellar dynamics and modelling techniques for the derivation of the \J-factors on the potential dSphs targets, is highly desirable at the time that new experiments are starting their dark matter programmes using dSphs. Given the systematic uncertainty inherent to the derivation of the \J-factors,
-% an informed observational strategy would be to select both objects with the highest \J-factors that could lead to DM signal detection, and objects with robust \J-factor predictions, {\it i.e.} with kinematic measurements on many bright stars, which would strengthen the DM interpretation reliability of the observation outcome.
+\Cref{fig:Seg1point_versus_extended} shows a substantial improvement to the limit for Segue1.
+\cref{fig:ComaBpoint_versus_extended} however showed identical limits.
+These disparities are best explained by the relative difference in their J-Factors.
+Both dSphs pass almost overhead the HAWC detector, however Segue1 has the larger J-Factor between the two.
+Adjacent pixels to the central pixel will therefor contribute to the limits.
+This is the case for other dSph that are closer to overhead the HAWC detector.
 
-% This analysis combines data from multiple telescopes to produce strong constraints on astrophysical objects. From this perspective, these methods can be applied beyond just DM searches. Almost every astrophysical study can benefit from multi-telescope, multi-wavelength gamma-ray studies. We have enabled these telescopes to study the cosmos with greater precision and detail. Many astrophysical searches can benefit from multi-instrument gamma-ray studies, for which our analysis lays the foundation.
+Comparison plots for all sources and the combined limit can be found in the sandbox for the Glory Duck project.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Impact of Pointing Systematic}\label{sec:gd_pointing_sys}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Appendix: Systematics}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+During the analysis it was discovered that reconstruction of gamma-rays.
+Slides describing this systematic can be found \href{https://private.hawc-observatory.org/wiki/images/3/30/HAWCMeetingOct2020-AJS-Pointing.pdf}{here}.
+Shown on the presentation is dependence on the pointing systematic on declination.
+New spatial profiles were generated for every dSph and limits were computed for the adjusted declination.
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Inverse Compton Scattering}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The DM-DM annihilation channels produce many high energy electrons regardless of the primary annihilation channel.
-% These high energy electrons can produce high energy gamma-rays through Inverse Compton Scattering (ICS).
-% If this effect is strong, it would change the morphology of the source and increase the total expected gamma-ray counts from any source.
-% The PPPC \cite{Cirelli_2011} provides tools in Mathematica for calculating the impact of ICS for an arbitrary location in the sky for a specified annihilation channel.
-% We calculated the change in gamma-ray counts for DM annihilation to primary $e\bar{e}$ for RA and Dec corresponding to Segue1 and Coma Berenices.
-% These dSphs were chosen because they are the strongest contributors to the limit.
-% $e\bar{e}$ was selected because it would have the largest number of high energy electrons.
-% The effect was found to be on the order of $~10^{-7}$ on the gamma-ray spectrum.
-% As a result, this systematic is not considered in our analysis.
+\Cref{fig:pointing_systematic} demonstrates the impact of this systematic for all DM annihilation channels studied by HAWC. The impact is a tiny improvement, yet mostly identical, to the combined limits.
 
-% \subsection{Point Source Versus Extended Source Limits}
-% \label{sec:appen_pt_vs_extend}
+\begin{figure}[h]
+\centering{
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_bb.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_ee.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_mumu.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_tautau.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_tt.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_ww.pdf}
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/PointingSystematic_GD_Combined_zz.pdf}
+    \caption{Comparison of combined limits when correcting for HAWC's pointing systematic. All DM annihilation channels are shown. The solid black line is the ratio between published limit to the declination corrected limit. The blue solid line or "Combined\_og" represented the limits computed for Glory Duck. The solid orange line or "Combined\_ad" represented the limits computed after correcting for the pointing systematic.}
+}
+\label{fig:pointing_systematic}
+\end{figure}
 
-% The previous DM search toward dSph approximated the dSphs as point sources \cite{Albert_2018}.
-% In this analysis, the dSphs are implemented as extended with J-factor distributions following those produced by \cite{Geringer-Sameth:2014yza}.
-% The resolution of the cited map is much finer than HAWC's angular resolution.
-% The vast majority of the J-factor distribution is represented on the central HAWC pixel of the dSph spatial map.
-% However, the neighboring 8 pixels are not negligible and contribute to our limit.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\J-factor distributions}\label{sec:gd_jfactor_systematic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{figure}[ht]
-% \centering{
-% \includegraphics[scale=0.19]{plots/hawc/95Lim_Segue1_ExtVsPt.pdf}}
-% \caption{Comparisons of the combined limits at 95\% confidence level for a point source analysis and extended source using ~\cite{Geringer-Sameth:2014yza} \GS J-factor distributions and PPPC \cite{Cirelli_2011} annihilation spectra. Shown are the limits for Segue1 which will have the most significant impact on the combined limit. 6 of the 7 DM annihilation channels are shown. Solid lines are extended source studies. Dashed lines are point source studies. Overall, the extended source analysis improves the limit by a factor of 2.}
-% \label{fig:Seg1point_versus_extended}
-% \end{figure}
+We show in this appendix a comparison between the \J-factors computed by Geringer-Sameth \emph{et al.}~\cite{Geringer-Sameth:2014yza} (the \GS set) and the ones computed by Bonnivard \emph{et al.}~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (the \B set).
+%The differences in computation between both sets are detailed in \cref{sec:DM}.
+%
+The \GS \J-factors are computed through a Jeans analysis of the kinematic stellar data of the  selected dSphs, assuming a dynamic equilibrium and a spherical symmetry for the dSphs.
+They adopted the generalized DM density distribution, known as Zhao-Hernquist, introduced by~\cite{Zhao:1995cp}, carrying three additional index parameters to describe the inner and outer slopes, and the break of the density profile.
+Such a profile parametrization allows the reduction of the theoretical bias from the choice of a specific radial dependency on the kinematic data.
+In other words, the increase of free parameters with the use of the  Zhao-Hernquist profile allows a better description of the mass density distribution of dark matter.
 
-% \begin{figure}[H]
-% \centering{
-% \includegraphics[scale=0.19]{plots/hawc/95Lim_ComaBerenices_ExtVsPt.pdf}}
-% \caption{Same as \cref{fig:Seg1point_versus_extended} on Coma Berenices. This dSph also contributes significantly to the limit. The limits are identical in this case.}
-% \label{fig:ComaBpoint_versus_extended}
-% \end{figure}
+In addition, a constant velocity anisotropy profile and a Plummer light profile \cite{10.1093/mnras/71.5.460} for the stellar distribution were assumed.
+The velocity anisotropy profile depends on the radial and tangential velocity dispersions.
+However, its determination remains challenging since only the line-of-sight velocity dispersion can be derived from velocity measurements.
+Therefore, the parametrization of the anisotropy profile is obtained from simulated halos (see~\cite{Hunter:2013vua} for more details).
+They provide the values of the \J-factors of regions extending to various angular radius up to the outermost member star.
 
-% \cref{fig:Seg1point_versus_extended} shows a substantial improvement to the limit for Segue1.
-% \cref{fig:ComaBpoint_versus_extended} however showed identical limits.
-% These disparities are best explained by the relative difference in their J-Factors.
-% Both dSphs pass almost overhead the HAWC detector, however Segue1 has the larger J-Factor between the two.
-% Adjacent pixels to the central pixel will therefor contribute to the limits.
-% This is the case for other dSph that are closer to overhead the HAWC detector.
-
-% Comparison plots for all sources and the combined limit can be found in the sandbox for the Glory Duck project.
-
-% \subsection{Impact of Pointing Systematic}
-% \label{sec:appen_pointing}
-
-% During the analysis it was discovered that reconstruction of gamma-rays.
-% Slides describing this systematic can be found \href{https://private.hawc-observatory.org/wiki/images/3/30/HAWCMeetingOct2020-AJS-Pointing.pdf}{here}.
-% Shown on the presentation is dependence on the pointing systematic on declination.
-% New spatial profiles were generated for every dSph and limits were computed for the adjusted declination.
-
-% \cref{fig:pointing_systematic} demonstrates the impact of this systematic for all DM annihilation channels studied by HAWC. The impact is a tiny improvement, yet mostly identical, to the combined limits.
-
-% \begin{figure}[h]
-% \centering{\includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_bb.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_ee.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_mumu.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_tautau.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_tt.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_ww.pdf}
-% \includegraphics[scale=0.21]{plots/hawc/PointingSystematic_GD_Combined_zz.pdf}
-% }
-% \caption{Comparison of combined limits when correcting for HAWC's pointing systematic. All DM annihilation channels are shown. The solid black line is the ratio between published limit to the declination corrected limit. The blue solid line or "Combined\_og" represented the limits computed for Glory Duck. The solid orange line or "Combined\_ad" represented the limits computed after correcting for the pointing systematic.}
-% \label{fig:pointing_systematic}
-% \end{figure}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{\J-factor distributions}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \label{app:J_factors}
-
-% We show in this appendix a comparison between the \J-factors computed by Geringer-Sameth \emph{et al.}~\cite{Geringer-Sameth:2014yza} (the \GS set) and the ones computed by Bonnivard \emph{et al.}~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (the \B set).
-% %The differences in computation between both sets are detailed in \cref{sec:DM}.
-
-% The \GS \J-factors are computed through a Jeans analysis of the kinematic stellar data of the  selected dSphs, assuming a dynamic equilibrium and a spherical symmetry for the dSphs. They adopted the generalized DM density distribution, known as Zhao-Hernquist, introduced by~\cite{Zhao:1995cp}, carrying three additional index parameters to describe the inner and outer slopes, and the break of the density profile. Such a profile parametrization allows the reduction of the theoretical bias from the choice of a specific radial dependency on the kinematic data.
-% %\ca{In other words, the increase of free parameters with the use of the  Zhao-Hernquist profile allows a better description of the mass density distribution of dark matter.}
-% In addition, a constant velocity anisotropy profile and a Plummer light profile \cite{10.1093/mnras/71.5.460} for the stellar distribution were assumed.
-% The velocity anisotropy profile depends on the radial and tangential velocity dispersions. However, its determination remains challenging since only the line-of-sight velocity dispersion can be derived from velocity measurements. Therefore, the parametrization of the anisotropy profile is obtained from simulated halos (see~\cite{Hunter:2013vua} for more details).  %Therefore, the anisotropy profile is modeled from numerical simulations~\cite{Diemand:2004wh}.
-% %They provide the values of the \J-factors of regions extending to various angular radius up to the outermost member star.
-
-% %using a uniform analysis of the most recent stellar-kinematic data available
+% using a uniform analysis of the most recent stellar-kinematic data available
 % %generalized density profile
 % %Assuming dynamic equilibrium and spherical symmetry, these quantities are related according to the spherical Jeans
 % %\cite{Geringer-Sameth:2014yza}
 
 % %We also use the set of  \B \J-factors in order to obtain an estimate of the systematic uncertainty  on the $\sv$ upper limits from the assumed \J-factor value.
-% The \B \J-factors were computed through a Jeans analysis taking into account the systematic uncertainties induced by the DM profile parametrization, the radial velocity anisotropy profile, and the triaxiality of the halo of the dwarf galaxies.
-% They performed a more complete study of the dSph kinematics and dynamics than \GS for the determination of the \J-factor.  Conservative values of the \J-factors where obtained using an Einasto DM density profile~\cite{Dhar_2010}, a realistic anisotropy profile known as the Baes \& Van Hese profile~\cite{Baes:2007tx} which takes into account that the inner regions can be significantly non-isotropic, and a Zhao-Hernquist light profile~\cite{Zhao:1995cp}.
-% %\emoulin{the above-mentioned profiles are not defined}
-% %used the combination of the  profiles that give the most conservative value of the \J-factors~\cite{Bonnivard:2014kza}.
+The \B \J-factors were computed through a Jeans analysis taking into account the systematic uncertainties induced by the DM profile parametrization, the radial velocity anisotropy profile, and the triaxiality of the halo of the dwarf galaxies.
+They performed a more complete study of the dSph kinematics and dynamics than \GS for the determination of the \J-factor.
+Conservative values of the \J-factors where obtained using an Einasto DM density profile~\cite{Dhar_2010}, a realistic anisotropy profile known as the Baes \& Van Hese profile~\cite{Baes:2007tx} which takes into account that the inner regions can be significantly non-isotropic, and a Zhao-Hernquist light profile~\cite{Zhao:1995cp}.
 
-% For both sets, \J-factor values are provided for all dSphs as a function of the radius of the integration region~\cite{Geringer-Sameth:2014yza,Bonnivard:2014kza,Bonnivard:2015xpq}. \cref{tab:J_factor} shows the heliocentric distance and Galactic coordinates of the twenty dSphs, together with the two sets of \J-factor values integrated up to the outermost observed star for \GS and the tidal radius for \B. Both \J-factor sets were derived through a Jeans analysis based on the same kinematic data, except for Draco where the measurements of~\cite{2015MNRAS.448.2717W} have been adopted in the computation of the \B value. The computations for producing the \GS and \B samples differ in the choice of the DM density, velocity anisotropy, and light profiles, for which the set \B takes into account some sources of systematic uncertainties.
+For both sets, \J-factor values are provided for all dSphs as a function of the radius of the integration region~\cite{Geringer-Sameth:2014yza,Bonnivard:2014kza,Bonnivard:2015xpq}.
+\Cref{tab:gd_J_factor} shows the heliocentric distance and Galactic coordinates of the twenty dSphs, together with the two sets of \J-factor values integrated up to the outermost observed star for \GS and the tidal radius for \B.
+Both \J-factor sets were derived through a Jeans analysis based on the same kinematic data, except for Draco where the measurements of~\cite{2015MNRAS.448.2717W} have been adopted in the computation of the \B value.
+The computations for producing the \GS and \B samples differ in the choice of the DM density, velocity anisotropy, and light profiles, for which the set \B takes into account some sources of systematic uncertainties.
 
-% \Cref{fig:comparison_J_1,fig:comparison_J_2} show the comparisons for the \J-factor versus the angular radius for each of the 20 dSphs used in this study. The uncertainties provided by the authors are also indicated in the figures. For the \GS set, the computation stops at the angular radius corresponding to the outermost observed star, while for the \B set, the computation stops at the angular radius corresponding to the tidal radius.
+\Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2} show the comparisons for the \J-factor versus the angular radius for each of the 20 dSphs used in this study.
+The uncertainties provided by the authors are also indicated in the figures.
+For the \GS set, the computation stops at the angular radius corresponding to the outermost observed star, while for the \B set, the computation stops at the angular radius corresponding to the tidal radius.
 
-% \begin{figure}[ht]
-% \centering{\includegraphics[scale=0.32]{plots/appendix/BootesI.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/CanesVenaticiI.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/CanesVenaticiII.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Carina.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/ComaBerenices.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Draco.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Fornax.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Hercules.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/LeoI.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/LeoII.pdf}
-% }
-% \caption{Comparisons between the \J-factors versus the angular radius for the computation of $J$ factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \cref{tab:J_factor}) in blue and for the computation from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:J_factor}) in orange. The solid lines represent the central value of the \J-factors while the shaded regions correspond to the 1$\sigma$ standard deviation.}
-% \label{fig:comparison_J_1}
-% \end{figure}
+\begin{figure}[ht]
+\centering{
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/BootesI.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/CanesVenaticiI.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/CanesVenaticiII.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Carina.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/ComaBerenices.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Draco.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Fornax.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Hercules.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/LeoI.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/LeoII.pdf}
+    }
+    \caption{Comparisons between the \J-factors versus the angular radius for the computation of $J$ factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \Cref{tab:gd_J_factor}) in blue and for the computation from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:gd_J_factor}) in orange. The solid lines represent the central value of the \J-factors while the shaded regions correspond to the 1$\sigma$ standard deviation.}
+\label{fig:comparison_J_1}
+\end{figure}
 
-% \begin{figure}[ht]
-% \centering{\includegraphics[scale=0.32]{plots/appendix/LeoIV.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/LeoT.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/LeoV.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Sculptor.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/SegueI.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/SegueII.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/Sextans.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/UrsaMajorI.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/UrsaMajorII.pdf}
-% \includegraphics[scale=0.32]{plots/appendix/UrsaMinor.pdf}
-% }
-% \caption{Comparisons between the \J-factors versus the angular radius for the computation of $J$ factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \cref{tab:J_factor}) in blue and for the computation from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:J_factor}) in orange. The solid lines represent the central value of the \J-factors while the shaded regions correspond to the 1$\sigma$ standard deviation.}
-% \label{fig:comparison_J_2}
-% \end{figure}
+\begin{figure}[ht]
+\centering{
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/LeoIV.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/LeoT.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/LeoV.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Sculptor.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/SegueI.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/SegueII.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/Sextans.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/UrsaMajorI.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/UrsaMajorII.pdf}
+    \includegraphics[scale=0.32]{figures/glory_duck/appendix/UrsaMinor.pdf}
+}
+    \caption{Comparisons between the \J-factors versus the angular radius for the computation of $J$ factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \cref{tab:gd_J_factor}) in blue and for the computation from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:gd_J_factor}) in orange. The solid lines represent the central value of the \J-factors while the shaded regions correspond to the 1$\sigma$ standard deviation.}
+\label{fig:comparison_J_2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion and Conclusions\label{sec:gd_conclusions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this multi-instrument analysis, we have used observations of 20 dSphs from the gamma-ray telescopes Fermi-LAT, H.E.S.S., MAGIC, VERITAS, and HAWC to perform a collective DM search annihilation signals.
+The data were combined across sources and detectors to significantly increase the sensitivity of the search.
+We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross section for seven potential DM annihilation channels.
+
+Fermi-LAT brings the most stringent constraints for continuum channels below approximately 1~TeV. the remaining detectors dominate at higher energies.
+Overall, for multi-TeV DM mass, the combined DM constraints from all five telescopes are 2-3 times stronger than any individual telescope for multi-TeV DM.
+
+Derived from observations of many dSphs, our results produce robust limits given the DM content of the dSphs is relatively well constrained.
+The obtained limits span the largest mass range of any WIMP DM search.
+Our combined analysis improves the sensitivity over previously published results from each detectors which produces the most stringent limits on DM annihilation from dSphs.
+These results are based on deep exposures of the most promising known dSphs with the currently most sensitive gamma-ray instruments.
+Therefore, our results constitute a legacy of a generation of gamma-ray instruments on WIMP DM searches towards dSphs.
+Our results will remain the reference in the field until a new generation of more sensitive gamma-ray instruments begin operations, or until new dSphs with higher \J-factors are discovered.
+
+This analysis serves as a proof of concept for future multi-instrument and multi-messenger combination analyses.
+With this collaborative effort, we have managed to sample over four orders in magnitude in gamma-ray energies with distinct observational techniques.
+Determining the nature of DM continues to be an elusive and difficult problem.
+Larger datasets with diverse measurement techniques could be essential to tackling the DM problem.
+A future collaboration using similar techniques as the ones described in this paper could grow even beyond gamma rays.
+The models we used for this study include annihilation channels with neutrinos in the final state.
+Advanced studies could aim to merge our results with those from neutrino observatories with large data sets.
+Efforts are already underway to add data from the IceCube, ANTARES, and KM3NeT observatories to these gamma-ray results.
+
+From this work, a selection of the best candidates for observations, according to the latest knowledge on stellar dynamics and modelling techniques for the derivation of the \J-factors on the potential dSphs targets, is highly desirable at the time that new experiments are starting their dark matter programmes using dSphs.
+Given the systematic uncertainty inherent to the derivation of the \J-factors,
+an informed observational strategy would be to select both objects with the highest \J-factors that could lead to DM signal detection, and objects with robust \J-factor predictions, i.e. with kinematic measurements on many bright stars, which would strengthen the DM interpretation reliability of the observation outcome.
+
+This analysis combines data from multiple telescopes to produce strong constraints on astrophysical objects.
+From this perspective, these methods can be applied beyond just DM searches.
+Almost every astrophysical study can benefit from multi-telescope, multi-wavelength gamma-ray studies.
+We have enabled these telescopes to study the cosmos with greater precision and detail.
+Many astrophysical searches can benefit from multi-instrument gamma-ray studies, for which our analysis lays the foundation.
