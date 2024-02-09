@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Data Files}
+\subsection{Data Files}\label{sec:gd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
     \item Detector Resolution: \url{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse\\
@@ -21,7 +21,7 @@ The maps used for this analysis contain 1017 days of data between runs 2104 (201
 The analysis is performed using the $f_{hit}$ energy binning scheme with bins [1-9] similar to what was done for the Crab and previous HAWC dSph analysis. \cite{Abeysekara_2017,Albert_2018}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Background Estimation}
+\subsection{Background Estimation}\label{sec:gd_bkgd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This analysis was done on dwarf spheroidal (dSph) galaxies because of their large dark matter (DM) content relative to baryonic.
@@ -39,7 +39,7 @@ This was investigated and its impact on the flux is basically zero.
 Supporting information on this is in \todo{refer to appdx}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Software Tools and Development}
+\subsection{Software Tools and Development}\label{sec:gd_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This analysis was performed using HAL and 3ML, in Python version 2.\cite{Abeysekara_2017, vianello2015multimission}
@@ -72,11 +72,11 @@ All other software used for data analysis, DM profile generation, and job submis
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Analysis}
+\section{Analysis}\label{gd_analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Monte Carlo Simulation}
+\subsection{Monte Carlo Simulation}\label{sec:gd_mc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The expected differential photon flux from a DM-DM annihilation to standard model
 particles over solid angle is described by the familiar equation.
@@ -97,7 +97,7 @@ These maps are integrated over every spatial bin and passed to the fitting softw
 Plots of these maps are provided for each source in the sandbox directory: \texttt{GD\_mass\_profiles}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Source Selection and Annihilation Channels}
+\subsection{Source Selection and Annihilation Channels}\label{sec:gd_srcs_y_chan}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We use many of the dSph presented in our previous dSph DM search \cite{Albert_2018}.
@@ -114,7 +114,7 @@ A summary of all sources, with a description of each experiments' sensitivity to
 \input{tables/gd_src_summary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Likelihood Methods} \label{sec:ll_methods}
+\subsection{Likelihood Methods} \label{sec:gd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins 1-9.
@@ -171,7 +171,7 @@ $\mathcal{L}^{\textrm{max}}$ here is equivalent to $\mathcal{L}(N_i, B_i,S_i=0)$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 13 of the 20 dSphs considered for the Glory Duck analysis are within HAWC's field of view.
-These dSph are analyzed for DM content according to the likelihood method described in \Cref{sec:ll_methods}.
+These dSph are analyzed for DM content according to the likelihood method described in \Cref{sec:gd_ll_methods}.
 The 13 likelihood profiles are then combined to create a combined limit on the dark matter cross-section.
 This combination is done for 7 of the 8 annihilation channels used in the Glory Duck analysis.
 \Cref{fig:hawc_combined_limit} shows the combined limit for all annihilation channels with HAWC only observations.
@@ -197,7 +197,7 @@ Even though the remaining dSphs have large J-factors, they are towards the edge 
     \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_tt.pdf}
     }
     \caption{HAWC upper limits at 95\% confidence level on \sv versus DM mass for seven annihilation channels, using the set of \J-factors from Ref. \cite{Geringer-Sameth:2014yza} The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
-\label{fig:hawc_combined_limit}
+ \label{fig:hawc_combined_limit}
 \end{figure}
 
 % %\newpage
@@ -214,108 +214,103 @@ Even though the remaining dSphs have large J-factors, they are towards the edge 
 \label{fig:hawc_brazil_band}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Glory Duck Combined Results}\label{sec:results}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The crux of this analysis is that HAWC's results are combined with 4 other gamma-ray observatories: Fermi-LAT, H.E.S.S., MAGIC, and VERITAS.
 The complete joint likelihood for the \emph{l}-th dSph is the product of likelihood functions of the 5 experiments.
-% 
-%% PLACE HOLDER FOR RESULTS
-% 
+
+\todo{place holder for results}
+
 No significant DM emission was observed by any of the five telescopes.
-We present upper limits on $\sv$ using the test statistics, \cref{eq:TS}.
-% 
+We present upper limits on \sv using the test statistics, \cref{eq:gd_TS}.
+
 \begin{equation}
-    \mathrm{TS} = -2 \ln{ \lambda(\sv)},
+    \mathrm{TS} = -2 \ln{ \lambda(\svtex)},
 \end{equation}
-% 
-No significant DM emission was observed by any of the five instruments.
-We present the upper limits on $\sv$ assuming seven independent DM self annihilation channels, namely $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$.
+
+\sloppy No significant DM emission was observed by any of the five instruments.
+We present the upper limits on \sv assuming seven independent DM self annihilation channels, namely $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$.
 The 68\% and 95\% containment bands are produced from 300 Poisson realizations of the null hypothesis corresponding to each of the combined datasets.
 These 300 realizations are combined identically to dSph observations.
 The containment bands and the median are extracted from the distribution of resulting limits on the null hypothesis.
-These 300 realizations are obtained either by fast simulations of the OFF observations, for H.E.S.S., MAGIC, VERITAS, and HAWC, or taken from real observations of empty fields of view in the case of {\it Fermi}-LAT~\cite{2015PhRvL.115w1301A,Fermi-LAT:2016uux,2021PhRvD.103l3005D}.
-% 
-The obtained limits are shown in \cref{fig:limits-geringer-sameth} for the \GS set of \J-factors~\cite{Geringer-Sameth:2014yza} and in \cref{fig:limits-bonnivard} for the \B set of \J-factors~\cite{Bonnivard:2014kza, Bonnivard:2015xpq}.
+These 300 realizations are obtained either by fast simulations of the OFF observations, for H.E.S.S., MAGIC, VERITAS, and HAWC, or taken from real observations of empty fields of view in the case of Fermi-LAT~\cite{2015PhRvL.115w1301A,Fermi-LAT:2016uux,2021PhRvD.103l3005D}.
+
+The obtained limits are shown in \Cref{fig:limits-geringer-sameth} for the \GS set of \J-factors~\cite{Geringer-Sameth:2014yza} and in \Cref{fig:limits-bonnivard} for the \B set of \J-factors~\cite{Bonnivard:2014kza, Bonnivard:2015xpq}.
 The combined limits are presented with their 68\% and 95\% containment bands, and are expected to be close to the median limit when no signal is present.
 We observe agreement with the null hypothesis for all channels, within $2\sigma$ standard deviations, between the observed limits and the expectations given by the median limits.
 Limits obtained from each detector are also indicated in the figures, where limits for all dSphs observed by the specific instrument have been combined.
-% 
+
 Below \textasciitilde300 GeV, the $Fermi$-LAT dominates the DM limits for all annihilation channels.
 From \textasciitilde300 GeV to \textasciitilde2 TeV, $Fermi$-LAT continues to dominate for the hadronic and bosonic DM channels, yet the IACTs (H.E.S.S., MAGIC, and VERITAS) and $Fermi$-LAT all contribute to the limit for leptonic DM channels.
 For DM masses between \textasciitilde2 TeV to \textasciitilde10 TeV, the IACTs dominate leptonic DM annihilation channels, whereas both the $Fermi$-LAT and the IACTs dominate bosonic and hadronic DM annihilation channels.
 From \textasciitilde10 TeV to \textasciitilde100 TeV, both the IACTs and HAWC contribute significantly to the leptonic DM limit.
 For hadronic and bosonic DM, the IACTs and $Fermi$-LAT both contribute strongly.
 
-% We notice that the limits computed using the \B set of \J-factor are always better compared to the ones calculated with the \GS set.
-% For the $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, and $t\bar{t}$ channels, the ratio between the limits computed with the two sets of \J-factor is varying between a factor of \textasciitilde3 and \textasciitilde5 depending on the energy, with the largest ratio around 10~TeV.
-% For the channels $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$, the ratio lies between \textasciitilde2 to \textasciitilde6, being maximum around 1~TeV.
-% Examining \cref{fig:comparison_J_1,fig:comparison_J_2} in \cref{app:J_factors}, these differences are explained by the fact that the \B set provides higher \J-factors for the majority of the studied dSphs, with the notable exception of Segue~I.
-% The variation on the ratio of the limits for the two sets is due to different dSph dominating the limits depending on the energy.
-% %This pushes the range of thermal cross-section which can be excluded to higher mass.
-% This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor
+We notice that the limits computed using the \B set of \J-factor are always better compared to the ones calculated with the \GS set.
+For the $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, and $t\bar{t}$ channels, the ratio between the limits computed with the two sets of \J-factor is varying between a factor of \textasciitilde3 and \textasciitilde5 depending on the energy, with the largest ratio around 10~TeV.
+For the channels $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$, the ratio lies between \textasciitilde2 to \textasciitilde6, being maximum around 1~TeV.
+Examining \cref{fig:comparison_J_1,fig:comparison_J_2} in \cref{app:J_factors}, these differences are explained by the fact that the \B set provides higher \J-factors for the majority of the studied dSphs, with the notable exception of Segue~I.
+The variation on the ratio of the limits for the two sets is due to different dSph dominating the limits depending on the energy.
+This pushes the range of thermal cross-section which can be excluded to higher mass.
+This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor
 
-% %This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor calculation.
-% %The \GS and \B sets present a difference in the limits for all channels of about
-% %% (to be calculated by people having the numbers in hand)}.
-% %This difference is explained, see  \cref{fig:comparison_J_1,fig:comparison_J_2} in Appendix, by the fact that the \B set provides higher \J factors for all dSph except for Segue~I. This pushes the range of thermal cross-section which can be excluded to higher mass.
+This comparison demonstrates the magnitude of systematic uncertainties associated with the choice of the \J-factor calculation.
+The \GS and \B sets present a difference in the limits for all channels of about
+% (to be calculated by people having the numbers in hand)}.
+This difference is explained, see  \cref{fig:comparison_J_1,fig:comparison_J_2} in Appendix, by the fact that the \B set provides higher \J factors for all dSph except for Segue~I. This pushes the range of thermal cross-section which can be excluded to higher mass.
 
-
-% \begin{figure}[h!]
-% \centering{
-% \begin{tabular}{cc}
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_WW_Geringer-Sameth_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_ZZ_Geringer-Sameth_Combination_bands.pdf} \\
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_bb_Geringer-Sameth_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_tt_Geringer-Sameth_Combination_bands.pdf} \\
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_ee_Geringer-Sameth_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_mumu_Geringer-Sameth_Combination_bands.pdf} \\
-%  \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_tautau_Geringer-Sameth_Combination_bands.pdf} &
-% \end{tabular}
-% }
-% \caption{Upper limits at 95\% confidence level on $\sv$ in function of the DM mass for eight annihilation channels, using the set of $J$ factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \cref{tab:J_factor}). The black solid line represents the observed combined limit, the black dashed line is the median of the null hypothesis corresponding to the expected limit, while the green and yellow bands show the 68\% and 95\% containment bands. Combined upper limits for each individual detector are also indicated as solid, colored lines.
-% %\jr{do not use light green for any line, since it gets confused with the 1sigma band}.
-% The value of the thermal relic cross-section in function of the DM mass is given as the red dotted-dashed line~\cite{Bertone_2005}.}
-% \label{fig:limits-geringer-sameth}
-% \end{figure}
-
-
-% \begin{figure}[ht]
-% \centering{
-% \begin{tabular}{cc}
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_WW_Bonnivard_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_ZZ_Bonnivard_Combination_bands.pdf} \\
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_bb_Bonnivard_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_tt_Bonnivard_Combination_bands.pdf} \\
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_ee_Bonnivard_Combination_bands.pdf} &
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_mumu_Bonnivard_Combination_bands.pdf} \\
-% \includegraphics[width=0.35\textwidth]{plots/limits/Glory_Duck_Annihilation_tautau_Bonnivard_Combination_bands.pdf} &
-% \end{tabular}
-% }
-% \caption{Same as \cref{fig:limits-geringer-sameth}, using the set of $J$ factors from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:J_factor}).}
-% \label{fig:limits-bonnivard}
-% \end{figure}
+\begin{figure}[h!]
+\centering{
+\begin{tabular}{cc}
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Geringer-Sameth_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Geringer-Sameth_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Geringer-Sameth_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Geringer-Sameth_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Geringer-Sameth_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Geringer-Sameth_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Geringer-Sameth_Combination_bands.pdf} &
+    \end{tabular}
+    }
+    \caption{Upper limits at 95\% confidence level on \sv in function of the DM mass for eight annihilation channels, using the set of \J factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \Cref{tab:gd_J_factor}). The black solid line represents the observed combined limit, the black dashed line is the median of the null hypothesis corresponding to the expected limit, while the green and yellow bands show the 68\% and 95\% containment bands. Combined upper limits for each individual detector are also indicated as solid, colored lines.
+    %\jr{do not use light green for any line, since it gets confused with the 1sigma band}.
+    The value of the thermal relic cross-section in function of the DM mass is given as the red dotted-dashed line~\cite{Bertone_2005}.}
+\label{fig:limits-geringer-sameth}
+\end{figure}
 
 
+\begin{figure}[ht]
+\centering{
+\begin{tabular}{cc}
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Bonnivard_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Bonnivard_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Bonnivard_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Bonnivard_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Bonnivard_Combination_bands.pdf} &
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Bonnivard_Combination_bands.pdf} \\
+    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Bonnivard_Combination_bands.pdf} &
+    \end{tabular}
+    }
+    \caption{Same as \cref{fig:limits-geringer-sameth}, using the set of \J factors from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \Cref{tab:gd_J_factor}).}
+\label{fig:limits-bonnivard}
+\end{figure}
 
-% \begin{figure}[ht]
-% \centering{
-% \begin{tabular}{ccc}
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_WW.pdf} &
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_ZZ.pdf} &
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_bb.pdf} \\
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_tt.pdf} &
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_ee.pdf} &
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_mumu.pdf} \\
-% \includegraphics[width=0.3\textwidth]{plots/comparison/GD_limits_tautau.pdf} &
-% \end{tabular}
-% }
-% \caption{Comparisons of the combined limits at 95\% confidence level for each of the eight annihilation channels when using the \J factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \cref{tab:J_factor}), plain lines, and the \J factor from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \cref{tab:J_factor}), dashed lines. The cross-section given by the thermal relic is also indicated~\cite{Bertone_2005}.}
-% \label{fig:limits-comparison}
-% \end{figure}
-
-
+\begin{figure}[ht]
+\centering{
+\begin{tabular}{ccc}
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_WW.pdf} &
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_ZZ.pdf} &
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_bb.pdf} \\
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_tt.pdf} &
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_ee.pdf} &
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_mumu.pdf} \\
+    \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_tautau.pdf} &
+    \end{tabular}
+    }
+    \caption{Comparisons of the combined limits at 95\% confidence level for each of the eight annihilation channels when using the \J factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \Cref{tab:gd_J_factor}), plain lines, and the \J factor from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \Cref{tab:gd_J_factor}), dashed lines. The cross-section given by the thermal relic is also indicated~\cite{Bertone_2005}.}
+\label{fig:limits-comparison}
+\end{figure}
 
 % \afterpage{\clearpage}
 
