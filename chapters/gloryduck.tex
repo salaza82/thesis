@@ -1,4 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} \label{sec:gd_intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The field of astrophysics now has several instruments and observatories sensitive to high energy gamma-rays.
+The energy sensitivity for the modern gamma-ray program spans many orders of magnitude.
+\Cref{fig:gd_motivation} demonstrates these similar sensitivities across energies for the five experiments: Fermi-LAT, HAWC, HESS, MAGIC, and VERITAS.
+
+\begin{figure}[ht]
+    \centering{
+        \includegraphics[scale=0.35]{figures/glory_duck/gd_motivation.png}
+    }
+    \caption{\ns Sensitivities of five gamma-ray experiments compared to pertanges of Crab emmision and dark matter emmision. Solid lines present estimated sensitivities to power law spectra \fu for each experiment. Green lines are Fermi-LAT sensitivities where lighter green is the sensitivity to the galactic center and light green is its sensitivity to higher declinations. Orange, red, and purple solid lines represent the MAGIC, HESS, and VERITAS 50 hour sensitivities respectively. The marroon and brown lines are the HAWC 1 year and 5 year sensitivities. Across four decades of gamma-ray energy, these experiments have similar sensitivities on the order $10^{-12}$ erg cm$^{-2}$s$^{-1}$. The dotted lines are estimated dark matter fluxes assuming DM annhilating to bottom quarks (red), tau leptons (blue), and W bosons (green). Faded grey lines outline percentage flux of the Crab nebula.}
+    \label{fig:gd_motivation}
+\end{figure}
+
+Each of the five experiments featured in \Cref{fig:gd_motivation} have independently searched for DM annihilation from dwarf galaxies and set limits.
+Intriguingly, their similarities overlap in regions where these observatories are less sensitive.
+This clearly motivates an analysis that combines data from these five.
+This chapter presents the Glory Duck analysis, the name given for the search for dark matter annihilation from dwarf galaxies by combining data from the five gamma-ray observatories: Fermi-LAT, HAWC, HESS, MAGIC, and VERITAS.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Dataset and Background \label{sec:gd_databgd}}
@@ -107,7 +126,7 @@ Triangulum II was excluded from the Glory Duck analysis because of large uncerta
 Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
 Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
 
-\sloppy The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}, e\bar{e}, \mu\bar{\mu}, \tau\bar{\tau}, t\bar{t}, W^+W^-, \textrm{and }ZZ$.
+The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}$, $e\bar{e}$, $\mu\bar{\mu}$, $\tau\bar{\tau}$, $t\bar{t}$, $W^+W^-$, and $ZZ$.
 A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
 
 \input{tables/gd_exp_sens_summary.tex}
