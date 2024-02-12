@@ -45,25 +45,48 @@ This work was published to ??? and presented at the International Cosmic Ray Con
 \section{Dataset and Background \label{sec:gd_databgd}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This section enumerates the data and background methods used for HAWC's study of the dwarf spheroidal galaxies (dSph).
+\Cref{sec:gd_data} and \Cref{sec:gd_tools} are most useful for fellow HAWC collaborators looking to replicate the Glory Duck analisys.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Data Files}\label{sec:gd_data}
+\subsection{Itemized HAWC files}\label{sec:gd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
     \item Detector Resolution: \url{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse\\
     \_10pctlogchargesmearing\_0.63qe\_25kHzNoise\_run5481\_curvature0\_index3.root}
-    \item Data Map: \url{maps-20180119/liff/maptree\_1024.root}
+    \item Data Map: \texttt{maps-20180119/liff/maptree\_1024.root}
+    \item Spectral Dictionary: \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}
+    \item Analysis wiki: \url{https://private.hawc-observatory.org/wiki/index.php/Glory_Duck_Multi-Experiment_Dark_Matter_Search}
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Data Set Chosen}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Software Tools and Development}\label{sec:gd_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20). They were generated from pass 4.0 reconstruction.
-The analysis is performed using the $f_{hit}$ energy binning scheme with bins [1-9] similar to what was done for the Crab and previous HAWC dSph analysis. \cite{Abeysekara_2017,Albert_2018}.
+This analysis was performed using HAL and 3ML, in Python version 2\cite{Abeysekara_2017, vianello2015multimission}.
+I built software to implement the \emph{Poor Particle Physicists' Cookbook} (PPPC) \cite{Cirelli_2011} DM spectral model and dSphs spatial model from \cite{Geringer_Sameth_2015} for HAWC analysis.
+A NumPy version of this dictionary was made for both Py2 and Py3.
+The code base for creating this dictionary is linked on my GitLab sandbox:
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Background Estimation}\label{sec:gd_bkgd}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item Py2: \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc/-/tree/master/GD_spectrum}{Dictionary Generator (Deprecated)}
+    \item Py3: \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/pppc2dict}{PPPC2Dict}
+\end{itemize}
+
+The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the Crab paper\cite{Abeysekara_2017}.
+The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
+The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
+These files can also be used for decay channels and the PPPC describes how. \cite{Cirelli_2011}.
+All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Set and Background Description} \label{sec:gs_data_bkgd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The HAWC data maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20).
+They were generated from pass 4.0 reconstruction.
+The analysis is performed using the $f_{hit}$ energy binning scheme with bins (1-9) similar to what was done for the Crab and previous HAWC dSph analysis. \cite{Abeysekara_2017,Albert_2018}.
+Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
 
 This analysis was done on dwarf spheroidal (dSph) galaxies because of their large dark matter (DM) content relative to baryonic.
 We consider the following to estimate the background to this study.
@@ -74,62 +97,41 @@ We consider the following to estimate the background to this study.
     \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain gamma-ray sources.
 \end{itemize}
 
-Therefor we make no additional assumptions of the background coming from our sources and use HAWC's standard direct integration method for background estimation.
+Therefor we make no additional assumptions on the background from our sources and use HAWC's standard direct integration method for background estimation \cite{Abeysekara_2017}.
 It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
 This was investigated and its impact on the flux is basically zero.
 Supporting information on this is in \todo{refer to appdx}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Software Tools and Development}\label{sec:gd_tools}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-This analysis was performed using HAL and 3ML, in Python version 2.\cite{Abeysekara_2017, vianello2015multimission}
-Dan developed a source model to implement the \emph{Poor Particle Physicists' Cookbook} (PPPC) \cite{Cirelli_2011} into HAWC software.
-This model and corresponding Monte Carlo simulation was consolidated into a dictionary for other collaborators.
-A NumPy version of this dictionary was made for both Py2 and Py3.
-The code base for creating this dictionary is also in Dan's sandbox:
-
-\begin{itemize}
-    \item Py2: \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc/-/tree/master/GD_spectrum}{Dictionary Generator (Deprecated)}
-    \item Py3: \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/pppc2dict}{PPPC2Dict}
-\end{itemize}
-
-The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the Crab paper\cite{Abeysekara_2017}.
-The PPPC model selected for this analysis included electroweak corrections.
-Dictionaries for the non-electroweak model were generated but not used for this analysis.
-The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
-The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
-These files can also be used for decay channels and the PPPC describes how. \cite{Cirelli_2011}.
-Python's pickle is not backwards compatible, so scripts run in Py3 are not able to use dictionaries generated using Py2 and vice-versa.
-
-All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \url{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project. They're broad descriptions are as follows:
-
-\begin{itemize}
-    \item \texttt{GD\_mass\_profiles}: scripts that generate .fits maps for HAWC HAL according to \cite{Geringer-Sameth:2014yza}. Also contains simple plots of these maps.
-    \item \texttt{GD\_spectrum}: scripts that generate NumPy dictionaries of PPPC gamma spectra \cite{Cirelli_2011}.
-    \item \texttt{analysis\_scripts}: HAL scripts for performing likelihood computation on HAWC data or simulation with GD spectra and mass profiles.
-    \item \texttt{pointing}: HAL scripts used to compare the impact of point systematic.
-    \item \texttt{poisson\_maps}: scripts for generating and managing poisson trials used for this study.
-\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis}\label{gd_analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Monte Carlo Simulation}\label{sec:gd_mc}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The expected differential photon flux from a DM-DM annihilation to standard model
+The expected differential photon flux from DM-DM annihilation to standard model
 particles over solid angle is described by the familiar equation.
 \iddmannilation[\gamma]
+
 Where \sv~is the velocity weighted annihilation cross-section.
 $\frac{dN}{dE}$ is the expected differential number of photons produced at each energy per annihilation.
 $M_\chi$ is the rest mass of the supposed DM particle.
 $J$ is the astrophysical J-factor and is defined as
+\jfactor
 
 $\rho_{\chi}$ is the DM density.
+How each component is generated and considered for HAWC's analysis is presented in the following sections.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$\frac{dN_\gamma}{dE_\gamma}$ Particle Physics Component}\label{sec:gd_particlephysics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 For this value, we import the PPPC with electroweak corrections \cite{Cirelli_2011}.
 The spectrum is implemented as a model script in astromodels for 3ML.
+The PPPC model selected for this analysis included electroweak corrections.
+The electroweak corrections were previously not considered for HAWC and are significant for DM annihilating to \todo{fill in SM particles} \cite{Albert_2018}.
+\tmpfig{figure from PPPC showing difference in pythia and ew corrections.}
+
+The class in atromodels created to include the PPPC is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
+
+
 The J-factor profiles for each source is imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
 Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
 However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
