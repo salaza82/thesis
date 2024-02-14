@@ -123,14 +123,24 @@ How each component is generated and considered for HAWC's analysis is presented 
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ Particle Physics Component}\label{sec:gd_particlephysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For this value, we import the PPPC with electroweak corrections \cite{Cirelli_2011}.
+For this value, we import the PPPC with Electro-Weak (EW) corrections \cite{Cirelli_2011}.
 The spectrum is implemented as a model script in astromodels for 3ML.
-The PPPC model selected for this analysis included electroweak corrections.
-The electroweak corrections were previously not considered for HAWC and are significant for DM annihilating to \todo{fill in SM particles} \cite{Albert_2018}.
-\tmpfig{figure from PPPC showing difference in pythia and ew corrections.}
+The PPPC model selected for this analysis included EW corrections.
+The EW corrections were previously not considered for HAWC and are significant for DM annihilating to EW coupled SM particles such as all leptons, and the $\gamma$, $Z$, and $W$ bosons. \cite{Albert_2018}.
+\Cref{fig:ew_vs_noew} demonstrates the significance of EW corrections for W boson annihilation.
+A class in atromodels created to include the EW correction from PPPC is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
 
-The class in atromodels created to include the PPPC is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
+\begin{figure}[ht]
+\centering{
+    \includegraphics[scale=0.8]{figures/glory_duck/EW_vs_NoEW.png}
+}
+\caption{Effect of Electro-Weak (EW) corrections on expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models that consider EW corrections. Dash-dot lines are spectral models without EW corrections. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV. All models are sourced from the PPPC4DMID \cite{Cirelli_2011}.}
+\label{fig:ew_vs_noew}
+\end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\J Astrophysical Component}\label{sec:gd_spatialmodel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The J-factor profiles for each source is imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
 Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
