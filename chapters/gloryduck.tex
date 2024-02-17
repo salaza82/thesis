@@ -120,7 +120,7 @@ $\rho_{\chi}$ is the DM density.
 How each component is generated and considered for HAWC's analysis is presented in the following sections.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{$\frac{dN_\gamma}{dE_\gamma}$ Particle Physics Component}\label{sec:gd_particlephysics}
+\subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:gd_particlephysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 For this value, we import the PPPC with Electro-Weak (EW) corrections \cite{Cirelli_2011}.
@@ -128,7 +128,9 @@ The spectrum is implemented as a model script in astromodels for 3ML.
 The PPPC model selected for this analysis included EW corrections.
 The EW corrections were previously not considered for HAWC and are significant for DM annihilating to EW coupled SM particles such as all leptons, and the $\gamma$, $Z$, and $W$ bosons. \cite{Albert_2018}.
 \Cref{fig:ew_vs_noew} demonstrates the significance of EW corrections for W boson annihilation.
-A class in atromodels created to include the EW correction from PPPC is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
+Tables from the PPPC were reformatted into python Numpy dictionaries for collaboration-wide use.
+A class in atromodels was created to include the EW correction from the PPPC and is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
+
 
 \begin{figure}[ht]
 \centering{
@@ -139,10 +141,21 @@ A class in atromodels created to include the EW correction from PPPC is aptly na
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\J Astrophysical Component}\label{sec:gd_spatialmodel}
+\subsection{\J - Astrophysical Component}\label{sec:gd_spatialmodel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The J-factor profiles for each source is imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
+The J-factor profiles for each source are imported from Geringer-Sameth (\GS) \cite{Geringer_Sameth_2015}.
+These were provided from the authors as $\J(\theta)$, where $\theta$ is the angular separation from the center of the source.
+HAWC requires maps in terms of $\frac{d\J}{d\Omega}$, so the conversion from the maps was done in the following way.
+
+First, convert the angular distances to solid angles.
+\angleTOsolidangle
+
+the central difference for both the $\Delta \J$ and $\Delta \theta$ value were calculated for the discretized form of $\J(\theta)$ with the central difference stencil:
+\centerDiff
+Where $\phi$ is either $\theta$ or \J.
+
+
 Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
 However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
 We create NSIDE $16384$ maps of the J-factors for each dSph.
