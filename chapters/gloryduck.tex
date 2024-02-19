@@ -132,7 +132,7 @@ Tables from the PPPC were reformatted into python Numpy dictionaries for collabo
 A class in atromodels was created to include the EW correction from the PPPC and is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
 
 
-\begin{figure}[ht]
+\begin{figure}
 \centering{
     \includegraphics[scale=0.8]{figures/glory_duck/EW_vs_NoEW.png}
 }
@@ -148,19 +148,37 @@ The J-factor profiles for each source are imported from Geringer-Sameth (\GS) \c
 These were provided from the authors as $\J(\theta)$, where $\theta$ is the angular separation from the center of the source.
 HAWC requires maps in terms of $\frac{d\J}{d\Omega}$, so the conversion from the maps was done in the following way.
 
-First, convert the angular distances to solid angles.
+First, convert the angular distances to solid angles
 \angleTOsolidangle
-
-the central difference for both the $\Delta \J$ and $\Delta \theta$ value were calculated for the discretized form of $\J(\theta)$ with the central difference stencil:
+which reduces with a small angle approximation to $\pi \theta^2$.
+Next, the central difference for both the $\Delta \J$ and $\Delta \theta$ value were calculated for the discretized form of $\J(\theta)$ with the central difference stencil:
 \centerDiff
 Where $\phi$ is either $\theta$ or \J.
+These were done separately in case the grid spacing in $\theta$~was not uniform.
+Finally, these lists are divided so that we are left with approximation of the profile of $d\J/d\Omega$~that is a function of $\theta$.
+Admittedly, this is an approximation method for the map which introduces small errors compared to the true profile estimate.
+This was checked as a systematic against the author's profiling of the spatial distribution and is documented in \todo{Model dependant limit, remember the jfactors!}
 
+With $\frac{d\J}{d\Omega}$, a map is generated, first by filling in the north-east quadrant of the map.
+This quadrant is then reflected twice, vertically then horizontally, to fill the full map.
+Maps are then normailized by dividing the discrete 2D integral of the map.
+The 2D integral was a simple height of bins, Newton's integral:
+\newtonIntegral
+These maps are HEALpix maps with NSIDE 16384 and saved in the \texttt{.fits} format.
 
-Another DM distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
+\begin{figure}
+    \centering{
+    \includegraphics[scale=0.86]{figures/glory_duck/hawc/Segue1_J_plot.pdf}
+    \includegraphics[scale=0.86]{figures/glory_duck/hawc/ComaBerenices_J_plot.pdf}
+    }
+    \caption{$\frac{d\J}{d\Omega}$ maps for Segue1 (top) and Coma Berenices (bottom). Origin is centered on the specific dwarf spheroidal galaxies (dSph). X and Y axes are the angular separation from the center of the dwarf. Plots of the remaining 11 dSph HAWC studied are linked in \Cref{sec:gd_tools}.}\label{fig:gd_spatialmodel}
+\end{figure}
+
+Another DM spatial distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the complete study.
 However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
-We create NSIDE $16384$ maps of the J-factors for each dSph.
-These maps are integrated over every spatial bin and passed to the fitting software.
+How these models compare is demonstrated for each dSph in \Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2}
 Plots of these maps are provided for each source in the sandbox directory: \texttt{GD\_mass\_profiles}.
+Examples of the two most impactful dSphs, Segue1 and Coma Berenices are featured in \Cref{fig:gd_spatialmodel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Source Selection and Annihilation Channels}\label{sec:gd_srcs_y_chan}
@@ -237,22 +255,19 @@ $\mathcal{L}^{\textrm{max}}$ here is equivalent to $\mathcal{L}(N_i, B_i,S_i=0)$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 13 of the 20 dSphs considered for the Glory Duck analysis are within HAWC's field of view.
-These dSph are analyzed for DM content according to the likelihood method described in \Cref{sec:gd_ll_methods}.
+These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
 The 13 likelihood profiles are then combined to create a combined limit on the dark matter cross-section.
-This combination is done for 7 of the 8 annihilation channels used in the Glory Duck analysis.
+This combination is done for the 7 annihilation channels used in the Glory Duck analysis.
 \Cref{fig:hawc_combined_limit} shows the combined limit for all annihilation channels with HAWC only observations.
 We also perform 300 studies of Poisson trials on the background.
-These trials are used to produce HAWC Brazil bands are shared with the other collaborators for combined Brazil Bands.
+These trials are used to produce HAWC Brazil bands which were shared with the other collaborators for combined Brazil Bands.
 The results on fitting to HAWC's poisson trials of the DM hypothesis is shown in \Cref{fig:hawc_brazil_band} for seven of the DM annihilation channels.
 
 No DM was found in HAWC observations.
 The limits are dominated by the dSph Segue1 and Coma Berenices.
 The remaining 11 dSphs do no contribute significantly to the limit.
-Even though the remaining dSphs have large J-factors, they are towards the edge of HAWC's field of view where this analysis is less sensitive.
+Even though some of the remaining dSphs have large J-factors, they are towards the edge of HAWC's field of view where this analysis is less sensitive.
 
-% %\newpage
-% %\vfill
-% %\vspace{6cm}
 \begin{figure}[ht]
     \centering{\includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_bb.pdf}
     \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_ee.pdf}
