@@ -481,13 +481,33 @@ The assumption myself and collaborators had was that the published tables repres
 However, this is not the case.
 Instead, what is published are the best fit model for each dwarf that only considers stars up to the angular separation $\theta$.
 Therefore, the model is changing for each value of $\theta$ for each dwarf.
+Yet, the introduced features from unique models at each $\theta$ are much smaller than the angular resolution of HAWC.
+It is not expected for these effects to impact the limits and TS greatly as a result.
 
 Median \J-factor model profiles were provided by the authors.
 New maps were generated and analyzed for Segue1 and Coma Berenices.
-\tmpfig{Differential maps}
+\Cref{fig:gd_djmap_diff} shows the differential between maps generated with the method from \Cref{sec:gd_jfacintegration} and from the authors of \cite{Geringer_Sameth_2015}.
+These maps were reanalyzed for all SM DM annihilation channels.
+Upper limits for these channels are shown in \Cref{fig:gd_jfacmodel_systematic}
 
-Upper limits were again calculated for the two sources for each DM annihilation channel.
-\tmpfig{New limits with different maps}
+From \Cref{fig:gd_jfacmodel_systematic}, we can see that the impact of these model difference was no substantial.
+The observed impact was a fractional effect which is much smaller than the impact from selecting another DM spatial distribution model as was shown in \Cref{fig:limits-comparison}.
+
+\begin{figure}
+    \centering{
+    \includegraphics[scale=0.5]{figures/glory_duck/hawc/Segue1_diff.png}
+    \includegraphics[scale=0.5]{figures/glory_duck/hawc/ComaB_diff.png}
+    }
+    \caption{Differential map of $d\J/\Omega$ from model built in \Cref{sec:gd_jfacintegration} and profiles provided directly from authors. (Top) Differential from Segue1. (bottom) Differential from Coma Berenices. Note that their scales are not the same. Segue1 shows the deepest discrepancies which is congruent with its large uncertainties. Both models show anuli where unique models become apparent.}\label{fig:gd_djmap_diff}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.38]{figures/glory_duck/hawc/JFacModel_Systematic_GD_ComaBerenices_bb.pdf}
+        \includegraphics[scale=0.38]{figures/glory_duck/hawc/JFacModel_Systematic_GD_Segue1_bb.pdf}
+    }
+    \caption{HAWC limits for Coma Berenices (top) and Segue1 (bottom) for two different map sets. Blue lines are limits calculated on maps with poor model representation. Orange lines are limits calculated on spatial profiles provided by the authors of \cite{Geringer_Sameth_2015}. Black line is the ratio of the poor spatial model limits to the corrected spatial models. The left y-axis measures \sv for the blue and orange lines. The right y-axis measures the ratio and is unitless.}\label{fig:gd_jfacmodel_systematic}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\GS versus \B spatial models}\label{sec:gd_gsVb}
