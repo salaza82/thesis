@@ -305,17 +305,18 @@ The complete joint likelihood for the \emph{l}-th dSph is the product of likelih
 \todo{place holder for results}
 
 The \textit{partial} joint likelihood function for gamma-ray observations of each dSph ($\mathcal{L}_{\text{dSph},l}$) is written as the product of the likelihood terms describing the $N_{\text{exp},l}$ observations performed with any of our observatories:
-%
-% \begin{equation}
-    % \label{Eq:measurement_combination}
-    % \mathcal{L}_{\text{dSph},l}\left( \sv ; J_l, \bm{\nu_l} \mid \bm{\mathcal{D}_{l}} \right) = \prod_{k=1}^{N_{\text{exp},l}} \mathcal{L}_{lk} \left( \sv ; J_l, \bm{\nu_{lk}} \mid \bm{\mathcal{D}_{lk}} \right),
-% \end{equation}
-%
+\GDjointLLH
+
 where each $\mathcal{L}_{lk}$ term refers to an observation of the $l$-th dSph with associated $k$-th instrument responses.
-$ N_{\text{exp},l} $ varies from dSph to dSph and can be retrieved from \cref{tab:tabSummary}.
+$ N_{\mathrm{exp},l} $ varies from dSph to dSph and can be retrieved from \cref{tab:gd_tabSummary}.
 
-Each collaboration separately analyses their data for $\bm{\mathcal{D}_{lk}}$ corresponding to dSph $l$ and gamma-ray detector $k$, using as many common assumptions as possible in the analysis (see the next paragraph and further down in this section for additional details). We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref{Eq:measurement_combination}) for a fixed value of $\J_l$ and profile over the rest of the nuisance parameters $\bm{\nu_{lk}}$. Then, values of $\lambda$ from \cref{Eq:likelihood_profile} are computed as a function of $\sv$, and shared using a common format. Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli}. The $\sv$ range is defined between $10^{-28}$ and $10^{-18}\rm{cm}^{3}\cdot \rm{s^{-1}}$, with 1001 logarithmically spaced values. The likelihood combination, {\it i.e.} \cref{Eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{Eq:likelihood_profile}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
-
+Each collaboration separately analyses their data for $\bm{\mathcal{D}_{lk}}$ corresponding to dSph $l$ and gamma-ray detector $k$, using as many common assumptions as possible in the analysis (see the next paragraph and further down in this section for additional details).
+% We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref{Eq:measurement_combination}) for a fixed value of $\J_l$ and profile over the rest of the nuisance parameters $\bm{\nu_{lk}}$.
+% Then, values of $\lambda$ from \cref{Eq:likelihood_profile} are computed as a function of $\sv$, and shared using a common format.
+% Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli}.
+% The $\sv$ range is defined between $10^{-28}$ and $10^{-18}\rm{cm}^{3}\cdot \rm{s^{-1}}$, with 1001 logarithmically spaced values.
+% The likelihood combination, {\it i.e.} \cref{Eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{Eq:likelihood_profile}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
+%
 No significant DM emission was observed by any of the five telescopes.
 We present upper limits on \sv using the test statistics, \cref{eq:gd_TS}.
 
