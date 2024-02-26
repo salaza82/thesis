@@ -6,7 +6,7 @@ The field of astrophysics now has several instruments and observatories sensitiv
 The energy sensitivity for the modern gamma-ray program spans many orders of magnitude.
 \Cref{fig:gd_motivation} demonstrates these similar sensitivities across energies for the five experiments: Fermi-LAT, HAWC, HESS, MAGIC, and VERITAS.
 
-\begin{figure}[ht]
+\begin{figure}[t]
     \centering{
         \includegraphics[scale=0.35]{figures/glory_duck/gd_motivation.png}
     }
@@ -63,7 +63,7 @@ This section enumerates the data and background methods used for HAWC's study of
 \subsection{Software Tools and Development}\label{sec:gd_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission}, in Python version 2.
+This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python version 2.
 I built software to implement the \emph{A Poor Particle Physicist Cookbook for Dark Matter Indirect Detection} (PPPC) \cite{Cirelli_2011} DM spectral model and dSphs spatial model from \cite{Geringer_Sameth_2015} for HAWC analysis.
 A NumPy version of this dictionary was made for both Py2 and Py3.
 The code base for creating this dictionary is linked on my GitLab sandbox:
@@ -88,7 +88,7 @@ They were generated from pass 4.0 reconstruction.
 The analysis is performed using the $f_{hit}$ energy binning scheme with bins (1-9) similar to what was done for the Crab and previous HAWC dSph analysis \cite{Abeysekara_2017,Albert_2018}.
 Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
 
-This analysis was done on dwarf spheroidal (dSph) galaxies because of their large DM mass content relative to baryonic mass.
+This analysis was done on dSphs because of their large DM mass content relative to baryonic mass.
 We consider the following to estimate the background to this study.
 
 \begin{itemize}
@@ -107,19 +107,21 @@ Supporting information on this is in \Cref{sec:gd_ics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The expected differential photon flux from DM-DM annihilation to standard model
-particles, $d\Phi_{\gamma}/dE_{\gamma}$, over some solid angle, $Omega$~is described by the familiar equation.
+particles, $d\Phi_{\gamma}/dE_{\gamma}$, over solid angle, $Omega$~is described by the familiar equation.
 \iddmannilation[\gamma]
 
 Where \sv~is the velocity weighted annihilation cross-section.
 $\frac{dN}{dE}$ is the expected differential number of photons produced at each energy per annihilation.
 $m_\chi$ is the rest mass of the supposed DM particle.
+$\rho_{\chi}$ is the DM density.
 $J$ is the astrophysical J-factor and is defined as
 \jfactor
-Where $\rho_{\chi}$ is the DM density.
 $l$ is the distance to the source from Earth.
 $r$ is the radial distance from the center of the source.
 $\theta'$ is the half angle defining a cone containing the DM source.
 How each component is synthesized and considered for HAWC's analysis is presented in the following sections.
+\Cref{sec:gd_particlephysics} presents the particle physics model for DM annihilation.
+\Cref{sec:gd_spatialmodel} presents the spatial distributions built for each dSph.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:gd_particlephysics}
@@ -133,7 +135,7 @@ Across EW SM channels, the gamma-ray spectra become harder than spectra without 
 Tables from the PPPC were reformatted into Python NumPy dictionaries for collaboration-wide use.
 A class in astromodels was developed to include the EW correction from the PPPC and is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
 
-\begin{figure}
+\begin{figure}[t]
 \centering{
     \includegraphics[scale=0.8]{figures/glory_duck/EW_vs_NoEW.png}
 }
@@ -152,7 +154,7 @@ HAWC requires maps in terms of $\frac{d\J}{d\Omega}$, so the conversion from the
 First, convert the angular distances to solid angles
 \angleTOsolidangle
 which reduces with a small angle approximation to $\pi \theta^2$.
-Next, the central difference for both the $\Delta \J$ and $\Delta \Omega$ value were calculated for the discretized form of $\J(\theta)$ with the central difference stencil:
+Next, the central difference for both the $\Delta \J$ and $\Delta \Omega$ value were calculated from the discretized $\J(\theta)$ with the central difference stencil:
 \centerDiff
 Where $\phi$ is either $\Omega$ or \J.
 These were done separately in case the grid spacing in $\theta$~was not uniform.
@@ -172,27 +174,35 @@ These maps are HEALpix maps with NSIDE 16384 and saved in the \texttt{.fits} for
     \includegraphics[scale=0.86]{figures/glory_duck/hawc/Segue1_J_plot.pdf}
     \includegraphics[scale=0.86]{figures/glory_duck/hawc/ComaBerenices_J_plot.pdf}
     }
-    \caption{$\frac{d\J}{d\Omega}$ maps for Segue1 (top) and Coma Berenices (bottom). Origin is centered on the specific dwarf spheroidal galaxies (dSph). X and Y axes are the angular separation from the center of the dwarf. Plots of the remaining 11 dSph HAWC studied are linked in \todo{cref to appendix}.}\label{fig:gd_spatialmodel}
+    \caption{$\frac{d\J}{d\Omega}$ maps for Segue1 (top) and Coma Berenices (bottom). Origin is centered on the specific dwarf spheroidal galaxies (dSph). X and Y axes are the angular separation from the center of the dwarf. Plots of the remaining 11 dSph HAWC studied are linked in \cref{fig:apx_gd_spatialmodels}.}\label{fig:gd_spatialmodel}
 \end{figure}
 
 Another DM spatial distribution model from Bonnivard (\B) \cite{Bonnivard:2014kza} was used for the Glory Duck study.
 However, to save computational time, limits from \GS were scaled to \B instead of each experiment performing a full study a second time.
 How these models compare is demonstrated for each dSph in \Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2}
-Plots of these maps are provided for each source in the sandbox directory: \texttt{GD\_mass\_profiles}.
-Examples of the two most impactful dSphs, Segue1 and Coma Berenices are featured in \Cref{fig:gd_spatialmodel}
+Plots of these maps are provided for each source in \Cref{apdx:gd_spatial_maps}
+Examples of the two most impactful dSphs derived from \GS, Segue1 and Coma Berenices are featured in \Cref{fig:gd_spatialmodel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Source Selection and Annihilation Channels}\label{sec:gd_srcs_y_chan}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We use many of the dSph presented in our previous dSph DM search \cite{Albert_2018}.
+We use many of the dSphs presented in HAWC's previous dSph DM search \cite{Albert_2018}.
 HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
 A full description of all sources used in Glory Duck is found in \Cref{tab:gd_J_factor}.
-Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its J-factor.
+Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its \J factor.
 Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
 Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
 
-The DM annihilation channels probed for the Glory Duck combination include $b\bar{b}$, $e\bar{e}$, $\mu\bar{\mu}$, $\tau\bar{\tau}$, $t\bar{t}$, $W^+W^-$, and $ZZ$.
+This analysis improves on the previous HAWC dSph paper \cite{Albert_2018} in the following ways.
+Previously, the dSphs were treated and implemented as point sources.
+For this analysis, dSphs are modeled and treated as extended source.
+The impact of this change with respect to the upper limit is source dependant and is explored in \Cref{sec:gd_ext_limitvs_ptsrc}.
+Previously, the particle physics model used for gamma-ray sepctra from DM annihilation did not have EW cooreections where the PPPC includes them.
+Finally, the gamma-ray ray dataset is much larger.
+The study performed here analyzes over 1000 days of data compared to 507.
+
+The SM annihilation channels probed for the Glory Duck combination include $b\bar{b}$, $e\bar{e}$, $\mu\bar{\mu}$, $\tau\bar{\tau}$, $t\bar{t}$, $W^+W^-$, and $ZZ$.
 A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
 
 \input{tables/gd_exp_sens_summary.tex}
@@ -202,20 +212,18 @@ A summary of all sources, with a description of each experiments' sensitivity to
 \subsection{Likelihood Methods} \label{sec:gd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins 1-9.
-This analysis was performed using HAL and 3ML, in Python2 \cite{Abeysekara_2017, vianello2015multimission}.
-With these tools we compute the max from the likelihood profiles and perform a ratio test to calculate the significance of each source.
+We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins (1-9).
+We compute the max from the likelihood profiles and perform a ratio test to calculate the significance of each source.
 This analysis is identical to the previous dSph analysis \cite{Albert_2018} except the sources are treated as extended.
 For the vast majority of our sources, this extension is no greater than 2 degrees.
 We calculate the likelihood of each source and model, assuming events are Poisson distributed, with
-\hwcpsLLH
-
+\hwcpsLLH.
 $S_i$ is the sum of expected number of signal counts.
 $B_i$ is the number of background counts observed.
 $N_i$ is the total number of counts.
 The \textit{i}th bin is iterated over spatial and $f_{\textrm{hit}}$.
 Then we combine the profiles across all five experiments.
-The profile likelihood ratio $\lambda$ as a function of annihilation cross-section \sv is computed by:
+The profile likelihood ratio $\lambda$ as a function of annihilation cross-section \sv~is computed with:
 \gdLLHratio
 for a considered annihilation channel and DM mass.
 
