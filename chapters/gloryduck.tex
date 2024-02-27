@@ -243,12 +243,45 @@ We scan $\epsilon$ such that
 The joint likelihood for the 5-experiment combination was done similarly as \Cref{sec:gd_hawc_llh}.
 We calculate upper limits on \sv~from the TS, \cref{eq:gd_TS}, and define the likelihood ratio more generally
 \gdLHratio
-$\bm{\mathcal{D}_{\text{dSphs}}}$ is the totality of observations across experiments and dSphs.
+$\bm{\mathcal{D}_{\mathrm{dSphs}}}$ is the totality of observations across experiments and dSphs.
 $\bm{\nu}$ are the nuisance parameters which are the \J factors in this study.
 $\widehat{\svtex}$ and $\hat{\bm{\nu}}$ are the respective estimate that maximize $\mathcal{L}$ globally.
-Finally, $\hat{\hat{\bm{\nu}}}$ is the set of \J factors that maximize $\mathcal{L}$ for a fixed value of \sv.
+Finally, $\hat{\hat{\bm{\nu}}}$ is the set of nuisance parameters that maximize $\mathcal{L}$ for a fixed value of \sv.
 
-The \textit{partial} joint likelihood function for gamma-ray observations of each dSph ($\mathcal{L}_{\text{dSph},l}$) is written as the product of the likelihood terms describing the $N_{\text{exp},l}$ observations performed with any of our observatories:
+The \textit{complete} joint likelihood, $\mathcal{L}$ that encompases all observations from all instruments and dSphs can be factorized into \textit{partial} functions for each dSph $l$ (with $\mathcal{L}_{\mathrm{dSph}, l}$) and its \J factor ($\mathcal{J}_l$):
+\CompleteGDLLH
+For this study, $N_{\mathrm{dSphs}}=20$ is the number of dSphs studied.
+$\bm{\mathcal{D}_{l}}$ are the gamm-ray observations of dSph, $l$.
+$\bm{\nu_l}$ are the nuisance parameters modifying the gamma-ray observations of dSph, $l$, but excludes $\mathcal{J}_l$.
+$\mathcal{J}_l$ is the \J factor for dSph, $l$, as defined in \Cref{eq:jfactor}, and it is a nuisance parameter whose value is unknown.
+$\log_{10} J_{l,\mathrm{obs}}$ and $\sigma_{\log{J_l}}$ are obtained from fitting a log-normal function of $J_{l,\mathrm{obs}}$ to the posterior distribution of $J_{l}$~\cite{2015PhRvL.115w1301A}.
+$\log_{10} J_{l,\mathrm{obs}}$ and $\sigma_{\log{J_l}}$ values are provided in \Cref{tab:gd_J_factor}.
+The term $\mathcal{J}_l$ constraining $J_l$ is written as:
+\JLgdLLH
+Both the \GS and \B, displayed in \Cref{tab:gd_J_factor}, sets of \J factors are used in this analysis.
+\Cref{eq:J_lkl} is also normailized, so it can also be interpreted as a probability density function (PDF) for $J_{l,\mathrm{obs}}$.
+From \Cref{eq:id_dm_flux}, we can also see that \sv~and $\J_l$ are degenerate when computing $\mathcal{L}_{\mathrm{dSph},l}$.
+Therefore, as noted in~\cite{MAGICFermi_combo}, it is sufficient to compute $\mathcal{L}_{\mathrm{dSph},l}$ versus \sv~for a fixed value of $J_{l}$.
+We used $J_{l,\mathrm{obs}}$(\GS) reported in \cref{tab:gd_J_factor}, in order to perform the profile of $\mathcal{L}$ with respect to $J_l$.
+The degeneracy implies that for any $J'_l \neq J_{l,\mathrm{obs}}$ (in practice in our case we used $J'_l = J_{l,\mathrm{obs}}$(\B) to compute results from a different set of \J factors):
+\jfacTrick
+which is a straightforward rescaling operation that reduces the computational needs of the profiling operation since:
+\rescaleTrick
+In addition, \cref{eq:Jfactor_trick} enables the combination of data from different gamma-ray instruments and observed dSphs via tabulated values of $\mathcal{L}_{\mathrm{dSph},l}$, or equivalently of $\lambda$ from~\cref{eq:gd_LLH_test} as was done in this work, versus \sv.
+$\mathcal{L}_{\mathrm{dSph},l}$ is computed for a fixed value of $\J_l$ and profiled with respect to all instrumental nuisance parameters $\bm{\nu_l}$, these nuisance parameters are discussed in more detail below.
+These values are produced by each detector independently and therefore there is no need to share sensitive low-level information used to produce them, such as event lists.
+\Cref{fig:illustration_combination} illustrates the multi-instrument combination technique used in this study with a comparison of the upper limit on \sv~obtained from the combination of the observations of four experiments towards one dSph versus the upper limit from individual instruments.
+It also shows graphically the effect of the \J-factor uncertainty on the combined observations.
+
+\begin{figure}[t]
+    \centering{
+    \includegraphics[width=0.7\textwidth]{figures/glory_duck/comparison/Combined_exp_technique_20TeV_4exp_J_with_without_nuisance_v2.pdf}
+    }
+    \caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on \sv than those derived by individual instruments. We also show the uncertainties on the \J-factor affects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non optimal conditions such as a high zenith angle or a short exposure time.}
+    \label{fig:illustration_combination}
+\end{figure}
+
+The \textit{partial} joint likelihood function for gamma-ray observations of each dSph ($\mathcal{L}_{\text{dSph},l}$) is written as the product of the likelihood terms describing the $N_{\mathrm{exp},l}$ observations performed with any of our observatories:
 \GDjointLLH
 where each $\mathcal{L}_{lk}$ term refers to an observation of the $l$-th dSph with associated $k$-th instrument responses.
 $ N_{\mathrm{exp},l} $ varies from dSph to dSph and can be inferred from \Cref{tab:gd_tabSummary}.
@@ -292,12 +325,7 @@ From \Cref{eq:gd_LLH_test}, we can compute the test statistic (TS) with the rati
 
 $\mathcal{L}^{\textrm{max}}$ here is equivalent to $\mathcal{L}(N_i, B_i,S_i=0)$ or no signal counts.
 
-\begin{figure}
-\centering{
-\includegraphics[width=0.7\textwidth]{figures/glory_duck/comparison/Combined_exp_technique_20TeV_4exp_J_with_without_nuisance_v2.pdf}}
-\caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on $\langle \sigma v \rangle$ than those derived by individual instruments. We also show the uncertainties on the \J-factor affects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non optimal conditions such as a high zenith angle or a short exposure time.}
-\label{fig:illustration_combination}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{HAWC Results}\label{sec:hawc_results}

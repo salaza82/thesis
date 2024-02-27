@@ -162,3 +162,28 @@
         2.71 = \mathrm{TS}_{\mathrm{max}} - \mathrm{TS}_{95}
     \end{equation}
 }
+
+\newcommand{\CompleteGDLLH}{
+    \begin{equation}\label{eq:dSph_combination}
+        \mathcal{L} \left( \svtex ; \bm{\nu} \mid \bm{\mathcal{D}_{\mathrm{dSphs}}} \right) = \prod_{l=1}^{N_{\mathrm{dSphs}}} \mathcal{L}_{\text{dSph},l} \left( \svtex ; J_{l}, \bm{\nu_{l}} \mid \bm{\mathcal{D}_{l}} \right) \times \mathcal{J}_l \left( J_{l} \mid J_{l,\mathrm{obs}}, \sigma_{\log{J_l}} \right).
+\end{equation}
+}
+
+\newcommand{\JLgdLLH}{
+    \begin{equation}\label{eq:J_lkl}
+        \mathcal{J}_l \left( J_l \mid J_{l,\mathrm{obs}}, \sigma_{\log{J_l}} \right) = \frac{1}{\ln{(10)} J_{l,\mathrm{obs}} \sqrt{2\pi} \sigma_{\log{J_l}} } \exp{\left(-\frac{\left( \log_{10} J_l - \log_{10} J_{l,\mathrm{obs}} \right)^{2} }{2\sigma_{\log{J_l}}^{2}}\right)}.
+\end{equation}
+}
+
+\newcommand{\jfacTrick}{
+    \begin{equation}\label{eq:Jfactor_trick}
+        \mathcal{L}_{\mathrm{dSph},l}\left( \svtex ; J'_l, \bm{\nu_l} \mid \bm{\mathcal{D}_{l}} \right) = \mathcal{L}_{\mathrm{dSph},l}\left( \frac{J'_l}{J_{l,\mathrm{obs}}}\svtex ; J_{l,\mathrm{obs}}, \bm{\nu_l} \mid \bm{\mathcal{D}_{l}} \right),
+    \end{equation}
+}
+
+\newcommand{\rescaleTrick}{
+    \begin{equation}\label{eq:lkl_profile_over_J}
+        \mathcal{L} \left( \svtex ; \bm{\hat{\nu}} \mid \bm{\mathcal{D}_{\mathrm{dSphs}}} \right) =
+        \prod_{l=1}^{N_{\mathrm{dSphs}}} \mathrm{max}_{J_l} \bigg[ \mathcal{L}_{\text{dSph},l} \left( \svtex ; J_{l}, \bm{\hat{\nu}_{l}} \mid \bm{\mathcal{D}_{l}} \right) \times \mathcal{J}_l \left( J_{l} \mid J_{l,\mathrm{obs}}, \sigma_{\log_{J_l}} \right) \bigg].
+    \end{equation}
+}
