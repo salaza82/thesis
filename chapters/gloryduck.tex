@@ -10,7 +10,7 @@ The energy sensitivity for the modern gamma-ray program spans many orders of mag
     \centering{
         \includegraphics[scale=0.35]{figures/glory_duck/gd_motivation.png}
     }
-    \caption{\ns Sensitivities of five gamma-ray experiments compared to percentages of the Crab nebula's emission and dark matter annihilation. Solid lines present estimated sensitivities to power law spectra \fu for each experiment. Green lines are Fermi-LAT sensitivities where lighter green is the sensitivity to the galactic center and dark green is its sensitivity to higher declinations. Orange, red, and purple solid lines represent the MAGIC, HESS, and VERITAS 50 hour sensitivities respectively. The maroon and brown lines are the HAWC 1 year and 5 year sensitivities. Across four decades of gamma-ray energy, these experiments have similar sensitivities on the order $10^{-12}$ erg cm$^{-2}$s$^{-1}$. The dotted lines are estimated dark matter fluxes assuming $m_{\chi} = 5$~TeV DM annihilating to bottom quarks (red), tau leptons (blue), and W bosons (green). Faded gray lines outline percentage flux of the Crab nebula.}
+    \caption{Sensitivities of five gamma-ray experiments compared to percentages of the Crab nebula's emission and dark matter annihilation. Solid lines present estimated sensitivities to power law spectra \fu for each experiment. Green lines are Fermi-LAT sensitivities where lighter green is the sensitivity to the galactic center and dark green is its sensitivity to higher declinations. Orange, red, and purple solid lines represent the MAGIC, HESS, and VERITAS 50 hour sensitivities respectively. The maroon and brown lines are the HAWC 1 year and 5 year sensitivities. Across four decades of gamma-ray energy, these experiments have similar sensitivities on the order $10^{-12}$ erg cm$^{-2}$s$^{-1}$. The dotted lines are estimated dark matter fluxes assuming $m_{\chi} = 5$~TeV DM annihilating to bottom quarks (red), tau leptons (blue), and W bosons (green). Faded gray lines outline percentage flux of the Crab nebula. Figure is an augmented version of \cite{2020Galax...8...25R}}
     \label{fig:gd_motivation}
 \end{figure}
 
@@ -277,7 +277,7 @@ It also shows graphically the effect of the \J-factor uncertainty on the combine
     \centering{
     \includegraphics[width=0.7\textwidth]{figures/glory_duck/comparison/Combined_exp_technique_20TeV_4exp_J_with_without_nuisance_v2.pdf}
     }
-    \caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on \sv than those derived by individual instruments. We also show the uncertainties on the \J-factor affects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non optimal conditions such as a high zenith angle or a short exposure time.}
+    \caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on \sv than those derived by individual instruments. We also show how the uncertainties on the \J factor effects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non optimal conditions such as a high zenith angle or a short exposure time.}
     \label{fig:illustration_combination}
 \end{figure}
 
@@ -289,43 +289,25 @@ $ N_{\mathrm{exp},l} $ varies from dSph to dSph and can be inferred from \Cref{t
 Each collaboration separately analyzes their data for $\bm{\mathcal{D}_{lk}}$ corresponding to dSph $l$ and gamma-ray detector $k$, using as many common assumptions as possible in the analysis.
 HAWC's treatment was described earlier in \Cref{sec:gd_hawc_llh} whereas the specifics of the remaining experiments is left to the publication.
 We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref{eq:measurement_combination}) for a fixed value of $\J_l$ and profile over the rest of the nuisance parameters $\bm{\nu_{lk}}$.
-Then, values of $\lambda$ from \cref{eq:likelihood_profile} are computed as a function of \sv, and shared using a common format.
+Then, values of $\lambda$ from \cref{eq:gd_LLH_test} are computed as a function of \sv, and shared using a common format.
 Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli_2011}.
 The \sv range is defined between $10^{-28}$ and $10^{-18}\mathrm{cm}^{3}\cdot \mathrm{s}^{-1}$, with 1001 logarithmically spaced values.
-% The likelihood combination, {\it i.e.} \cref{Eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{Eq:likelihood_profile}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
-%
+The likelihood combination, i.e. \Cref{eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \Cref{eq:gd_LLH_test}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
 
-The \textit{i}th bin is iterated over spatial and $f_{\textrm{hit}}$.
-Then we combine the profiles across all five experiments.
-The profile likelihood ratio $\lambda$ as a function of annihilation cross-section \sv~is computed with:
-for a considered annihilation channel and DM mass.
-
-\todo{Section pasted from paper. Rephrase cause plagarism is a thing.}
 As mentioned previously, each experiment computes the $\mathcal{L}_{lk}$ from \Cref{eq:gd_LLH_test} differently.
 The remainder of this section highlights the differences in this calculation across the experiments.
 Four experiments, namely \textit{Fermi}-LAT, H.E.S.S., HAWC and MAGIC, use a binned likelihood to compute the $\mathcal{L}_{lk}$.
 For these experiments, for each observation $\bm{\mathcal{D}_{lk}}$ of a given dSph $l$ carried out using a given gamma-ray detector $k$, the binned likelihood function is:
 \gdJointLLH
-
 where $N_{\text{E'}}$ and $N_{\text{P'}}$ are the number of considered bins in reconstructed energy and arrival direction, respectively; $\mathcal{P}$ represents a Poisson PDF for the number of gamma-ray candidate events $ N_{lk,ij} $ observed in the $i$-th bin in energy and $j$-th bin in arrival direction, when the expected number is the sum of the expected mean number of signal events $ s_{ij} $ (produced by DM annihilation) and of background events $ b_{ij} $; $ \mathcal{L}_{lk,\bm{\nu}} $ is the likelihood term for the extra $ \bm{\nu_{lk}} $ nuisance parameters that vary from one instrument $k$ to another.
 The expected counts for signal events $s_{ij}$ for a given dSph $l$ and detector $k$ is given by:
-
 \gdExpectedNS
-
 where $ E' $ and $ E $ are the reconstructed and true energies, $ P' $ and $ P $ the reconstructed and true arrival directions; $ E'_{\text{min},i} $, $ P'_{\text{min},j} $, $ E'_{\text{max},i} $, and $ P'_{\text{max},j} $ are their lower and upper limits of the $ i $-th energy bin and the $ j $-th arrival direction bin; $ T_{\text{obs}} $ is the (dead-time corrected) total observation time; $ t $ is the time along the observations; $ \text{d}^{2}\Phi/\text{d}E\text{d}\Omega $ is the DM flux in the source region (see \Cref{eq:id_dm_flux});
 and $ \text{IRF} \left( E', P' \mid E, P, t \right) $ is the IRF, which can be factorized as the product of the effective collection area of the detector $ A_{\mathrm{eff}} (E, P, t) $, the PDFs for the energy estimator $ f_{E} (E' \mid E,t) $, and arrival direction $ f_{P} (P' \mid E,P,t) $ estimators.
 Note that for Fermi-LAT, HAWC, MAGIC, and VERITAS the effect of the finite angular resolution is taken into account through the convolution of $d\Phi/dE d\Omega$ with $f_{P}$ in \Cref{eq:gd_expected_ns}, whereas in the cases of H.E.S.S. $f_{P}$ is approximated by a delta function.
 This approximation has been made in order to maintain compatibility of the result with what has been previously published.
 The difference introduced by this approximation is $<5\%$ for all considered dSphs.
-\todo{End of paper section}
-
-From \Cref{eq:gd_LLH_test}, we can compute the test statistic (TS) with the ratio test:
-
-\gdTS
-
-$\mathcal{L}^{\textrm{max}}$ here is equivalent to $\mathcal{L}(N_i, B_i,S_i=0)$ or no signal counts.
-
-
+A more comprehensive review of the differences between the analyses of different instruments can be found in~\cite{2020Galax...8...25R}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{HAWC Results}\label{sec:hawc_results}
@@ -333,17 +315,17 @@ $\mathcal{L}^{\textrm{max}}$ here is equivalent to $\mathcal{L}(N_i, B_i,S_i=0)$
 
 13 of the 20 dSphs considered for the Glory Duck analysis are within HAWC's field of view.
 These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
-The 13 likelihood profiles are then combined to create a combined limit on the dark matter cross-section.
-This combination is done for the 7 annihilation channels used in the Glory Duck analysis.
+The 13 likelihood profiles are then stacked to synthesize a combined limit on the dark matter cross-section, \sv.
+This combination is done for the 7 SM annihilation channels used in the Glory Duck analysis.
 \Cref{fig:hawc_combined_limit} shows the combined limit for all annihilation channels with HAWC only observations.
 We also perform 300 studies of Poisson trials on the background.
 These trials are used to produce HAWC Brazil bands which were shared with the other collaborators for combined Brazil Bands.
-The results on fitting to HAWC's poisson trials of the DM hypothesis is shown in \Cref{fig:hawc_brazil_band} for seven of the DM annihilation channels.
+The results on fitting to HAWC's poisson trials of the DM hypothesis is shown in \Cref{fig:hawc_brazil_band} for all of the DM annihilation channels studied for Glory Duck.
 
 No DM was found in HAWC observations.
-The limits are dominated by the dSph Segue1 and Coma Berenices.
-The remaining 11 dSphs do no contribute significantly to the limit.
-Even though some of the remaining dSphs have large J-factors, they are towards the edge of HAWC's field of view where this analysis is less sensitive.
+HAWC's limits are dominated by the dSphs Segue1 and Coma Berenices.
+The remaining 11 dSphs do not contribute significantly to the limit because they are at high zenith and/or have much smaller \J factors.
+Even though some of the remaining dSphs have large \J factors, they are towards the edge of HAWC's field of view where HAWC analysis is less sensitive.
 
 \begin{figure}[ht]
     \centering{\includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_bb.pdf}
