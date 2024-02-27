@@ -98,7 +98,7 @@
     \end{equation}
 }
 
-\newcommand{\gdLLHratio}{
+\newcommand{\gdLHratio}{
     \begin{equation} \label{eq:gd_LLH_test}
         \lambda \left( \svtex \mid \bm{\mathcal{D}_{\text{dSphs}}} \right) = \frac{\mathcal{L} \left( \svtex ; \bm{\hat{\hat{\nu}}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)}{\mathcal{L} \left( \widehat{\svtex} ; \bm{\hat{\nu}} \mid \bm{\mathcal{D}_{\text{dSphs}}} \right)}
     \end{equation}
@@ -123,7 +123,7 @@
 
 \newcommand{\gdTS}{
 \begin{equation} \label{eq:gd_TS}
-    \textrm{TS} = -2\ln\left(\frac{\mathcal{L}}{\mathcal{L}^{\textrm{max}}}\right).
+    \textrm{TS} = -2\ln\left(\frac{\mathcal{L}_0}{\mathcal{L}^{\textrm{max}}}\right)
 \end{equation}
 }
 
@@ -146,7 +146,19 @@
 }
 
 \newcommand{\GDjointLLH}{
-\begin{equation} \label{Eq:measurement_combination}
+\begin{equation} \label{eq:measurement_combination}
     \mathcal{L}_{\mathrm{dSph},l}\left( \svtex ; J_l, \bm{\nu_l} \mid \bm{\mathcal{D}_{l}} \right) = \prod_{k=1}^{N_{\mathrm{exp},l}} \mathcal{L}_{lk} \left( \svtex ; J_l, \bm{\nu_{lk}} \mid \bm{\mathcal{D}_{lk}} \right),
 \end{equation}
+}
+
+\newcommand{\gdHAWCCL}{
+    \begin{equation}\label{eq:hawc_cl95}
+        \mathrm{TS}_{95} \equiv \sum_{\mathrm{bins}} \left[2 N \ln \left(1+\frac{\epsilon S_{\mathrm{ref}}}{B} \right) - 2\epsilon S_{\mathrm{ref}} \right]
+    \end{equation}
+}
+
+\newcommand{\CLbyTS}{
+    \begin{equation}\label{eq:delta_TS}
+        2.71 = \mathrm{TS}_{\mathrm{max}} - \mathrm{TS}_{95}
+    \end{equation}
 }

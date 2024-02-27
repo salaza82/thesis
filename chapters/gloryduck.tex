@@ -209,22 +209,62 @@ A summary of all sources, with a description of each experiments' sensitivity to
 \input{tables/gd_src_summary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Likelihood Methods} \label{sec:gd_ll_methods}
+\section{Likelihood Methods} \label{sec:gd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We perform a standard HAWC binned maximum likelihood analysis using $f_{hit}$ bins (1-9).
-We compute the max from the likelihood profiles and perform a ratio test to calculate the significance of each source.
-This analysis is identical to the previous dSph analysis \cite{Albert_2018} except the sources are treated as extended.
-For the vast majority of our sources, this extension is no greater than 2 degrees.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{HAWC Likelihoods}\label{sec:gd_hawc_llh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For every analysis bin in energy, $f_{hit}$ bins (1-9), and location, we can expect $N$ signal events and $B$ background events.
+The expected number of excess signal events from dark matter annihilation, $S$, is estimated by convolving \Cref{eq:id_dm_flux} with HAWC's energy response and pixel point spread functions.
+I then compute the test statistic (TS) with the log-likelihood ratio test,
+\gdTS
+where $\mathcal{L}_0$~is the null hypothesis, or no DM emission, likelihood.
+$\mathcal{L}^\mathrm{max}$~is the best fit signal hypothesis where \sv~maximizes the likelihood.
 We calculate the likelihood of each source and model, assuming events are Poisson distributed, with
-\hwcpsLLH.
-$S_i$ is the sum of expected number of signal counts.
+\hwcpsLLH
+where $S_i$ is the sum of expected number of signal counts.
 $B_i$ is the number of background counts observed.
 $N_i$ is the total number of counts.
+
+I also calculate an upper limit on \sv~ by calculating the $95\%$ confidence level (CL).
+For the CL, we define a parameter, $TS_{95}$, as
+\gdHAWCCL
+where the expected signal counts from a dSph is scaled by $\epsilon$.
+$S_\mathrm{ref}$ is the expected number of excess counts in a bin from DM emission from a dSph with a corresponding annihilation cross-section, \sv.
+We scan $\epsilon$ such that
+\CLbyTS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Glory Duck Joint Likelihood}\label{sec:gd_joint_llh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The joint likelihood for the 5-experiment combination was done similarly as \Cref{sec:gd_hawc_llh}.
+We calculate upper limits on \sv~from the TS, \cref{eq:gd_TS}, and define the likelihood ratio more generally
+\gdLHratio
+$\bm{\mathcal{D}_{\text{dSphs}}}$ is the totality of observations across experiments and dSphs.
+$\bm{\nu}$ are the nuisance parameters which are the \J factors in this study.
+$\widehat{\svtex}$ and $\hat{\bm{\nu}}$ are the respective estimate that maximize $\mathcal{L}$ globally.
+Finally, $\hat{\hat{\bm{\nu}}}$ is the set of \J factors that maximize $\mathcal{L}$ for a fixed value of \sv.
+
+The \textit{partial} joint likelihood function for gamma-ray observations of each dSph ($\mathcal{L}_{\text{dSph},l}$) is written as the product of the likelihood terms describing the $N_{\text{exp},l}$ observations performed with any of our observatories:
+\GDjointLLH
+where each $\mathcal{L}_{lk}$ term refers to an observation of the $l$-th dSph with associated $k$-th instrument responses.
+$ N_{\mathrm{exp},l} $ varies from dSph to dSph and can be inferred from \Cref{tab:gd_tabSummary}.
+
+Each collaboration separately analyzes their data for $\bm{\mathcal{D}_{lk}}$ corresponding to dSph $l$ and gamma-ray detector $k$, using as many common assumptions as possible in the analysis.
+HAWC's treatment was described earlier in \Cref{sec:gd_hawc_llh} whereas the specifics of the remaining experiments is left to the publication.
+% We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref{Eq:measurement_combination}) for a fixed value of $\J_l$ and profile over the rest of the nuisance parameters $\bm{\nu_{lk}}$.
+% Then, values of $\lambda$ from \cref{Eq:likelihood_profile} are computed as a function of $\sv$, and shared using a common format.
+% Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli}.
+% The $\sv$ range is defined between $10^{-28}$ and $10^{-18}\rm{cm}^{3}\cdot \rm{s^{-1}}$, with 1001 logarithmically spaced values.
+% The likelihood combination, {\it i.e.} \cref{Eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{Eq:likelihood_profile}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
+%
+
 The \textit{i}th bin is iterated over spatial and $f_{\textrm{hit}}$.
 Then we combine the profiles across all five experiments.
 The profile likelihood ratio $\lambda$ as a function of annihilation cross-section \sv~is computed with:
-\gdLLHratio
 for a considered annihilation channel and DM mass.
 
 \todo{Section pasted from paper. Rephrase cause plagarism is a thing.}
@@ -313,19 +353,7 @@ The complete joint likelihood for the \emph{l}-th dSph is the product of likelih
 
 \todo{place holder for results}
 
-The \textit{partial} joint likelihood function for gamma-ray observations of each dSph ($\mathcal{L}_{\text{dSph},l}$) is written as the product of the likelihood terms describing the $N_{\text{exp},l}$ observations performed with any of our observatories:
-\GDjointLLH
 
-where each $\mathcal{L}_{lk}$ term refers to an observation of the $l$-th dSph with associated $k$-th instrument responses.
-$ N_{\mathrm{exp},l} $ varies from dSph to dSph and can be retrieved from \cref{tab:gd_tabSummary}.
-
-Each collaboration separately analyses their data for $\bm{\mathcal{D}_{lk}}$ corresponding to dSph $l$ and gamma-ray detector $k$, using as many common assumptions as possible in the analysis (see the next paragraph and further down in this section for additional details).
-% We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref{Eq:measurement_combination}) for a fixed value of $\J_l$ and profile over the rest of the nuisance parameters $\bm{\nu_{lk}}$.
-% Then, values of $\lambda$ from \cref{Eq:likelihood_profile} are computed as a function of $\sv$, and shared using a common format.
-% Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli}.
-% The $\sv$ range is defined between $10^{-28}$ and $10^{-18}\rm{cm}^{3}\cdot \rm{s^{-1}}$, with 1001 logarithmically spaced values.
-% The likelihood combination, {\it i.e.} \cref{Eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{Eq:likelihood_profile}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
-%
 No significant DM emission was observed by any of the five telescopes.
 We present upper limits on \sv using the test statistics, \cref{eq:gd_TS}.
 
