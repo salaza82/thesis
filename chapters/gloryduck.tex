@@ -139,7 +139,7 @@ A class in astromodels was developed to include the EW correction from the PPPC 
 \centering{
     \includegraphics[scale=0.8]{figures/glory_duck/EW_vs_NoEW.png}
 }
-\caption{Effect of Electro-Weak (EW) corrections on expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models that consider EW corrections. Dash-dot lines are spectral models without EW corrections. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV. All models are sourced from the PPPC4DMID \cite{Cirelli_2011}.}
+\caption{Effect of Electroweak (EW) corrections on expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models that consider EW corrections. Dash-dot lines are spectral models without EW corrections. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV. All models are sourced from the PPPC4DMID \cite{Cirelli_2011}.}
 \label{fig:ew_vs_noew}
 \end{figure}
 
@@ -164,7 +164,7 @@ This was checked as a systematic against the author's profiling of the spatial d
 
 With $\frac{d\J}{d\Omega}(\theta)$, a map is generated, first by filling in the north-east quadrant of the map.
 This quadrant is then reflected twice, vertically then horizontally, to fill the full map.
-Maps are then normailized by dividing the discrete 2D integral of the map.
+Maps are then normalized by dividing the discrete 2D integral of the map.
 The 2D integral was a simple height of bins, Newton's integral:
 \newtonIntegral
 These maps are HEALpix maps with NSIDE 16384 and saved in the \texttt{.fits} format.
@@ -197,8 +197,8 @@ Ursa Minor was not expected to contribute significantly to the combined limit, s
 This analysis improves on the previous HAWC dSph paper \cite{Albert_2018} in the following ways.
 Previously, the dSphs were treated and implemented as point sources.
 For this analysis, dSphs are modeled and treated as extended source.
-The impact of this change with respect to the upper limit is source dependant and is explored in \Cref{sec:gd_ext_limitvs_ptsrc}.
-Previously, the particle physics model used for gamma-ray sepctra from DM annihilation did not have EW cooreections where the PPPC includes them.
+The impact of this change with respect to the upper limit is source dependent and is explored in \Cref{sec:gd_ext_limitvs_ptsrc}.
+Previously, the particle physics model used for gamma-ray spectra from DM annihilation did not have EW corrections where the PPPC includes them.
 Finally, the gamma-ray ray dataset is much larger.
 The study performed here analyzes over 1000 days of data compared to 507.
 
@@ -248,10 +248,10 @@ $\bm{\nu}$ are the nuisance parameters which are the \J factors in this study.
 $\widehat{\svtex}$ and $\hat{\bm{\nu}}$ are the respective estimate that maximize $\mathcal{L}$ globally.
 Finally, $\hat{\hat{\bm{\nu}}}$ is the set of nuisance parameters that maximize $\mathcal{L}$ for a fixed value of \sv.
 
-The \textit{complete} joint likelihood, $\mathcal{L}$ that encompases all observations from all instruments and dSphs can be factorized into \textit{partial} functions for each dSph $l$ (with $\mathcal{L}_{\mathrm{dSph}, l}$) and its \J factor ($\mathcal{J}_l$):
+The \textit{complete} joint likelihood, $\mathcal{L}$ that encompasses all observations from all instruments and dSphs can be factorized into \textit{partial} functions for each dSph $l$ (with $\mathcal{L}_{\mathrm{dSph}, l}$) and its \J factor ($\mathcal{J}_l$):
 \CompleteGDLLH
 For this study, $N_{\mathrm{dSphs}}=20$ is the number of dSphs studied.
-$\bm{\mathcal{D}_{l}}$ are the gamm-ray observations of dSph, $l$.
+$\bm{\mathcal{D}_{l}}$ are the gamma-ray observations of dSph, $l$.
 $\bm{\nu_l}$ are the nuisance parameters modifying the gamma-ray observations of dSph, $l$, but excludes $\mathcal{J}_l$.
 $\mathcal{J}_l$ is the \J factor for dSph, $l$, as defined in \Cref{eq:jfactor}, and it is a nuisance parameter whose value is unknown.
 $\log_{10} J_{l,\mathrm{obs}}$ and $\sigma_{\log{J_l}}$ are obtained from fitting a log-normal function of $J_{l,\mathrm{obs}}$ to the posterior distribution of $J_{l}$~\cite{2015PhRvL.115w1301A}.
@@ -259,7 +259,7 @@ $\log_{10} J_{l,\mathrm{obs}}$ and $\sigma_{\log{J_l}}$ values are provided in \
 The term $\mathcal{J}_l$ constraining $J_l$ is written as:
 \JLgdLLH
 Both the \GS and \B, displayed in \Cref{tab:gd_J_factor}, sets of \J factors are used in this analysis.
-\Cref{eq:J_lkl} is also normailized, so it can also be interpreted as a probability density function (PDF) for $J_{l,\mathrm{obs}}$.
+\Cref{eq:J_lkl} is also normalized, so it can also be interpreted as a probability density function (PDF) for $J_{l,\mathrm{obs}}$.
 From \Cref{eq:id_dm_flux}, we can also see that \sv~and $\J_l$ are degenerate when computing $\mathcal{L}_{\mathrm{dSph},l}$.
 Therefore, as noted in~\cite{MAGICFermi_combo}, it is sufficient to compute $\mathcal{L}_{\mathrm{dSph},l}$ versus \sv~for a fixed value of $J_{l}$.
 We used $J_{l,\mathrm{obs}}$(\GS) reported in \cref{tab:gd_J_factor}, in order to perform the profile of $\mathcal{L}$ with respect to $J_l$.
@@ -277,7 +277,7 @@ It also shows graphically the effect of the \J-factor uncertainty on the combine
     \centering{
     \includegraphics[width=0.7\textwidth]{figures/glory_duck/comparison/Combined_exp_technique_20TeV_4exp_J_with_without_nuisance_v2.pdf}
     }
-    \caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on \sv than those derived by individual instruments. We also show how the uncertainties on the \J factor effects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non optimal conditions such as a high zenith angle or a short exposure time.}
+    \caption{Illustration of the combination technique showing a comparison between $-2\ln  \lambda$ provided by four instruments (colored lines) from the observation of the same dSph without any \J nuisance and their sum, $i.e.$ the resulting combined likelihood (thin black line). According to the test statistics of \Cref{eq:gd_TS}, the intersection of the likelihood profiles with the line $-2\ln  \lambda$ = 2.71 indicates the 95\% C.L. upper limit on \sv. The combined likelihood (thin black line) shows a smaller value of upper limit on \sv than those derived by individual instruments. We also show how the uncertainties on the \J factor effects the combined likelihood and degrade the upper limit on \sv (thick black line). All likelihood profiles are normalized so that the global minimum $\widehat{\svtex}$ is 0. We note that each profile depends on the observational conditions in which a target object was observed. The sensitivity of a given instrument can be degraded and the upper limits less constraining if the observations are performed in non-optimal conditions such as a high zenith angle or a short exposure time.}
     \label{fig:illustration_combination}
 \end{figure}
 
@@ -313,6 +313,19 @@ A more comprehensive review of the differences between the analyses of different
 \section{HAWC Results}\label{sec:hawc_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[ht]
+    \centering{\includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_bb.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_ee.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_ww.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_zz.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_tautau.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_mumu.pdf}
+    \includegraphics[scale=0.215]{figures/glory_duck/hawc/Combined95_GD_tt.pdf}
+    }
+    \caption{HAWC upper limits at 95\% confidence level on \sv versus DM mass for seven annihilation channels, using the set of \J-factors from Ref. \cite{Geringer-Sameth:2014yza} The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
+ \label{fig:hawc_combined_limit}
+\end{figure}
+
 13 of the 20 dSphs considered for the Glory Duck analysis are within HAWC's field of view.
 These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
 The 13 likelihood profiles are then stacked to synthesize a combined limit on the dark matter cross-section, \sv.
@@ -320,29 +333,29 @@ This combination is done for the 7 SM annihilation channels used in the Glory Du
 \Cref{fig:hawc_combined_limit} shows the combined limit for all annihilation channels with HAWC only observations.
 We also perform 300 studies of Poisson trials on the background.
 These trials are used to produce HAWC Brazil bands which were shared with the other collaborators for combined Brazil Bands.
-The results on fitting to HAWC's poisson trials of the DM hypothesis is shown in \Cref{fig:hawc_brazil_band} for all of the DM annihilation channels studied for Glory Duck.
+The results on fitting to HAWC's Poisson trials of the DM hypothesis is shown in \Cref{fig:hawc_brazil_band} for all the DM annihilation channels studied for Glory Duck.
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_bb_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_ee_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_mumu_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_tautau_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_ww_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_zz_.pdf}
+        \includegraphics[scale=0.21]{figures/glory_duck/hawc/CombinedTS_data_tt_.pdf}
+    }
+    \caption{HAWC TS values for best fit \sv~versus $m_\chi$ for seven SM annihilation channels with \J factors from \GS. The solid black line shows the combined best fit TS values. The colored, dashed lines are the TS values for each of the 13 sources HAWC studied.}\label{fig:gd_HAWC_TS}
+\end{figure}
 
 No DM was found in HAWC observations.
 HAWC's limits are dominated by the dSphs Segue1 and Coma Berenices.
 The remaining 11 dSphs do not contribute significantly to the limit because they are at high zenith and/or have much smaller \J factors.
-Even though some of the remaining dSphs have large \J factors, they are towards the edge of HAWC's field of view where HAWC analysis is less sensitive.
+Even though some remaining dSphs have large \J factors, they are towards the edge of HAWC's field of view where HAWC analysis is less sensitive.
 
-\begin{figure}[ht]
-    \centering{\includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_bb.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_ee.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_ww.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_zz.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_tautau.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_mumu.pdf}
-    \includegraphics[scale=0.21]{figures/glory_duck/hawc/Combined95_GD_tt.pdf}
-    }
-    \caption{HAWC upper limits at 95\% confidence level on \sv versus DM mass for seven annihilation channels, using the set of \J-factors from Ref. \cite{Geringer-Sameth:2014yza} The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
- \label{fig:hawc_combined_limit}
-\end{figure}
-
-% %\newpage
-\begin{figure}[ht]
-    \centering{\includegraphics[scale=0.21]{figures/glory_duck/hawc/GD_BrazilBand_bb.pdf}
+\begin{figure}[t]
+    \centering{
+    \includegraphics[scale=0.21]{figures/glory_duck/hawc/GD_BrazilBand_bb.pdf}
     \includegraphics[scale=0.21]{figures/glory_duck/hawc/GD_BrazilBand_ee.pdf}
     \includegraphics[scale=0.21]{figures/glory_duck/hawc/GD_BrazilBand_mumu.pdf}
     \includegraphics[scale=0.21]{figures/glory_duck/hawc/GD_BrazilBand_tautau.pdf}
@@ -358,19 +371,41 @@ Even though some of the remaining dSphs have large \J factors, they are towards 
 \section{Glory Duck Combined Results}\label{sec:results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[ht!]
+    \centering{
+    \begin{tabular}{cc}
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Geringer-Sameth_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Geringer-Sameth_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Geringer-Sameth_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Geringer-Sameth_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Geringer-Sameth_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Geringer-Sameth_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Geringer-Sameth_Combination_bands.pdf} &
+        \end{tabular}
+        }
+        \caption{Upper limits at 95\% confidence level on \sv in function of the DM mass for eight annihilation channels, using the set of \J factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \Cref{tab:gd_J_factor}). The black solid line represents the observed combined limit, the black dashed line is the median of the null hypothesis corresponding to the expected limit, while the green and yellow bands show the 68\% and 95\% containment bands. Combined upper limits for each individual detector are also indicated as solid, colored lines.
+        The value of the thermal relic cross-section in function of the DM mass is given as the red dotted-dashed line~\cite{Bertone_2005}.}
+    \label{fig:limits-geringer-sameth}
+    \end{figure}
+
+
+    \begin{figure}[t]
+    \centering{
+    \begin{tabular}{cc}
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Bonnivard_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Bonnivard_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Bonnivard_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Bonnivard_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Bonnivard_Combination_bands.pdf} &
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Bonnivard_Combination_bands.pdf} \\
+        \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Bonnivard_Combination_bands.pdf} &
+        \end{tabular}
+        }
+        \caption{Same as \cref{fig:limits-geringer-sameth}, using the set of \J factors from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \Cref{tab:gd_J_factor}).}
+    \label{fig:limits-bonnivard}
+    \end{figure}
+
 The crux of this analysis is that HAWC's results are combined with 4 other gamma-ray observatories: Fermi-LAT, H.E.S.S., MAGIC, and VERITAS.
-The complete joint likelihood for the \emph{l}-th dSph is the product of likelihood functions of the 5 experiments.
-
-\todo{place holder for results}
-
-
-No significant DM emission was observed by any of the five telescopes.
-We present upper limits on \sv using the test statistics, \cref{eq:gd_TS}.
-
-\begin{equation}
-    \mathrm{TS} = -2 \ln{ \lambda(\svtex)},
-\end{equation}
-
 \sloppy No significant DM emission was observed by any of the five instruments.
 We present the upper limits on \sv assuming seven independent DM self annihilation channels, namely $W^+W^-$, $Z^+Z^-$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$.
 The 68\% and 95\% containment bands are produced from 300 Poisson realizations of the null hypothesis corresponding to each of the combined datasets.
@@ -402,42 +437,7 @@ The \GS and \B sets present a difference in the limits for all channels of about
 % (to be calculated by people having the numbers in hand)}.
 This difference is explained, see  \Cref{fig:comparison_J_1} and \Cref{fig:comparison_J_2} in Appendix, by the fact that the \B set provides higher \J factors for all dSph except for Segue~I. This pushes the range of thermal cross-section which can be excluded to higher mass.
 
-\begin{figure}[h!]
-\centering{
-\begin{tabular}{cc}
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Geringer-Sameth_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Geringer-Sameth_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Geringer-Sameth_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Geringer-Sameth_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Geringer-Sameth_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Geringer-Sameth_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Geringer-Sameth_Combination_bands.pdf} &
-    \end{tabular}
-    }
-    \caption{Upper limits at 95\% confidence level on \sv in function of the DM mass for eight annihilation channels, using the set of \J factors from Ref.~\cite{Geringer-Sameth:2014yza} (\GS set in \Cref{tab:gd_J_factor}). The black solid line represents the observed combined limit, the black dashed line is the median of the null hypothesis corresponding to the expected limit, while the green and yellow bands show the 68\% and 95\% containment bands. Combined upper limits for each individual detector are also indicated as solid, colored lines.
-    %\jr{do not use light green for any line, since it gets confused with the 1sigma band}.
-    The value of the thermal relic cross-section in function of the DM mass is given as the red dotted-dashed line~\cite{Bertone_2005}.}
-\label{fig:limits-geringer-sameth}
-\end{figure}
-
-
-\begin{figure}[ht]
-\centering{
-\begin{tabular}{cc}
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_WW_Bonnivard_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ZZ_Bonnivard_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_bb_Bonnivard_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tt_Bonnivard_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_ee_Bonnivard_Combination_bands.pdf} &
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_mumu_Bonnivard_Combination_bands.pdf} \\
-    \includegraphics[width=0.35\textwidth]{figures/glory_duck/limits/Glory_Duck_Annihilation_tautau_Bonnivard_Combination_bands.pdf} &
-    \end{tabular}
-    }
-    \caption{Same as \cref{fig:limits-geringer-sameth}, using the set of \J factors from Ref.~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (\B set in \Cref{tab:gd_J_factor}).}
-\label{fig:limits-bonnivard}
-\end{figure}
-
-\begin{figure}[ht]
+\begin{figure}[t]
 \centering{
 \begin{tabular}{ccc}
     \includegraphics[width=0.3\textwidth]{figures/glory_duck/comparison/GD_limits_WW.pdf} &
@@ -536,8 +536,8 @@ New spatial profiles were generated for every dSph and limits were computed for 
 \subsection{Numerical integration of \GS maps}\label{sec:gd_jfacintegration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-It was discovered well after the HAWC anaylsis was completed that the published tables from \GS \cite{Geringer_Sameth_2015} quoted median \J-factors were computed in a non-trivial manner.
-The assumption myself and collaborators had was that the published tables represented the \J-factor as a function of $\theta$ for the best global fit model on a per source basis.
+It was discovered well after the HAWC analysis was completed that the published tables from \GS \cite{Geringer_Sameth_2015} quoted median \J-factors were computed in a non-trivial manner.
+The assumption myself and collaborators had been that the published tables represented the \J-factor as a function of $\theta$ for the best global fit model on a per-source basis.
 However, this is not the case.
 Instead, what is published are the best fit model for each dwarf that only considers stars up to the angular separation $\theta$.
 Therefore, the model is changing for each value of $\theta$ for each dwarf.
@@ -570,7 +570,7 @@ The observed impact was a fractional effect which is much smaller than the impac
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\GS versus \B spatial models}\label{sec:gd_gsVb}
+\subsection{\GS Versus \B spatial models}\label{sec:gd_gsVb}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We show in this appendix a comparison between the \J-factors computed by Geringer-Sameth \emph{et al.}~\cite{Geringer-Sameth:2014yza} (the \GS set) and the ones computed by Bonnivard \emph{et al.}~\cite{Bonnivard:2014kza, Bonnivard:2015xpq} (the \B set).
@@ -582,17 +582,11 @@ Such a profile parametrization allows the reduction of the theoretical bias from
 In other words, the increase of free parameters with the use of the  Zhao-Hernquist profile allows a better description of the mass density distribution of dark matter.
 
 In addition, a constant velocity anisotropy profile and a Plummer light profile \cite{10.1093/mnras/71.5.460} for the stellar distribution were assumed.
-The velocity anisotropy profile depends on the radial and tangential velocity dispersions.
+The velocity anisotropy profile depends on the radial and tangential velocity dispersion.
 However, its determination remains challenging since only the line-of-sight velocity dispersion can be derived from velocity measurements.
 Therefore, the parametrization of the anisotropy profile is obtained from simulated halos (see~\cite{Hunter:2013vua} for more details).
 They provide the values of the \J-factors of regions extending to various angular radius up to the outermost member star.
 
-% using a uniform analysis of the most recent stellar-kinematic data available
-% %generalized density profile
-% %Assuming dynamic equilibrium and spherical symmetry, these quantities are related according to the spherical Jeans
-% %\cite{Geringer-Sameth:2014yza}
-
-% %We also use the set of  \B \J-factors in order to obtain an estimate of the systematic uncertainty  on the $\sv$ upper limits from the assumed \J-factor value.
 The \B \J-factors were computed through a Jeans analysis taking into account the systematic uncertainties induced by the DM profile parametrization, the radial velocity anisotropy profile, and the triaxiality of the halo of the dwarf galaxies.
 They performed a more complete study of the dSph kinematics and dynamics than \GS for the determination of the \J-factor.
 Conservative values of the \J-factors where obtained using an Einasto DM density profile~\cite{Dhar_2010}, a realistic anisotropy profile known as the Baes \& Van Hese profile~\cite{Baes:2007tx} which takes into account that the inner regions can be significantly non-isotropic, and a Zhao-Hernquist light profile~\cite{Zhao:1995cp}.
@@ -646,14 +640,15 @@ For the \GS set, the computation stops at the angular radius corresponding to th
 
 In this multi-instrument analysis, we have used observations of 20 dSphs from the gamma-ray telescopes Fermi-LAT, H.E.S.S., MAGIC, VERITAS, and HAWC to perform a collective DM search annihilation signals.
 The data were combined across sources and detectors to significantly increase the sensitivity of the search.
-We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross section for seven potential DM annihilation channels.
+We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross-section for seven potential DM annihilation channels.
 
-Fermi-LAT brings the most stringent constraints for continuum channels below approximately 1~TeV. the remaining detectors dominate at higher energies.
+Fermi-LAT brings the most stringent constraints for continuum channels below approximately 1~TeV.
+The remaining detectors dominate at higher energies.
 Overall, for multi-TeV DM mass, the combined DM constraints from all five telescopes are 2-3 times stronger than any individual telescope for multi-TeV DM.
 
 Derived from observations of many dSphs, our results produce robust limits given the DM content of the dSphs is relatively well constrained.
 The obtained limits span the largest mass range of any WIMP DM search.
-Our combined analysis improves the sensitivity over previously published results from each detectors which produces the most stringent limits on DM annihilation from dSphs.
+Our combined analysis improves the sensitivity over previously published results from each detector which produces the most stringent limits on DM annihilation from dSphs.
 These results are based on deep exposures of the most promising known dSphs with the currently most sensitive gamma-ray instruments.
 Therefore, our results constitute a legacy of a generation of gamma-ray instruments on WIMP DM searches towards dSphs.
 Our results will remain the reference in the field until a new generation of more sensitive gamma-ray instruments begin operations, or until new dSphs with higher \J-factors are discovered.
@@ -667,7 +662,7 @@ The models we used for this study include annihilation channels with neutrinos i
 Advanced studies could aim to merge our results with those from neutrino observatories with large data sets.
 Efforts are already underway to add data from the IceCube, ANTARES, and KM3NeT observatories to these gamma-ray results.
 
-From this work, a selection of the best candidates for observations, according to the latest knowledge on stellar dynamics and modelling techniques for the derivation of the \J-factors on the potential dSphs targets, is highly desirable at the time that new experiments are starting their dark matter programmes using dSphs.
+From this work, a selection of the best candidates for observations, according to the latest knowledge on stellar dynamics and modelling techniques for the derivation of the \J-factors on the potential dSphs targets, is highly desirable at the time that new experiments are starting their dark matter programs using dSphs.
 Given the systematic uncertainty inherent to the derivation of the \J-factors,
 an informed observational strategy would be to select both objects with the highest \J-factors that could lead to DM signal detection, and objects with robust \J-factor predictions, i.e. with kinematic measurements on many bright stars, which would strengthen the DM interpretation reliability of the observation outcome.
 
