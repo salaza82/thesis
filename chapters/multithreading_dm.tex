@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:mtd_intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dataset and Background}\label{sec:mtd_databgd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section enumerates the data and background methods used for HAWC's multi-threaded study of dSphs.
+\Cref{sec:mtd_data} and \Cref{sec:mtd_tools} are most useful for fellow HAWC collaborators looking to replicate a multithreaded dSph DM search.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Itemized HAWC files}\label{sec:mtd_data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+    \item Detector Resolution: \texttt{refit-Pass5-Final-NN-detRes-zenith-dependent.root}
+    \item Data Map: \texttt{Pass5-Final-NN-maptree-ch103-ch1349-zenith-dependent.root}
+    \item Spectral Dictionary: \texttt{HDMSpectra\_dict\_gamma.npy}
+\end{itemize}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Software Tools and Development}\label{sec:mtd_tools}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python version 3.
+I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{HDMSpectra} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
+A NumPy version of this dictionary was made for Py3.
+The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the HAWC Crab paper \cite{Abeysekara_2017}.
+The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
+The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
+These files can also be used for decay channels and the PPPC describes how \cite{Cirelli_2011}.
+All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Set and Background Description} \label{sec:mtd_data_bkgd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The HAWC data maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20).
+They were generated from pass 4.0 reconstruction.
+The analysis is performed using the $f_{hit}$ energy binning scheme with bins (1-9) similar to what was done for the Crab and previous HAWC dSph analysis \cite{Abeysekara_2017,Albert_2018}.
+Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
+
+This analysis was done on dSphs because of their large DM mass content relative to baryonic mass.
+We consider the following to estimate the background to this study.
+
+\begin{itemize}
+    \item The dSphs are small in HAWC's field of view, so the analysis is not sensitive to large or small scale anisotropies.
+    \item The dSphs used in this analysis are off the galactic plane.
+    \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain high energy gamma-ray sources.
+\end{itemize}
+
+Therefor we make no additional assumptions on the background from our sources and use HAWC's standard direct integration method for background estimation \cite{Abeysekara_2017}.
+It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
+This was investigated and its impact on the flux is basically zero.
+Supporting information on this is in \Cref{sec:gd_ics}
