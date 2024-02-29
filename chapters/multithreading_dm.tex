@@ -69,6 +69,7 @@ The flux equations for DM decay are
 
 with a new quantity, the \D factor, defined as
 \dfactor
+Software was written to accomodate DM decay from dSphs, however decay profiles were not received from \LS by the time of writing this tehsis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
@@ -78,15 +79,36 @@ For these spectra, we import HDM with Electroweak (EW) corrections and additiona
 The spectrum is implemented as a model script in astromodels for 3ML.
 A comprehensive description of EW corrections and neutrino considerations are provided later in \todo{refeance MM nu duck}.
 
-\Cref{fig:pppc_vs_hdm} demonstrates the impact of changes from HDM on DM annihilation to W bosons.
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.8]{figures/mtd_hawc_dm/pppc_vs_hdm.png}
+    }
+    \caption{Difference between spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra}. Shown is the expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
+    \label{fig:pppc_vs_hdm}
+\end{figure}
+
+\Cref{fig:pppc_vs_hdm} demonstrates the impact of changes from HDM on DM
+annihilation to W bosons.
 A class in astromodels was developed to include HDM and is aptly named \texttt{HDMSpectra} within \texttt{DM\_models.py}.
+The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
+\begin{itemize}
+    \item[] $e^+e^-$, $\mu^+\mu^-$, $\tau^+\tau^-$,$b\bar{b}$, $t\bar{t}$, $gg$, $W^+W^-$, $ZZ$, $c\bar{c}$, $u\bar{u}$, $d\bar{d}$, $s\bar{s}$, $\nu_e \overline{\nu_e}$, $\nu_\mu \overline{\nu_\mu}$, $\nu_\tau \overline{\nu_\tau}$, $\gamma\gamma$, $hh$.
+\end{itemize}
+For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have total energy equal $m_\chi$ \cite{HDMSpectra}.
+This introduces a $\delta$-function that is much narrower than the energy resolution of the HAWC detector.
+To ensure that this feature is not lost in the likelihood fits, the 'line' feature is convolved with a gausian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
+This difers from HAWC's previous line study where 30\% of HAWC's energy resolution was used for the kernel \cite{HAWC_dm_gammalines}.
+The NN energy estimator's strength compared to $f_\mathrm{hit}$ at low gamma-ray energy enables smaller resolutions in addition to low energy tails in the spectral models \cite{HDMSpectra}.
+$\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
+Spectral models for the remaining annihilation channels are plotted for each $m_\chi$ in \Cref{fig:apdx_mtd_spectra}.
 
 \begin{figure}[t]
-\centering{
-    \includegraphics[scale=0.8]{figures/mtd_hawc_dm/pppc_vs_hdm.png}
-}
-\caption{Difference between spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra}. Shown is the expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
-\label{fig:pppc_vs_hdm}
+    \centering{
+    \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_gammagamma.png}
+    \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_zz.png}
+    }
+    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All Spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}.}
+    \label{fig:hdm_gamma_lines}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,17 +119,15 @@ The J-factor profiles for each source are imported from Louis Strigari et al. (r
 Profiles in $\frac{d\J}{d\Omega} (\theta)$ and $\frac{d\D}{d\Omega} (\theta)$ up to $\theta = 0.5^{\circ}$ were provided directly from the authors.
 Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
 \TrapIntegral
+$\mathcal{K}$ is either \J or \D for the spatial distributions of annihilation or decay respectively.
 $p$ is the angular side of one pixel in the map.
 $w_{i,j}$ is a weight assigned the following ways:
 \begin{itemize}
-    \item[] $w_{i,j} = 1$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is fully within the region of integration
-    \item[] $w_{i,j} = 1/2$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is on an edge of the region of integration
-    \item[] $w_{i,j} = 1/4$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is on a corner of the region of integration
+    \item[] $w_{i,j} = 1$ if $(\theta_{i,j}, \phi_{i,j})$ is fully within the region of integration
+    \item[] $w_{i,j} = 1/2$ if $(\theta_{i,j}, \phi_{i,j})$ is on an edge of the region of integration
+    \item[] $w_{i,j} = 1/4$ if $(\theta_{i,j}, \phi_{i,j})$ is on a corner of the region of integration
 \end{itemize}
-Maps for both annihilation and decay were generated for use in HAWC analysis in an identical manner.
-
-\LS also provides profiles for $\pm1 \sigma$ estimations to \J and \D for each source.
-
+\Cref{fig:ls20_jfac_maps} shows the median and $\pm1\sigma$ maps used as input for DM annihilation studied by \LS.
 
 \begin{figure}[t]
     \centering{
@@ -131,32 +151,30 @@ Maps for both annihilation and decay were generated for use in HAWC analysis in 
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jp1_plot.pdf}} \\
     \end{tabular}
     }
-    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the median value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. }
+    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the median value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. Axes are drawn roughly according to the energy sensitivity of HAWC.}
     \label{fig:ls20_jfac_maps}
 \end{figure}
 
-% \begin{figure}[t]
-    % \centering{
-    % \begin{tabular}{c|ccc}
-        % Source & $-1 \sigma$ & Median & $+1 \sigma$ \\
-        % \rotatebox[origin=c]{90}{Coma Berenices} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Dm1_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_D_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Dp1_plot.pdf} }\\
-        % \rotatebox[origin=c]{90}{Draco} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Dm1_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_D_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Dp1_plot.pdf}} \\
-        % \rotatebox[origin=c]{90}{Segue1} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Dm1_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_D_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Dp1_plot.pdf}} \\
-        % \rotatebox[origin=c]{90}{Sextans} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Dm1_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_D_plot.pdf}} &
-        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Dp1_plot.pdf}} \\
-    % \end{tabular}
-    % }
-    % \caption{This is a caption}
-    % \label{fig:ls20_dfac_maps}
-% \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Source Selection and Annihilation Channels}\label{sec:mtd_srcs_y_chan}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We use many of the dSphs presented in HAWC's previous dSph DM search \cite{Albert_2018}.
+HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
+A full description of all sources used in Glory Duck is found in \Cref{tab:gd_J_factor}.
+Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its \J factor.
+Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
+Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
+
+\input{tables/mtd_src_summary.tex}
+
+This analysis improves on the previous HAWC dSph paper \cite{Albert_2018} in the following ways.
+Previously, the dSphs were treated and implemented as point sources.
+For this analysis, dSphs are modeled and treated as extended source.
+The impact of this change with respect to the upper limit is source dependent and is explored in \Cref{sec:gd_ext_limitvs_ptsrc}.
+Previously, the particle physics model used for gamma-ray spectra from DM annihilation did not have EW corrections where the PPPC includes them.
+Finally, the gamma-ray ray dataset is much larger.
+The study performed here analyzes over 1000 days of data compared to 507.
+
+The SM annihilation channels probed for the Glory Duck combination include $b\bar{b}$, $e\bar{e}$, $\mu\bar{\mu}$, $\tau\bar{\tau}$, $t\bar{t}$, $W^+W^-$, and $ZZ$.
+A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
