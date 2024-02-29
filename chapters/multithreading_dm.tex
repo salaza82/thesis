@@ -2,6 +2,14 @@
 \section{Introduction}\label{sec:mtd_intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+HAWC's current software suite, plugins to 3ML, does not fully utilize computational advancements of recent decades.
+Said advancements include the proliferation of Graphical Processing Units (GPUs), and multithreading on multi-core processors.
+The analysis described in \Cref{sec:glory_duck} took up to 3 months of human time waiting for the full gambit of data analysis and simulation of background to run.
+Additionaly, with the addition of a 2D binning scheme, $f_\mathrm{hit}$ and NN, the expected compute time is expected to grow further.
+Although excessive computing time was, in part, from an intense use of a shared computing cluster, it was evident that there was room for improvement.
+In HAWC's next generation dSph DM search, I decided to develop codes that would utilize the multi-core processors on modern high performance computing clusters.
+The results of this work are featured in this chapter and brought a human timing improvement to computation that scales as $1/N$ where $N$ is the number of threads.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Dataset and Background}\label{sec:mtd_databgd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,32 +33,130 @@ This section enumerates the data and background methods used for HAWC's multi-th
 
 This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python version 3.
 I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{HDMSpectra} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
-A NumPy version of this dictionary was made for Py3.
-The analysis was performed using the $f_{\textrm{hit}}$ framework performed in the HAWC Crab paper \cite{Abeysekara_2017}.
-The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
-The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
-These files can also be used for decay channels and the PPPC describes how \cite{Cirelli_2011}.
-All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project.
+A NumPy dictionary of HDM was made for Py3.
+The corresponding Python3 file is \texttt{HDMSpectra\_dict\_gamma.npy}.
+These files can also be used for decay channels and tools are provided in HDM's \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{HDMSpectra}.
+The analysis was performed using the Neural Network energy estimator for Pass 5.F.
+A description of this estimator was provided in \Cref{sec:hawc}.\todo{define a subsection when it's written}
+All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
+The above repository also incorporates the model inputs used previously in Glory Duck, described in \Cref{sec:glory_duck}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Set and Background Description} \label{sec:mtd_data_bkgd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The HAWC data maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20).
+The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 (\todo{Day start}) and 7476 (\todo{day end}).
 They were generated from pass 4.0 reconstruction.
-The analysis is performed using the $f_{hit}$ energy binning scheme with bins (1-9) similar to what was done for the Crab and previous HAWC dSph analysis \cite{Abeysekara_2017,Albert_2018}.
-Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
-
-This analysis was done on dSphs because of their large DM mass content relative to baryonic mass.
-We consider the following to estimate the background to this study.
+The analysis is performed using the NN energy estimator with bin list:
 
 \begin{itemize}
-    \item The dSphs are small in HAWC's field of view, so the analysis is not sensitive to large or small scale anisotropies.
-    \item The dSphs used in this analysis are off the galactic plane.
-    \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain high energy gamma-ray sources.
+    \item[] \texttt{B1C0Ea}, \texttt{B1C0Eb}, \texttt{B1C0Ec}, \texttt{B1C0Ed}, \texttt{B1C0Ee}, \texttt{B2C0Ea}, \texttt{B2C0Eb}, \texttt{B2C0Ec}, \texttt{B2C0Ed}, \texttt{B2C0Ee}, \texttt{B3C0Ea}, \texttt{B3C0Eb}, \texttt{B3C0Ec}, \texttt{B3C0Ed}, \texttt{B3C0Ee}, \texttt{B3C0Ef}, \texttt{B4C0Eb}, \texttt{B4C0Ec}, \texttt{B4C0Ed}, \texttt{B4C0Ee}, \texttt{B4C0Ef}, \texttt{B5C0Ec}, \texttt{B5C0Ed}, \texttt{B5C0Ee}, \texttt{B5C0Ef}, \texttt{B5C0Eg}, \texttt{B6C0Ed}, \texttt{B6C0Ee}, \texttt{B6C0Ef}, \texttt{B6C0Eg}, \texttt{B6C0Eh}, \texttt{B7C0Ee}, \texttt{B7C0Ef}, \texttt{B7C0Eg}, \texttt{B7C0Eh}, \texttt{B7C0Ei}, \texttt{B8C0Ee}, \texttt{B8C0Ef}, \texttt{B8C0Eg}, \texttt{B8C0Eh}, \texttt{B8C0Ei}, \texttt{B8C0Ej}, \texttt{B9C0Ef}, \texttt{B9C0Eg}, \texttt{B9C0Eh}, \texttt{B9C0Ei}, \texttt{B9C0Ej}, \texttt{B10C0Eg}, \texttt{B10C0Eh}, \texttt{B10C0Ei}, \texttt{B10C0Ej}, \texttt{B10C0Ek}, \texttt{B10C0El}
 \end{itemize}
+Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
 
-Therefor we make no additional assumptions on the background from our sources and use HAWC's standard direct integration method for background estimation \cite{Abeysekara_2017}.
-It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
-This was investigated and its impact on the flux is basically zero.
-Supporting information on this is in \Cref{sec:gd_ics}
+Background considerations and source selection was identical to \Cref{sec:gd_databgd}, and no additional arguements are provided here.
+Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply for this DM search and are not added upon here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis}\label{sec:mtd_analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The analysis and its systematics are almost identical to \Cref{sec:gd_analysis}.
+Importantly, we use the same \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
+We add on to the previous study with a search for DM decay.
+The flux equations for DM decay are
+\iddmdecay[\gamma]
+
+with a new quantity, the \D factor, defined as
+\dfactor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For these spectra, we import HDM with Electroweak (EW) corrections and additional corrections for neutrinos above the EW scale \cite{HDMSpectra}.
+The spectrum is implemented as a model script in astromodels for 3ML.
+A comprehensive description of EW corrections and neutrino considerations are provided later in \todo{refeance MM nu duck}.
+
+\Cref{fig:pppc_vs_hdm} demonstrates the impact of changes from HDM on DM annihilation to W bosons.
+A class in astromodels was developed to include HDM and is aptly named \texttt{HDMSpectra} within \texttt{DM\_models.py}.
+
+\begin{figure}[t]
+\centering{
+    \includegraphics[scale=0.8]{figures/mtd_hawc_dm/pppc_vs_hdm.png}
+}
+\caption{Difference between spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra}. Shown is the expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
+\label{fig:pppc_vs_hdm}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\J and \D - Astrophysical Components}\label{sec:mtd_spatialmodel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The J-factor profiles for each source are imported from Louis Strigari et al. (referred to with \LS) \cite{DM_Strigari20}.
+Profiles in $\frac{d\J}{d\Omega} (\theta)$ and $\frac{d\D}{d\Omega} (\theta)$ up to $\theta = 0.5^{\circ}$ were provided directly from the authors.
+Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
+\TrapIntegral
+$p$ is the angular side of one pixel in the map.
+$w_{i,j}$ is a weight assigned the following ways:
+\begin{itemize}
+    \item[] $w_{i,j} = 1$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is fully within the region of integration
+    \item[] $w_{i,j} = 1/2$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is on an edge of the region of integration
+    \item[] $w_{i,j} = 1/4$ if $\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})$ is on a corner of the region of integration
+\end{itemize}
+Maps for both annihilation and decay were generated for use in HAWC analysis in an identical manner.
+
+\LS also provides profiles for $\pm1 \sigma$ estimations to \J and \D for each source.
+
+
+\begin{figure}[t]
+    \centering{
+    \begin{tabular}{cccc}
+        Source & $-1 \sigma$ & Median & $+1 \sigma$ \\
+        \rotatebox[origin=c]{90}{Coma Berenices} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Jm1_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_J_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Jp1_plot.pdf} }\\
+        \rotatebox[origin=c]{90}{Draco} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Jm1_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_J_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Jp1_plot.pdf}} \\
+        \rotatebox[origin=c]{90}{Segue1} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Jm1_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_J_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Jp1_plot.pdf}} \\
+        \rotatebox[origin=c]{90}{Sextans} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jm1_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_J_plot.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jp1_plot.pdf}} \\
+    \end{tabular}
+    }
+    \caption{This is a caption}
+    \label{fig:ls20_jfac_maps}
+\end{figure}
+
+% \begin{figure}[t]
+    % \centering{
+    % \begin{tabular}{c|ccc}
+        % Source & $-1 \sigma$ & Median & $+1 \sigma$ \\
+        % \rotatebox[origin=c]{90}{Coma Berenices} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Dm1_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_D_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Dp1_plot.pdf} }\\
+        % \rotatebox[origin=c]{90}{Draco} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Dm1_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_D_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Dp1_plot.pdf}} \\
+        % \rotatebox[origin=c]{90}{Segue1} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Dm1_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_D_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Dp1_plot.pdf}} \\
+        % \rotatebox[origin=c]{90}{Sextans} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Dm1_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_D_plot.pdf}} &
+        % \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Dp1_plot.pdf}} \\
+    % \end{tabular}
+    % }
+    % \caption{This is a caption}
+    % \label{fig:ls20_dfac_maps}
+% \end{figure}

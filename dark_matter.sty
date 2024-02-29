@@ -1,8 +1,10 @@
 \ProvidesFile{dark_matter}
 
 \def\J {\ensuremath{J}\xspace}
+\def\D {\ensuremath{D}\xspace}
 \def\GS {\ensuremath{\mathcal{GS}}\xspace}
 \def\B {\ensuremath{\mathcal{B}}\xspace}
+\def\LS {\ensuremath{\mathcal{LS}}\xspace}
 
 \newcommand\CellTop{\rule{0pt}{2.35ex}}
 \newcommand\CellTopTwo{\rule{0pt}{2.8ex}}
@@ -80,9 +82,9 @@
     \end{equation}
 }
 
-\newcommand{\iddmdecay}{
+\newcommand{\iddmdecay}[2][\phi]{
     \begin{equation}\label{eq:id_dm_decay}
-        \frac{d\Phi_\phi}{dE_{\phi}} = \frac{1}{4 \pi \tau m_{\chi}} \frac{dN_\phi}{dE_\phi} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho_\chi dl(r,\theta')}}
+        \frac{d\Phi_#1}{dE_{#1}} = \frac{1}{4 \pi \tau m_{\chi}} \frac{dN_#1}{dE_#1} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho_\chi dl(r,\theta')}}
     \end{equation}
 }
 
@@ -141,7 +143,7 @@
 
 \newcommand{\newtonIntegral}{
 \begin{equation}\label{eq:newton_2Dintegral}
-    p^2 \cdot \sum_{i,j=0}^{N,M} \frac{d\J}{d\Omega}(\theta_{i,j})
+    p^2 \cdot \sum_{i,j=0}^{N,M} \frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})
 \end{equation}
 }
 
@@ -185,5 +187,17 @@
     \begin{equation}\label{eq:lkl_profile_over_J}
         \mathcal{L} \left( \svtex ; \bm{\hat{\nu}} \mid \bm{\mathcal{D}_{\mathrm{dSphs}}} \right) =
         \prod_{l=1}^{N_{\mathrm{dSphs}}} \mathrm{max}_{J_l} \bigg[ \mathcal{L}_{\text{dSph},l} \left( \svtex ; J_{l}, \bm{\hat{\nu}_{l}} \mid \bm{\mathcal{D}_{l}} \right) \times \mathcal{J}_l \left( J_{l} \mid J_{l,\mathrm{obs}}, \sigma_{\log_{J_l}} \right) \bigg].
+    \end{equation}
+}
+
+\newcommand{\TrapIntegral}{
+\begin{equation}\label{eq:trap_2Dintegral}
+    p^2 \cdot \sum_{i=0}^{N}\sum_{j=0}^{M} w_{i,j}\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})
+\end{equation}
+}
+
+\newcommand{\dfactor}{
+    \begin{equation}\label{eq:dfactor}
+        D = \int d\Omega \int_{l.o.s} dl \rho_{\chi}(r, \theta')
     \end{equation}
 }
