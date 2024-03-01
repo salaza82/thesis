@@ -132,7 +132,7 @@ $w_{i,j}$ is a weight assigned the following ways:
 \begin{figure}[t]
     \centering{
     \begin{tabular}{cccc}
-        Source & $-1 \sigma$ & Median & $+1 \sigma$ \\
+        Source & $-1 \sigma$ & Mean & $+1 \sigma$ \\
         \rotatebox[origin=c]{90}{Coma Berenices} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Jm1_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_J_plot.pdf}} &
@@ -159,22 +159,22 @@ $w_{i,j}$ is a weight assigned the following ways:
 \subsection{Source Selection and Annihilation Channels}\label{sec:mtd_srcs_y_chan}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We use many of the dSphs presented in HAWC's previous dSph DM search \cite{Albert_2018}.
-HAWC's sources for Glory Duck include Boötes I, Coma Berenices, Canes Venatici I + II, Draco, Hercules, Leo I, II, + IV, Segue 1, Sextans, and Ursa Major I + II.
-A full description of all sources used in Glory Duck is found in \Cref{tab:gd_J_factor}.
-Triangulum II was excluded from the Glory Duck analysis because of large uncertainties in its \J factor.
-Ursa Minor was excluded from HAWC's contribution to the combination because the source extension model extended Ursa Minor beyond HAWC's field of view.
-Ursa Minor was not expected to contribute significantly to the combined limit, so work was not invested in a solution to include Ursa Minor.
+HAWC's sources for this multithreaded analysis include Coma Berenices, Draco, Segue 1, and Sextans
+\LS observes up to 43 sources in its publication, however the best fit profiles were not provided at the time this thesis was written.
+A full description of each source used in this analysis is found in \Cref{tab:mtd_J_factor}.
 
 \input{tables/mtd_src_summary.tex}
 
-This analysis improves on the previous HAWC dSph paper \cite{Albert_2018} in the following ways.
-Previously, the dSphs were treated and implemented as point sources.
-For this analysis, dSphs are modeled and treated as extended source.
-The impact of this change with respect to the upper limit is source dependent and is explored in \Cref{sec:gd_ext_limitvs_ptsrc}.
-Previously, the particle physics model used for gamma-ray spectra from DM annihilation did not have EW corrections where the PPPC includes them.
+This analysis improves on \Cref{sec:glory_duck} in the following ways.
+Previously, the particle physics model used for gamma-ray spectra from DM annihilation was from the PPPC \cite{Cirelli_2011} which missed important considerations relevant for the neutrino sector.
+HDM is used to account for this shortfall \cite{HDMSpectra}.
+A larger source catalog is used that uses a Navarro–Frenk–White (NFW) spatial DM distribution from \LS \cite{DM_Strigari20}.
+Because NFW has fewer parameters than what is used for \GS, \LS is able to fit ultra-faint dwarves, expanding the number of sources available for DM searches.
 Finally, the gamma-ray ray dataset is much larger.
-The study performed here analyzes over 1000 days of data compared to 507.
+The study performed here analyzes 2565 days of data compared to 1017 days analyzed in \Cref{sec:glory_duck}.
 
-The SM annihilation channels probed for the Glory Duck combination include $b\bar{b}$, $e\bar{e}$, $\mu\bar{\mu}$, $\tau\bar{\tau}$, $t\bar{t}$, $W^+W^-$, and $ZZ$.
-A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Likelihood Methods} \label{sec:mtd_ll_methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+These are identical to \Cerf{}
