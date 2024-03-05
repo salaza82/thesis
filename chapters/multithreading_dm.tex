@@ -5,7 +5,7 @@
 HAWC's current software suite, plugins to 3ML, does not fully utilize computational advancements of recent decades.
 Said advancements include the proliferation of Graphical Processing Units (GPUs), and multithreading on multi-core processors.
 The analysis described in \Cref{sec:glory_duck} took up to 3 months of human time waiting for the full gambit of data analysis and simulation of background to run.
-Additionaly, with the addition of a 2D binning scheme, $f_\mathrm{hit}$ and NN, the expected compute time is expected to grow further.
+Additionaly, with the addition of a 2D binning scheme, $f_\mathrm{hit}$ and NN, the compute time is expected to grow.
 Although excessive computing time was, in part, from an intense use of a shared computing cluster, it was evident that there was room for improvement.
 In HAWC's next generation dSph DM search, I decided to develop codes that would utilize the multi-core processors on modern high performance computing clusters.
 The results of this work are featured in this chapter and brought a human timing improvement to computation that scales as $1/N$ where $N$ is the number of threads.
@@ -107,7 +107,7 @@ Spectral models for the remaining annihilation channels are plotted for each $m_
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_gammagamma.png}
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_zz.png}
     }
-    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All Spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}.}
+    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All Spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}. Axes are drawn roughly according to the energy sensitivity of HAWC.}
     \label{fig:hdm_gamma_lines}
 \end{figure}
 
@@ -116,7 +116,7 @@ Spectral models for the remaining annihilation channels are plotted for each $m_
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The J-factor profiles for each source are imported from Louis Strigari et al. (referred to with \LS) \cite{DM_Strigari20}.
-Profiles in $\frac{d\J}{d\Omega} (\theta)$ and $\frac{d\D}{d\Omega} (\theta)$ up to $\theta = 0.5^{\circ}$ were provided directly from the authors.
+Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to $\theta = 0.5^{\circ}$ were provided directly from the authors.
 Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
 \TrapIntegral
 $\mathcal{K}$ is either \J or \D for the spatial distributions of annihilation or decay respectively.
@@ -151,7 +151,7 @@ $w_{i,j}$ is a weight assigned the following ways:
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jp1_plot.pdf}} \\
     \end{tabular}
     }
-    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the median value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. Axes are drawn roughly according to the energy sensitivity of HAWC.}
+    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the mean value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf}
     \label{fig:ls20_jfac_maps}
 \end{figure}
 
@@ -160,7 +160,7 @@ $w_{i,j}$ is a weight assigned the following ways:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 HAWC's sources for this multithreaded analysis include Coma Berenices, Draco, Segue 1, and Sextans
-\LS observes up to 43 sources in its publication, however the best fit profiles were not provided at the time this thesis was written.
+\LS observes up to 43 sources in its publication, however only 4 of the best fit profiles were provided at the time this thesis was written.
 A full description of each source used in this analysis is found in \Cref{tab:mtd_J_factor}.
 
 \input{tables/mtd_src_summary.tex}
@@ -168,6 +168,9 @@ A full description of each source used in this analysis is found in \Cref{tab:mt
 This analysis improves on \Cref{sec:glory_duck} in the following ways.
 Previously, the particle physics model used for gamma-ray spectra from DM annihilation was from the PPPC \cite{Cirelli_2011} which missed important considerations relevant for the neutrino sector.
 HDM is used to account for this shortfall \cite{HDMSpectra}.
+HDM also models DM to the Planck scale which permits HAWC to probe PeV scale DM.
+For this study, we sample DM masses: $1$ TeV - $10$ PeV with 6 mass bins per decade in DM mass.
+In the case of line spectra ($\chi\chi \rightarrow \gamma\gamma$, or $ZZ$), we double the mass binning to 12 DM mass bins per decade in DM mass.
 A larger source catalog is used that uses a Navarro–Frenk–White (NFW) spatial DM distribution from \LS \cite{DM_Strigari20}.
 Because NFW has fewer parameters than what is used for \GS, \LS is able to fit ultra-faint dwarves, expanding the number of sources available for DM searches.
 Finally, the gamma-ray ray dataset is much larger.
@@ -177,4 +180,6 @@ The study performed here analyzes 2565 days of data compared to 1017 days analyz
 \section{Likelihood Methods} \label{sec:mtd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% These are identical to \Cerf{}
+These are identical to \Cref{sec:gd_hawc_llh} and not additional changes are made to the likelihood.
+Bins in this analysis are expanded to include HAWC's NN energy estimator.
+Previously, the likelihood was minimized one model at a time and trivially parallelized for each permutation of the two lists: CHANS (SM annihilation channel) and 
