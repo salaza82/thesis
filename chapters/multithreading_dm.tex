@@ -182,4 +182,39 @@ The study performed here analyzes 2565 days of data compared to 1017 days analyz
 
 These are identical to \Cref{sec:gd_hawc_llh} and not additional changes are made to the likelihood.
 Bins in this analysis are expanded to include HAWC's NN energy estimator.
-Previously, the likelihood was minimized one model at a time and trivially parallelized for each permutation of the two lists: CHANS (SM annihilation channel) and 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational Methods: Multithreading} \label{sec:mtd_comp_methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Previously, as in \Cref{sec:gd_analysis}, the likelihood was minimized for one model at a time.
+One model in this case representing a DM annihilation channel, DM mass, and dSph.
+In an effort to conserve human and CPU time, jobs submitted for high performance computing contained a list of DM masses to iterate over for likelihood fitting.
+Jobs were then trivially parallelized for each permutation of the two lists: \texttt{CHANS} (SM annihilation channel) and \texttt{SOURCES} (dSph spatial templates).
+The lists for \texttt{CHANS} and \texttt{SOURCES} are found in \Cref{sec:mtd_particlephysics} and \Cref{tab:mtd_J_factor}, respectively.
+Initially, 11 DM mass bins were serially sampled for one job defined by a [SM channel, dSph] set.
+Computing the likelihoods would take between 1.5 to 2 hrs, stocastically, for a job.
+We expect to compute likelihoods for data and 300 Poisson background trials.
+The estimated CPU time based on the above for all SM annihilation channels (17) and 25 sources (all \LS sources withing HAWC's field of view) amounted to $127,925$ jobs.
+In total, $1,407,175$ likelihood fits and profiles would be computed for the 11 mass bins we wished to study.
+The estimated CPU time ranged between $10$k CPU days - $8$k CPU days.
+Human time is more challenging to estimate as job allocation is stocastic and highly dependant on what other users are submitting, yet it is unlikely that all jobs would run simultaneously.
+Therefore we can expect human time to be about as long as was seen in \Cref{sec:glory_duck} which was on the order of months to fully compute on a smaller analysis.
+A visual aid to describe how jobs were organized is provided in \Cref{fig:mtd_gd_workflow}.
+
+\begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.6]{figures/mtd_hawc_dm/gd_workflow.png}
+    }
+    \caption{Infographic on how jobs and DM computation was organized in \Cref{sec:gd_analysis}. Jobs were built for each permutation of \texttt{CHANS} and \texttt{SOURCES} shown by the left block in the figure. Each job, which took on the order 2 hrs to compute, had the following work flow: 1. Import HAWC analysis software, 2 min to run. 2. Load HAWC count maps, 5 min to run. 3. Load HAWC energy and spatial resolutions, 4 min. 5. Load DM spatial source templates and spectral models, less than 1 s. 6. Perform likelihood fit on data and model, about 8 min per DM mass. 7. Write results to file, less than 1s.}
+    \label{fig:mtd_gd_workflow}
+\end{figure}
+
+
+The computational needs for this next generation DM analysis are extreme and is unlike other analyses performed on HAWC.
+It became clear that there was a lot to gain from optimzing how the likelihoods are computed.
+This section discusses how multi-threading was applied to solve and reduce HAWC's computing of likelihoods for large parameter spaces like in DM searches.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}\label{sec:gd_joint_llh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
