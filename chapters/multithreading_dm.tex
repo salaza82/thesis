@@ -216,5 +216,52 @@ It became clear that there was a lot to gain from optimzing how the likelihoods 
 This section discusses how multi-threading was applied to solve and reduce HAWC's computing of likelihoods for large parameter spaces like in DM searches.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{}\label{sec:gd_joint_llh}
+\subsection{Relevant Foundational Information}\label{sec:mtd_foundation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The profiling of the likelihood for HAWC is done via gradient descent where the nomarlization of \Cref{eq:id_dm_flux} (linearly correlated with \sv) is rescaled in the descent.
+Additionaly, we sample the likelihood space for a defined list of \sv's described in \Cref{sec:gd_joint_llh}.
+The time to compute these values is not predictable or consistent because many variables can change across the full model-space.
+comprehensively, these variables are:
+\begin{itemize}
+    \item $m_\chi$ : DM rest mass
+    \item \texttt{CHAN} : DM SM annihilation channel.
+    \item \texttt{SOURCE} : dSph within HAWC's field of view. This involves a spatial template AND coordinate in HAWC data.
+    \item \sv~: Effectevly the flux normalization and free parameter in the likelihood fit.
+\end{itemize}
+Therefore, we develop an asyncronous, functional-parallel coding pattern.
+Asyncronous meaning that the instructions and computing within a function are independent and permitted to be out of sync with sibling computations.
+Functional-parallel meaning that instructions are the subject of parrallelization rather than threading the likelihood computation.
+This is close to trivial parametrization seen in \Cref{fig:mtd_gd_workflow} except that we seek to consolidate the loading stages (software, data, and detector resolution loading).
+Reducing the total instances of loading stages and distributing access to the reduced loads across multiple asyncronous threads is expected to reduce serial processing time and the overhead implicit to each job in addition to saving human time.
+
+\begin{figure}[h]
+    \centering{
+        \includegraphics[scale=0.65]{figures/mtd_hawc_dm/gufstafson_coding_pattern.png}
+    }
+    \caption{Graphic of Gustafson parallel coding pattern. $f_s$ is the fraction of a program, in time, spent on serial computation. $f_p$ is the fraction of computing time that is parallelizable. $T_p$ is the total time for a parallel program to run. $T_1$ is the total time for a parallel program to run if only 1 processor is allocated. $P_N$ is the $N$-th processor where it's row is the computation the processor performs. The Gustafson pattern is most similar to what is implemented for this analysis. Figure is pulled from \cite{ArtofHPC}.}
+    \label{fig:mtd_gufsta}
+\end{figure}
+
+We need a way to measure and compare the expected speedup and efficiency gain for this asyncronous coding pattern.
+I pull inspiration for timing measurement from \cite{ArtofHPC} and use \textit{Amdahl's law with hybrid programming}.
+Hybrid programming meaning that the computation is a mix of distributed and shared memory programming.
+If we assume the code is fully parallelizable over $p$ processors and $c$ threads, the ideal speedup is simply $pc$ and ideal run-time is $T_1/(pc)$.
+$T_1$ is the total time for a parallel program to run if only 1 processor is allocated.
+However, the coding pattern contains some amount of unavoidable serial computation, as shown in \Cref{fig:mtd_gufsta}.
+In our case, the run time is estimated to be
+\amdahl
+$F_s$ is the fraction of CPU time dedicated to serial computation.
+The expected speedup is
+\amdahlSpeed
+From \Cref{eq:amdahlSpeed}, we can see that the speed up scales with $p/F_s$.
+We are free to minimize $F_s$ asymptotically by enlarging the total models that are submitted to the thread pool, thereby shrinking the CPU fraction dedicated to serial operation.
+We are also free to define exactly how many threads and processors we utilize, yet eventually hit a hard cap at the hardware available on our computing cluster.
+HAWC uses Intel Xeon processors with 48 cores and 96 threads.
+This means when N-threads ($c$) are defined, N mod 2 cores ($p$) are needed.
+We see that a successful code scales well as the expected speedup is inversely correlated with $F_s$.
+As the total number of models sampled grows, the speedup will also.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Implementation}\label{sec:mtd_implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
