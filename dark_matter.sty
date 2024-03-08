@@ -238,6 +238,36 @@
 
 \newcommand{\amdahlSpeed}{
     \begin{equation}\label{eq:amdahlSpeed}
-        \frac{T_1}{T_{p,c}} = \frac{pc}{1+F_s (c-1)}.
+        S_{p,c} \equiv \frac{T_1}{T_{p,c}} = \frac{pc}{1+F_s (c-1)}.
+    \end{equation}
+}
+
+\newcommand{\TimingAll}{
+    \begin{equation}\label{eq:timing_all}
+        T_s + M t_p = T^M_{1,1}.
+    \end{equation}
+}
+
+\newcommand{\TsfromMs}{
+    \begin{equation}\label{eq:ts_from_mtrail}
+        T_s = T^{M1}_{1,1} - M1 \left( \frac{T^{M1}_{1,1} - T^{M2}_{1,1}}{M1 - M2}\right).
+    \end{equation}
+}
+
+\newcommand{\TpfromMs}{
+    \begin{equation}\label{eq:tp_from_mtrail}
+        t_p = \frac{T^{M1}_{1,1} -T^{M2}_{1,1}}{M1 -M2}.
+    \end{equation}
+}
+
+\newcommand{\TsTp}[3][0]{
+    \begin{equation}\label{eq:tstp}
+        T_s = #2\text{s  and  } t_p = #3\text{s}
+    \end{equation}
+}
+
+\newcommand{\specificFs}[3][0]{
+    \begin{equation}\label{eq:specificFs}
+        F_s = \frac{#2}{#2 + #3 \cdot M}.
     \end{equation}
 }

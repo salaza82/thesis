@@ -284,3 +284,33 @@ More $m_\chi$ are sampled from 11 bins up to 49 (for $\gamma\gamma$ and $ZZ$) an
 The DM mass, $m_\chi$, and SM annihilation channels, \texttt{CHANS}, are permuted into a 473 element list which is split evenly across N threads where N ranges between 5 - 16.
 Within a thread, for each $m_\chi$-\texttt{CHAN} tuple, 1001 \sv~values are sampled in the likelihood, and the value of \sv~that maximizes the likelihood is found.
 Although rare, fits that failed are handled on a case by case basis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Performance}\label{sec:mtd_performance}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{tables/mtd_timing.tex}
+
+We see a tremendous reduction to human time waiting for our dSph analyses to run.
+\Cref{tab:mtd_timing_study} shows the timing summaries for analyses of different sizes and thread counts.
+Additionaly, the efficiency gained when consolidating the serial loading of data is also apparent in our ability to study many more tasks in about the same amount of wall time as a smaller serial computation.
+Trials represented in the table were run on an AMD Opteron\textsuperscript{\textregistered} processor 6344 with 48 cores, 2 threads per core; 2.6 GHz clock.
+This is not the same architecture used for analysis on the computing cluster however they are similar enough that results shown here are reasonably representative of computing on the HAWC computing cluster.
+I use the \cref{tab:mtd_timing_study} for the inferences and conclusions in the following paragraphs.
+
+First, we want to find $T_s$, the time of serial computation.
+From \cref{fig:mtd_gufsta}, the timing for our coding pattern can be written as
+\TimingAll
+$M$ is the number of functional-parallel tasks (represented as column 1 of \cref{tab:mtd_timing_study}), and $t_p$ is the average time to complete a single parallel task.
+$T^M_{1,1}$ is the total time for a parallel program to run if only 1 processor is allocated for M parallel task.
+With two runs of different M ($M1$ and $M2$), we can use a system of equations to derive
+\TsfromMs
+We also extract $t_p$ using the same methods:
+\TpfromMs
+From \cref{tab:mtd_timing_study}, we set $M1 = 50$ and $M2 = 74$ and take their corresponding $T_{1,1}$ from the table to calculate $T_s$ and $t_p$.
+\TsTp{803.1}{104.6}
+Now, we have specific estimation for the fraction of serial computing time, $F_s$:
+\specificFs{803.1}{104.6}
+The maximum M for this study is 473 which evaluates \cref{eq:specificFs}: $F_s = 0.016$ or 1.6\% of computing time.
+\Cref{tab:mtd_speedup_study} shows the resulting speedups 
+\input{tables/mtd_speedup.tex}
