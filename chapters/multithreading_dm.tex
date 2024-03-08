@@ -37,7 +37,7 @@ A NumPy dictionary of HDM was made for Py3.
 The corresponding Python3 file is \texttt{HDMSpectra\_dict\_gamma.npy}.
 These files can also be used for decay channels and tools are provided in HDM's \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{HDMSpectra}.
 The analysis was performed using the Neural Network energy estimator for Pass 5.F.
-A description of this estimator was provided in \Cref{sec:hawc}.\todo{define a subsection when it's written}
+A description of this estimator was provided in \Cref{sec:hawc}.\todo{define a subsection when it's written}, and its key improvements are an improved energy estimation and improved sensitivities at higher zenith angles. 
 All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
 The above repository also incorporates the model inputs used previously in Glory Duck, described in \Cref{sec:glory_duck}
 
@@ -46,7 +46,7 @@ The above repository also incorporates the model inputs used previously in Glory
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 (\todo{Day start}) and 7476 (\todo{day end}).
-They were generated from pass 4.0 reconstruction.
+They were generated from pass 5.f reconstruction.
 The analysis is performed using the NN energy estimator with bin list:
 
 \begin{itemize}
@@ -333,14 +333,14 @@ We see very clearly that there is a lot to gain, and this new coding pattern wil
 \begin{figure}[h]
 \centering{
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_tt_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_uu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_dd_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_ss_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_cc_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_gg_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_ww_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_hh_.pdf}
     }
     \caption{\todo{fill this out}}
 \label{fig:mtd_limits_1of2}
@@ -348,22 +348,49 @@ We see very clearly that there is a lot to gain, and this new coding pattern wil
 
 \begin{figure}[h]
 \centering{
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
-    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_bb_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_nuenue_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_numunumu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_nutaunutau_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_ee_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_mumu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_tautau_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_gammagamma_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_zz_.pdf}
     }
     \caption{\todo{fill this out}}
 \label{fig:mtd_limits_2of2}
 \end{figure}
 
-\tmpfig{TS of analysis of results. See if we can include Draco}
-\tmpfig{TS of analysis of results. There will definitely be 2}
+\begin{figure}[h]
+\centering{
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_bb_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_tt_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_uu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_dd_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_ss_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_cc_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_gg_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_ww_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_hh_.pdf}
+    }
+    \caption{\todo{fill this out}}
+\label{fig:mtd_TS_1of2}
+\end{figure}
+
+\begin{figure}[h]
+\centering{
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_nuenue_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_numunumu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_nutaunutau_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_ee_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_mumu_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_tautau_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_gammagamma_.pdf}
+    \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_zz_.pdf}
+    }
+    \caption{\todo{fill this out}}
+\label{fig:mtd_TS_2of2}
+\end{figure}
 
 \tmpfig{Comparison of channels with GD combined results.}
 
