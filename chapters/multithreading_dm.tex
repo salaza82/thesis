@@ -312,5 +312,28 @@ From \cref{tab:mtd_timing_study}, we set $M1 = 50$ and $M2 = 74$ and take their 
 Now, we have specific estimation for the fraction of serial computing time, $F_s$:
 \specificFs{803.1}{104.6}
 The maximum M for this study is 473 which evaluates \cref{eq:specificFs}: $F_s = 0.016$ or 1.6\% of computing time.
-\Cref{tab:mtd_speedup_study} shows the resulting speedups 
+\Cref{tab:mtd_speedup_study} shows the resulting speedups.
 \input{tables/mtd_speedup.tex}
+
+We see a speedup that exceeds expectations from \cref{eq:amdahlSpeed} for real trail runs.
+\todo{reflect on results when the tables are totally filled in.}
+We also see that there are diminishing returns as the number of threads increases.
+For small jobs with large $c$, both the expected and observed speedup are significantly smaller than $c$.
+One thing not considered in \cref{eq:amdahlSpeed} is the time incurred via communication latency.
+Communication latency increases with the number of threads and contributes to diminishing returns.
+Therefor, these results are not conclusive.
+Each entry in \cref{tab:mtd_timing_study} represent only one run of the script and therefore the data are not precise and lacks the full scope of timing costs.
+Yet, they do give us a good idea of what HAWC gains in multithreading analysis software.
+We see very clearly that there is a lot to gain, and this new coding pattern will expand HAWC's analysis capabilities.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis Results}\label{sec:mtd_results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tmpfig{combined 95 results of new duck. See if we can include Draco}
+\tmpfig{combined 95 results. There will definitely be 2}
+
+
+
+\tmpfig{TS of analysis of results. See if we can include Draco}
+\tmpfig{TS of analysis of results. There will definitely be 2}
