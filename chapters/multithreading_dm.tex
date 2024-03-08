@@ -278,7 +278,7 @@ The multithreaded code was written in Python3 and is documented in the \texttt{d
 A version of the script as of April 25 \todo{make sure to update on this date} is also provided in \Cref{sec:apx_mpu_script}
 It has many dependancies including the HAWC analysis software.
 \Cref{fig:mtd_multithreads} displays the workflow of a job with 3 threads.
-Within a job, \texttt{SOURCE} is kept fixed.
+Within a job, \texttt{SOURCE} is kept fixedh .
 \texttt{CHAN(S)} remains 17 elements long.
 More $m_\chi$ are sampled from 11 bins up to 49 (for $\gamma\gamma$ and $ZZ$) and 25 (for remaining \texttt{CHANS}) which amounts to 12 or 6 mass bins per decade.
 The DM mass, $m_\chi$, and SM annihilation channels, \texttt{CHANS}, are permuted into a 473 element list which is split evenly across N threads where N ranges between 5 - 16.
