@@ -6,11 +6,11 @@
     \hline
     M Tasks & $F_s$ & $S_{1,2}$ & $S_{1,8}$ & $T_{1,16}$ \\
     \hline
-    50  & & 1.90 [1.76] & 5.23 [4.14] & 6.35 [5.34] \\
-    74  & & 1.90 [1.83] & 5.62 [4.82] & 9.00 [6.64] \\
-    100 & & & & \\
-    200 & & - & & \\
-    473 & & - & & 1:09:42.9 \\
+    50  & 1.33 E-1 & 1.90 [1.76] & 5.23 [4.14] & 6.35 [5.34] \\
+    74  & 9.40 E-2  & 1.90 [1.83] & 5.62 [4.82] & 9.00 [6.64] \\
+    100 & 7.13 E-2  & 1.88 [1.87] & 6.11 [5.34] & 9.38 [7.73]\\
+    200 & 3.70 E-2  & - [1.93] & 5.98 [6.36] & 11.85 [10.29] \\
+    473 & 1.60 E-2  & [1.97] & [7.20] & [12.91] \\
     \end{tabular}}
     \caption{ Speed up summaries for analyses for serial and multithreaded processes. M tasks is the number of functional-parallel tasks ran for the computation. $S_{p,c}$ is a single speedup comparison for runs utilizing $p$ nodes and $c$ threads. $[\cdot]$ are the estimated speedups calculated from \cref{tab:mtd_timing_study}, \cref{eq:specificFs}, and \cref{eq:amdahlSpeed}. Empty entries are indicated with '-'.}\label{tab:mtd_speedup_study}
 \end{table}
