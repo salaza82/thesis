@@ -311,24 +311,34 @@ From \cref{tab:mtd_timing_study}, we set $M1 = 50$ and $M2 = 74$ and take their 
 \TsTp{803.1}{104.6}
 Now, we have specific estimation for the fraction of serial computing time, $F_s$:
 \specificFs{803.1}{104.6}
-The maximum M for this study is 473 which evaluates \cref{eq:specificFs}: $F_s = 0.016$ or 1.6\% of computing time.
+The maximum M for this study is 473 which evaluates using \cref{eq:specificFs}: $F_s = 0.016$ or 1.6\% of computing time.
 \Cref{tab:mtd_speedup_study} shows the resulting speedups.
 \input{tables/mtd_speedup.tex}
 
-We see a speedup that exceeds expectations from \cref{eq:amdahlSpeed} for real trail runs.
-\todo{reflect on results when the tables are totally filled in.}
+We see a speedup that generally exceeds expectations from \cref{eq:amdahlSpeed} for real trail runs.
 We also see that there are diminishing returns as the number of threads increases.
 For small jobs with large $c$, both the expected and observed speedup are significantly smaller than $c$.
 One thing not considered in \cref{eq:amdahlSpeed} is the time incurred via communication latency.
 Communication latency increases with the number of threads and contributes to diminishing returns.
-Therefor, these results are not conclusive.
-Each entry in \cref{tab:mtd_timing_study} represent only one run of the script and therefore the data are not precise and lacks the full scope of timing costs.
-Yet, they do give us a good idea of what HAWC gains in multithreading analysis software.
+Additionally, these values are for single runs and do not consider the stocastic variation expected in a shared high performance computing resource.
+Therefor, these results are not strictly conclusive, yet demonstrate the merits of multi-threading.
 We see very clearly that there is a lot to gain, and this new coding pattern will expand HAWC's analysis capabilities.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis Results}\label{sec:mtd_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+3 of the 43 \LS dSphs considered for the multithreaded analysis.
+These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
+The 3 likelihood profiles are then stacked to synthesize a combined limit on the dark matter cross-section, \sv.
+This combination is done for the 17 SM annihilation channels.
+\Cref{fig:mtd_limits_1of2} and \cref{fig:mtd_limits_2of2} show the combined limits for all annihilation channels with HAWC's observations.
+Test statistics of the best fit \sv values for each DM mass and SM annihilation channels are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
+We also compare these limits to HAWC's Glory Duck limits shown in \cref{sec:hawc_results}.
+The comparison to Glory Duck are featured in \cref{fig:mtd_compare2gd} for all the DM annihilation channels studied for Glory Duck.
+A full comparison is provided in the appendix in \cref{fig:mtd_compare_ComaB}, \cref{fig:mtd_compare_Seg1}, and \cref{fig:mtd_compare_Sextans}.
+Here, we show updated limits for $\chi\chi \rightarrow$ \parpar{b}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \parpar{t}, $W^+W^-$, \pp{\gamma} and \pp{Z}.
+For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \parpar{s}, \parpar{u}, \parpar{d}, \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \pp{g}, and \pp{h}.
 
 \begin{figure}[h]
 \centering{
@@ -392,6 +402,15 @@ We see very clearly that there is a lot to gain, and this new coding pattern wil
 \label{fig:mtd_TS_2of2}
 \end{figure}
 
+No DM was found in HAWC observations.
+The largest excess found in HAWC data was for DM annihilating to $W$-bosons for $m_\chi = 10$TeV at $2\sigma$.
+HAWC's limits and acesses are dominated by Segue1.
+Coma Berenices shows excess at higher DM mass, yet no similar excesses were observed in Segue1.
+Sextans did not contribute significantly to signal excess or the combined limit as it is at high zenith.
+Draco was not included as the PDF of some of our analysis bins were wider than what is reasonable for a point source analysis.
+Draco is at a high zenith for HAWC, so the effort required to include it was not justified by the benefits.
+
+
 \begin{figure}[h]
 \centering{
     \begin{tabular}{cccc}
@@ -404,24 +423,29 @@ We see very clearly that there is a lot to gain, and this new coding pattern wil
         \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_ComaBerenices_tautau.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Segue1_tautau.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Sextans_tautau.pdf}} \\
-        \rotatebox[origin=c]{90}{$\chi\chi \rightarrow ZZ$} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_ComaBerenices_zz.pdf}} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Segue1_zz.pdf}} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Sextans_zz.pdf}} \\
+        \rotatebox[origin=c]{90}{$\chi\chi \rightarrow e^-e^+$} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_ComaBerenices_ee.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Segue1_ee.pdf}} &
+        \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Sextans_ee.pdf}} \\
     \end{tabular}
     }
-    \caption{\todo{fill this out}}
+    \caption{Comparison of HAWC limits from this analysis to Glory Duck (\cref{fig:hawc_combined_limit}) for 3 dSphs and 3 SM annihilation channels: \parpar{b}, \parpar{\tau}, and \parpar{e}. Each sector shows the 95\% confidence limit from Glory Duck (blue line) and this analysis (orange line) in the top plot. The lower plot features the ratio in log scale of Glory Duck to this analysis in a red solid line. Horizontal dashed lines are for ratios of 1.0 (black) and $\sqrt{2}$ (blue). Ratios larger than 1.0 are for limits smaller, or stricter, than Glory Duck. Ratios larger than $\sqrt{2}$ indicates limits are stricter than a simple doubling of the Glory Duck data.}
 \label{fig:mtd_compare2gd}
 \end{figure}
-
-\todo{talk about the results}
 
 We were not able to generate background trials in time of writing this thesis.
 These are not shown and are an immediate next step for this analysis before publication.
 
-We did not see DM, but we did see some interesting excesses in the 10 Tev range at order $2\sigma$.
-Draco was not included as the PDF of some of our analysis bins were wider than what is reasonable for a point source analysis.
-Draco is at a high zenith for HAWC, so the effort required to include it was not justified by the benefits.
+When comparing these results to \cref{sec:hawc_results}, we see an overall decrease to the confidence limit therefore improvement to HAWC's expected sensitivity.
+This improvement is generally stronger than a doubling of data, or a factor $sqrt{2}$ decrease.
+The comparison is somewhat complex and dependant on the dSph and SM annihilation channel.
+\Cref{fig:mtd_compare2gd} shows the comparisons of limits calculated for this analysis and Glory Duck (\cref{sec:hawc_results}).
+Segue 1 and Coma Berenices are low zenith where improvements to HAWC's analysis come only from energy estimation.
+Differences between these two are dominately from their differences in \J-factor, half-light radii of the dSphs, and the particle physics inputs.
+Substantial gains in HAWC's analysis methods (pass 5.F) were made at high zenith which is important for sources like Sextans.
+The HDM particle physics model produces almost identical spectra to the PPPC for $\chi\chi \rightarrow e^-e^+$, so can be used to compare limits between dSph.
+Overhead sources see minimal improvement to the limits, while high zenith sources see an order of magnitude improvement for all DM masses.
+Softer SM annihilation channels see broad improvements to the limit compared to harder channels.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,14 +455,21 @@ Draco is at a high zenith for HAWC, so the effort required to include it was not
 These are identical to what was performed earlier in Glory Duck, \cref{sec:hawc_systematic}.
 We are also sensitive to the choice in spatial template, and this was explored in \cref{sec:gd_ext_limitvs_ptsrc} and \cref{sec:gd_gsVb}.
 
-\LS also provided the uncertainty on their mean spatial models.
-We perform a study on the $\pm 1\sigma$ spatial templates and show corresponding confidence limits in \todo{link to figure}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion and Discussion}\label{sec:mtd_conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We want to include the remaining dSph and DM decay from the dSphs.
-We saw an improvement of \todo{value} compared to Glory Duck which had many more dSphs.
-\todo{copy some text from earlier section.}
+In this multithreaded analysis, we have used observations of 3 dSphs from HAWC to perform a collective DM search for annihilation signals.
+The data were combined across sources to significantly increase the sensitivity of the search.
+Advanced computational techniques were deployed to accelerate wall-time spent analyzing by an order of magnitude.
+We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross-section for seventeen potential DM annihilation channels across four decade of DM mass.
+
+This analysis serves as a proof of concept for multithreaded HAWC analyses with large parameter spaces.
+Larger datasets with fast techniques will be essential to tackling the DM problem.
+The models we used for this study include annihilation channels with neutrinos in the final state.
+Advanced studies could aim to merge our results with those from neutrino observatories with large data sets.
+
+A full HAWC analysis will include systematic studies of the \J-factor distributions.
+Additionaly, because of the timing reduction, the study can be doubled in size to include DM decay.
+We have no yet received the remaining spatial profiles to the \LS catalog, and limits can be quickly computed once these are received.
+Finally, statistical studies with Poission variation of HAWC's background are essential to a comprehensive understanding of our observed excesses.
