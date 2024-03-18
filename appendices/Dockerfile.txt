@@ -1,0 +1,79 @@
+FROM ubuntu:18.04
+
+# Execute commands to install software packages  
+RUN apt -y update 
+
+	# Install utility programs
+RUN apt -y install vim wget git cmake 
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+	# Install python
+RUN apt -y install python python-dev python-pip libjpeg-dev zlib1g-dev 
+				
+	# We need Python2 for installing Charon.
+RUN apt -y install python-numpy python-sympy python-matplotlib \
+	     				  python-sympy python-h5py python-astropy python-ipython 
+	
+	# Install dependencies of Charon : SQuIDS, NuSQuIDS 
+RUN apt -y install libgsl-dev libgslcblas0 libgsl23 gsl-bin pkg-config
+	# Install SQuIDS
+RUN mkdir /home/SQuIDS /home/SQuIDS_install
+WORKDIR /home/SQuIDS 
+RUN git clone https://github.com/jsalvado/SQuIDS.git 
+WORKDIR /home/SQuIDS/SQuIDS 
+RUN git checkout 7ad9ba7c6ad06d1f0fa8418f937ebf1a403fef90
+	# Before executing "make install" an environmental variable has to be set.
+ENV PKG_CONFIG_PATH=/home/SQuIDS/SQuIDS/lib
+RUN ./configure --prefix=../SQuIDS_install \
+	&& make 
+RUN make install 
+
+	# Set up an enivronmental varialbe that is required to install nuSQuIDS..
+ENV SQuIDS=/home/SQuIDS/SQuIDS
+ENV LD_LIBRARY_PATH=$SQuIDS/lib:$LD_LIBRARY_PATH
+
+	# Install NuSQuIDS
+RUN mkdir /home/nuSQuIDS
+WORKDIR /home/nuSQuIDS 
+RUN git clone https://github.com/qrliu/nuSQuIDS.git 
+WORKDIR /home/nuSQuIDS/nuSQuIDS 
+RUN git checkout 072d8ef740e2fc7330f1fabaea94f0f4540c46f9
+RUN apt -y install libhdf5-dev hdf5-tools 
+RUN apt -y install libboost1.65-all-dev
+RUN  ./configure --with-squids=$SQuIDS --with-python-bindings --prefix=../nuSQuIDS_install \
+	&& make \
+	&& make install 
+
+	# Set up an enivronmental variable for nuSQuIDS.
+ENV nuSQuIDS=/home/nuSQuIDS/nuSQuIDS
+ENV LD_LIBRARY_PATH=$nuSQuIDS/lib:$LD_LIBRARY_PATH
+
+	# Build the python bindings 
+WORKDIR /home/nuSQuIDS/nuSQuIDS/resources/python/src 
+RUN make 
+
+	# Set up an environmental variable for the python bindings.
+ENV PYTHONPATH=$nuSQuIDS/resources/python/bindings/:$PYTHONPATH
+ 
+	# Install Charon in the /home/Charon/charon directory.
+RUN mkdir /home/Charon
+WORKDIR /home/Charon 
+RUN git clone https://github.com/icecube/charon.git\
+	&& apt -y install unzip python-scipy 
+WORKDIR charon 
+RUN git checkout c531efe4e01dc364a60d1c83f950f04526ccd771  
+RUN unzip ./charon/xsec/xsec.zip -d charon/xsec/ \
+
+	# Download neutrino spectra tables in the /home/Charon/charon/data directory.
+	&& mkdir ./charon/data
+WORKDIR ./charon/data 
+RUN wget --no-check-certificate https://icecube.wisc.edu/~qliu/charon/SpectraEW.hdf5	\
+	&& wget --no-check-certificate https://icecube.wisc.edu/~qliu/charon/Spectra_PYTHIA.hdf5 \
+	&& wget --no-check-certificate https://icecube.wisc.edu/~qliu/charon/Spectra_noEW.hdf5 
+
+WORKDIR ../../ 
+RUN python setup.py install
+WORKDIR /home
+
+

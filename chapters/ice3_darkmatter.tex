@@ -25,8 +25,8 @@ Additional work is done to extract the Likelihood profiles for each DM, source h
 This work is considered a separate project as the statistical treatment is unique from many IceCube analyses.
 The wiki for [ the combined analysis] \todo{instead point to chapter}
 This chapter presents the analysis work for IC3 for DM searches toward dSphs.
-% This section describes the various steps and features of the analysis.
-% It is structure first introduces the data and how it is treated, then systematic studies of the dwarves individually. Finally, the stacked analysis and results are presented.
+This section describes the various steps and features of the analysis.
+It is structure first introduces the data and how it is treated, then systematic studies of the dwarves individually. Finally, the stacked analysis and results are presented.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Dataset and Background}\label{sec:icDM_databgd}
@@ -39,6 +39,7 @@ This section enumerates the data and background methods used for IceCube's study
 \subsection{Itemized IceCube files}\label{sec:icDM_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
+    \item Software Environment: \texttt{CVMFS Py3-v4.1.1}
     \item Data Sample: Northern Tracks \texttt{NY86v5p1}
     \item Analysis Software: cksy (\href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{nu\_dark\_matter})
     \item Analysis wiki: \url{https://wiki.icecube.wisc.edu/index.php/Dark\_Matter\_Annihilation\_Search\_towards\_dwarf\_spheroidals\_with\_NST\_and\_DNN\_Cascades}
@@ -49,100 +50,57 @@ This section enumerates the data and background methods used for IceCube's study
 \subsection{Software Tools and Development}\label{sec:icDM_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This analysis was performed inside IceCube's CVMFS (3.4.1.1) software environment using csky for likelihood calculations.
+Csky did not come with dark matter spectral models nor could accomodate custom flux models.
+We developed these capacities for single source and stacked source studies for this analysis.
+The analysis code is held in a separate repository from csky.
+The \texttt{nu\_dark\_matter} \href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{branch of csky} manages the input of custom dark matter spectra and accompanied DM astrophysical source then calculates likelihoods with a selected data sample.
+The \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{IceCube Dark Matter dSph repository} manages the generation of spectral models for neutrinos, physics parameter exctraction from $n_{\mathrm{sig}}$, \J-factor per source inputs, and bookkeeping for the large parameter space.
+The project repository required a secondary software environment for neutrino oscillations.
+How to launch and run those calculations are documented in the project repository and the Docker image is additionally saved in \cref{sec:apdx_nu_spec}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Set and Background Description} \label{sec:icDM_data_bkgd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Data Set and Background Description} \label{sec:gs_data_bkgd}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% == Analysis ==
-%
+For this analysis, I use the Northern Sky Tracks (NST) Sample (Version V005-P01).
+The sample contains up-going track-like events, usually from $\nu_\mu$ and $\nu_\tau$ and has a superior angular resolution compared to the cascade dataset.
+This sample covers 10.4 years of data (IC86\_2011-2021).
+The accepted neutrino energy range used for the analysis is unique from most other IceCube searches because DM spectra are very hard.
+The sampled energy range is $1 < \log(E_\nu /\textrm{GeV}) < 9.51$ with step size 0.125.
 
-%
-% === Data Sample ===
-%
-% For this analysis, I use the Northern Sky Tracks (NST) Sample (Version V005-P01). The sample contains up-going track-like events, usually from tau and muon neutrinos and has a superior angular resolution compared to cascade dataset. This sample covers 11 years of data (IC86_2011-2021).
-%
-% === Background ===
-%
-% The strength of a dwarf analysis is that there is no additional background consideration beyond nominal, baseline background estimations. For NST, the nominal contribution comes from atmospheric neutrinos and isotropic astrophysical neutrinos. The estimation of the background is constructed from taking NST data and scrambling events in Right Ascension.
+The strength of a dwarf analysis is that there is no additional background consideration beyond nominal, baseline background estimations.
+For NST, the nominal contribution comes from atmospheric neutrinos and isotropic astrophysical neutrinos.
+We estimate the background by scrambling NST data along Right Ascension.
 
-% The HAWC data maps used for this analysis contain 1017 days of data between runs 2104 (2014-11-26) and 7476 (2017-12-20).
-% They were generated from pass 4.0 reconstruction.
-% The analysis is performed using the $f_{hit}$ energy binning scheme with bins (1-9) similar to what was done for the Crab and previous HAWC dSph analysis \cite{Abeysekara_2017,Albert_2018}.
-% Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis}\label{sec:icDM_analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% This analysis was done on dSphs because of their large DM mass content relative to baryonic mass.
-% We consider the following to estimate the background to this study.
+The expected differential neutrino flux from DM-DM annihilation to standard model
+particles, $d\Phi_{\nu}/dE_{\nu}$, over solid angle, $\Omega$~is described by the familiar equation.
+\iddmannilation[\nu]
 
-% \begin{itemize}
-%     \item The dSphs are small in HAWC's field of view, so the analysis is not sensitive to large or small scale anisotropies.
-%     \item The dSphs used in this analysis are off the galactic plane.
-%     \item The dSphs are baryonically faint relative to their expected dark matter content and are not expected to contain high energy gamma-ray sources.
-% \end{itemize}
+This is identical to past examples except that there are 3 neutrino flavors, so there are a corresponding 3 flux equations.
+\cref{sec:gd_analysis} has a complete description of all the terms.
+Additionaly, neutrinos oscillate between flavors which needs to be considered for the expected neutrino flux at Earth.
+\Cref{sec:icDM_particlephysics} presents the particle physics model for DM annihilation.
+\Cref{sec:icDM_spatialmodel} presents the spatial distributions built for each dSph.
 
-% Therefor we make no additional assumptions on the background from our sources and use HAWC's standard direct integration method for background estimation \cite{Abeysekara_2017}.
-% It is possible for gamma rays from DM annihilation to scatter in transit to HAWC via Inverse Compton Scattering (ICS).
-% This was investigated and its impact on the flux is basically zero.
-% Supporting information on this is in \Cref{sec:gd_ics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$\frac{dN_\nu}{dE_\nu}$ - Particle Physics Component}\label{sec:icDM_particlephysics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Neutrino spectra from heavy dark matter annihilation were generated using HDMSpectra \cite{HDMSpectra} and $\chi \textrm{aro}\nu$ \cite{Charon}.
+HDMSpectra simulates the decay and annihilation of heavy dark matter, for different dark matter masses and SM primary annihilation channels.
+The simulation includes electroweak radiative corrections and higher order loop corrections with quarks.
+This publication also pushes the simulated DM mass to the Plank scale (1 EeV), however this study will not explore that high.
 
-
-% == Introduction ==
-%
-% Dark Matter (DM) has been a long standing discrepancy in astrophysical observation for almost a century. Measurements of DM's location and density have been made primarily through observing galactic rotational velocities. However, the nature of this DM has been elusive. One well motivated hypothesis for the nature of DM is known as the Weakly Interacting Massive Particle (WIMP). The parameter space has been well explored in the lower DM mass ranges up to 1 TeV, but still has a wide open space above this mass.
-%
-% IceCube is sensitive to annihilating DM to the DM ranges above 1 TeV and can produce competitive results relative to gamma ray observatories in spectral models that produce sharp neutrino features. The goal of this analysis is to perform a DM annihilation search using the new datasets NST. The search will only be towards dwarf spheroidal galaxies (dSph). These sources are known for their low backgrounds and high DM contents. Since the dataset is sensitive to the north and south, as many dSph as possible will be included. Additionally, with annihilation, these sources can be treated as point sources with little loss to sensitivity or model dependence on how the DM is distributed. DM masses from 500 GeV to 100 PeV are considered for this analysis. All standard model annihilation channels available from the HDMSpectra are studied in this analysis.
-%
-% Previous IceCube analysis of dSph DM searches can be found here:
-%
-% ([https://wiki.icecube.wisc.edu/index.php/WIMP_signal_from_dwarf_galaxies]): dSph, Virgo, Coma, and Andromenda
-%
-% ([https://wiki.icecube.wisc.edu/index.php/Search_for_Decaying_DM_in_Galaxy_Clusters_and_Galaxies]): DM Decay with dSph's, galaxy clusters, and M31
-%
-% Additional work is done to extract the Likelihood profiles for each DM, source hypothesis so that these data can be combined with gamma-ray observatories.
-% This work is considered a separate project as the statistical treatment is unique from many IceCube analyses.
-% The wiki for [ the combined analysis]
-%
-% The primary software I'll be using is [https://github.com/icecube/csky/tree/nu_dark_matter csky]
-%
-% == Flux Modeling ==
-%
-% The differential neutrino flux expected at Earth from an astrophysical source is...
-% <center>
-% <math>
-% \frac{d{\Phi}_{\nu}}{d {E}_{\nu}}({E}_{\nu})
-% = \frac{\langle \sigma v \rangle J}{8 \pi M_{\chi}^2} \frac{d{N}_{\nu}}{d{E}_{\nu}}(M_{\chi}, E_{\nu}, \text{SM Chan})
-% </math>
-% </center>
-%
-% where <math> M_{\chi} </math> is the rest mass of the DM particle;
-% <math> \langle \sigma v \rangle </math> is the velocity weighted cross-section of DM with the SM;
-% <math> \frac{dN_\nu}{dE_\nu} </math> is the neutrino spectrum as a function of DM mass, neutrino energy, and SM annihilation channel.
-%
-% Finally, the astrophysical J-factor <math> J </math> is defined as:
-% <center>
-% <math>
-% J = \int\int \rho_{\chi}^2 (l, \Omega) dl d\Omega
-% </math>
-% </center>
-% Where <math> \rho_{\chi} </math> is the DM density at the source;
-% <math> l </math> is the line of sight;
-% <math> \Omega </math> is the solid angle.
-%
-% === Particle Physics: Neutrino Spectra <math>(\frac{dN_\nu}{dE_\nu})</math> ===
-%
-% ==== Spectrum MC Generation ====
-%
-% Neutrino spectra from heavy dark matter annihilation were generated using HDMSpectra and <math>\chi aro\nu</math>. The authors of HDMSpectra, simulated the decay of heavy dark matter, for different dark matter masses and SM annihilation channels.
-% The simulation includes the electroweak radiative corrections and higher order loop corrections.
-% This publication also pushes the simulated DM mass to the Plank scale (1 EeV), however this study will not explore that high.
-% An important novel feature in the spectra is that neutrino line channels will be accompanied with a low energy tail.
-% Thus the earth will not fully attenuate a neutrino SM channel signal from high declination sources.
-%
-% These lines include all leptonic channels. (Neutrinos and e, mu, and tau)
-% The spectra are tabulated and publicly available in  HDMSpectra.
-% We use [https://iopscience.iop.org/article/10.1088/1475-7516/2020/10/043 <math>\chi aro\nu</math>] to propagate the neutrinos from the source to Earth.
-% Because these sources are quite large in absolute terms, and also far (order 10 kpc or more), the resulting flavor spectra are the averages of the transition probabilities:
+An important novel feature in the spectra is that neutrino line channels will be accompanied with a low energy tail.
+Thus the earth will not fully attenuate a neutrino SM channel signal from high declination sources where the neutrino flux must first traverse through the Earth.
+The SM annihilation channels that feature lines include all leptonic channels. ($\nu_{e,\mu,\tau}, e, \mu, \mathrm{and} \tau$)
+We use \href{https://iopscience.iop.org/article/10.1088/1475-7516/2020/10/043}{ $\chi \mathrm{aro}\nu$} to propagate and oscillate the neutrinos from the source to Earth.
+Because these sources are quite large in absolute terms, and also far (order 10 kpc or more), the resulting flavor spectra are the averages of the transition probabilities:
 %
 % <math>P(\nu_\alpha \rightarrow \nu_\beta) \thickapprox
 % \begin{bmatrix}
@@ -334,6 +292,10 @@ This section enumerates the data and background methods used for IceCube's study
 % |}
 % </center>
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\J - Astrophysical Component}\label{sec:icDM_spatialmodel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % === DM distribution profile (J-factor): <math> J </math> ===
 %
 % The expected neutrino counts from a dwarf spheroidal galaxy depends also on the the 'astrophysical factor'. The value for this (in our specific case) J-factor for a target depends on its dark matter density distribution, <math>\rho_{\chi}</math> and how far it is <math> l </math>. For this analysis, we adopt dark matter halo models for galaxy clusters exclusively from [https://iopscience.iop.org/article/10.1088/0004-637X/801/2/74 A. Geringer-Sameth et al, Astrophys. J. 801 no. 2, (2015) 74.]. These models are based on a modified Navarro-Frenk-While (NFW) profile where the indices of the NFW (traditionally 1,3,1) are allowed to float. More specifically, these DM distributions are described using the Zhao profile.  The Zhao profile is written as:
