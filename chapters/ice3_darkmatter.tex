@@ -194,29 +194,8 @@ I then take the RMS of the error distribution and the resulting value (err) is u
 Each SM channel had different tolerances for 'err'. Channels with very hard cut-offs had looser tolerance for err because a lot of error would be generated from the cut-off being estimated to occur slightly early or late.
 Soft channels don't have this issue and therefore the tolerance is very strict.
 The table blow summarizes the tolerances for the SM channels.
-%
-% {| class="wikitable"
-% |-
-% ! scope="col" style="width: 100px;" | $ \chi\chi \rightarrow $
-% ! scope="col" style="width: 90px;" |  GOOD
-% err < val
-% ! scope="col" style="width: 100px;" | OK
-% err : (val1, val2]
-% ! scope="col" style="width: 90px;" | FAIL
-% err > val
-% ! Limits of err calc [X_min, X_max]
-% |-
-% | $ Z^0Z^0, W^+W^- $ || 1.0E-3 || 1.0E-3, 1.0E-2 || 1.0E-2 || MAX$[100 \mathrm{GeV}/m_\chi, 10^{-6}], 1.0 $
-% |-
-% | $ t\bar{t}, hh $ || 1.0E-5 || 1.0E-5, 1.0E-4 ||  1.0E-4 || MAX$[100 \mathrm{GeV}/m_\chi, 10^{-6}], 1.0 $
-% |-
-% | $ b\bar{b}, d\bar{d}, u\bar{u}$ || 9.0E-7 || 9.0E-7, 9.0E-6 || 9.0E-6 || MAX$[100 \mathrm{GeV}/m_\chi, 10^{-6}], 1.0 $
-% |-
-% | $ \nu\bar{\nu}_{e, \mu, \tau} $ || 1.0E-3 || 1.0E-3, 1.0E-2 || 1.0E-2 || MAX$[100 \mathrm{GeV}/m_\chi, 10^{-6}]$, MIN$[0.995, (En(\nu_{line}) -4\sigma)/M_{\chi}] $
-% |-
-% | | $ e\bar{e}, \mu\bar{\mu}, \tau\bar{\tau} $ || 1.0E-3 || 1.0E-3, 1.0E-2 || 1.0E-2 || MAX$[100 \mathrm{GeV}/m_\chi, 10^{-6}]$, MIN$[0.995, (En(\nu_{line}) -4\sigma)/M_{\chi}] $
-% |+ Summary table of tolerances for splines used for spectral models.
-% |}
+\input{tables/icDM_spline_tolerances.tex}
+
 %
 % The errors are then plotted in two ways.
 % First, FAIL and OK are directly plotted with e_i as a function of x, and the full spline and MC.
