@@ -107,7 +107,7 @@ When calculating the expected contribution to $n_s$, only $ \nu_\mu, \nu_\tau $ 
 With these consideration, the expected composite neutrino spectrum is a average of the two flavors: $ (\nu_\mu + \nu_\tau)/2 $.
 The spectral tables are then converted to splines to condense information, enable random sampling of the spectra, and enable faster computation times.
 The spectral splines are finally implemented as a DM class in csky.
-Examples of the spectra before and after propagation are shown in \cref{fig:nu_osc_dm}.
+Examples of the spectra before and after propagation are shown in \cref{fig:icDM_osc_dm}.
 \input{tables/nu_osc_dm.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,70 +117,83 @@ Examples of the spectra before and after propagation are shown in \cref{fig:nu_o
 All leptonic DM annihilation channels $ \chi\chi \rightarrow [\nu_{e, \mu, \tau}, e, \mu,\tau] $ develop a prominent and narrow spectral line feature.
 For all neutrino flavors, this line is visible and prominent in all mass models studied for this analysis.
 For charged leptons, the feature only really shows up at the larger DM mass models.
+Examples for lines in both neutrinos and charged leptons annihilation are provided in \cref{fig:icDM_osc_dm}.
 This line feature is so narrow relative the sampled energy range that the MC rarely samples within the neutrino line.
 As a result, often the best fit to simulation of background will always floor to TS = 0 and the signal recovery tends to be conservatve.
 
-% <center>
-% [[Image:sig_recover_line.png | 350px]]
-%
-% Signal recovery for 100 TeV DM are Declination of 16.06. Although the uncertainties are small and tight, the reconstructed $ n_s $ are systematically underestimated.
-% </center>
-%
-% To remedy this, a similar approach to the [https://wiki.icecube.wisc.edu/index.php/Search_for_Decaying_DM_in_Galaxy_Clusters_and_Galaxies decay analysis].
-% 2 kernels were tested (Gaussian, uniform (flat)) to smooth out the line feature.
-% The widths were tuned such that the signal recovery approached unity for DM mass 100 TeV to 1 PeV.
-% Additionally, the tuning was performed only for a source at declination 16.06 (Segue 1).
-% This is to avoid confusion loss in signal recovery from too narrow a line and from Earth's attenuation of high energy neutrinos.
-% The convolution also needed to as close as possible preserve the integrated counts of neutrinos.
-% The optimized kernel window for all lines is summarized as:
-% * Guassian kernel w/$2 \sigma$ width = 3.5E-3$\cdot m_\chi$
-% * Minimum energy included in convolution = MIN$[0.995 \cdot m_\chi, En(\nu_{line}) -4\sigma]$
-% * Maximum energy included in convolution = MAX$[1.005 \cdot m_\chi, En(\nu_{line}) +4\sigma]$
-% where $En(\nu_{line})$ is the neutrino energy where the neutrino line is at the maximum.
-%
-% These parameters broadly improved the signal recovery of the line spectra. An example is provided below. Signal recovery plots of the full analysis are provided much further down.
-%
-% <center>
-% [[Image:improved_sig_recover_line.png | 350px]]
-%
-% Top left panel shows the two kernels overlayed the original spectrum from Charon. delta I is the difference in the integral of the peaks with respect to the original spectrum. The vertical red line indicated where the original neutrino line is maximized. Lower right shows the signal recovers of the DM model using the Gaussian kernel with parameters enumerated above.
-%
-% </center>
-%
-% ==== Spline Fitting ====
-%
-% In an effort to reduce computational work, memory burden, and align with point source methods used for NGC1068 and Seyfert analyses, spectral splines were created and adopted for estimating the neutrino flux for the different annihilation.
-% Software was written to generate, handle, and calculate values on the splines.
-% When using splines, one has to be careful of the goodness to fit.
-% There are critical caveats when testing the goodness to fit to MC generated above for all channels.
-% * The splines must be Log10(*) in Energy and dN/dE to acount for the exponential nature of the flux
-% * The fidelity of the fit matters more at $ E_\nu \thickapprox m_\chi $ where the model uncertainties are minimal and physical considerations (like the cut-off) are most apparent.
-% * The fidelity of the fit matters less at low $ E_\nu $ as the model uncertainties are large AND IceCube's sensitivity diminishes significantly below 500 GeV
-% * Total integrated counts should be well preserved, however, the resolution of the MC is much higher than IceCube's energy resolution.
-% :* Meaning over several steps in E, the integral is preserved
-% :* the step size enters the cost function
-% :* Oscillating residuals, so long as they are very small and well centered, are not penalized as this gets averaged out.
-%
-% The resulting cost function to evaluate the goodness of fit was used to account for the above considerations.
-%
-% <center>
-% $
-% e_i = x_i \cdot (\frac{dN_i}{dE_i} - 10^{\hat{e_i}})
-% $
-% </center>
-%
-% Where $ \hat{e_i} $ is the spline estimator's value for $x_i$. $ x_i = E_{\nu_i} / m_\chi $. $ \frac{dN_i}{dE_i} $ is the flux value from MC.
-%
-% <center>
-% $
-% \mathrm{err} = \sqrt{{\frac{1}{x_\mathrm{max}-x_\mathrm{min}}\int_{x_\mathrm{min}}^{x_\mathrm{max}} \mathbf{e}^2 dx}}
-% $
-% </center>
-%
-% I then take the RMS of the error distribution and the resulting value (err) is used to evaluate the fidelity of the spectral spline.
-% Each SM channel had different tolerances for 'err'. Channels with very hard cut-offs had looser tolerance for err because a lot of error would be generated from the cut-off being estimated to occur slightly early or late.
-% Soft channels don't have this issue and therefore the tolerance is very strict.
-% The table blow summarizes the tolerances for the SM channels.
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.5]{figures/ic_DM/Sig_recover_line.png}
+    }
+    \caption{Signal recovery for 100 TeV DM annihilation into \parpar{\nu_\mu} for a source at Dec = 16.06$^\circ$. $n_\mathrm{inj}$ is the number of injected signal events in simulation. $n_s$ is the number of reconstructed signal events from the simulation. Although the uncertainties are small and tight, the reconstructed $ n_s $ are systematically underestimated.} \label{fig:sig_recovery_fail}
+\end{figure}
+
+
+To remedy this, a similar approach to the IceCube's decay analysis \todo{refer to Minjin's page}.
+2 kernels were tested (Gaussian, uniform (flat)) to smooth out the line feature.
+The widths were tuned such that the signal recovery approached unity for DM mass 100 TeV to 1 PeV.
+Additionally, the tuning was performed only for a source at declination 16.06 (Segue 1).
+This is to avoid confusion loss in signal recovery from too narrow a line and from Earth's attenuation of high energy neutrinos.
+The convolution also needed to as close as possible preserve the integrated counts of neutrinos.
+The optimized kernel window for all lines is summarized as:
+\begin{itemize}
+    \item Guassian kernel w/$2 \sigma$ width = 3.5E-3$\cdot m_\chi$
+    \item Minimum energy included in convolution = MIN$[0.995 \cdot m_\chi, En(\nu_{line}) -4\sigma]$
+    \item Maximum energy included in convolution = MAX$[1.005 \cdot m_\chi, En(\nu_{line}) +4\sigma]$
+\end{itemize}
+where $En(\nu_{line})$ is the neutrino energy where the neutrino line is at the maximum.
+
+\begin{figure}[h]
+    \centering{
+
+    \begin{tabular}{cc}
+        \begin{tabular}{cc}
+            \rotatebox[origin=c]{90}{\small{\todo{Check y axe}}} &
+            \raisebox{-.5\height}{\includegraphics[scale=0.5]{figures/ic_DM/sig_recovery_fixed copy.png}} \\
+
+            &
+            \small{$E_\nu$ (GeV)} \\
+        \end{tabular} &
+
+        \raisebox{-.5\height}{\includegraphics[scale=0.5]{figures/ic_DM/sig_recovery_fixed.png}} \\
+    \end{tabular}
+    }\caption{Top left panel shows the two kernels overlayed the original spectrum from Charon. delta I is the difference in the integral of the peaks with respect to the original spectrum. The vertical red line indicated where the original neutrino line is maximized. Lower right shows the signal recovers of the DM model using the Gaussian kernel with parameters enumerated above.} \label{fig:icDM_fixed_line}
+\end{figure}
+
+These parameters broadly improved the signal recovery of the line spectra.
+An example is provided below.
+Signal recovery plots of the full analysis are provided much further down.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Spline Fitting}\label{sec:icDM_splines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In an effort to reduce computational work, memory burden, and align with point source methods used for NGC1068 and Seyfert analyses, spectral splines were created and adopted for estimating the neutrino flux for the different annihilation.
+Software was written to generate, handle, and calculate values on the splines.
+When using splines, one has to be careful of the goodness to fit.
+There are critical caveats when testing the goodness to fit to MC generated above for all channels.
+\begin{itemize}
+    \item The splines must be Log10(*) in Energy and dN/dE to acount for the exponential nature of the flux
+    \item The fidelity of the fit matters more at $ E_\nu \thickapprox m_\chi $ where the model uncertainties are minimal and physical considerations (like the cut-off) are most apparent.
+    \item The fidelity of the fit matters less at low $ E_\nu $ as the model uncertainties are large AND IceCube's sensitivity diminishes significantly below 500 GeV
+    \item Total integrated counts should be well preserved, however, the resolution of the MC is much higher than IceCube's energy resolution.
+    \begin{itemize}
+        \item Meaning over several steps in E, the integral is preserved
+        \item the step size enters the cost function
+        \item Oscillating residuals, so long as they are very small and well centered, are not penalized as this gets averaged out.
+    \end{itemize}
+\end{itemize}
+
+The resulting cost function to evaluate the goodness of fit was used to account for the above considerations.
+\erriSpline
+
+Where $ \hat{e_i} $ is the spline estimator's value for $x_i$. $ x_i = E_{\nu_i} / m_\chi $. $ \frac{dN_i}{dE_i} $ is the flux value from MC.
+\MSEspline
+
+I then take the RMS of the error distribution and the resulting value (err) is used to evaluate the fidelity of the spectral spline.
+Each SM channel had different tolerances for 'err'. Channels with very hard cut-offs had looser tolerance for err because a lot of error would be generated from the cut-off being estimated to occur slightly early or late.
+Soft channels don't have this issue and therefore the tolerance is very strict.
+The table blow summarizes the tolerances for the SM channels.
 %
 % {| class="wikitable"
 % |-

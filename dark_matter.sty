@@ -284,3 +284,15 @@
             \end{bmatrix}
     \end{equation}
 }
+
+\newcommand{\erriSpline}{
+    \begin{equation}
+        e_i = x_i \cdot \left( \frac{dN_i}{dE_i} - 10^{\hat{e_i}} \right)
+    \end{equation}
+}
+
+\newcommand{\MSEspline}{
+    \begin{equation}
+        \mathrm{err} = \sqrt{{\frac{1}{x_\mathrm{max}-x_\mathrm{min}}\int_{x_\mathrm{min}}^{x_\mathrm{max}} \mathbf{e}^2 dx}}
+    \end{equation}
+}
