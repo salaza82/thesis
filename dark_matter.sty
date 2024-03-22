@@ -57,6 +57,7 @@
 \newcommand{\svtex}{\langle \sigma \mathit{v} \rangle}
 \newcommand{\lcdm}{$\Lambda$\textbf{CDM}}
 \newcommand{\sun}{\odot}
+\newcommand{\earth}{\oplus}
 \newcommand{\parpar}[1]{$#1 \overline{#1}$}
 \newcommand{\pp}[1]{$#1 #1$}
 
@@ -294,5 +295,23 @@
 \newcommand{\MSEspline}{
     \begin{equation}
         \mathrm{err} = \sqrt{{\frac{1}{x_\mathrm{max}-x_\mathrm{min}}\int_{x_\mathrm{min}}^{x_\mathrm{max}} \mathbf{e}^2 dx}}
+    \end{equation}
+}
+
+\newcommand{\nuIDDMFlux}{
+    \begin{equation}\label{eq:nu_idDM_flux}
+        \frac{dN_\nu}{dE_\nu}_\earth = \left( \frac{dN_{\nu_e}}{dE_{\nu_e}} + \frac{dN_{\nu_\mu}}{dE_{\nu_\mu}} +\frac{dN_{\nu_\tau}}{dE_{\nu_\tau}} \right)_{\mathrm{src}} \cdot \textbf{P}(\nu_\alpha \rightarrow \nu_\beta)
+    \end{equation}
+}
+
+\newcommand{\icPtSrcLLH}{
+    \begin{equation}\label{eq:ic3_ptsrc_llh}
+        L(n_{s}) = \prod^{N}_{i=1}\left[\frac{n_{s}}{N}S_{i} + \left( 1 - \frac{n_{s}}{N} \right) B_{i} \right]
+    \end{equation}
+}
+
+\newcommand{\icStackLLH}{
+    \begin{equation}\label{eq:ic3_stact_LLH}
+        L(n_{s}) = \prod^{N_\mathrm{sources}}_{i=1} L_i(n_{s})
     \end{equation}
 }
