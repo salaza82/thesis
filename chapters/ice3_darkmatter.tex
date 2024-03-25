@@ -480,9 +480,24 @@ The J-factors are therefor used as weights for the stacking where an individual 
 Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.
 Below is an image of bb. The full resolution pdfs were provided in links above.
 
-% === Signal Recovery ===
-%
-% This did have a lot of plots before but the spectra have change substantially since then. They converge well but since the computational is expensive here, I'm holding off on rerunning until the spectra are finalized.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Signal Recovery} \label{sec:icDM_sig_recovery}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.36]{figures/ic_DM/dm_plots/stact_bb_ninj_Masspanel.pdf}
+        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.36]{figures/ic_DM/dm_plots/stact_tt_ninj_Masspanel.pdf}
+    }\caption{Signal Recovery study for an analysis with 15 stacked sources using the \GS \J-factors \cite{Geringer_Sameth_2015}. Each panel block represents 14 studies for DM mass ranging between 1 TeV and 20 PeV and one annihilation channel. Top panel block is for $\chi\chi \rightarrow$ \parpar{b}. Bottom panel block is for $\chi\chi \rightarrow$ \parpar{t}. Each panel block features every spectral model used as input in the bottom-right subpanel. The remaining panels show $N_{inj}$ as the number of signal events injected into background simulation. Whereas, $N_s$ is the number of signal events recovered from analyzing the injected simulation. Blue line represents the median values of 100 simulations. Light blue bands show the $1\sigma$ statistical uncertainty around the median.}
+    \label{fig:icDM_sigrecovery_1of2}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.36]{figures/ic_DM/dm_plots/stact_numunumu_ninj_Masspanel.pdf}
+    }\caption{Same as \cref{fig:icDM_sigrecovery_1of2} but for $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_sigrecovery_2of2}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sensitivities} \label{sec:icDM_sensitivity}
@@ -490,12 +505,7 @@ Below is an image of bb. The full resolution pdfs were provided in links above.
 
 In IceCube, we usually define the 90\% confidence level (CL), as the minimum number of signal events ($n_s$) required to have a Type I error rate smaller than 0.5 and Type II error rate of 0.1.
 Csky performs the sweep to find $n_s$ that satisfies the previous condition, and from $n_s$ I use the following equation
-%
-% <center>
-% $
-% n_{s} = T_{live} \int_{0}^{\Delta\Omega}d\Omega \int_{E_{min}}^{E_{max}} dE_{\nu} A_{eff}(\hat{n}, E_{\nu}) \frac{d \Phi_{\nu}}{d\Omega d E_{\nu}} (\hat{n}, E_{\nu}),
-% $
-% </center>
+\svFromNSig
 
 to extract the sensitivity on the dark matter annihilation cross-section.
 $ T_{live} $ is the detector livetime, $ A_{eff} $ is the effective area of the detector, and $ E_{min} $, $ E_{max} $ are the minimum, maximum energies of the expected neutrinos, respectively.
@@ -527,3 +537,30 @@ Finally, I generated a plot with all hypotheses which is presented at the very e
     \caption{Words. I predent Icecibe Sensitivities weeee}
     \label{fig:icDM_sensitivity_2of2}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Systematics} \label{sec:icDM_Systematics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Lol What Systematics.
+Beside signal recovery we don't have many additional studes for here.
+The current analysis plan is to compare these sensitivities to another \J-factor catalog such as \LS \cite{DM_Strigari20}.
+Additionally, we set out to perform a standard suite of IceCube systematic studies which include: \todo{THE BIG 4: ICE MODEL ETC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions} \label{sec:icDM_conclude}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We built many things for this analysis.
+We utilized advanced computing techniques like parrallel programming and spline fitting of particle physics Monte Carlo to greatly expand and refine IceCube's sensitivity to DM annihilation from dSphs.
+We imported updated astrophysical and particle physics models that better represent what we beleive neutrino signals from DM annihilation should look like.
+We, for the first time, build an analysis that is sensitivty to PeV DM annihilation.
+
+When we compare to previous IceCube publications of dSphs \cite{IC3_DM2013}, we see an order of magnitude imrovement to our sensitivity.
+This analysis has been working group approved within IceCube and has begun the unblinding process.
+This processes did not complete in time for this dissertation.
+Therefor we do not show data for this thesis and is the clear next step.
+
+The test statistic distributions in this analysis also demonstrate more characteristic behaviour compared to previous DM analyses.
+With a 10 year dataset, we finally have enough statistics to almost trivially combine with other photon obervatories, such as HAWC.
+The first ground work for a multi-messenger DM search is provided with concluding remarks in \cref{sec:nu_duck}.
