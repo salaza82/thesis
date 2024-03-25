@@ -103,8 +103,8 @@ We use \href{https://iopscience.iop.org/article/10.1088/1475-7516/2020/10/043}{ 
 Because these sources are quite large in absolute terms, and also far (order 10 kpc or more), the resulting flavor spectra are the averages of the transition probabilities \cite{Charon}:
 \nuOscMatrix
 
-When calculating the expected contribution to $n_s$, only $ \nu_\mu, \nu_\tau $ are considered as NST's effective area to $ \nu_e $ is essentially 0.
-With these consideration, the expected composite neutrino spectrum is a average of the two flavors: $ (\nu_\mu + \nu_\tau)/2 $.
+When calculating the expected contribution to $n_s$, only $ \nu_\mu, \nu_\tau $ are considered as NST's effective area to $ \nu_e $ is essentially 0 \cite{IC3_DM2013}.
+With these consideration, the expected composite neutrino spectrum is sum of the two flavors: $\nu_\mu + \nu_\tau$.
 The spectral tables are then converted to splines to condense information, enable random sampling of the spectra, and enable faster computation times.
 The spectral splines are finally implemented as a DM class in csky.
 Examples of the spectra before and after propagation are shown in \cref{fig:icDM_osc_dm}.
@@ -220,39 +220,37 @@ A Final inspection of the splines by eye was done to verify that the spline fitt
 With all of the previously mentioned pieces, we are ready to fully assemble a comprehensive description of the particle physics term $dN/dE$ in \cref{eq:id_dm_flux}.
 \nuIDDMFlux
 
-Presented below are the final spectra that are used in the DM analysis. Bluer spectra are for lower DM mass models. The redder, the higher the DM mass.
-Energy (x-axis) was chosen to roughly represent the energy sensitivity of NST.
-These spectra are the composite (nu and tau flavors) versions. How these are combined is mentioned earlier.
+\begin{figure}[t]
+    \centering{
+        \begin{tabular}{ccc}
+            $\chi\chi \rightarrow$ \parpar{e} &
+            $\chi\chi \rightarrow$ \parpar{\mu} &
+            $\chi\chi \rightarrow$ \parpar{\tau} \\
 
-\tmpfig{Show the post processed spectra that you are sampling}
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_ee_chi2_Masspanel_2024-03-23.pdf} &
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_mumu_chi2_Masspanel_2024-03-23.pdf} &
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_tautau_chi2_Masspanel_2024-03-23.pdf} \\
 
-%
-% <center>
-% {|class="wikitable" style="border-spacing: 2px; border: 1px solid darkgray;"
-% |+ Output composite spectra after spline fit and line smoothing
-% |-
-% | <center> $ \chi\chi \rightarrow b\bar{b} $ </center>
-% | <center> $ \chi\chi \rightarrow t\bar{t} $ </center>
-% | <center> $ \chi\chi \rightarrow \nu_{\mu}\overline{\nu_{\mu}} $ </center>
-% |-
-% | [[Image:bb_rainbow.png |300px]]
-% | [[Image:tt_rainbow.png |300px]]
-% | [[Image:numu_rainbow.png |300px]]
-% |-
-% | <center> $ \chi\chi \rightarrow W^+ W^- $ </center>
-% | <center> $ \chi\chi \rightarrow Z^0Z^0 $ </center>
-% | <center> $ \chi\chi \rightarrow \nu_{\tau}\overline{\nu_{\tau}} $ </center>
-% |-
-% | [[Image:ww_rainbow.png |300px]]
-% | [[Image:zz_rainbow.png |300px]]
-% | [[Image:nutau_rainbow.png |300px]]
-% |-
-% | <center> $ \chi\chi \rightarrow \nu_{e}\overline{\nu_{e}} $ </center>
-% |-
-% | [[Image:nue_rainbow.png |300px]]
-% |}
-% </center>
-%
+
+            $\chi\chi \rightarrow$ \parpar{\nu_e} &
+            $\chi\chi \rightarrow$ \parpar{\nu_\mu} &
+            $\chi\chi \rightarrow$ \parpar{\nu_\tau} \\
+
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_nuenue_chi2_Masspanel_2024-03-23.pdf} &
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_numunumu_chi2_Masspanel_2024-03-23.pdf} &
+            \includegraphics[clip, trim=22.1cm 6.5cm 19.5cm 56.5cm, scale=0.55]{figures/ic_DM/dm_plots/Segue1_nutaunutau_chi2_Masspanel_2024-03-23.pdf} \\
+        \end{tabular}
+    }\caption{Summary of input spectral models that were smoothed with Gaussian kernel. Spectral models are for $\chi\chi \rightarrow$ \parpar{e}, \parpar{\mu}\parpar{\tau}, \parpar{\nu_e}, \parpar{\nu_\mu}, and \parpar{\nu_\tau}. These spectra are the composite ($\nu_\mu$ + $\nu_\tau$) of neutrino flavors. Every spectral model used for this analysis is featured as a colored solid line. Bluer lines are for lower DM mass spectral models. DM masses range from 681 GeV to 100 PeV. HDM \cite{HDMSpectra}, $\chi$aro$\nu$ \cite{Charon}, and Photospline \cite{photospline} are used to generate these spectra. Energy (x-axis) was chosen to roughly represent the energy sensitivity of NST.}
+    \label{fig:line_spectra_smooth}
+\end{figure}
+
+\Cref{fig:line_spectra_smooth} shows the spectral models that required Gaussian smoothing, the leptonic annihilation channels.
+The remaining models where the only processing was the spline fitting are documented in the \todo{refer to apdx}
+Notice that the different neutrino flavors are unique, especially in their low energy tails.
+Therefore, this analysis wll be sensitive to DM annihilating to the distinct neutrino flavors.
+All leptonic channels show prominant, hard features around $E_\nu = m_\chi$.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\J - Astrophysical Component}\label{sec:icDM_spatialmodel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -352,85 +350,136 @@ This is important for future assumptions made (in multi-messenger) and may justi
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/Segue1_bb_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Test statistic (TS) distributions for Segue 1 and $\chi\chi \rightarrow$ \parpar{b}. Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. Orange dashed lines are the traces for a $\chi^2$ distribution with 1 degree of freedom. $\epsilon[\cdot]$ is the fraction of trials smaller than the bracketed value. The final subplot plots the all DM spectral models, similar to \cref{fig:line_spectra_smooth}, used as input for the TS distributions.}
     \label{fig:icDM_Seg1bb_TS}
 \end{figure}
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/UrsaMajorII_bb_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
-    \label{fig:icDM_UMa2bb_TS}
-\end{figure}
-
-\begin{figure}[t]
-    \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/Segue1_tautau_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
     \label{fig:icDM_Seg1tau_TS}
 \end{figure}
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/UrsaMajorII_tautau_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_Seg1numu_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{b}.}
+    \label{fig:icDM_UMa2bb_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
     \label{fig:icDM_UMa2tau_TS}
 \end{figure}
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/Segue1_numunumu_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
-    \label{fig:icDM_Seg1nutau_TS}
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_UMa2numu_TS}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stacked TS} \label{sec:icDM_TSstacked}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{b}.}
+    \label{fig:icDM_stact_bb_TS}
 \end{figure}
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=5.7cm 5.2cm 5.7cm 6.7cm, scale=0.326]{figures/ic_DM/dm_plots/UrsaMajorII_nutaunutau_chi2_Masspanel.pdf}
-    }\caption{\todo{update text because there is no title.} Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.}
-    \label{fig:icDM_UMa2nutau_TS}
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tt_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{t}.}
+    \label{fig:icDM_stact_tt_TS}
 \end{figure}
-%
-% </center>
-%
-% ==== stacked TS ====
-%
-% The presentation of these plots are identical to the previous 'per Source' section. I use csky source software to calculate the TS distributions.
-% Bugs were found when implementing, however were rectified. Warning to future users performing a stacked analysis with custom spectra.
-% In using the above, I am making the implicit assumption that the primary/only cause to a difference in neutrino counts from the sources is accounted for through the J-factors.
-% The J-factors are therefor used as weights for the stacking where an individual source's weight is defined as:
-%
-% <center>
-% <big>$ w_i = \frac{J_i}{\sum^{N_\mathrm{sources}}_{k=1}J_k} $</big>
-% </center>
-%
-% where $ w_i $ is the ith source, $ J_{i/k} $ is the i/k-th source's J-factor.
-%
-% Below is the TS distribution for each SM annihilation channel with stacking of 15 sources.
-%
-% [[Media: stacked_bb_chi2_Masspanel.pdf | $ b\overline{b} $ 1/7/2024]]
-%
-% [[Media: stacked_ww_chi2_Masspanel.pdf | $W^+W^- $ 1/7/2024]]
-%
-% [[Media: stacked_zz_chi2_Masspanel.pdf | $Z^0 Z^0 $ 1/7/2024]]
-%
-% [[Media: stacked_tt_chi2_Masspanel.pdf | $ t\overline{t} $ 1/7/2024]]
-%
-% [[Media: stacked_nuenue_chi2_Masspanel.pdf | $ \nu_e\overline{\nu_e} $ 1/7/2024]]
-%
-% [[Media: stacked_numunumu_chi2_Masspanel.pdf | $ \nu_\mu\overline{\nu_\mu} $ 1/7/2024]]
-%
-% [[Media: stacked_nutaunutau_chi2_Masspanel.pdf | $ \nu_\tau\overline{\nu_\tau} $ 1/7/2024]]
-%
-% Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.
-% Below is an image of bb. The full resolution pdfs were provided in links above.
-%
-% <center>
-% [[Image: stacked_bb_chi2_Masspanel.jpeg| 800px ]]
-%
-% </center>
-%
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_uu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{u}.}
+    \label{fig:icDM_stact_uu_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_dd_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{d}.}
+    \label{fig:icDM_stact_dd_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ee_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{e}.}
+    \label{fig:icDM_stact_ee_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_mumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\mu}.}
+    \label{fig:icDM_stact_mu_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\tau}.}
+    \label{fig:icDM_stact_tau_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_WW_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ $W^+W^-$.}
+    \label{fig:icDM_stact_ww_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ZZ_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \pp{Z}.}
+    \label{fig:icDM_stact_zz_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_nuenue_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_e}.}
+    \label{fig:icDM_stact_nue_TS}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_stact_numu_TS}
+\end{figure}
+
+The presentation of these plots are identical to the previous 'per Source' section. I use csky source software to calculate the TS distributions.
+Bugs were found when implementing, however were rectified. Warning to future users performing a stacked analysis with custom spectra.
+In using the above, I am making the implicit assumption that the primary/only cause to a difference in neutrino counts from the sources is accounted for through the J-factors.
+The J-factors are therefor used as weights for the stacking where an individual source's weight is defined as:
+
+Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. The final subplot plots the all DM spectral models used as input for the TS distribution calculations with bluer lines indicating lower DM mass and redder indicating higher DM mass.
+Below is an image of bb. The full resolution pdfs were provided in links above.
+
 % === Signal Recovery ===
 %
 % This did have a lot of plots before but the spectra have change substantially since then. They converge well but since the computational is expensive here, I'm holding off on rerunning until the spectra are finalized.
