@@ -483,26 +483,47 @@ Below is an image of bb. The full resolution pdfs were provided in links above.
 % === Signal Recovery ===
 %
 % This did have a lot of plots before but the spectra have change substantially since then. They converge well but since the computational is expensive here, I'm holding off on rerunning until the spectra are finalized.
-%
-% === Sensitivities ===
-%
-% In IceCube, we usually define the 90% confidence level (CL), as the minimum number of signal events (n_s) required to have a Type I error rate smaller than 0.5 and Type II error rate of 0.1.
-% Csky performs the sweep to find n_s that satisfies the previous condition, and from n_s I use the following equation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sensitivities} \label{sec:icDM_sensitivity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In IceCube, we usually define the 90\% confidence level (CL), as the minimum number of signal events ($n_s$) required to have a Type I error rate smaller than 0.5 and Type II error rate of 0.1.
+Csky performs the sweep to find $n_s$ that satisfies the previous condition, and from $n_s$ I use the following equation
 %
 % <center>
 % $
 % n_{s} = T_{live} \int_{0}^{\Delta\Omega}d\Omega \int_{E_{min}}^{E_{max}} dE_{\nu} A_{eff}(\hat{n}, E_{\nu}) \frac{d \Phi_{\nu}}{d\Omega d E_{\nu}} (\hat{n}, E_{\nu}),
 % $
 % </center>
-%
-% to extract the sensitivity on the dark matter annihilation cross-section.
-% $ T_{live} $ is the detector livetime, $ A_{eff} $ is the effective area of the detector, and $ E_{min} $, $ E_{max} $ are the minimum, maximum energies of the expected neutrinos, respectively.
-%
-% Sensitivities are calculated for each source individually as if they were the only source and as a stack.
-% Example plots of these plots are shown below and organized by the single source/stacked studies.
-% Finally, I generated a plot with all hypotheses which is presented at the very end.
-%
-% ==== per Source ====
-%
-% ==== Stacked ====
-%
+
+to extract the sensitivity on the dark matter annihilation cross-section.
+$ T_{live} $ is the detector livetime, $ A_{eff} $ is the effective area of the detector, and $ E_{min} $, $ E_{max} $ are the minimum, maximum energies of the expected neutrinos, respectively.
+
+Sensitivities are calculated for each source individually as if they were the only source and as a stack.
+Example plots of these plots are shown below and organized by the single source/stacked studies.
+Finally, I generated a plot with all hypotheses which is presented at the very end.
+
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/bb_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/tt_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/uu_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/dd_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/WW_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/ZZ_money_plot_comb.pdf}
+    }
+    \caption{Words. I predent Icecibe Sensitivities weeee}
+    \label{fig:icDM_sensitivity_1of2}
+\end{figure}
+
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/nuenue_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/numunumu_money_plot_comb.pdf}
+        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/tautau_money_plot_comb.pdf}
+    }
+    \caption{Words. I predent Icecibe Sensitivities weeee}
+    \label{fig:icDM_sensitivity_2of2}
+\end{figure}
