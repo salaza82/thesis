@@ -223,7 +223,7 @@
 
 \newcommand{\TrapIntegral}{
 \begin{equation}\label{eq:trap_2Dintegral}
-    p^2 \cdot \sum_{i=0}^{N}\sum_{j=0}^{M} w_{i,j}\frac{d\mathcal{K}}{d\Omega}(\theta_{i,j}, \phi_{i,j})
+    p^2 \cdot \sum_{i=0}^{N}\sum_{j=0}^{M} w_{i,j}\frac{d\J}{d\Omega}(\theta_{i,j}, \phi_{i,j})
 \end{equation}
 }
 
@@ -319,5 +319,17 @@
 \newcommand{\svFromNSig}{
     \begin{equation}\label{eq:sv_from_nsig}
         n_{s} = T_{live} \int_{0}^{\Delta\Omega}d\Omega \int_{E_{min}}^{E_{max}} dE_{\nu} A_{eff}(\hat{n}, E_{\nu}) \frac{d \Phi_{\nu}}{d\Omega d E_{\nu}} (\hat{n}, E_{\nu}),
+    \end{equation}
+}
+
+\newcommand{\nfwProfile}{
+    \begin{equation}\label{eq:nfw_density}
+        \rho (r) = \frac{\rho_0}{\frac{r}{R_s}\left( 1 + \frac{r}{R_s} \right)^2 }.
+    \end{equation}
+}
+
+\newcommand{\zhaoProfile}{
+    \begin{equation}\label{eq:zhaoDM}
+        \rho(r) = \frac{\rho_0}{(r/R_s)^\gamma \left( 1+ (r/R_s)^\alpha \right)^{(\beta - \gamma)}}.
     \end{equation}
 }

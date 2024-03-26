@@ -2,13 +2,13 @@
 \section{Introduction}\label{sec:mtd_intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-HAWC's current software suite, plugins to 3ML, does not fully utilize computational advancements of recent decades.
+HAWC's current software suite, plugins to 3ML and HAL \cite{2021arXiv211201818M,Abeysekara_2017}, do not fully utilize computational advancements of recent decades.
 Said advancements include the proliferation of Graphical Processing Units (GPUs), and multithreading on multicore processors.
-The analysis described in \Cref{sec:glory_duck} took up to 3 months of human time waiting for the full gambit of data analysis and simulation of background to run.
-Additionally, with the addition of a 2D binning scheme, $f_\mathrm{hit}$ and NN, the time needed to compute expected to grow.
+The analysis described in \Cref{sec:glory_duck} took up to 3 months of wall time waiting for the full gambit of data analysis and simulation of background to compute.
+Additionally, with the updated 2D energy binning scheme, $f_\mathrm{hit}$ and Neural Network (NN), the time needed to compute expected to grow.
 Although excessive computing time was, in part, from an intense use of a shared computing cluster, it was evident that there was room for improvement.
 In HAWC's next generation dSph DM search, I decided to develop codes that would utilize the multicore processors on modern high performance computing clusters.
-The results of this work are featured in this chapter and brought a human timing improvement to computation that scales as $1/N$ where $N$ is the number of threads.
+The results of this work are featured in this chapter and brought a human timing improvement to computation that scales approximately as $1/N$ where $N$ is the number of threads.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Dataset and Background}\label{sec:mtd_databgd}
@@ -20,6 +20,8 @@ This section enumerates the data and background methods used for HAWC's multithr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Itemized HAWC files}\label{sec:mtd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+These files are only available withing HAWC's internal documentation and collaborators.
+They are not meant for public access, and are presented here so that HAWC collaborators can reproduce results accurately.
 
 \begin{itemize}
     \item Detector Resolution: \texttt{refit-Pass5-Final-NN-detRes-zenith-dependent.root}
@@ -31,21 +33,20 @@ This section enumerates the data and background methods used for HAWC's multithr
 \subsection{Software Tools and Development}\label{sec:mtd_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python version 3.
+This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python3.
 I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{HDMSpectra} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
-A NumPy dictionary of HDM was made for Py3.
-The corresponding Python3 file is \texttt{HDMSpectra\_dict\_gamma.npy}.
-These files can also be used for decay channels and tools are provided in HDM's \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{HDMSpectra}.
+A NumPy dictionary of HDM, \texttt{HDMSpectra\_dict\_gamma.npy}, was made for portability within the collaboration.
+These dictionaries were generated from the \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{HDMSpectra}.
 The analysis was performed using the Neural Network energy estimator for Pass 5.F.
-A description of this estimator was provided in \Cref{sec:hawc}.\todo{Define a subsection when it's written}, and its key improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
+A description of this estimator was provided in \Cref{sec:hawc}.\todo{Define a subsection when it's written}, and its key, relevant improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
 All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
-The above repository also incorporates the model inputs used previously in Glory Duck, described in \Cref{sec:glory_duck}
+The above repository also incorporates the model inputs used previously in Glory Duck, described in \Cref{sec:glory_duck}, so Glory Duck remains compatible with modern software.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Set and Background Description} \label{sec:mtd_data_bkgd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 (\todo{Day start}) and 7476 (\todo{Day end}).
+The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 and 7476.
 They were generated from pass 5.f reconstruction.
 The analysis is performed using the NN energy estimator with bin list:
 
@@ -54,7 +55,7 @@ The analysis is performed using the NN energy estimator with bin list:
 \end{itemize}
 Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
 
-Background considerations and source selection was identical to \Cref{sec:gd_databgd}, and no additional arguments are provided here.
+Background considerations and source selection was identical to \Cref{sec:gs_data_bkgd}, and no additional arguments are provided here.
 Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply for this DM search and are not added upon here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,44 +63,39 @@ Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The analysis and its systematics are almost identical to \Cref{sec:gd_analysis}.
-Importantly, we use the same \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
-We add on to the previous study with a search for DM decay.
-The flux equations for DM decay are
-\iddmdecay[\gamma]
-
-with a new quantity, the \D factor, defined as
-\dfactor
-Software was written to accommodate DM decay from dSphs, however decay profiles were not received from \LS by the time of writing this thesis.
+Importantly, we use the same \todo{fix this ref} \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 For these spectra, we import HDM with Electroweak (EW) corrections and additional corrections for neutrinos above the EW scale \cite{HDMSpectra}.
-The spectrum is implemented as a model script in astromodels for 3ML.
-A comprehensive description of EW corrections and neutrino considerations are provided later in \todo{refeance MM nu duck}.
+The spectra are implemented as a model script in astromodels for 3ML.
+A comprehensive description of EW corrections and neutrino considerations are provided later in \cref{sec:nu_duck}.
 
 \begin{figure}[t]
     \centering{
         \includegraphics[scale=0.8]{figures/mtd_hawc_dm/pppc_vs_hdm.png}
     }
-    \caption{Difference between spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra}. Shown is the expected DM annihilation spectrum for $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
+    \caption{Spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra} for DM annihilation: $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
     \label{fig:pppc_vs_hdm}
 \end{figure}
 
-\Cref{fig:pppc_vs_hdm} demonstrates the impact of changes from HDM on DM
+\Cref{fig:pppc_vs_hdm} demonstrates the impact of changes implemented in HDM on DM
 annihilation to W bosons.
 A class in astromodels was developed to include HDM and is aptly named \texttt{HDMSpectra} within \texttt{DM\_models.py}.
 The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
 \begin{itemize}
     \item[] $e^+e^-$, $\mu^+\mu^-$, $\tau^+\tau^-$,$b\bar{b}$, $t\bar{t}$, $gg$, $W^+W^-$, $ZZ$, $c\bar{c}$, $u\bar{u}$, $d\bar{d}$, $s\bar{s}$, $\nu_e \overline{\nu_e}$, $\nu_\mu \overline{\nu_\mu}$, $\nu_\tau \overline{\nu_\tau}$, $\gamma\gamma$, $hh$.
 \end{itemize}
-For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have total energy equal $m_\chi$ \cite{HDMSpectra}.
-This introduces a $\delta$-function that is much narrower than the energy resolution of the HAWC detector.
+For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have $E_\gamma = m_\chi$ \cite{HDMSpectra}.
+This introduces $\delta$-function that is much narrower than the energy resolution of the HAWC detector.
 To ensure that this feature is not lost in the likelihood fits, the 'line' feature is convolved with a Gaussian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
 This differs from HAWC's previous line study where 30\% of HAWC's energy resolution was used for the kernel \cite{HAWC_dm_gammalines}.
-The NN energy estimator's strength compared to $f_\mathrm{hit}$ at low gamma-ray energy enables smaller resolutions in addition to low energy tails in the spectral models \cite{HDMSpectra}.
+The NN energy estimator's strength compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{HDMSpectra}.
 $\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
+We did not explore how well we reconstruct injected signal events for various kernels widths.
+This is a systematic that should be tested before publication to journal.
 Spectral models for the remaining annihilation channels are plotted for each $m_\chi$ in \Cref{fig:apdx_mtd_spectra}.
 
 \begin{figure}[t]
@@ -107,19 +103,23 @@ Spectral models for the remaining annihilation channels are plotted for each $m_
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_gammagamma.png}
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_zz.png}
     }
-    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after Gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All Spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}. Axes are drawn roughly according to the energy sensitivity of HAWC.}
+    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after Gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}. Axes are drawn roughly according to the energy sensitivity of HAWC.}
     \label{fig:hdm_gamma_lines}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\J and \D - Astrophysical Components}\label{sec:mtd_spatialmodel}
+\subsection{\J Astrophysical Components}\label{sec:mtd_spatialmodel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The J-factor profiles for each source are imported from Louis Strigari et al. (referred to with \LS) \cite{DM_Strigari20}.
-Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to $\theta = 0.5^{\circ}$ were provided directly from the authors.
+The \LS catalog fits a Navarro–Frenk–White (NFW) \cite{NFWProfile} spatial DM distributions to the dSphs which has a DM density of
+\nfwProfile
+$\rho_0$ and the scale radius, $R_s$ are free parameters fit for each dSph.
+$r$ is the distance from the center of the dSph.
+
+Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to an angular separation $\theta = 0.5^{\circ}$ were provided directly from the authors.
 Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
 \TrapIntegral
-$\mathcal{K}$ is either \J or \D for the spatial distributions of annihilation or decay respectively.
 $p$ is the angular side of one pixel in the map.
 $w_{i,j}$ is a weight assigned the following ways:
 \begin{itemize}
@@ -127,7 +127,7 @@ $w_{i,j}$ is a weight assigned the following ways:
     \item[] $w_{i,j} = 1/2$ if $(\theta_{i,j}, \phi_{i,j})$ is on an edge of the region of integration
     \item[] $w_{i,j} = 1/4$ if $(\theta_{i,j}, \phi_{i,j})$ is on a corner of the region of integration
 \end{itemize}
-\Cref{fig:ls20_jfac_maps} shows the median and $\pm1\sigma$ maps used as input for DM annihilation studied by \LS.
+\Cref{fig:ls20_jfac_maps} shows the median and $\pm1\sigma$ maps used as input for this DM annihilation study.
 
 \begin{figure}[t]
     \centering{
@@ -159,8 +159,8 @@ $w_{i,j}$ is a weight assigned the following ways:
 \subsection{Source Selection and Annihilation Channels}\label{sec:mtd_srcs_y_chan}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-HAWC's sources for this multithreaded analysis include Coma Berenices, Draco, Segue 1, and Sextans
-\LS observes up to 43 sources in its publication, however only 4 of the best fit profiles were provided at the time this thesis was written.
+HAWC's sources for this multithreaded analysis include Coma Berenices, Draco, Segue 1, and Sextans.
+\LS observed up to 43 sources in its publication, however only 4 of the best fit profiles were provided at the time this thesis was written.
 A full description of each source used in this analysis is found in \Cref{tab:mtd_J_factor}.
 
 \input{tables/mtd_src_summary.tex}
@@ -171,7 +171,7 @@ HDM is used to account for this shortfall \cite{HDMSpectra}.
 HDM also models DM to the Planck scale which permits HAWC to probe PeV scale DM.
 For this study, we sample DM masses: $1$ TeV - $10$ PeV with 6 mass bins per decade in DM mass.
 In the case of line spectra ($\chi\chi \rightarrow \gamma\gamma$, or $ZZ$), we double the mass binning to 12 DM mass bins per decade in DM mass.
-A larger source catalog is used that uses a Navarro–Frenk–White (NFW) spatial DM distribution from \LS \cite{DM_Strigari20}.
+
 Because NFW has fewer parameters than what is used for \GS, \LS is able to fit ultra-faint dwarves, expanding the number of sources available for DM searches.
 Finally, the gamma-ray ray dataset is much larger.
 The study performed here analyzes 2565 days of data compared to 1017 days analyzed in \Cref{sec:glory_duck}.

@@ -51,6 +51,9 @@ This section enumerates the data and background methods used for HAWC's study of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Itemized HAWC files}\label{sec:gd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+These files are only available withing HAWC's internal documentation and collaborators.
+They are not meant for public access, and are presented here so that HAWC collaborators can reproduce results accurately.
+
 \begin{itemize}
     \item Detector Resolution: \url{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse\\
     \_10pctlogchargesmearing\_0.63qe\_25kHzNoise\_run5481\_curvature0\_index3.root}
@@ -148,7 +151,15 @@ A class in astromodels was developed to include the EW correction from the PPPC 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The J-factor profiles for each source are imported from Geringer-Sameth (referred to with \GS) \cite{Geringer_Sameth_2015}.
-These were pulled from the publication as $\J(\theta)$, where $\theta$ is the angular separation from the center of the source.
+\GS fits the Zhao DM profile to the dSphs which has a DM density described as \cite{Zhao:1995cp}
+\zhaoProfile
+$R_s$ is the scale radius and free parameter in the model.
+$\gamma$ is the logarithmic slope in the region $r << R_s$.
+$\beta$ is the logarithmic slope in the region $r >> R_s$.
+$\alpha$ is known as the sharpness of transition where $r \approx R_S$.
+The classic Navarro-Frenk-White \cite{NFWProfile} (NFW) can be retrieved from Zhao by fixing $(\alpha, \beta, \gamma) = (1,3,1)$.
+
+\GS best fits were pulled from the publication as $\J(\theta)$, where $\theta$ is the angular separation from the center of the source.
 HAWC requires maps in terms of $\frac{d\J}{d\Omega}$, so the conversion from the maps was done in the following way...
 
 First, convert the angular distances to solid angles
