@@ -98,7 +98,7 @@ We did not explore how well we reconstruct injected signal events for various ke
 This is a systematic that should be tested before publication to journal.
 Spectral models for the remaining annihilation channels are plotted for each $m_\chi$ in \Cref{fig:apdx_mtd_spectra}.
 
-\begin{figure}[t]
+\begin{figure}[h]
     \centering{
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_gammagamma.png}
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_zz.png}
@@ -151,7 +151,7 @@ $w_{i,j}$ is a weight assigned the following ways:
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jp1_plot.pdf}} \\
     \end{tabular}
     }
-    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the mean value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf}
+    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the mean value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. Profiles are truncated at 1$^\circ$ and flattened beyond.}
     \label{fig:ls20_jfac_maps}
 \end{figure}
 
@@ -172,7 +172,9 @@ HDM also models DM to the Planck scale which permits HAWC to probe PeV scale DM.
 For this study, we sample DM masses: $1$ TeV - $10$ PeV with 6 mass bins per decade in DM mass.
 In the case of line spectra ($\chi\chi \rightarrow \gamma\gamma$, or $ZZ$), we double the mass binning to 12 DM mass bins per decade in DM mass.
 
-Because NFW has fewer parameters than what is used for \GS, \LS is able to fit ultra-faint dwarves, expanding the number of sources available for DM searches.
+\LS provides 25 sources within HAWC's field of view.
+Additionally, NFW \cite{NFWProfile} DM distributions have fewer parameters than Zhao \cite{Zhao:1995cp}, so \LS fits ultra-faint dwarves which expands the number of sources.
+However, all sources were not provided by the authors in time for the completion of this dissertation.
 Finally, the gamma-ray ray dataset is much larger.
 The study performed here analyzes 2565 days of data compared to 1017 days analyzed in \Cref{sec:glory_duck}.
 
@@ -180,7 +182,7 @@ The study performed here analyzes 2565 days of data compared to 1017 days analyz
 \section{Likelihood Methods} \label{sec:mtd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-These are identical to \Cref{sec:gd_hawc_llh} and not additional changes are made to the likelihood.
+These are identical to \Cref{sec:gd_hawc_llh} and no additional changes are made to the likelihood.
 Bins in this analysis are expanded to include HAWC's NN energy estimator.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,17 +190,18 @@ Bins in this analysis are expanded to include HAWC's NN energy estimator.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Previously, as in \Cref{sec:gd_analysis}, the likelihood was minimized for one model at a time.
-One model in this case representing a DM annihilation channel, DM mass, and dSph.
-In an effort to conserve human and CPU time, jobs submitted for high performance computing contained a list of DM masses to iterate over for likelihood fitting.
-Jobs were then trivially parallelized for each permutation of the two lists: \texttt{CHANS} (SM annihilation channel) and \texttt{SOURCES} (dSph spatial templates).
+One model in this case representing a DM annihilation channel (\texttt{CHAN}), DM mass ($m_\chi$), and dSph (\texttt(SOURCE)).
+In an effort to conserve human and CPU time, jobs submitted for high performance computing contained a list of $m_\chi$ to iterate over for likelihood fitting.
+Jobs were then trivially parallelized for each permutation of the two lists: \texttt{CHANS} and \texttt{SOURCES}.
 The lists for \texttt{CHANS} and \texttt{SOURCES} are found in \Cref{sec:mtd_particlephysics} and \Cref{tab:mtd_J_factor}, respectively.
-Initially, 11 DM mass bins were serially sampled for one job defined by a [SM channel, dSph] set.
+Initially, 11 $m_\chi$ were serially sampled for one job defined by a [\texttt{CHAN}, \texttt{SOURCE}] tuple.
 Computing the likelihoods would take between 1.5 to 2 hrs, stochastically, for a job.
 We expect to compute likelihoods for data and 300 Poisson background trials.
-The estimated CPU time based on the above for all SM annihilation channels (17) and 25 sources (all \LS sources withing HAWC's field of view) amounted to $127,925$ jobs.
+The estimated CPU time based on the above for all \texttt{CHAN} (N = 17) and \texttt{SOURCE} (M = 25) was estimated to $127,925$ jobs.
 In total, $1,407,175$ likelihood fits and profiles would be computed for the 11 mass bins we wished to study.
-The estimated CPU time ranged between $10$k CPU days - $8$k CPU days.
-Human time is more challenging to estimate as job allocation is stochastic and highly dependent on what other users are submitting, yet it is unlikely that all jobs would run simultaneously.
+The estimated CPU time ranged between $8$k CPU days to $10$k CPU days.
+Human time is more challenging to estimate as job allocation is stochastic and highly dependent on what other users are submitting.
+Yet, it is unlikely that all jobs would run simultaneously.
 Therefore, we can expect human time to be about as long as was seen in \Cref{sec:glory_duck} which was on the order of months to fully compute on a smaller analysis.
 A visual aid to describe how jobs were organized is provided in \Cref{fig:mtd_gd_workflow}.
 
@@ -225,15 +228,15 @@ The time to compute these values is not predictable or consistent because many v
 Comprehensively, these variables are:
 \begin{itemize}
     \item $m_\chi$ : DM rest mass
-    \item \texttt{CHAN} : DM SM annihilation channel.
-    \item \texttt{SOURCE} : dSph within HAWC's field of view. This involves a spatial template AND coordinate in HAWC data.
+    \item \texttt{CHAN} : DM annihilation channel in SM.
+    \item \texttt{SOURCE} : dSph. Involves a spatial template AND coordinate in HAWC data.
     \item \sv: Effectively the flux normalization and free parameter in the likelihood fit.
 \end{itemize}
 Therefore, we develop an asynchronous, functional-parallel coding pattern.
-Asynchronous meaning that the instructions and computing within a function are independent and permitted to be out of sync with sibling computations.
+Asynchronous meaning the instructions within a function are independent and permitted to be out of sync with sibling computations.
 Functional-parallel meaning that instructions are the subject of parallelization rather than threading the likelihood computation.
-This is close to trivial parametrization seen in \Cref{fig:mtd_gd_workflow} except that we seek to consolidate the loading stages (software, data, and detector resolution loading).
-Reducing the total instances of loading stages and distributing access to the reduced loads across multiple asynchronous threads is expected to reduce serial processing time and the overhead implicit to each job in addition to saving human time.
+This is close to trivial parallelization seen in \Cref{fig:mtd_gd_workflow} except that we seek to consolidate the loading stages (software, data, and detector resolution loading).
+Multiple asynchronous threads are expected to reduce total serial processing time and total overhead across the entire project in addition to saving human time.
 
 \begin{figure}[h]
     \centering{
@@ -246,20 +249,19 @@ Reducing the total instances of loading stages and distributing access to the re
 We need a way to measure and compare the expected speedup and efficiency gain for this asynchronous coding pattern.
 I pull inspiration for timing measurement from \cite{ArtofHPC} and use \textit{Amdahl's law with hybrid programming}.
 Hybrid programming meaning that the computation is a mix of distributed and shared memory programming.
-If we assume the code is fully parallelizable over $p$ processors and $c$ threads, the ideal speedup is simply $pc$ and ideal run-time is $T_1/(pc)$.
+If we assume the code is fully parallelizable over $p$ processors and $c$ threads, the ideal speedup is simply $pc$, and ideal run-time is $T_1/(pc)$.
 $T_1$ is the total time for a parallel program to run if only 1 processor is allocated.
 However, the coding pattern contains some amount of unavoidable serial computation, as shown in \Cref{fig:mtd_gufsta}.
-In our case, the run time is estimated to be
+In our case, the run time, $T_{p,c}$, is estimated to be
 \amdahl
 $F_s$ is the fraction of CPU time dedicated to serial computation.
-The expected speedup is
+The expected speedup, $S_{p,c}$, is
 \amdahlSpeed
 From \Cref{eq:amdahlSpeed}, we can see that the speed-up scales with $p/F_s$.
 We are free to minimize $F_s$ asymptotically by enlarging the total models that are submitted to the thread pool, thereby shrinking the CPU fraction dedicated to serial operation.
 We are also free to define exactly how many threads and processors we utilize, yet eventually hit a hard cap at the hardware available on our computing cluster.
-HAWC uses Intel Xeon processors with 48 cores and 96 threads.
-This means when N-threads ($c$) are defined, N mod 2 cores ($p$) are needed.
-We see that a successful code scales well as the expected speedup is inversely correlated with $F_s$.
+HAWC uses Intel Xeon\texttrademark processors with 48 cores and 96 threads.
+We see that a successful code will scale well as the expected speedup is inversely correlated with $F_s$.
 As the total number of models sampled grows, the speedup will also.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -275,14 +277,13 @@ As the total number of models sampled grows, the speedup will also.
 \end{figure}
 
 The multithreaded code was written in Python3 and is documented in the \texttt{dark\_matter\_hawc} \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark\_matter\_hawc}{repository} within the script named \texttt{mpu\_analysis.py}.
-A version of the script as of April 25 \todo{make sure to update on this date} is also provided in \Cref{sec:apx_mpu_script}
+A version of the script as of April 25 \todo{make sure to update on this date} is also provided in \Cref{sec:apx_mpu_script}.
 It has many dependencies including the HAWC analysis software.
 \Cref{fig:mtd_multithreads} displays the workflow of a job with 3 threads.
-Within a job, \texttt{SOURCE} is kept fixed .
-\texttt{CHAN(S)} remains 17 elements long.
+Within a job, \texttt{SOURCE} is kept fixed and \texttt{CHANS} remains 17 elements long.
 More $m_\chi$ are sampled from 11 bins up to 49 (for $\gamma\gamma$ and $ZZ$) and 25 (for remaining \texttt{CHANS}) which amounts to 12 or 6 mass bins per decade.
-The DM mass, $m_\chi$, and SM annihilation channels, \texttt{CHANS}, are permuted into a 473 element list which is split evenly across N threads where N ranges between 5 - 16.
-Within a thread, for each $m_\chi$-\texttt{CHAN} tuple, 1001 \sv~values are sampled in the likelihood, and the value of \sv~that maximizes the likelihood is found.
+$m_\chi$ and \texttt{CHANS} are permuted into a 473 element list which is split evenly across N threads where N is [2, 8, 16].
+For each $m_\chi$-\texttt{CHAN} tuple, 1001 \sv~values are sampled in the likelihood, and the value of \sv~that maximizes the likelihood is found.
 Although rare, fits that failed are handled on a case by case basis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -291,27 +292,27 @@ Although rare, fits that failed are handled on a case by case basis.
 
 \input{tables/mtd_timing.tex}
 
-We see a tremendous reduction to human time waiting for our dSph analyses to run.
+We see a significant reduction to wall time needed for our dSph analyses to run.
 \Cref{tab:mtd_timing_study} shows the timing summaries for analyses of different sizes and thread counts.
 Additionally, the efficiency gained when consolidating the serial loading of data is also apparent in our ability to study many more tasks in about the same amount of wall time as a smaller serial computation.
 Trials represented in the table were run on an AMD Opteron\textsuperscript{\textregistered} processor 6344 with 48 cores, 2 threads per core; 2.6 GHz clock.
-This is not the same architecture used for analysis on the computing cluster however they are similar enough that results shown here are reasonably representative of computing on the HAWC computing cluster.
-I use the \cref{tab:mtd_timing_study} for the inferences and conclusions in the following paragraphs.
+This is not the same architecture used for analysis on the HAWC computing cluster however they are similar enough that results shown here are reasonably representative of computing on the HAWC computing cluster.
+I use \cref{tab:mtd_timing_study} for the inferences and conclusions in the following paragraphs.
 
 First, we want to find $T_s$, the time of serial computation.
 From \cref{fig:mtd_gufsta}, the timing for our coding pattern can be written as
 \TimingAll
 $M$ is the number of functional-parallel tasks (represented as column 1 of \cref{tab:mtd_timing_study}), and $t_p$ is the average time to complete a single parallel task.
 $T^M_{1,1}$ is the total time for a parallel program to run if only 1 processor is allocated for M parallel task.
-With two runs of different M ($M1$ and $M2$), we can use a system of equations to derive
-\TsfromMs
-We also extract $t_p$ using the same methods:
-\TpfromMs
-From \cref{tab:mtd_timing_study}, we set $M1 = 50$ and $M2 = 74$ and take their corresponding $T_{1,1}$ from the table to calculate $T_s$ and $t_p$.
+With two runs of different M ($M1$ and $M2$), we can use a system of equations to compute
+% \TsfromMs
+% We also extract $t_p$ using the same methods:
+% \TpfromMs
+% From \cref{tab:mtd_timing_study}, we set $M1 = 50$ and $M2 = 74$ and take their corresponding $T_{1,1}$ from the table to calculate $T_s$ and $t_p$.
 \TsTp{803.1}{104.6}
 Now, we have specific estimation for the fraction of serial computing time, $F_s$:
 \specificFs{803.1}{104.6}
-The maximum M for this study is 473 which evaluates using \cref{eq:specificFs}: $F_s = 0.016$ or 1.6\% of computing time.
+The maximum M for this study is 473 which evaluates to: $F_s = 0.016$ or 1.6\% of computing time.
 \Cref{tab:mtd_speedup_study} shows the resulting speedups.
 \input{tables/mtd_speedup.tex}
 
@@ -330,10 +331,10 @@ We see very clearly that there is a lot to gain, and this new coding pattern wil
 
 3 of the 43 \LS dSphs considered for the multithreaded analysis.
 These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
-The 3 likelihood profiles are then stacked to synthesize a combined limit on the dark matter cross-section, \sv.
-This combination is done for the 17 SM annihilation channels.
+The three likelihood profiles are then stacked to synthesize a combined limit on the dark matter annihilation cross-section, \sv.
+This combination is done each of the 17 SM annihilation channels.
 \Cref{fig:mtd_limits_1of2} and \cref{fig:mtd_limits_2of2} show the combined limits for all annihilation channels with HAWC's observations.
-Test statistics of the best fit \sv values for each DM mass and SM annihilation channels are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
+Test statistics of the best fit \sv~values for each $m_\chi$ and \texttt{CHAN} are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
 We also compare these limits to HAWC's Glory Duck limits shown in \cref{sec:hawc_results}.
 The comparison to Glory Duck are featured in \cref{fig:mtd_compare2gd} for all the DM annihilation channels studied for Glory Duck.
 A full comparison is provided in the appendix in \cref{fig:mtd_compare_ComaB}, \cref{fig:mtd_compare_Seg1}, and \cref{fig:mtd_compare_Sextans}.
@@ -352,7 +353,7 @@ For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_ww_.pdf}
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_hh_.pdf}
     }
-    \caption{HAWC upper limits at 95\% confidence level on \sv versus DM mass for $\chi\chi \rightarrow $ \parpar{b}, \parpar{t}, \parpar{u}, \parpar{d}, \parpar{s}, \parpar{c}, \pp{g}, $W^+ W^-$, and \pp{h}. Limits are with \LS \J-factors \cite{DM_Strigari20}. The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
+    \caption{HAWC upper limits at 95\% confidence level on \sv~versus $m_\chi$ for $\chi\chi \rightarrow $ \parpar{b}, \parpar{t}, \parpar{u}, \parpar{d}, \parpar{s}, \parpar{c}, \pp{g}, $W^+ W^-$, and \pp{h}. Limits are with \LS \J-factors \cite{DM_Strigari20}. The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
 \label{fig:mtd_limits_1of2}
 \end{figure}
 
@@ -367,7 +368,7 @@ For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_gammagamma_.pdf}
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/Combined95_New_duck_zz_.pdf}
     }
-    \caption{HAWC upper limits at 95\% confidence level on \sv versus DM mass for $\chi\chi \rightarrow $ \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \pp{\gamma} and \pp{Z}. Limits use \LS \J factors \cite{DM_Strigari20}. The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
+    \caption{HAWC upper limits at 95\% confidence level on \sv~versus $m_\chi$ for $\chi\chi \rightarrow $ \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \pp{\gamma} and \pp{Z}. Limits use \LS \J-factors \cite{DM_Strigari20}. The solid line represents the observed combined limit. Dashed lines represent limits from individual dSphs.}
 \label{fig:mtd_limits_2of2}
 \end{figure}
 
@@ -383,7 +384,7 @@ For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_ww_.pdf}
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_hh_.pdf}
     }
-    \caption{HAWC TS values for best fit \sv~versus $m_\chi$ for SM annihilation channels: $\chi\chi \rightarrow $ \parpar{b}, \parpar{t}, \parpar{u}, \parpar{d}, \parpar{s}, \parpar{c}, \pp{g}, $W^+ W^-$, and \pp{h}. Limits use \LS \J factors. The solid black line shows the combined best fit TS values. The colored, dashed lines are the TS values from each dSph.}
+    \caption{HAWC TS values for best fit \sv~versus $m_\chi$ for SM annihilation channels: $\chi\chi \rightarrow $ \parpar{b}, \parpar{t}, \parpar{u}, \parpar{d}, \parpar{s}, \parpar{c}, \pp{g}, $W^+ W^-$, and \pp{h}. Limits use \LS \J-factors. The solid black line shows the combined best fit TS values. The colored, dashed lines are the TS values from each dSph.}
 \label{fig:mtd_TS_1of2}
 \end{figure}
 
@@ -398,18 +399,17 @@ For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_gammagamma_.pdf}
     \includegraphics[scale=0.21]{figures/mtd_hawc_dm/results/CombinedTS_New_duck_zz_.pdf}
     }
-    \caption{HAWC TS values for best fit \sv~versus $m_\chi$ for SM annihilation channels: $\chi\chi \rightarrow $ \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \pp{\gamma} and \pp{Z}. Limits use \LS \J factors. The solid black line shows the combined best fit TS values. The colored, dashed lines are the TS values from each dSph.}
+    \caption{HAWC TS values for best fit \sv~versus $m_\chi$ for SM annihilation channels: $\chi\chi \rightarrow $ \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \pp{\gamma} and \pp{Z}. Limits use \LS \J-factors. The solid black line shows the combined best fit TS values. The colored, dashed lines are the TS values from each dSph.}
 \label{fig:mtd_TS_2of2}
 \end{figure}
 
 No DM was found in HAWC observations.
-The largest excess found in HAWC data was for DM annihilating to $W$-bosons for $m_\chi = 10$TeV at $2\sigma$.
+The largest excess found in HAWC data was for DM annihilating to $W$-bosons or \parpar{\nu_e} for $m_\chi = 10$~TeV at significance $2.11\sigma$ and $2.14\sigma$ respectively.
 HAWC's limits and excesses are dominated by Segue1.
-Coma Berenices shows excess at higher DM mass, yet no similar excesses were observed in Segue1.
-Sextans did not contribute significantly to signal excess or the combined limit as it is at high zenith.
+Coma Berenices shows excesses at higher DM mass, yet no similar excesses were observed in Segue1 or Sextans.
+Sextans did not contribute significantly to signal excesses or the combined limit as it is at high zenith.
 Draco was not included as the PDF of some of our analysis bins were wider than what is reasonable for a point source analysis.
 Draco is at a high zenith for HAWC, so the effort required to include it was not justified by the benefits.
-
 
 \begin{figure}[h]
 \centering{
@@ -429,21 +429,22 @@ Draco is at a high zenith for HAWC, so the effort required to include it was not
         \raisebox{-.5\height}{\includegraphics[scale=0.2]{figures/mtd_hawc_dm/systematics/Systematic_GD_New_duck_Sextans_ee.pdf}} \\
     \end{tabular}
     }
-    \caption{Comparison of HAWC limits from this analysis to Glory Duck (\cref{fig:hawc_combined_limit}) for 3 dSphs and 3 SM annihilation channels: \parpar{b}, \parpar{\tau}, and \parpar{e}. Each sector shows the 95\% confidence limit from Glory Duck (blue line) and this analysis (orange line) in the top plot. The lower plot features the ratio in log scale of Glory Duck to this analysis in a red solid line. Horizontal dashed lines are for ratios of 1.0 (black) and $\sqrt{2}$ (blue). Ratios larger than 1.0 are for limits smaller, or stricter, than Glory Duck. Ratios larger than $\sqrt{2}$ indicates limits are stricter than a simple doubling of the Glory Duck data.}
+    \caption{Comparison of HAWC limits from this analysis to Glory Duck (\cref{fig:hawc_combined_limit}) for 3 dSphs and 3 DM annihilation channels: \parpar{b}, \parpar{\tau}, and \parpar{e}. Each sector shows the 95\% confidence limit from Glory Duck (blue line) and this analysis (orange line) in the top plot. The lower plot features the ratio in log scale of Glory Duck to this analysis in a red solid line. Horizontal dashed lines are for ratios of 1.0 (black) and $\sqrt{2}$ (blue). Ratios larger than 1.0 are for limits smaller, or stricter, than Glory Duck. Ratios larger than $\sqrt{2}$ indicates limits are stricter than a simple doubling of the Glory Duck data.}
 \label{fig:mtd_compare2gd}
 \end{figure}
 
-We were not able to generate background trials in time of writing this thesis.
+We did not generate background trials in time of writing this thesis.
 These are not shown and are an immediate next step for this analysis before publication.
 
 When comparing these results to \cref{sec:hawc_results}, we see an overall decrease to the confidence limit therefore improvement to HAWC's expected sensitivity.
-This improvement is generally stronger than a doubling of data, or a factor $sqrt{2}$ decrease.
+This improvement is generally stronger than a doubling of data, or a factor $\sqrt{2}$ decrease.
 The comparison is somewhat complex and dependent on the dSph and SM annihilation channel.
 \Cref{fig:mtd_compare2gd} shows the comparisons of limits calculated for this analysis and Glory Duck (\cref{sec:hawc_results}).
 Segue 1 and Coma Berenices are low zenith where improvements to HAWC's analysis come only from energy estimation.
 Differences between these two are dominantly from their differences in \J-factor, half-light radii of the dSphs, and the particle physics inputs.
 Substantial gains in HAWC's analysis methods (pass 5.F) were made at high zenith which is important for sources like Sextans.
-The HDM particle physics model produces almost identical spectra to the PPPC for $\chi\chi \rightarrow e^-e^+$, so can be used to compare limits between dSph.
+The HDM particle physics model produces almost identical spectra to the PPPC for $\chi\chi \rightarrow e^-e^+$.
+This channel can be used to compare limits between dSph spatial models.
 Overhead sources see minimal improvement to the limits, while high zenith sources see an order of magnitude improvement for all DM masses.
 Softer SM annihilation channels see broad improvements to the limit compared to harder channels.
 
@@ -452,17 +453,17 @@ Softer SM annihilation channels see broad improvements to the limit compared to 
 \section{Systematics}\label{sec:mtd_systemaics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-These are identical to what was performed earlier in Glory Duck, \cref{sec:hawc_systematic}.
+Systematics to this analysis are identical to what was performed earlier in Glory Duck, \cref{sec:hawc_systematic}.
 We are also sensitive to the choice in spatial template, and this was explored in \cref{sec:gd_ext_limitvs_ptsrc} and \cref{sec:gd_gsVb}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion and Discussion}\label{sec:mtd_conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this multithreaded analysis, we have used observations of 3 dSphs from HAWC to perform a collective DM search for annihilation signals.
+In this multithreaded analysis, we have used observations of 3 dSphs from HAWC to perform a collective DM annihilation search towards dSphs.
 The data were combined across sources to significantly increase the sensitivity of the search.
 Advanced computational techniques were deployed to accelerate wall-time spent analyzing by an order of magnitude.
-We have observed no significant deviation from the null, no DM, hypothesis, and so present our results in terms of upper limits on the annihilation cross-section for seventeen potential DM annihilation channels across four decades of DM mass.
+We have observed no significant deviation from the null, no DM hypothesis, and so present our results in terms of upper limits on the velocity-weighted cross-section, \sv, for seventeen potential DM annihilation channels across four decades of DM mass.
 
 This analysis serves as a proof of concept for multithreaded HAWC analyses with large parameter spaces.
 Larger datasets with fast techniques will be essential to tackling the DM problem.
@@ -471,5 +472,5 @@ Advanced studies could aim to merge our results with those from neutrino observa
 
 A full HAWC analysis will include systematic studies of the \J-factor distributions.
 Additionally, because of the timing reduction, the study can be doubled in size to include DM decay.
-We have no yet received the remaining spatial profiles to the \LS catalog, and limits can be quickly computed once these are received.
+We have not yet received the remaining spatial profiles to the \LS catalog, and limits can be quickly computed once these are received.
 Finally, statistical studies with Poisson variation of HAWC's background are essential to a comprehensive understanding of our observed excesses.
