@@ -519,6 +519,7 @@ Among channels missing include two neutrino flavors: $e$ and $\tau$.
     \caption{Words. I predent Icecibe Sensitivities weeee}
     \label{fig:icDM_sensitivity_2of2}
 \end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematics} \label{sec:icDM_Systematics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -527,6 +528,34 @@ Lol What Systematics.
 Beside signal recovery we don't have many additional studes for here.
 The current analysis plan is to compare these sensitivities to another \J-factor catalog such as \LS \cite{DM_Strigari20}.
 Additionally, we set out to perform a standard suite of IceCube systematic studies which include: \todo{THE BIG 4: ICE MODEL ETC}
+The following section enumerates the impact of the Earth on our hardest neutrino spectra.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Earth Effects} \label{sec:icDM_eart_effects}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tmpfig{Earth attenutation diagram.}
+
+One systematic I check however is the impact of the Earth on our sensitivity to $\chi\chi \rightarrow$ \parpar{\nu_\mu}.
+This channel is expected to be significantly impacted because it has a significant contribution at PeV energies for $m_\chi \ge 1$PeV.
+The Earth is expected to attenuate these higher energy neutrinos.
+However, these neutrino spectra have significant low energy contributions, so we do not expect to entirely loose our sensitivity.
+This motivated a study examining our \sv~sensitivity over all DM masses sampled for a selection of declinations.
+
+For this systematic study, I sample 6 DM masses per decade from 1 TeV to 100 PeV.
+I select declinations that are shared with sources in the \GS catalog: Bootes I, Canes Venatici II, Leo V, Ursa Major I, and Ursa Minor.
+I study a fake source who's \J-factor is shared with Ursa Major II, but who's coordinates belong to the aformentioned list.
+The sensitivity studies performed for each source (\cref{fig:icDM_sensitivity_2of2}and \todo{refer to appendx ns plots}) provided $n_s$ for 1000 trials which we use as inputs into \cref{eq:sv_from_nsig}.
+We derive \sv~using $\log_{10}\J = 19.42~\log_{10}$(GeV$^2$cm$^{-5}$)
+\todo{refer to figure} shows the results of these calculations.
+
+\tmpfig{Declination sensitivity plot}
+
+\todo{refer to fig} shows that we have significant but diminishing sensitivity to source at high declination.
+We see in the worse case, the sensitivity at high declination is up to an order of magnitude worse than at low declination.
+However, for $m_\chi < 1$~PeV, the sensitivities are very similar.
+Their similar sensitivities imply that a stacking analysis with IceCube is most powerful in the 1 TeV to 1 PeV region.
+Above 1 PeV, our limits and sensitivities are dominated by sources near the horizon.
+When we additionaly consider the \J-factors, we expect Segue 1 to dominate contributions to sensitivity and limits where $m_\chi > 1$~PeV.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:icDM_conclude}
