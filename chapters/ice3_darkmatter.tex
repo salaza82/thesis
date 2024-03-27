@@ -313,8 +313,128 @@ I assume that TS values are physical: $ \mathrm{TS} \ge 0 $.
 $\eta$ denotes the fraction of positive TS values above the threshold and written in the legend of the TS distributions.
 $ \epsilon[x] $ indicate the fraction of events where $ \mathrm{TS} < x $. For TS plots shown here, the decimal values of x are 1.0e-2 and 1.0e-3.
 Each subplot represents a simulation of 100,000 data-scrambled background trials.
-\Cref{sec:icD_sec:icDM_TSperSrc} show the background TS distributions obtained from Segue 1, a source with little Earth attenuation and large \J-factor, and Ursa Major II, similarly large \J-fator but significantly more Earth attenuation, assuming that dark matter annihilates into \parpar{b}, \parpar{\tau}, and \parpar{\nu_\mu}.
+\Cref{sec:icDM_TSperSrc} show the background TS distributions obtained from Segue 1, a source with little Earth attenuation and large \J-factor, and Ursa Major II, similarly large \J-fator but significantly more Earth attenuation, assuming that dark matter annihilates into \parpar{b}, \parpar{\tau}, and \parpar{\nu_\mu}.
 I show the TS distributions of a stacked study of 15 sources for all DM annihilation channels.
+
+\begin{figure}[!h]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Test statistic (TS) distributions for Segue 1 and $\chi\chi \rightarrow$ \parpar{b}. Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. Orange dashed lines are the traces for a $\chi^2$ distribution with 1 degree of freedom. $\epsilon[\cdot]$ is the fraction of trials smaller than the bracketed value. The final subplot plots the all DM spectral models, similar to \cref{fig:line_spectra_smooth}, used as input for the TS distributions.}
+    \label{fig:icDM_Seg1bb_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
+    \label{fig:icDM_Seg1tau_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_Seg1numu_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{b}.}
+    \label{fig:icDM_UMa2bb_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
+    \label{fig:icDM_UMa2tau_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_UMa2numu_TS}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_bb_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{b}.}
+    \label{fig:icDM_stact_bb_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tt_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{t}.}
+    \label{fig:icDM_stact_tt_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_uu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{u}.}
+    \label{fig:icDM_stact_uu_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_dd_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{d}.}
+    \label{fig:icDM_stact_dd_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ee_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{e}.}
+    \label{fig:icDM_stact_ee_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_mumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\mu}.}
+    \label{fig:icDM_stact_mu_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tautau_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\tau}.}
+    \label{fig:icDM_stact_tau_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_WW_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ $W^+W^-$.}
+    \label{fig:icDM_stact_ww_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ZZ_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \pp{Z}.}
+    \label{fig:icDM_stact_zz_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_nuenue_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_e}.}
+    \label{fig:icDM_stact_nue_TS}
+\end{figure}
+
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_numunumu_chi2_Masspanel_2024-03-23.pdf}
+    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
+    \label{fig:icDM_stact_numu_TS}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{TS per Source} \label{sec:icDM_TSperSrc}
@@ -326,129 +446,10 @@ More studies for all annihilation channels and remaining 13 sources were also pe
 Although it was not expected, almost every distribution produced follows a $\chi^2$ distribution with 1 degree of freedom.
 This is important for future assumptions made in \cref{sec:nu_duck} and may justify statistical calculations assuming Wilk's theorem is valid.
 
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_bb_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Test statistic (TS) distributions for Segue 1 and $\chi\chi \rightarrow$ \parpar{b}. Each subplot, except the final, is the TS distribution for a specific DM mass listed in the subplot. Orange dashed lines are the traces for a $\chi^2$ distribution with 1 degree of freedom. $\epsilon[\cdot]$ is the fraction of trials smaller than the bracketed value. The final subplot plots the all DM spectral models, similar to \cref{fig:line_spectra_smooth}, used as input for the TS distributions.}
-    \label{fig:icDM_Seg1bb_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_tautau_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
-    \label{fig:icDM_Seg1tau_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/Segue1_numunumu_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Segue 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
-    \label{fig:icDM_Seg1numu_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_bb_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{b}.}
-    \label{fig:icDM_UMa2bb_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_tautau_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\tau}.}
-    \label{fig:icDM_UMa2tau_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/UrsaMajorII_numunumu_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for Ursa Major II 1 $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
-    \label{fig:icDM_UMa2numu_TS}
-\end{figure}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Stacked TS} \label{sec:icDM_TSstacked}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_bb_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{b}.}
-    \label{fig:icDM_stact_bb_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tt_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{t}.}
-    \label{fig:icDM_stact_tt_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_uu_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{u}.}
-    \label{fig:icDM_stact_uu_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_dd_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{d}.}
-    \label{fig:icDM_stact_dd_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ee_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{e}.}
-    \label{fig:icDM_stact_ee_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_mumu_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\mu}.}
-    \label{fig:icDM_stact_mu_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_tautau_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\tau}.}
-    \label{fig:icDM_stact_tau_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_WW_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ $W^+W^-$.}
-    \label{fig:icDM_stact_ww_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_ZZ_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \pp{Z}.}
-    \label{fig:icDM_stact_zz_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_nuenue_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_e}.}
-    \label{fig:icDM_stact_nue_TS}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering{
-        \includegraphics[clip, trim=5cm 6.5cm 4.9cm 8cm, scale=0.345]{figures/ic_DM/dm_plots/stacked_numunumu_chi2_Masspanel_2024-03-23.pdf}
-    }\caption{Same as \cref{fig:icDM_Seg1bb_TS} for 15, \GS \J-factor, stacked sources and $\chi\chi \rightarrow$ \parpar{\nu_\mu}.}
-    \label{fig:icDM_stact_numu_TS}
-\end{figure}
 
 \Cref{fig:icDM_stact_bb_TS} to \Cref{fig:icDM_stact_numu_TS} present the TS distributions for a stacked study of 15 sources with \GS \J-factors on 100,000 trials.
 The presentation of these plots are identical to the single source distributions in \cref{sec:icDM_TSperSrc}.
@@ -468,16 +469,18 @@ We also see that the uncertainty around the reconstructed signal events shrinks 
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.58]{figures/ic_DM/dm_plots/stact_bb_ninj_Masspanel.pdf}
-    }\caption{Signal Recovery study for an analysis with 15 stacked sources using the \GS \J-factors \cite{Geringer_Sameth_2015}. Each panel block represents 14 studies for DM mass ranging between 1 TeV and 20 PeV and one annihilation channel. Panel block is for \parpar{t}. Each panel block features every spectral model used as input in the bottom-right subpanel. The remaining panels show $n_\mathrm{inj}$ as the number of signal events injected into background simulation. Whereas, $n_s$ is the number of signal events recovered from analyzing the injected simulation. Blue line represents the median values of 100 simulations. Light blue bands show the $1\sigma$ statistical uncertainty around the median.}
+        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.58]{figures/ic_DM/dm_plots/stact_numunumu_ninj_Masspanel.pdf}
+    }\caption{Signal Recovery study for an analysis with 15 stacked sources using the \GS \J-factors \cite{Geringer_Sameth_2015}. Each panel block represents 14 studies for DM mass ranging between 1 TeV and 20 PeV and one annihilation channel. Panel block is for \parpar{\nu_\mu}. Each panel block features every spectral model used as input in the bottom-right subpanel. The remaining panels show $n_\mathrm{inj}$ as the number of signal events injected into background simulation. Whereas, $n_s$ is the number of signal events recovered from analyzing the injected simulation. Blue line represents the median values of 100 simulations. Light blue bands show the $1\sigma$ statistical uncertainty around the median.}
     \label{fig:icDM_sigrecovery_1of2}
 \end{figure}
 
-\begin{figure}[t]
+\clearpage
+
+\begin{figure}[!h]
     \centering{
         \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.42]{figures/ic_DM/dm_plots/stact_tt_ninj_Masspanel.pdf}
-        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.42]{figures/ic_DM/dm_plots/stact_numunumu_ninj_Masspanel.pdf}
-    }\caption{Same as \cref{fig:icDM_sigrecovery_1of2} but for $\chi\chi \rightarrow$ \parpar{b} (top) and \parpar{\nu_\mu} (bottom).}
+        \includegraphics[clip, trim=1.5cm 2.0cm 1.0cm 3.5cm, scale=0.42]{figures/ic_DM/dm_plots/stact_bb_ninj_Masspanel.pdf}
+    }\caption{Same as \cref{fig:icDM_sigrecovery_1of2} but for $\chi\chi \rightarrow$ \parpar{t} (top) and \parpar{b} (bottom).}
     \label{fig:icDM_sigrecovery_2of2}
 \end{figure}
 
@@ -499,24 +502,24 @@ Among channels missing include two neutrino flavors: $e$ and $\tau$.
 
 \begin{figure}[t]
     \centering{
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/bb_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/tt_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/uu_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/dd_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/WW_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/ZZ_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/bb_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/tt_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/uu_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/dd_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/WW_money_plot_comb.pdf}
+        \includegraphics[scale=0.265]{figures/ic_DM/dm_plots/ZZ_money_plot_comb.pdf}
     }
-    \caption{Words. I predent Icecibe Sensitivities weeee}
+    \caption{IceCube North Sky Track Sensitivities. Each panel shows sensitivity curves for a specific DM annihilation channel. Sensitivities are for the velocity-weighted cross-section \sv~versus $m_\chi$. Doted, colored lines are sensitivities for individual sources. Solid white lines are for the combined sensitivity of all 15 \GS sources used in this study.}
     \label{fig:icDM_sensitivity_1of2}
 \end{figure}
 
 \begin{figure}[b]
     \centering{
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/nuenue_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/numunumu_money_plot_comb.pdf}
-        \includegraphics[scale=0.275]{figures/ic_DM/dm_plots/tautau_money_plot_comb.pdf}
+        \includegraphics[scale=0.3]{figures/ic_DM/dm_plots/nuenue_money_plot_comb.pdf}
+        \includegraphics[scale=0.3]{figures/ic_DM/dm_plots/numunumu_money_plot_comb.pdf}
+        \includegraphics[scale=0.3]{figures/ic_DM/dm_plots/tautau_money_plot_comb.pdf}
     }
-    \caption{Words. I predent Icecibe Sensitivities weeee}
+    \caption{Same as \cref{fig:icDM_sensitivity_1of2} for three additional DM annihilation channels.}
     \label{fig:icDM_sensitivity_2of2}
 \end{figure}
 
@@ -533,7 +536,14 @@ The following section enumerates the impact of the Earth on our hardest neutrino
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Earth Effects} \label{sec:icDM_eart_effects}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\tmpfig{Earth attenutation diagram.}
+
+\begin{figure}[t]
+    \centering{
+    \includegraphics[scale=0.35]{figures/ic_DM/EarthAttenuation_neutrino.jpg}
+    }
+    \caption{Panel A: Neutrino's from the Northern sky and incident on the IceCube detector will travel through the Earth. How much of the Earth these neutrinos travels is a function of zenith from the vertical axis. Panel B: SM precition of neutrino transmission probabilities for neutrinos arriving at 90$^\circ$ - 180$\circ$~ zenith and with 100 GeV to 100 PeV energies. High-energy neutrinos traverseing the whole Earth are completely absorbed, whereas low-energy neutrinos pass through unimpeded. Neutrinos coming from above the horizon will arrive unimpeded for all neutrino energies. Figure pulled from \cite{IC3:Earth_Attenuation}.}
+    \label{fig:earth_attenuation}
+\end{figure}
 
 One systematic I check however is the impact of the Earth on our sensitivity to $\chi\chi \rightarrow$ \parpar{\nu_\mu}.
 This channel is expected to be significantly impacted because it has a significant contribution at PeV energies for $m_\chi \ge 1$PeV.
@@ -544,13 +554,19 @@ This motivated a study examining our \sv~sensitivity over all DM masses sampled 
 For this systematic study, I sample 6 DM masses per decade from 1 TeV to 100 PeV.
 I select declinations that are shared with sources in the \GS catalog: Bootes I, Canes Venatici II, Leo V, Ursa Major I, and Ursa Minor.
 I study a fake source who's \J-factor is shared with Ursa Major II, but who's coordinates belong to the aformentioned list.
-The sensitivity studies performed for each source (\cref{fig:icDM_sensitivity_2of2}and \todo{refer to appendx ns plots}) provided $n_s$ for 1000 trials which we use as inputs into \cref{eq:sv_from_nsig}.
+The sensitivity studies performed for each source (\cref{fig:icDM_sensitivity_2of2} and \cref{sec:apdx_icDM_sensitivity}) provided $n_s$ for 1000 trials which we extracted from \cref{eq:sv_from_nsig}.
 We derive \sv~using $\log_{10}\J = 19.42~\log_{10}$(GeV$^2$cm$^{-5}$)
-\todo{refer to figure} shows the results of these calculations.
+\Cref{fig:icDM_dec_study} shows the results of these calculations.
 
-\tmpfig{Declination sensitivity plot}
+\begin{figure}
+    \centering{
+    \includegraphics[scale=0.7]{figures/ic_DM/dec_study.png}
+    }
+    \caption{\sv~sensitivities for 5 imaginary sources with $\log_{10}\J = 19.42~\log_{10}$(GeV$^2$cm$^{-5}$). Each imaginary source shares a declination with a source in \cref{tab:gd_J_factor}}
+    \label{fig:icDM_dec_study}
+\end{figure}
 
-\todo{refer to fig} shows that we have significant but diminishing sensitivity to source at high declination.
+\Cref{fig:icDM_dec_study} shows that we have significant but diminishing sensitivity to source at high declination.
 We see in the worse case, the sensitivity at high declination is up to an order of magnitude worse than at low declination.
 However, for $m_\chi < 1$~PeV, the sensitivities are very similar.
 Their similar sensitivities imply that a stacking analysis with IceCube is most powerful in the 1 TeV to 1 PeV region.
