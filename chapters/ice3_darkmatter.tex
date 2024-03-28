@@ -2,12 +2,12 @@
 \section{Introduction} \label{sec:icDM_intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Neutrinos are another astrophyical messenger than can travel long distances without significant attenutation or deflection.
+Neutrinos are another astrophysical messenger than can travel long distances without significant attenuation or deflection.
 Uniquely, they interact less readily than photons especially above PeV energies.
-Neutrinos thereofre provide another window through which we can perform dark matter searches.
+Neutrinos therefore provide another window through which we can perform dark matter searches.
 Neutrinos come in three flavors which triples the multiplicity of the particles we are searching for.
 
-The previous Icecube DM annihilation analysis towards dwarf galaxies was performed in 2013 \cite{IC3_DM2013}.
+The previous IceCube DM annihilation analysis towards dwarf galaxies was performed in 2013 \cite{IC3_DM2013}.
 This is in spite of the potentially crucial sensitivity afforded from neutrino spectral lines \cite{IC3_DM_DanHooper}.
 A lot has changed in IceCube since its previous DM annihilation search such as, additional strings, more sophisticated analysis methods, and more accurate theory modeling.
 It has come time for IceCube to make a DM dSph contribution.
@@ -40,7 +40,7 @@ They are not meant for public access, and are presented here so that IceCube col
 \begin{itemize}
     \item Software Environment: \texttt{CVMFS Py3-v4.1.1}
     \item Data Sample: Northern Tracks \texttt{NY86v5p1}
-    \item Analysis Software: cksy (\href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{nu\_dark\_matter})
+    \item Analysis Software: csky (\href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{nu\_dark\_matter})
     \item Analysis wiki: \url{https://wiki.icecube.wisc.edu/index.php/Dark\_Matter\_Annihilation\_Search\_towards\_dwarf\_spheroidals\_with\_NST\_and\_DNN\_Cascades}
     \item \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{Project repository}
 \end{itemize}
@@ -51,11 +51,11 @@ They are not meant for public access, and are presented here so that IceCube col
 
 
 This analysis was performed inside IceCube's CVMFS (3.4.1.1) software environment using csky for likelihood calculations.
-Csky at first did not come with dark matter spectral models nor could accomodate custom flux models.
+Csky at first did not come with dark matter spectral models nor could accommodate custom flux models.
 We developed these capacities for single source and stacked source studies for this analysis.
 The analysis code is held in a separate repository from csky.
 The \texttt{nu\_dark\_matter} \href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{branch of csky} manages the input of custom dark matter spectra and accompanied DM astrophysical source then calculates likelihoods with a selected data sample.
-The \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{IceCube Dark Matter dSph repository} manages the generation of spectral models for neutrinos, physics parameter exctraction from $n_{\mathrm{sig}}$, \J-factor per source inputs, and bookkeeping for the large parameter space.
+The \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{IceCube Dark Matter dSph repository} manages the generation of spectral models for neutrinos, physics parameter extraction from $n_{\mathrm{sig}}$, \J-factor per source inputs, and bookkeeping for the large parameter space.
 The project repository required a secondary software environment for neutrino oscillations.
 How to launch and run those calculations are documented in the project repository and the Docker image is additionally saved in \cref{sec:apdx_nu_spec}
 
@@ -67,7 +67,7 @@ For this analysis, I use the Northern Sky Tracks (NST) Sample (Version V005-P01)
 The sample contains up-going track-like events, usually from $\nu_\mu$ and $\nu_\tau$ with a superior angular resolution compared to the cascade dataset.
 This sample covers 10.4 years of data (IC86\_2011-2021).
 The accepted neutrino energy range used for the analysis is unique from most other IceCube searches because DM spectra are hard with large contributions close to $E_\nu = m_\chi$.
-Therefore the sampled energy range is $1 < \log(E_\nu /\textrm{GeV}) < 9.51$ with step size 0.125.
+Therefore, the sampled energy range is $1 < \log(E_\nu /\textrm{GeV}) < 9.51$ with step size 0.125.
 
 The strength of a dwarf analysis is that there is no additional background consideration beyond nominal, baseline background estimations (see \cref{sec:gs_data_bkgd}).
 For NST, the nominal contribution comes from atmospheric neutrinos and isotropic astrophysical neutrinos.
@@ -79,11 +79,11 @@ We estimate the background by scrambling NST data along Right Ascension.
 
 The expected differential neutrino flux from DM-DM annihilation to standard model
 particles, $d\Phi_{\nu}/dE_{\nu}$, over solid angle, $\Omega$~is described by the familiar equation.
-\iddmannilation[\nu]
+\iddmannilationNu
 
 This is identical to past examples, \cref{eq:id_dm_flux} except that there are 3 neutrino flavors, so there are a corresponding 3 flux equations.
-\cref{sec:gd_analysis} has a complete description of each term in \cref{eq:id_dm_flux}.
-Additionaly, neutrinos oscillate between flavors which needs to be considered for the expected neutrino flux at Earth.
+\cref{sec:gd_analysis} has a complete description of each term in \cref{eq:id_dm_flux_nu}.
+Additionally, neutrinos oscillate between flavors which needs to be considered for the expected neutrino flux at Earth.
 \Cref{sec:icDM_particlephysics} presents the particle physics model and processing for DM annihilation.
 \Cref{sec:icDM_spatialmodel} presents the spatial distributions built for each dSph.
 
@@ -96,8 +96,8 @@ HDMSpectra has tables for the decay and annihilation of heavy dark matter for di
 The simulation includes electroweak radiative corrections and higher order loop corrections with quarks.
 This publication also pushes the simulated DM mass to the Plank scale (1 EeV), however this study will not explore that high.
 
-An important feature in the spectra is that neutrino line channels will be accompanied with a low energy tail \cite{HDMSpectra}.
-Thus the earth will not fully attenuate a heavy DM line-like signal from high declination sources where the neutrino flux must first traverse through the Earth.
+An important feature in the spectra is that neutrino line channels will be accompanied by a low energy tail \cite{HDMSpectra}.
+Thus, the earth will not fully attenuate a heavy DM line-like signal from high declination sources where the neutrino flux must first traverse through the Earth.
 The DM annihilation channels that feature lines include all leptonic channels. ($\nu_{e,\mu,\tau}, e, \mu, \mathrm{and} \tau$)
 We use the \href{https://iopscience.iop.org/article/10.1088/1475-7516/2020/10/043}{ $\chi \mathrm{aro}\nu$} software to propagate and oscillate the neutrinos from the source to Earth.
 Because these sources are quite large in absolute terms, and also far (order 10 kpc or more), the resulting flavor spectra are the averages of the transition probabilities \cite{Charon}:
@@ -105,8 +105,8 @@ Because these sources are quite large in absolute terms, and also far (order 10 
 Examples of the spectra before and after propagation are shown in \cref{fig:icDM_osc_dm}.
 
 When calculating the expected contribution to $n_s$, only $ \nu_\mu, \nu_\tau $ are considered as NST's effective area to $ \nu_e $ is negligible \cite{IC3_thesis_Cerver}.
-Therefore the expected composite neutrino spectrum is sum of the two flavors: $\nu_\mu + \nu_\tau$.
-The spectral tables are then converted to splines to condense information, enable random sampling of the spectra, and reduce computating times.
+Therefore, the expected composite neutrino spectrum is sum of the two flavors: $\nu_\mu + \nu_\tau$.
+The spectral tables are then converted to splines to condense information, enable random sampling of the spectra, and reduce computing times.
 The spectral splines are finally implemented as a DM class in csky.
 \input{tables/nu_osc_dm.tex}
 
@@ -115,7 +115,7 @@ The spectral splines are finally implemented as a DM class in csky.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 All DM annihilation channels into leptons $ \chi\chi \rightarrow [\nu_{e, \mu, \tau}, e, \mu,\tau] $ develop a prominent and narrow spectral line feature.
-For all neutrino flavors, this line is visible and prominent in all $m_\chi$ studied in this anlysis.
+For all neutrino flavors, this line is visible and prominent in all $m_\chi$ studied in this analysis.
 For charged leptons, the feature only really shows up at the larger DM mass models and varies between the flavors.
 Examples for lines in the annihilation spectra with neutrinos or charged leptons primary annihilation products are provided in \cref{fig:icDM_osc_dm}.
 
@@ -136,7 +136,7 @@ Near horizon was chosen in order to isolate loss in signal recovery from too nar
 The convolution also needed to as close as possible preserve the integrated counts of neutrinos.
 The optimized kernel window for all lines is summarized as:
 \begin{itemize}
-    \item Guassian kernel with $2 \sigma$ width = 3.5E-3$\cdot m_\chi$
+    \item Gaussian kernel with $2 \sigma$ width = 3.5E-3$\cdot m_\chi$
     \item Minimum energy included in convolution = MIN$[0.995 \cdot m_\chi, E(\nu_\mathrm{line}) -4\sigma]$
     \item Maximum energy included in convolution = MAX$[1.005 \cdot m_\chi, E(\nu_\mathrm{line}) +4\sigma]$
 \end{itemize}
@@ -172,18 +172,18 @@ Software was written to generate, book keep, and calculate values on the splines
 
 When using splines, one has to be careful of the goodness to fit.
 The spline software used here, Photospline \cite{photospline}, uses the penalized spline technique.
-Through the penlized technique, poor fits are penalized according to the accuracy of the nominal value, and the smoothness of the first and second derivatives.
-The B-spline construction however does not penalize on the integral of the fit distrubtion which is critical in low signal studies, such as DM searches.
+Through the penalized technique, poor fits are penalized according to the accuracy of the nominal value, and the smoothness of the first and second derivatives.
+The B-spline construction however does not penalize on the integral of the fit distribution which is critical in low signal studies, such as DM searches.
 There are additional caveats when testing the goodness to fit to the MC generated above for all DM annihilation channels.
 \begin{itemize}
     \item The splines must be Log10(*) in Energy and dN/dE to account for the exponential nature of the flux.
     \item The fidelity of the fit matters more at $ E_\nu \thickapprox m_\chi $ where the model uncertainties are minimal and physical considerations (like the cut-off) are most important.
     \item The fidelity of the fit matters less at low $ E_\nu $ as the model uncertainties are large AND IceCube's sensitivity diminishes significantly below 500 GeV.
-    \item Total integrated counts should be well preserved.
+    \item Total integrated counts should be well-preserved.
 \end{itemize}
 The resulting cost function was built to evaluate the goodness of spline fits to account for the above considerations.
 \erriSpline
-Where $ \hat{e_i} $ is the spline estimator's value for $x_i$. $ x_i = E_{\nu_i} / m_\chi $. $ \frac{dN_i}{dE_i} $ is the flux value from MC.
+Where $ \hat{e_i} $ is the spline estimator's value for $x_i$. $ x_i = E_{\nu_i} / m_\chi $. $ \frac{dN_i}{dX_i} $ is the flux value from MC.
 I then take the RMS of the error distribution and the resulting value, err, is used to evaluate the fidelity of the spectral spline.
 \MSEspline
 
@@ -221,7 +221,7 @@ A Final inspection of the splines by eye to verify that the spline fitting did n
 \subsubsection{Composite Neutrino Spectra}\label{sec:icDM_composite_dNdE}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-With all of the previously mentioned pieces, we are ready to fully assemble a comprehensive description of the particle physics term $dN/dE$ in \cref{eq:id_dm_flux}.
+With all the previously mentioned pieces, we are ready to fully assemble a comprehensive description of the particle physics term $dN/dE$ in \cref{eq:id_dm_flux_nu}.
 \nuIDDMFlux
 
 \begin{figure}[t]
@@ -258,18 +258,18 @@ Therefore, this analysis will be sensitive to DM annihilating to the distinct ne
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 For this analysis, we re-adopt the \GS model used in \cref{sec:glory_duck} for dSph from \cite{Geringer_Sameth_2015}.
-These models are based on a modified Navarro-Frenk-While (NFW) profile where the indices of the NFW (traditionally 1,3,1) are allowed to float.
+These models are based on a modified Navarro-Frenk-White (NFW) profile where the indices of the NFW (traditionally 1,3,1) are allowed to float.
 The angular width of these sources is much smaller than the angular resolution of IceCube NST \cite{IC_NGC1068}.
 We therefore treat these sources as point sources in this analysis, and forgo generating maps.
-Theses sources and the \GS model have already been discussed at length in \cref{sec:gd_spatialmodel} and is not repeated here.
+These sources and the \GS model have already been discussed at length in \cref{sec:gd_spatialmodel} and is not repeated here.
 IceCube uses identical sources to \cref{tab:gd_J_factor} except we analyze source with declinations above 0.0 degrees.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Source Selection and Annihilation Channels}\label{sec:ic3_study_selection}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We use all of the dSphs presented in IceCube's previous dSph DM search \cite{IC3_DM2013}.
-IceCube's sources for these simulation studies include Bootes I, Canes Venatici I, Canes Venatici II, Coma Berenices, Draco, Hercules, Leo I, Leo II, Leo V, Leo T, Segue 1, Segue 2, Ursa Major I, Ursa Major II,  and Ursa Minor.
+We use all the dSphs presented in IceCube's previous dSph DM search \cite{IC3_DM2013}.
+IceCube's sources for these simulation studies include Boötes I, Canes Venatici I, Canes Venatici II, Coma Berenices, Draco, Hercules, Leo I, Leo II, Leo V, Leo T, Segue 1, Segue 2, Ursa Major I, Ursa Major II,  and Ursa Minor.
 A full description of all sources used is in \Cref{tab:gd_J_factor}.
 Sources with declinations less than 0.0 are excluded from this analysis.
 
@@ -301,11 +301,11 @@ The Test Statistic (TS) definition remains the same as \cref{eq:gd_TS}
 \section{Background Simulation}\label{sec:icDM_bkgd_sim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Before we look at data, we must first analyze background and signal injection to validate our anlysis.
+Before we look at data, we must first analyze background and signal injection to validate our analysis.
 This is in part because the TS distributions are not expected to behave according to a chi-squared distribution with 1 degree of freedom.
 TS distributions can also vary significantly between DM mass and annihilation models.
-Therefor, Wilks' theorem may not be applicable to the analysis.
-Instead, a critical value is defined from a large number of background trials.
+Therefor, Wilk's theorem may not be applicable to the analysis.
+Instead, a critical value is defined from many background trials.
 We study the TS distributions first for each source, then for the stacked analysis.
 The following sections show the results of the likelihood fitting for a suite of background trials.
 
@@ -313,7 +313,7 @@ I assume that TS values are physical: $ \mathrm{TS} \ge 0 $.
 $\eta$ denotes the fraction of positive TS values above the threshold and written in the legend of the TS distributions.
 $ \epsilon[x] $ indicate the fraction of events where $ \mathrm{TS} < x $. For TS plots shown here, the decimal values of x are 1.0e-2 and 1.0e-3.
 Each subplot represents a simulation of 100,000 data-scrambled background trials.
-\Cref{sec:icDM_TSperSrc} show the background TS distributions obtained from Segue 1, a source with little Earth attenuation and large \J-factor, and Ursa Major II, similarly large \J-fator but significantly more Earth attenuation, assuming that dark matter annihilates into \parpar{b}, \parpar{\tau}, and \parpar{\nu_\mu}.
+\Cref{sec:icDM_TSperSrc} show the background TS distributions obtained from Segue 1, a source with little Earth attenuation and large \J-factor, and Ursa Major II, similarly large \J-factor but significantly more Earth attenuation, assuming that dark matter annihilates into \parpar{b}, \parpar{\tau}, and \parpar{\nu_\mu}.
 I show the TS distributions of a stacked study of 15 sources for all DM annihilation channels.
 
 \begin{figure}[!h]
@@ -492,10 +492,10 @@ In IceCube, we usually define the 90\% confidence level (CL), as the minimum num
 We compute  $n_s$ from the following equation
 \svFromNSig
 to extract the sensitivity on the dark matter annihilation cross-section.
-$T_\mathrm{live} $ is the detector livetime, $ A_\mathrm{eff} $ is the effective area of the detector, and $ E_\mathrm{min} $, $ E_\mathrm{max} $ are the minimum, maximum energies of the expected neutrinos, respectively.
+$T_\mathrm{live} $ is the detector live time, $ A_\mathrm{eff} $ is the effective area of the detector, and $ E_\mathrm{min} $, $ E_\mathrm{max} $ are the minimum, maximum energies of the expected neutrinos, respectively.
 
 Sensitivities are calculated for each source individually as if they were the only source and as a stack over 1000 trials.
-From \cref{eq:sv_from_nsig} and \cref{eq:id_dm_flux} we can compute the \sv~at a 90\% confidence level.
+From \cref{eq:sv_from_nsig} and \cref{eq:id_dm_flux_nu} we can compute the \sv~at a 90\% confidence level.
 \Cref{fig:icDM_sensitivity_1of2} and \cref{fig:icDM_sensitivity_2of2} show the sensitivities for some DM annihilation channels.
 Not all channels computed successfully in time for the writing of this dissertation.
 Among channels missing include two neutrino flavors: $e$ and $\tau$.
@@ -528,7 +528,7 @@ Among channels missing include two neutrino flavors: $e$ and $\tau$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Lol What Systematics.
-Beside signal recovery we don't have many additional studes for here.
+Beside signal recovery we don't have many additional studies for here.
 The current analysis plan is to compare these sensitivities to another \J-factor catalog such as \LS \cite{DM_Strigari20}.
 Additionally, we set out to perform a standard suite of IceCube systematic studies which include: \todo{THE BIG 4: ICE MODEL ETC}
 The following section enumerates the impact of the Earth on our hardest neutrino spectra.
@@ -541,19 +541,19 @@ The following section enumerates the impact of the Earth on our hardest neutrino
     \centering{
     \includegraphics[scale=0.35]{figures/ic_DM/EarthAttenuation_neutrino.jpg}
     }
-    \caption{Panel A: Neutrino's from the Northern sky and incident on the IceCube detector will travel through the Earth. How much of the Earth these neutrinos travels is a function of zenith from the vertical axis. Panel B: SM precition of neutrino transmission probabilities for neutrinos arriving at 90$^\circ$ - 180$\circ$~ zenith and with 100 GeV to 100 PeV energies. High-energy neutrinos traverseing the whole Earth are completely absorbed, whereas low-energy neutrinos pass through unimpeded. Neutrinos coming from above the horizon will arrive unimpeded for all neutrino energies. Figure pulled from \cite{IC3:Earth_Attenuation}.}
+    \caption{Panel A: Neutrino's from the Northern sky and incident on the IceCube detector will travel through the Earth. How much of the Earth these neutrinos travels is a function of zenith from the vertical axis. Panel B: SM prediction of neutrino transmission probabilities for neutrinos arriving at 90$^\circ$ - 180$\circ$~zenith and with 100 GeV to 100 PeV energies. High-energy neutrinos traversing the whole Earth are completely absorbed, whereas low-energy neutrinos pass through unimpeded. Neutrinos coming from above the horizon will arrive unimpeded for all neutrino energies. Figure pulled from \cite{IC3:Earth_Attenuation}.}
     \label{fig:earth_attenuation}
 \end{figure}
 
 One systematic I check however is the impact of the Earth on our sensitivity to $\chi\chi \rightarrow$ \parpar{\nu_\mu}.
 This channel is expected to be significantly impacted because it has a significant contribution at PeV energies for $m_\chi \ge 1$PeV.
 The Earth is expected to attenuate these higher energy neutrinos.
-However, these neutrino spectra have significant low energy contributions, so we do not expect to entirely loose our sensitivity.
+However, these neutrino spectra have significant low energy contributions, so we do not expect to entirely lose our sensitivity.
 This motivated a study examining our \sv~sensitivity over all DM masses sampled for a selection of declinations.
 
 For this systematic study, I sample 6 DM masses per decade from 1 TeV to 100 PeV.
-I select declinations that are shared with sources in the \GS catalog: Bootes I, Canes Venatici II, Leo V, Ursa Major I, and Ursa Minor.
-I study a fake source who's \J-factor is shared with Ursa Major II, but who's coordinates belong to the aformentioned list.
+I select declinations that are shared with sources in the \GS catalog: Boötes I, Canes Venatici II, Leo V, Ursa Major I, and Ursa Minor.
+I study a fake source who's \J-factor is shared with Ursa Major II, but who's coordinates belong to the aforementioned list.
 The sensitivity studies performed for each source (\cref{fig:icDM_sensitivity_2of2} and \cref{sec:apdx_icDM_sensitivity}) provided $n_s$ for 1000 trials which we extracted from \cref{eq:sv_from_nsig}.
 We derive \sv~using $\log_{10}\J = 19.42~\log_{10}$(GeV$^2$cm$^{-5}$)
 \Cref{fig:icDM_dec_study} shows the results of these calculations.
@@ -571,22 +571,22 @@ We see in the worse case, the sensitivity at high declination is up to an order 
 However, for $m_\chi < 1$~PeV, the sensitivities are very similar.
 Their similar sensitivities imply that a stacking analysis with IceCube is most powerful in the 1 TeV to 1 PeV region.
 Above 1 PeV, our limits and sensitivities are dominated by sources near the horizon.
-When we additionaly consider the \J-factors, we expect Segue 1 to dominate contributions to sensitivity and limits where $m_\chi > 1$~PeV.
+When we additionally consider the \J-factors, we expect Segue 1 to dominate contributions to sensitivity and limits where $m_\chi > 1$~PeV.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:icDM_conclude}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We built many things for this analysis.
-We utilized advanced computing techniques like parrallel programming and spline fitting of particle physics Monte Carlo to greatly expand and refine IceCube's sensitivity to DM annihilation from dSphs.
-We imported updated astrophysical and particle physics models that better represent what we beleive neutrino signals from DM annihilation should look like.
-We, for the first time, build an analysis that is sensitivty to PeV DM annihilation.
+We utilized advanced computing techniques like parallel programming and spline fitting of particle physics Monte Carlo to greatly expand and refine IceCube's sensitivity to DM annihilation from dSphs.
+Furthermore, we imported updated astrophysical and particle physics models that better represent what we believe neutrino signals from DM annihilation should look like.
+We, for the first time, build an analysis that is sensitive to PeV DM annihilation.
 
-When we compare to previous IceCube publications of dSphs \cite{IC3_DM2013}, we see an order of magnitude imrovement to our sensitivity.
+When we compare to previous IceCube publications of dSphs \cite{IC3_DM2013}, we see an order of magnitude improvement to our sensitivity.
 This analysis has been working group approved within IceCube and has begun the unblinding process.
-This processes did not complete in time for this dissertation.
+These processes did not complete in time for this dissertation.
 Therefor we do not show data for this thesis and is the clear next step.
 
-The test statistic distributions in this analysis also demonstrate more characteristic behaviour compared to previous DM analyses.
-With a 10 year dataset, we finally have enough statistics to almost trivially combine with other photon obervatories, such as HAWC.
-The first ground work for a multi-messenger DM search is provided with concluding remarks in \cref{sec:nu_duck}.
+The test statistic distributions in this analysis also demonstrate more characteristic behavior compared to previous DM analyses.
+With a 10-year dataset, we finally have enough statistics to almost trivially combine with other photon observatories, such as HAWC.
+The first groundwork for a multi-messenger DM search is provided with concluding remarks in \cref{sec:nu_duck}.

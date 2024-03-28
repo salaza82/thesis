@@ -106,10 +106,15 @@
         \frac{M}{L} \sim 400\frac{M_{\sun}}{L_{\sun}}
     \end{equation}
 }
-
-\newcommand{\iddmannilation}[2][\phi]{
+\newcommand{\iddmannilation}{
     \begin{equation}\label{eq:id_dm_flux}
-        \frac{d\Phi_#1}{dE_{#1}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_#1}{dE_#1} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho^2_\chi dl(r,\theta')}}
+        \frac{d\Phi_\gamma}{dE_{\gamma}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_\gamma}{dE_\gamma} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho^2_\chi dl(r,\theta')}}
+    \end{equation}
+}
+
+\newcommand{\iddmannilationNu}{
+    \begin{equation}\label{eq:id_dm_flux_nu}
+        \frac{d\Phi_\nu}{dE_{\nu}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_\nu}{dE_\nu} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho^2_\chi dl(r,\theta')}}
     \end{equation}
 }
 
@@ -288,7 +293,7 @@
 
 \newcommand{\erriSpline}{
     \begin{equation}
-        e_i = x_i \cdot \left( \frac{dN_i}{dE_i} - 10^{\hat{e_i}} \right)
+        e_i = x_i \cdot \left( \frac{dN_i}{dX_i} - 10^{\hat{e_i}} \right)
     \end{equation}
 }
 
