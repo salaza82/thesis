@@ -118,7 +118,7 @@ This includes initiating and terminating data collection runs and monitoring the
 In the event of a system crash, often caused by environmental factors such as lightning, the Experiment Control system is designed to automatically restart the experiment and minimize downtime \cite{nim:hawc_detect,HAWC_DAQ_NIM}.
 
 %-----------------------------------------------------------------------------------%
-\section{Events Reconstruction} \label{sec:hawc_reconstruction}
+\section{Event Reconstruction} \label{sec:hawc_reconstruction}
 %-----------------------------------------------------------------------------------%
 
 Event reconstruction at the HAWC Observatory is a critical procedure that converts the raw data from the observatory's WCDs into a coherent framework for understanding cosmic and gamma-ray events.
@@ -159,16 +159,53 @@ This leaves the core location and overall amplitude $A$ as the free parameters t
     \label{fig:core_fitter}
 \end{figure}
 
-The chosen functional form for the Super Fast Core Fit (SFCF) algorithm is a simplified version of a modified Nishimura-Kamata-Greisen (NKG) function \cite{cosmic_ray_shape}, selected for its computational efficiency which is essential for rapid fitting of air shower cores. The SFCF form allows numerical minimization to converge more quickly due to the function's simplicity, the analytical computation of its derivatives, and the absence of a pole at the core location.
-
-Figure 2 provides a visualization of a recorded event, with the plot depicting the charge recorded by each PMT as a function of the distance to the reconstructed shower core. The caption explains the plot details, including the reconstructed arrival coordinates and data acquisition run information, and also mentions variables relevant for gamma/hadron separation, as discussed in Section 4.3.1.
-
-Through the application of the SFCF, core locations can be identified with a median error of approximately 2 meters for large events and about 4 meters for smaller ones, assuming the gamma-ray event core impacts directly upon the HAWC detector array. It is noted that as the core's distance from the array increases, the precision in locating the core diminishes, highlighting the importance of proximity in the accuracy of core reconstruction.
+The chosen functional form for the Super Fast Core Fit (SFCF) algorithm is a simplified version of a modified Nishimura-Kamata-Greisen (NKG) function \cite{cosmic_ray_shape}, selected for its computational efficiency which is essential for rapid fitting of air shower cores.
+The SFCF form allows numerical minimization to converge more quickly due to the function's simplicity, the analytical computation of its derivatives, and the absence of a pole at the core location.
+Figure 2 provides a visualization of a recorded event, with the plot depicting the charge recorded by each PMT as a function of the distance to the reconstructed shower core.
+Through the application of the SFCF, core locations can be identified with a median error of approximately 2 meters for large events and about 4 meters for smaller ones, assuming the gamma-ray event core impacts directly upon the HAWC detector array.
+It is noted that as the core's distance from the array increases, the precision in locating the core diminishes, highlighting the importance of proximity in the accuracy of core reconstruction.
 
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Angle Reconstruction}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
+After establishing the core position, the next step is angle reconstruction.
+This process determines the primary particle's trajectory.
+The angle of arrival is indicative of the originating gamma ray's direction.
+It correlates to the cosmic source of the gamma-ray.
+We deduce this angle using the timing of PMT hits [[Citation]].
+
+The air shower's front is conically shaped, not flat.
+This shape arises from the travel patterns of secondary particles.
+Far from the core, secondary particles undergo multiple scattering.
+They also travel longer distances [[Citation]].
+Particle sampling decreases with distance from the core.
+This decrease results in measurable delays in arrival times [[Citation]].
+Simulations provide a corrective measure for these effects.
+The correction is a function of shower parameters [[Citation]].
+It adjusts both curvature and sampling.
+The distance from the shower core and the charge recorded by PMTs are crucial to this correction.
+A function based on simulation and Crab Nebula observations is used for this purpose [[Citation]].
+This correction is essential for accurate reconstruction.
+
+Corrections lead to the χ2 minimization step.
+This technique fits a plane to the timing data of the PMTs.
+It then calculates the shower's angle of arrival.
+The zenith and azimuth angles are the result of this fitting [[Citation]].
+The local angles are converted to celestial coordinates.
+These coordinates allow correlation with gamma-ray sources.
+Right ascension (RA) and declination (Dec) are used for this purpose [[Citation]]. RA is akin to longitude, and Dec to latitude.
+
+The reconstructed angle's resolution ranges from 0.1° to 1°.
+This range depends on the incoming particle's energy and zenith angle [[Citation]].
+The analysis uses a curvature/sampling correction.
+This correction applies a quadratic function based on distance from the core [[Citation]].
+The adjustment improves angular resolution.
+However, discrepancies between simulation and observation persist.
+These discrepancies introduce systematic errors into the analysis [[Citation]].
+
+Angle reconstruction is vital for the HAWC Observatory. It accurately traces primary particles back to their cosmic sources. This tracing allows for exact correlations with known gamma-ray sources.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{\textit{f}-hit Energy Estimation}
