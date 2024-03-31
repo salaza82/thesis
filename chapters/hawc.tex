@@ -174,58 +174,121 @@ After establishing the core position, the next step is angle reconstruction.
 This process determines the primary particle's trajectory.
 The angle of arrival is indicative of the originating gamma ray's direction.
 It correlates to the cosmic source of the gamma-ray.
-We deduce this angle using the timing of PMT hits [[Citation]].
+We deduce this angle using the timing of PMT hits \cite{Abeysekara_2017}.
 
 The air shower's front is conically shaped, not flat.
 This shape arises from the travel patterns of secondary particles.
+An event example is illustrated in \cref{fig:shower_shape}.
 Far from the core, secondary particles undergo multiple scattering.
-They also travel longer distances [[Citation]].
+They also travel longer distances \cite{wcd_Sensitivity}.
 Particle sampling decreases with distance from the core.
-This decrease results in measurable delays in arrival times [[Citation]].
+This decrease results in measurable delays in arrival times \cite{wcd_Sensitivity,Abeysekara_2017}.
 Simulations provide a corrective measure for these effects.
-The correction is a function of shower parameters [[Citation]].
+The correction is a function of shower parameters \cite{Abeysekara_2017}.
 It adjusts both curvature and sampling.
 The distance from the shower core and the charge recorded by PMTs are crucial to this correction.
-A function based on simulation and Crab Nebula observations is used for this purpose [[Citation]].
+A function based on simulation and Crab Nebula observations is used for this purpose \cite{Abeysekara_2017}.
 This correction is essential for accurate reconstruction.
 
 Corrections lead to the χ2 minimization step.
 This technique fits a plane to the timing data of the PMTs.
 It then calculates the shower's angle of arrival.
-The zenith and azimuth angles are the result of this fitting [[Citation]].
+The zenith and azimuth angles are the result of this fitting \cite{wcd_Sensitivity}.
 The local angles are converted to celestial coordinates.
 These coordinates allow correlation with gamma-ray sources.
-Right ascension (RA) and declination (Dec) are used for this purpose [[Citation]]. RA is akin to longitude, and Dec to latitude.
+Right ascension (RA) and declination (Dec) are used for this purpose.
+RA is akin to longitude, and Dec to latitude.
 
 The reconstructed angle's resolution ranges from 0.1° to 1°.
-This range depends on the incoming particle's energy and zenith angle [[Citation]].
+This range depends on the incoming particle's energy and zenith angle \cite{wcd_Sensitivity}.
 The analysis uses a curvature/sampling correction.
-This correction applies a quadratic function based on distance from the core [[Citation]].
+This correction applies a quadratic function based on distance from the core \cite{Abeysekara_2017}.
 The adjustment improves angular resolution.
 However, discrepancies between simulation and observation persist.
-These discrepancies introduce systematic errors into the analysis [[Citation]].
+These discrepancies introduce systematic errors into the analysis \cite{Abeysekara_2017}.
 
 Angle reconstruction is vital for the HAWC Observatory. It accurately traces primary particles back to their cosmic sources. This tracing allows for exact correlations with known gamma-ray sources.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{\textit{f}-hit Energy Estimation}
+\subsection{$f_\mathrm{hit}$ Energy Estimation}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.6]{figures/hawc/fhit_bins.png}
+    }
+    \caption{\todo{coped from paper}. Normalized histogram of the energy distribution of each fhit bin defined in Table 2.1. This figure was made using Monte Carlo simulations assuming a spectral distribution E about 2.63 at a declination of 20◦. Figure from \cite{Abeysekara_2017}.}
+    \label{fig:fhit_bins}
+\end{figure}
+
+\input{tables/fhit_bins.tex}
+
+The HAWC Observatory quantifies the primary particle energy of air showers using a metric known as $f_{\text{hit}}$.
+This ratio compares the count of PMTs involved in the event reconstruction to the total number of functional PMTs at the time [[Citation]].
+The main array consists of about 1200 PMTs, but the count may vary due to maintenance or other operational factors.
+
+Events are stratified into several $f_{\text{hit}}$ bins.
+Each bin corresponds to a specific range of angular resolutions, enabling a structured approach to event analysis based on the extent of the shower footprint [[Figure Placeholder]].
+The $f_{\text{hit}}$ metric, while effective, has several limitations.
+It is dependent on the zenith angle and the spectral characteristics presumed for the observed source.
+The variable also reaches a saturation point around 10 TeV, after which the detector's ability to discriminate between higher energy levels diminishes [[Citation]].
+Furthermore, the energy distribution for each $f_{\text{hit}}$ bin is notably broad [[Figure Placeholder]].
+In response to these limitations, HAWC has developed more intricate algorithms for energy estimation.
+These algorithms incorporate the zenith angle and the distribution of charge around the shower core for a more accurate assessment of the primary particle's energy, particularly at energies surpassing 10 TeV [[Citation]].
+
+The relationship between $f_{\text{hit}}$ and primary energy is complex.
+Atmospheric attenuation can cause high-energy showers to present a smaller footprint, misrepresenting their energy in the $f_{\text{hit}}$ metric.
+This effect is captured in simulations that chart the actual energy distribution across $f_{\text{hit}}$ categories [[Figure Placeholder]].
+Such distributions vary with the declination of the source and the theoretical energy spectrum used in the model.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Neural Network Energy Estimation}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=9.1cm 0cm 0cm 0cm, scale=0.9]{figures/hawc/NN_performance.jpg}
+    }
+    \caption{\todo{copied}NN (right) energy estimators. The dotted line is the identity line; events that fall along this line are reconstructed perfectly. Gamma/hadron separation cuts have been applied. The first energy bin starts at , and the last energy bin ends at , which accounts for the sharp features in the figures. Figure pulled from \cite{100TEV_Crab_HAWC}}
+    \label{fig:NN_performance}
+\end{figure}
+
+The energy estimation for photon events at the HAWC Observatory is refined through an artificial neural network (NN) algorithm. This method, based on the Toolkit for Multivariate Analysis NN, adopts a multilayer-perceptron model with logistic activation functions across its layers. The structure includes two hidden layers, the first with 15 nodes and the second with 14, designed to process input variables through a framework optimized to closely estimate primary energies [[Citation]].
+
+The NN is trained to minimize a specific error function that measures discrepancies between the NN's energy predictions and the actual energies from Monte Carlo simulations. This minimization targets an error function that incorporates the relative importance of each event, weighting the importance to mimic an E-2 power law spectrum. This approach helps achieve a uniform error rate across energies ranging from 1 to 100 TeV. The optimization process leverages the Broyden-Fletcher-Goldfarb-Shanno algorithm, ensuring a precise calibration of the NN's 479 weights [[Citation]].
+
+The spectral analysis employs a binned likelihood method, using a forward-folding technique to accommodate the energy estimate's bias and resolution. This analysis benefits from a 2D binning scheme that categorizes events by both their $f_{\text{hit}}$ value and estimated energy. The decision to use this scheme over a simple energy-based binning lies in the correlation between gamma/hadron separation parameters and the angular resolution with both the size and energy of the event. The spectrum of interest is dissected into nine $f_{\text{hit}}$ bins, each further divided into 12 energy bins, spanning from 0.316 TeV to 316 TeV, encompassing a total of 108 bins [[Citation]].
+However, not all bins contribute to the final analysis—those with low probability of event population or insufficient Monte Carlo simulation accuracy are excluded. This selective approach focuses on the central 99\% of events by estimated energy within each $f_{\text{hit}}$ category, effectively removing outliers and ensuring a robust fit [[Citation]].
+
+Input variables for the NN are selected to capture key characteristics of the air shower: energy deposition, containment, and atmospheric attenuation. The algorithm calculates energy deposition using the fraction of PMTs and tanks activated, alongside the logarithm of the normalization from the lateral distribution fit. Containment is inferred from the distance between the shower core and the array's center, while atmospheric attenuation is evaluated using the reconstructed zenith angle and a detailed analysis of the shower's lateral charge distribution [[Citation]].
+
+This refined NN energy estimation methodology is an integral component of HAWC's toolkit, enabling precise analysis of high-energy gamma-ray events. It represents a significant advancement in the field, offering deeper insights into cosmic phenomena by accurately mapping observed shower characteristics to primary particle energies.
+
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{G/H Discrimination}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-%-----------------------------------------------------------------------------------%
-\section{Remote Monitoring}
-%-----------------------------------------------------------------------------------%
 
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{ATHENA Database}
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.45s]{figures/hawc/LDF_particles.png}
+    }
+    \caption{\todo{copied}Lateral distribution functions of an obvious cosmic ray (left) and a photon candidate from the Crab Nebula (right).The cosmic ray has isolated high-charge hits far from the shower core due to penetrating particles in the hadronic air shower. These features are absent in the gamma-ray shower}
+    \label{fig:ldf_particleshower}
+\end{figure}
 
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{HOMER}
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+At the HAWC Observatory, distinguishing between air showers initiated by gamma rays and those by hadronic cosmic rays is fundamental for astrophysical data purity. The separation process leverages differences in shower characteristics: electromagnetic showers from gamma rays typically display fewer muons and a smoother distribution, whereas hadronic showers are more chaotic due to the abundance of muons and hadronic sub-showers.
+
+Discrimination Parameters
+Two primary parameters facilitate the identification of cosmic-ray events:
+
+Compactness (C): This parameter evaluates the charge captured by PMTs, particularly focusing on the PMT with the highest effective charge beyond a 40-meter radius from the shower core. Compactness is inversely proportional to this effective charge, as higher charges at extended distances from the core are indicative of hadronic showers. It is mathematically expressed as:
+\compactness
+
+PINCness (P): PINCness quantifies the "clumpiness" of a shower using the charges recorded by PMTs. It is computed from the logarithm of the effective charge of each PMT hit, compared to an expected average for that annular region. A higher PINCness suggests a less smooth distribution, typical of hadronic showers. The formula is:
+\pincness
+These parameters are accurately modeled in simulations, aligning well with observational data near gamma-ray sources like the Crab Nebula. Figures illustrating the lateral distributions for representative cosmic-ray and photon candidate showers, as well as the distribution of these discrimination parameters, affirm their efficacy [[Figure Placeholder]].
+
+Optimization and Application
+The discrimination technique has remained consistent, but cut values have been reoptimized in each 2D bin based on $f_{\text{hit}}$ and estimated energy. This refinement enhances the selection of high-energy events. Each bin ensures at least 50\% efficiency for gamma-ray detection, with efficiencies extending up to nearly 100\% in certain bins [[Citation]].
+
+The quality of G/H separation contributes directly to HAWC's sensitivity to gamma rays, filtering out the cosmic-ray background. This separation is critical for constructing accurate spectra and identifying transient high-energy phenomena, enriching our understanding of the high-energy sky.

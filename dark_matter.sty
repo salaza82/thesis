@@ -340,7 +340,19 @@
 }
 
 \newcommand{\showercore}{
-    \begin{equation}
+    \begin{equation}\label{eq:hawc_showercore}
         S_i = S(A,\tilde{x}, \tilde{x_i}) = A \left( \frac{1}{2\pi \sigma^2} e^{-\frac{|\overrightarrow{x}_i - \overrightarrow{x}|^2}{2\sigma^2}} + \frac{N}{(0.5+|\overrightarrow{x}_i - \overrightarrow{x}|/R_m)^3}\right)
+    \end{equation}
+}
+
+\newcommand{\compactness}{
+    \begin{equation}\label{eq:compactness}
+        C = \frac{N_{\text{hit}}}{CxPE_{40}}
+    \end{equation}
+}
+
+\newcommand{\pincness}{
+    \begin{equation}\label{eq:pincness}
+        P = \frac{1}{N} \sum_{i=0}^{N} \frac{(\zeta_i - \langle \zeta_i \rangle)^2}{\sigma_{\zeta_i}^2}
     \end{equation}
 }
