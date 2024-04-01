@@ -47,7 +47,7 @@ However, at the time of writing this thesis, the outriggers have not been fully 
     \caption{The WCDs. Left image features several WCDs looking from within the main array of HAWC. Right image shows a schematic of a WCD pulled from \cite{HAWC_NIM}.}
     \label{fig:WCD_schematic}
 \end{figure}
-\todo{fact check the content below. GPT may have hallucinated}
+
 Each main array WCD is a cylindrical tank with dimensions of 7.3 m in diameter and 5.4 m in height and filled with 180,000 liters of water \cite{HAWC_NIM}.
 The metal shell of these tanks is made from bolted together, corrugated, galvanized steel panels.
 The tanks are placed into 0.6 m deep trenches filled with rammed earth to secure it against seismic activity.
@@ -72,7 +72,7 @@ These FEBs, along with Time to Digital Converters (TDCs), digitize the signals a
     \centering{
         \includegraphics[scale=0.5]{figures/hawc/tank_basic_schem.png}
     }
-    \caption{\todo{copied from nim}. Top-level diagram of the HAWC electronics showing a summary of the critical subsystems and the interconnections, including HV and optical fiber cabling. NMEA refers to the National Marine Electric Association format in which GPS presents data [66,67]; CLR, TRG and RST are control signals for the TDC system. The LoToT andHiToT time over threshold signals are discussed in Section 4.1}
+    \caption{Overview of HAWC control and data electronics. The LoToT and HiToT threshold signals are discussed in \cref{sec:hawc_daq}. Figure from \cite{nim:hawc_detect}}
     \label{fig:basic_tanks_schem}
 \end{figure}
 
@@ -80,7 +80,7 @@ These FEBs, along with Time to Digital Converters (TDCs), digitize the signals a
     \centering{
         \includegraphics[scale=0.6]{figures/hawc/digital_schematic.png}
     }
-    \caption{\todo{copied from NIM}. Schematic overview [68] of the HAWC data acquisition and online processing system, as described in the text of Section 4}
+    \caption{Schematic of data flow in HAWC data acquisition and online processing system. Pulled from \cite{HAWC_DAQ_NIM}.}
     \label{fig:dig_schem}
 \end{figure}
 
@@ -91,7 +91,7 @@ This process involves a series of steps from initial signal detection by PMTs to
     \centering{
         \includegraphics[scale=0.6]{figures/hawc/ToT_threshold.png}
     }
-    \caption{\todo{text copied from nim}. The analog PMT signals are split and passed through two paths. In each path, there is an amplifier and discriminator circuit. The ratio of the amplifier gains is 7 to 1. The higher gain circuit has an effectively lower threshold (Low Th). There is a time (T) delay in the high threshold (High Th) path. The 2-edge event is related with the Low Th, while the 4 edge event is related to the High Th.}
+    \caption{How HAWC FEB intially processes analog PMT signals. Signals are split through an amplifier and discriminator circuit. Each path is designated for either the HIGH or LOW threshold for the signal. The 2-edge event corresponds to LOW, while the 4 edge corresponds to HIGH.}
     \label{fig:tot_threholds}
 \end{figure}
 
@@ -137,7 +137,7 @@ Each of these steps is integral to the observatory's objective of investigating 
     \centering{
     \includegraphics[scale=0.5]{figures/hawc/shower_shape.png}
     }
-    \caption{\todo{copied from A's thesis}. An illustration of the angle reconstruction of the original particle. The secondary particles of an air shower travel in a plane perpendicular to the direction of the original particle, allowing for the reconstruction of the initial angle after corrections due to the curvature of the plane. Figure from \cite{thesis_Zigg}.}
+    \caption{An particle shower incident on WCDs. Secondary particles of an air shower travel in a cone centered on primary incident particle. Reconstruction of the initial angle is possible with arrival time of hits in PMTs inside WCDs. Figure from \cite{thesis_Zigg}.}
     \label{fig:shower_shape}
 \end{figure}
 
@@ -157,7 +157,7 @@ This leaves the core location and overall amplitude $A$ as the free parameters t
     \centering{
         \includegraphics[scale=0.5]{figures/hawc/core_fitting.png}
     }
-    \caption{\todo{pulled for thesis}. Charge deposited in each PMT for a reconstructed gamma-ray event. Each large circle represents a WCD and each of the 4 smaller circles within represent a PMT. The color scale represents the amount of charge deposited in each PMT. The red star in the center of the dashed circle shows the location of the shower core fit by the SFCF algorithm. \cite{Abeysekara_2017}}
+    \caption{Charge deposition in each PMT for a reconstructed gamma-ray event. WCDs are outlined in black surrounding the 4 smaller circles that represent PMTs. The color scale indicates the charge deposition in each PMT. The best shower core fit from SFCF is noted with a red star in the center of the dashed circle \cite{Abeysekara_2017}.}
     \label{fig:core_fitter}
 \end{figure}
 
@@ -221,7 +221,7 @@ This tracing allows for exact correlations with known gamma-ray sources.
     \centering{
         \includegraphics[scale=0.6]{figures/hawc/fhit_bins.png}
     }
-    \caption{\todo{coped from paper}. Normalized histogram of the energy distribution of each fhit bin defined in Table 2.1. This figure was made using Monte Carlo simulations assuming a spectral distribution E about 2.63 at a declination of 20◦. Figure from \cite{Abeysekara_2017}.}
+    \caption{Simulated normalized energy distribution of each $f_\mathrm{hit}$ bin defined in \cref{tab:fhit_bins}. Monte Carlo simulation of gamma-rays with $E^-{2.63}$ spectral shape and simulated source at 20$^\circ$ declination. Figure from \cite{Abeysekara_2017}.}
     \label{fig:fhit_bins}
 \end{figure}
 
@@ -253,7 +253,7 @@ Such distributions vary with the declination of the source and the theoretical e
     \centering{
         \includegraphics[clip, trim=9.1cm 0cm 0cm 0cm, scale=0.9]{figures/hawc/NN_performance.jpg}
     }
-    \caption{\todo{copied}NN (right) energy estimators. The dotted line is the identity line; events that fall along this line are reconstructed perfectly. Gamma/hadron separation cuts have been applied. The first energy bin starts at , and the last energy bin ends at , which accounts for the sharp features in the figures. Figure pulled from \cite{100TEV_Crab_HAWC}}
+    \caption{Neural Network energy estimator performance compared to true energy. The dotted line is the identity line where the estimator and injection agree. Gamma/hadron separation cuts were applied with the energy estimation. Figure pulled from \cite{100TEV_Crab_HAWC}}
     \label{fig:NN_performance}
 \end{figure}
 
@@ -288,7 +288,7 @@ It represents a significant advancement in the field, offering deeper insights i
     \centering{
         \includegraphics[scale=0.45]{figures/hawc/LDF_particles.png}
     }
-    \caption{\todo{copied}Lateral distribution functions of an obvious cosmic ray (left) and a photon candidate from the Crab Nebula (right).The cosmic ray has isolated high-charge hits far from the shower core due to penetrating particles in the hadronic air shower. These features are absent in the gamma-ray shower}
+    \caption{Lateral distribution functions (LDFs) for cosmic ray (left) and a photon candidate from the Crab Nebula (right). Cosmic ray LDF has clearly isolated hits far from the reconstructed shower core. Gamma-ray shower shows a more cuspy event \cite{Abeysekara_2017}.}
     \label{fig:ldf_particleshower}
 \end{figure}
 
