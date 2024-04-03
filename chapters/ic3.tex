@@ -1,9 +1,56 @@
+\tmpfig{IceCube}
+
+Located at the South Pole, the IceCube Neutrino Observatory is a pivotal instrument for neutrino astronomy.
+IceCube's primary function is the detection and analysis of elusive, high-energy neutrinos.
+These neutrinos carry information from the most energetic and distant cosmic phenomena.
+The observatory uses thousands of digital optical modules embedded in a cubic kilometer of Antarctic ice to detect Cherenkov radiation.
+This radiation occurs when neutrinos interact with the ice, revealing their origin and energy.
+
+IceCube is a critical component in the multi-messenger astrophysics toolkit, especially in the search for dark matter and beyond standard model (BSM) astrophysical processes.
+The observatory's analysis of neutrino signals enhances our understanding of the universe by correlating these signals with other cosmic messengers, including electromagnetic, gravitational waves, and cosmic rays.
+
+The following sections will discuss the observatory's design, data acquisition, event reconstruction methodologies, and its significance in observing the Northern Sky.
+These details will underscore IceCube's role in advancing our understanding of the cosmos through data-driven insights.
+
 %-----------------------------------------------------------------------------------%
 \section{The Detector}
 %-----------------------------------------------------------------------------------%
 
+The IceCube Neutrino Observatory is embedded within a cubic kilometer of Antarctic ice at the South Pole.
+IceCube's modules are designed to detect neutrinos through Cherenkov radiation emitted during neutrino interactions with the ice.
+It comprises 5160 Digital Optical Modules (DOMs), arranged across 86 strings that span depths of 1450 m to 2450 m beneath the surface.
+This arrangement allows IceCube to capture high-energy neutrinos across a broad neutrino spectrum.
+
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+\subsection{Hardware and Construction}
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
+\tmpfig{DOM photo}
+
+Digital Optical Modules (DOMs) are at the core of IceCube’s detection technology, each encased in a glass sphere to withstand deep-ice pressures.
+A DOM features a 10-inch photomultiplier tube (PMT) for Cherenkov light detection, a high-voltage power supply for the PMT, and a Main Board for signal digitization and timestamping.
+An LED Flasher Board is included for calibration purposes, assisting in verifying DOM responses and measuring ice optical properties.
+The DOMs are deployed along cables on strings in a hexagonal grid pattern, which spans a cubic kilometer.
+Strings are placed with 125 meters of horizontal spacing, and DOMs are vertically separated by 17 meters on each string, chosen to optimize detection capability for neutrinos within the teraelectronvolt (TeV) to petaelectronvolt (PeV) energy range.
+
+DeepCore and IceTop, additional components of IceCube, extend its research capabilities.
+DeepCore, with its denser array of DOMs, targets lower energy neutrinos for studies such as neutrino oscillations and dark matter.
+IceTop, situated at the ice surface, measures cosmic rays, contributing data that complement the neutrino observations from below the ice.
+
+\tmpfig{ICL}
+
+The central hub for IceCube's operations is the IceCube Laboratory (ICL), situated at the surface at the center of the array.
+This facility houses the servers and computers responsible for data acquisition and online filtering, connected to the DOMs via cables routed up from beneath the ice \cite{IC3_thedetector}.
+The ICL plays a crucial role in managing the data flow from the ice, ensuring continuous operation and data integrity.
+It is designed to maintain optimal conditions for its electronic equipment, including temperature control and protection against electromagnetic interference, which is vital for the accurate processing and analysis of the collected data \cite{IC3_thedetector}.
+
+
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+\subsection{Data Acquisition}
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
 %-----------------------------------------------------------------------------------%
-\section{Events Reconstruction and Data Acquisition}
+\section{Track Event Reconstruction}
 %-----------------------------------------------------------------------------------%
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
@@ -15,13 +62,9 @@
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
 %-----------------------------------------------------------------------------------%
-\section{Northern Test Site}
+\section{Background}
 %-----------------------------------------------------------------------------------%
 
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{PIgeon remote dark rate testing}
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{Bulkhead Construction}
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+%-----------------------------------------------------------------------------------%
+\section{North Sky Tracks}
+%-----------------------------------------------------------------------------------%
