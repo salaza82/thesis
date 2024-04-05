@@ -1,36 +1,24 @@
 \documentclass[PhD]{msu-thesis}
 
-% \pdfoutput=1
-
-% \usepackage[utf8]{inputenc} % allow  utf-8 inpute
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage[colorlinks=True,linkcolor=black,urlcolor=blue,citecolor=black]{hyperref}       % hyperlinks
 \usepackage{xurl}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
-% \usepackage{amssymb}
-% \usepackage{amsmath}
 \usepackage{textgreek}
 \usepackage{bm}
 \usepackage{units}
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
-% \usepackage{microtype}      % microtypography
-% \usepackage{lipsum}
 \usepackage{xcolor}
-% \usepackage{subcaption}
 \usepackage{tabularx,caption,booktabs} % pretty captions and table formatting
 \usepackage{gensymb}        % Litterally needed just for degree symbol
-% \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{xspace}         % Helpful for formatting fancy math text
 \usepackage{multirow}       % merge cells in table
 \usepackage{afterpage}      % Page breaking for single tables
-% \usepackage{geometry}
 \usepackage{pdflscape}      % Page manipulate like landscape/portrait
 \usepackage{arydshln}       % Tables with dashed lines
-% \usepackage[normalem]{ulem}
 \usepackage{lineno}         % line numbers for editting
-% \usepackage{authblk}
 \usepackage{newtxtext,newtxmath}
 \usepackage{graphicx}
 \usepackage[capitalize]{cleveref}
@@ -59,8 +47,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\makecopyrightpage
-\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Acknowledgments}
@@ -82,34 +68,15 @@ Roommate
 \clearpage
 
 \listoftables
-\input{chapters/ListofTables.tex}
 \clearpage
+
 \listoffigures
-
-\begin{abbreviations}
-    \abbrev{MSU}{Michigan State University}
-    \abbrev{LANL}{Los Alamos National Laboratory}
-    \abbrev{DM}{Dark Matter}
-    \abbrev{SM}{Standard Model}
-    \abbrev{HAWC}{High Altitude Water Cherenkov Observatory}
-    \abbrev{dSph}{Dwarf Spheroidal Galaxy}
-\end{abbreviations}
 \mainmatter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Introduction\label{sec:intro}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Is the text not rendering right? Ah ok it knows im basically drafting the doc still
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Dark Matter in the Cosmos\label{sec:dm_cosmos}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/DarkMatterintheCosmos}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \chapter{Multimessenger Astrophysics: Detecting High Energy Neutral Messengers\label{sec:multmessenger}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \input{chapters/MultimessengerAstro.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{High Altitude Water Cherenkov (HAWC) Observatory\label{sec:hawc}}

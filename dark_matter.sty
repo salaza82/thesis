@@ -362,3 +362,39 @@
         N_{\text{exp}}(\phi, \theta) = \int \int E(\text{ha}, \theta) \cdot R(t) dt
     \end{equation}
 }
+
+\newcommand{\spe}{
+    \begin{equation} \label{eq:spe}
+        L(\Theta) = \prod_{j=1}^{N_{\text{DOM}}} \prod_{i=1}^{N_{\text{hit}}} p_j(t_i)^{q_i}
+    \end{equation}
+}
+
+\newcommand{\mpe}{
+    \begin{equation} \label{eq:step1_trackreco}
+        L(\Theta) = \prod_{j=1}^{N_{\text{DOM}}} \left[ p_j(t_1)^{q_1} \cdot \left(1 - P_j(t_1) \right)^{Q_j - q_1} \right],
+    \end{equation}
+}
+
+\newcommand{\splineMPE}{
+    \begin{equation} \label{eq:splineMPE}
+        L(\vec{r_0}, t_0, \theta, \phi) = \prod_{k} L_{\text{DOM}_k}(\vec{r_0}, t_0, \theta, \phi),
+    \end{equation}
+}
+
+\newcommand{\muEXLLH}{
+    \begin{equation}\label{eq:muEX_LLH}
+        \ln \mathcal{L} = k \ln(\Lambda E + \rho) - (\Lambda E + \rho) - \ln(k!)
+    \end{equation}
+}
+
+\newcommand{\vecMULLH}{
+    \begin{equation} \label{eq:vec_LLH}
+        \vec{k} - \vec{\rho} = \Lambda \cdot \vec{E}
+    \end{equation}
+}
+
+\newcommand{\LLHwithspice}{
+    \begin{equation} \label{eq:LLH_withspice}
+        \mathcal{L} = \prod_j \int_{0}^{\infty} d\lambda_j G(\lambda_i, \lambda_j) \frac{\lambda_j^{k_i} e^{-\lambda_i}}{k_i!},
+    \end{equation}
+}

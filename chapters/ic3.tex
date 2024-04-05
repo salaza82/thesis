@@ -100,48 +100,142 @@ Alerting operators to any deviations from expected conditions, this system is cr
 %-----------------------------------------------------------------------------------%
 \section{Event Reconstruction}
 %-----------------------------------------------------------------------------------%
-Event Reconstruction within the IceCube Neutrino Observatory transforms signals captured by Digital Optical Modules into quantifiable scientific insights, clarifying the origin, trajectory, and strength of interacting neutrinos. This complex process is pivotal for interpreting signals as either originating from celestial neutrino sources or other phenomena, enabling a broad spectrum of astrophysical and particle physics research.
+Event Reconstruction within the IceCube Neutrino Observatory transforms signals captured by Digital Optical Modules into quantifiable scientific insights.
+The goal of event reconstruction is to ascertain the origin, trajectory, and strength of interacting neutrinos.
+This process is pivotal for interpreting signals as either originating from celestial neutrino sources or other phenomena.
+I will focus mostly one how IceCube reconstructs track-like events as these are the most relevant for this dissertation.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Tracks and Cascades}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
-\tmpfig{Track}
-\tmpfig{Cascade}
-\tmpfig{Double Bang}
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.3]{figures/ic3/nn_cc_feynman.png}
+    }
+    \caption{\todo{copied}. The parton level W (a/b) and Z (c/d) boson exchange between neutrinos and light quarks. Feynman diagrams for charged current interactions (a/b) and neutral current interactions (c/d) between neutrinos and quarks that make up nucleons in the ice. AWboson is exchanged in charged current interactions and produces an outgoing lepton corresponding to the neutrino avor along with hadronic cascades. A Z boson is exchanged in neutral current interactions and only hadronic cascades are produced. Figure from \cite{physics_withIC3}. a double cascade event topology, shown in Figure 5.9. If it has a lower energy, it will}
+    \label{fig:ic2_ccORnc}
+\end{figure}
 
-In IceCube's detection landscape, events manifest primarily as either tracks or cascades, contingent on the neutrino flavor and the nature of its interaction with the ice.
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.4]{figures/ic3/event_topologies.png}
+    }
+    \caption{\todo{copied}. Event signature of high energy NC and CC neutrino interactions. The signature is decomposed in hadronic and electromagnetic cascades and Cherenkov radiation from a single long ranging particle. The type of cascade from the tau decay depends on the decay channel of the tau. For energies below a PeV the two cascades of the tau signature overlap and can not be distinguished. For a sparse instrumented detector like IceCube, the events can be classified in track-like and cascade-like. Figure from \cite{rene_thesis_nutracks}.}
+    \label{fig:}
+\end{figure}
 
-Tracks emerge from charged-current interactions involving muon (μ) neutrinos.
-These events are characterized by the production of a muon, which, due to its relatively large mass compared to electrons, can travel extensive distances through the ice, exceeding kilometers.
-This extensive travel path is marked by a continuous emission of Cherenkov light, forming a distinct, elongated track in the detector's observational field.
-The angular deviation between the incoming μ neutrino and the produced muon is notably slight, tapering to near 0.3$^\circ$ at energies surpassing a teraelectronvolt (TeV), thereby allowing the trajectory of the muon to closely approximate the incident neutrino's path.
-Such precision affords angular resolutions finer than 1$^\circ$ for neutrinos with energies in the TeV range and beyond, facilitating the accurate determination of their cosmic origins.
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.5]{figures/ic3/neutrinos-track-sig-2.png}
+    }
+    \caption{\todo{copied}. A simulation of a track-like event in IceCube. Tracks are produced when CC muon neutrino interactions occur and a muon is produced in return. The color of the DOMs represent the arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in that DOM. The CC neutrino interaction occurred near the red hits, with the muon exiting to the left. Figure taken from \cite{IC3_masterclass}.}
+    \label{fig:ic3_track}
+\end{figure}
 
-Cascades are indicative of both neutral-current interactions across all neutrino flavors and charged-current interactions involving electron (e) or tau (τ) neutrinos.
-Unlike tracks, cascades result in a more localized explosion of Cherenkov radiation, rendering a nearly spherical light pattern due to the rapid dissipation of energy by the produced particles.
-This diffusion creates a distinct event signature but sacrifices the directional clarity afforded by track events.
-Despite the isotropic nature of cascades leading to broader angular uncertainties—typically around 15$^\circ$ — they excel in providing precise energy measurements, with resolutions reaching as tight as 15\%, due to the contained nature of the energy deposition.
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.5]{figures/ic3/neutrinos-cascade-sig-1.png}
+    }
+    \caption{\todo{copied} A simulation of a cascade-like event in IceCube. Cascades can be produced by NC interactions for all flavors of neutrinos, for CC interactions for electron neutrinos, and for CC interactions for tau neutrinos for energies below 1 PeV. The color of the DOMs represent the arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in that DOM. Figure taken from \cite{IC3_masterclass}.}
+    \label{fig:ic3_cascade}
+\end{figure}
 
-A theoretical event type, the double-bang event, posited for τ neutrinos interacting via charged-current mechanisms at energies above 1 PeV, would display as two distinct cascades within the detector.
-This signature arises from the initial interaction and subsequent decay of the τ lepton over a discernible distance, offering a unique marker for high-energy τ neutrino detection.
-While IceCube has yet to identify such an event, its potential discovery would significantly advance our understanding of neutrino physics.
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.45]{figures/ic3/neutrinos-double-bang-sig-3.png}
+    }
+    \caption{\todo{copied}. A simulation of a double-bang event in IceCube. Double-bang events occur when CC tau neutrino interactions occur above 1 PeV producing a g lepton. When these high-energy g leptons are produced, the g leptons are able to travel over 50 m in IceCube before they decay. At these distances, the light emission from the decays are distinguishable from the light emission of the hadronic cascades from the initial tau neutrino interactions. The color of the DOMs representthe arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in the DOM. Figure taken from \cite{IC3_masterclass}.}
+    \label{fig:ic3_doubleBang}
+\end{figure}
 
-Delineating events into tracks, cascades, and the theoretical double-bangs is essential for extracting meaningful data from the myriad of interactions within IceCube.
-This categorization underpins the observatory's ability to probe the universe's extremities, offering insights into the enigmatic sources of high-energy neutrinos and the fundamental properties governing their behavior.
+Events in IceCube's detector volume manifest primarily as either tracks or cascades.
+The primary cause of the event topology are both the neutrino flavor and the nature of the primary neutrino's interaction with the ice.
+
+Tracks emerge from charged-current (CC) interactions involving muon neutrinos ($\nu_\mu$).
+These events are characterized by the production of a high-energy muon ($\mu$).
+These muons, due to its relatively large mass compared to electrons, can traverse substantial distances through the ice, exceeding kilometers.
+These long trajectories are obvious from continuous, distinct, and elongated track of Cherenkov light in the ice.
+See \cref{fig:ic3_track} for a simulated track event.
+The angular deviation between the incoming $\nu_\mu$ and the secondary muon is notably slight, tapering to near 0.3$^\circ$ above TeV energies.
+Therefore, muon tracks closely approximate the primary neutrino's path \cite{physics_withIC3,IC3_energyReco}.
+Such precision affords angular resolutions finer than 1$^\circ$ for TeV neutrinos which facilitates the determination of their cosmic origins \cite{physics_withIC3}.
+
+Cascades are products of both neutral-current (NC) interactions across all neutrino flavors and CC interactions involving electron or tau neutrinos, $\nu_e$ and $\nu_\tau$ respectively.
+Unlike tracks, cascades result in a more localized burst of Cherenkov radiation.
+The burst imprints as a nearly spherical light pattern from the rapid dissipation of energy by the produced particles.
+This diffusion creates a distinct event signature with good energy estimation, but worse directional clarity compared to track events.
+The isotropic nature of cascades leads to larger angular uncertainties, typically around 15$^\circ$,
+Yet, cascades excel in providing energy measurements, with resolutions reaching as tight as 15\% from the contained nature of the energy deposition \cite{physics_withIC3,IC3_energyReco}.
+
+A rarely observed event type, the double-bang event, posited for $\nu_\tau$ interacting via CC at energies above 1 PeV, would display as two distinct cascades within the detector.
+These events start from an initial interaction and subsequent decay of the $\tau$ lepton over a discernible distance.
+The double bang offers a unique marker for high-energy $\nu_\tau$ detection \cite{physics_withIC3}.
+Preliminary whispers of double-bang events IceCube have been observed \cite{IC3_taus}.
+Yet, efforts are ongoing to isolate such an event.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-\subsection{Angle}
+\subsection{Reconstruction of Track Direction}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
+Angular reconstruction for $\nu_\mu$ induced tracks in the IceCube detector volume starts with the LineFit algorithm \cite{AMANDA_trackreco}.
+LineFite estimates the muon's trajectory through a least squares fit to the Cherenkov light hits on the DOMs.
+LineFit assumes the muon propagates with constant velocity and treats its path as linear in order to simplify the emission patterns of Cherenkov radiation.
+To improve this approximation, the Huber penalty function \cite{Huber:1964} is applied which distinguishes between signal and noise by considering the spatial distribution of hits relative to the track \cite{IC3_Calibration}.
+
+The reconstruction process is refined further by the Single Photoelectron (SPE) likelihood method, which calculates the probability of photon arrival times at the DOMs \cite{Huber:1964}.
+It does so by taking into account the earliest detected photons as they are least likely to have been scattered:
+\spe
+where $N_{DOM}$ is the number of Digital Optical Modules involved in the event.
+$N_{\mathrm{hit}}$ is the number of hits registered \cite{AMANDA_trackreco}.
+The charge detected by each DOM, $q_i$, factors into the probability calculation, assuming that earlier photons provide more reliable directional information.
+
+An alternative to SPE, the Multi-Photoelectron (MPE) likelihood method accounts for all detected photons.
+MPE uses the total observed charge to weight the significance of each hit:
+\mpe
+where $Q_j$ is the sum of charges observed by the j-th DOM, providing a more detailed picture of the muon's path \cite{AMANDA_trackreco}.
+
+SplineMPE, is the final step and employs a spline-based parameterization of the photon arrival times.
+These spline fits encode a detailed understanding of the ice's optical properties derived from calibration data \cite{AMANDA_trackreco}.
+This approach yields the following likelihood function for improved angular resolution:
+\splineMPE
+where the parameters $\vec{r_0}, t_0, \theta, \mathrm{ and}~\phi$ describe the reconstructed track within IceCube's voluminous array \cite{AMANDA_trackreco}.
+
+From the light weight LineFit to the complex SplineMPE, each step incorporates more detailed physics to enhance the reconstruction's accuracy.
+Each hones in on the muon track and revealing the muon's origin from cosmic distances.
+This nuanced tracking is crucial for IceCube's mission to map the universe through the lens of high-energy neutrino interactions.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Energy}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 
+After pinpointing the muon track's direction, IceCube employs the MuEX algorithm to estimate the energy deposited by the muon inside the detector.
+The MuEX algorithm uses a Poisson likelihood model, comparing the observed photoelectrons $k$ to the expected light output, $\Lambda$, which is directly related to the deposited energy $E$:
+\muEXLLH
+where $\rho$ is the number of expected noise photons, and $\Lambda$ reflects the light yield per unit energy, taking into account the optical properties of the ice and the detector response.
+The logarithm of the likelihood is minimized with respect to the energy, resulting in the best-fit estimate \cite{IC3_energyReco}.
+
+For a more detailed energy reconstruction, the Millipede algorithm unfolds the muon's energy loss along its path by adapting the Poisson likelihood.
+This approach accounts for the stochastic energy losses due to Bremsstrahlung and pair production, treating the muon as a series of electromagnetic cascades:
+\vecMULLH
+\LLHwithspice
+
+where $k$ denotes the observed photons, $\rho$ the noise, $E$ the energy losses, and \textbf{$\Lambda$} the matrix of predicted light yields throughout the detector.
+By fitting the muon's position, direction, and the vector of energy losses, Millipede achieves a resolution on total deposited energy along the muon track of approximately 10-15\% \cite{IC3_energyReco}.
+
+IceCube's energy reconstruction techniques, from the direct approach of MuEX to the comprehensive unfolding by Millipede, illustrate the observatory's robust analytical framework for interpreting the intricate signals of neutrino interactions \cite{IC3_energyReco}.
+
 %-----------------------------------------------------------------------------------%
 \section{Background}
 %-----------------------------------------------------------------------------------%
 
-%-----------------------------------------------------------------------------------%
-\section{North Sky Tracks}
-%-----------------------------------------------------------------------------------%
+In IceCube, the primary challenge in detecting astrophysical neutrinos is the background noise from atmospheric neutrinos.
+These are produced from cosmic rays hitting the Earth's atmosphere, leading to a cascade that includes both neutrinos and muons (see \cref{fig:airshowers}).
+These particles sometimes generate detector signals similar to those from astrophysical sources.
+
+IceCube employs selective criteria to reduce this background.
+For instance, downward-moving tracks are scrutinized more heavily, as these are more likely to be related to atmospheric events.
+Upward-moving neutrinos, however, are less likely to be confused with this background because the Earth filters out most other particles, including muons.
+
+The detector uses the Earth itself as a filter to increase the purity of potential astrophysical neutrino signals.
+This differentiation between upgoing and downgoing events helps IceCube focus on the neutrinos that are of most interest for astronomical observations.
