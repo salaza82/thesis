@@ -2,7 +2,7 @@
     \centering{
         \includegraphics[clip, trim=3cm 3.5cm 2cm 0cm, scale=0.8]{figures/ic3/IC3_aboveground.png}
     }
-    \caption{IceCube Neutrino observatory at the South Pole. Image from \todo{cite where you got this from}.}
+    \caption{IceCube Neutrino observatory and science center at the South Pole. Detector volume is beneath glacial ice. Image from \cite{IceCube_SPGallery}.}
     \label{fig:IC3_atPole}
 \end{figure}
 
@@ -21,6 +21,12 @@ These details will underscore IceCube's role in advancing our understanding of t
 %-----------------------------------------------------------------------------------%
 \section{The Detector}
 %-----------------------------------------------------------------------------------%
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.37]{figures/ic3/ICL.JPG}
+    }\caption{IceCube Laboratory (ICL) that houses the data acquisition systems. Picture from \cite{IceCube_SPGallery}.}
+    \label{fig:ICL}
+\end{figure}
 
 The IceCube Neutrino Observatory is embedded within a cubic kilometer of Antarctic ice at the South Pole.
 IceCube's modules are designed to detect neutrinos through Cherenkov radiation emitted during neutrino interactions with the ice.
@@ -35,7 +41,7 @@ This arrangement allows IceCube to capture high-energy neutrinos across a broad 
     \centering{
         \includegraphics[scale=0.5]{figures/ic3/DOM.png}
     }
-    \caption{\todo{pasted} Components of the DOM, showing mechanical layout (left) and functional connections (right). Figure from \cite{IC3_thedetector}}
+    \caption{Composition of the Digital Optical Module (DOM). Left image is an illustration of the mechanical layout. Right is a flow chart of functional connections. Figure from \cite{IC3_thedetector}}
     \label{fig:DOM}
 \end{figure}
 
@@ -51,9 +57,9 @@ IceTop, situated at the ice surface, measures cosmic rays, contributing data tha
 
 \begin{figure}
     \centering{
-        \includegraphics[scale=0.37]{figures/ic3/ICL.JPG}
-    }\caption{ICL. Picture from \cite{IceCube_SPGallery}.}
-    \label{fig:ICL}
+        \includegraphics[scale=0.5]{figures/ic3/icecube.png}
+    }
+    \caption{Graphic of the full IceCube Neutrino Observatory. In-ice array is made up of 86 strings with a total of 5160 optical sensors. Deepcore is a denser arrangement of optical sensors for sensitivity to lower energy neutrinos. Figure from \cite{IceCube_SPGallery}.}
 \end{figure}
 
 The central hub for IceCube's operations is the IceCube Laboratory (ICL), situated at the surface at the center of the array.
@@ -70,7 +76,7 @@ It is designed to maintain optimal conditions for its electronic equipment, incl
     \centering{
         \includegraphics[scale=0.4]{figures/ic3/IC3_dataflow.png}
     }
-    \caption{\todo{Copied} Data flow diagram for recording and processing of PMT waveforms in the DOM to form “Hit Records" that are sent to the surface DAQ computers. As shown by dashes, full waveform data are only included when neighbor DOMs report time-coincident signals above the SPE discriminator threshold. Additionally, data from low-gain channels are omitted for waveforms that are within range of higher-gain channels.}
+    \caption{Data flow chart PMT waveforms from the DOMs. “Hit Records" are sent to the surface DAQ computers in ICL. Full waveform data, represented with dashed arrows, are included when neighboring DOMs are hit in coincidence above the SPE discriminator threshold.}
     \label{fig:IC3_dataflow}
 \end{figure}
 
@@ -113,7 +119,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.3]{figures/ic3/nn_cc_feynman.png}
     }
-    \caption{\todo{copied}. The parton level W (a/b) and Z (c/d) boson exchange between neutrinos and light quarks. Feynman diagrams for charged current interactions (a/b) and neutral current interactions (c/d) between neutrinos and quarks that make up nucleons in the ice. AWboson is exchanged in charged current interactions and produces an outgoing lepton corresponding to the neutrino avor along with hadronic cascades. A Z boson is exchanged in neutral current interactions and only hadronic cascades are produced. Figure from \cite{physics_withIC3}. a double cascade event topology, shown in Figure 5.9. If it has a lower energy, it will}
+    \caption{Feynman diagrams for W (a/b) and Z (c/d) boson mediated interactions between neutrinos and light quarks. Charged current (CC) interactions are shown in panels a and b. Neutral current (NC) interactions are shown in panels c and d. NC interactions occur between neutrinos and quarks withing atomic nucluei in the ice. CC interactions will exchange W bosons and produce a lepton corresponding to the neutrino flavor and a hadronic cascade. NC interactions will exchange a Z boson produce a hadronic cascades. Figure from \cite{physics_withIC3}.}
     \label{fig:ic2_ccORnc}
 \end{figure}
 
@@ -121,7 +127,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.4]{figures/ic3/event_topologies.png}
     }
-    \caption{\todo{copied}. Event signature of high energy NC and CC neutrino interactions. The signature is decomposed in hadronic and electromagnetic cascades and Cherenkov radiation from a single long ranging particle. The type of cascade from the tau decay depends on the decay channel of the tau. For energies below a PeV the two cascades of the tau signature overlap and can not be distinguished. For a sparse instrumented detector like IceCube, the events can be classified in track-like and cascade-like. Figure from \cite{rene_thesis_nutracks}.}
+    \caption{Event topologies for high energy NC and CC neutrino interactions with ice. Signatures can be split as either: hadronic and electromagnetic cascades; Cherenkov radiation from a single long ranging particle. Cascade from the $\tau$ decay will depend on its decay products. For energies below 1 PeV the double bang of the $\nu_\tau$ signature overlap and are indistinguishable. Figure from \cite{rene_thesis_nutracks}.}
     \label{fig:}
 \end{figure}
 
@@ -129,7 +135,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.5]{figures/ic3/neutrinos-track-sig-2.png}
     }
-    \caption{\todo{copied}. A simulation of a track-like event in IceCube. Tracks are produced when CC muon neutrino interactions occur and a muon is produced in return. The color of the DOMs represent the arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in that DOM. The CC neutrino interaction occurred near the red hits, with the muon exiting to the left. Figure taken from \cite{IC3_masterclass}.}
+    \caption{A simulation of a track-like event in IceCube. Redder bubbles indicate earlier photon arrival times. Greener bubbles occur later. The size of the DOM bubble illustrate the charge deposition in the DOM. For this event, the CC neutrino interaction occurred by the red hits. There is then a long muon track going to the left. Figure taken from \cite{IC3_masterclass}.}
     \label{fig:ic3_track}
 \end{figure}
 
@@ -137,7 +143,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.5]{figures/ic3/neutrinos-cascade-sig-1.png}
     }
-    \caption{\todo{copied} A simulation of a cascade-like event in IceCube. Cascades can be produced by NC interactions for all flavors of neutrinos, for CC interactions for electron neutrinos, and for CC interactions for tau neutrinos for energies below 1 PeV. The color of the DOMs represent the arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in that DOM. Figure taken from \cite{IC3_masterclass}.}
+    \caption{Same as \cref{fig:ic3_track} but for a cascade-like event. Figure taken from \cite{IC3_masterclass}.}
     \label{fig:ic3_cascade}
 \end{figure}
 
@@ -145,7 +151,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.45]{figures/ic3/neutrinos-double-bang-sig-3.png}
     }
-    \caption{\todo{copied}. A simulation of a double-bang event in IceCube. Double-bang events occur when CC tau neutrino interactions occur above 1 PeV producing a g lepton. When these high-energy g leptons are produced, the g leptons are able to travel over 50 m in IceCube before they decay. At these distances, the light emission from the decays are distinguishable from the light emission of the hadronic cascades from the initial tau neutrino interactions. The color of the DOMs representthe arrival times of the photons (red is early, green is late). The size of the DOM represents the amount of charge that is seen in the DOM. Figure taken from \cite{IC3_masterclass}.}
+    \caption{Same as \cref{fig:ic3_track} but for a double-bang event. Two distinct cascades are visible if the initial neutrino is very high energy. Figure taken from \cite{IC3_masterclass}.}
     \label{fig:ic3_doubleBang}
 \end{figure}
 
