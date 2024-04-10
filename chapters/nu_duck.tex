@@ -14,37 +14,51 @@ As I have shown previously in \Cref{sec:glory_duck} and \Cref{sec:multithread}, 
 Myself and the Glory Duck team have established a formalism for the purpose of combining common DM observations.
 These combinations, \Cref{sec:glory_duck}, and accelerations,\Cref{sec:multithread}, laid the groundwork for faster DM searches without sacrificing on the scientific rigor.
 
+\begin{figure}[t]
+    \centering{
+        \includegraphics[scale=0.6]{figures/numunumu_hawcWic3_sens.pdf}
+    }
+    \caption{(purple line) HAWC 95\% confidence limit on \sv~using data from 3 sources: Coma Berenices, Segue 1, and Sextans. (Dashed black line) IceCube median 95\% confidence limit on \sv~over 300 background trials. Colored bands around $\mathcal{H}_0$ are the 68\% (light blue) and 95\% (peach) containment bands. The median IceCube value and HAWC data are most similar in the $m_\chi \approx 1$ PeV region.}
+    \label{fig:nuDuck_sens}
+\end{figure}
+
 Within IceCube, I developed the first DM annihilation search towards dSphs in over a decade, \Cref{sec:ic3_dm}.
 Moreover, this work was developed with the long-term goal: combining with gamma-ray data for a multi-messenger DM search.
 There is already promising developments in DM phenomonalogy in this regard.
 \Cref{fig:nu_and_gam} is the headline figure from \texttt{HDMSpectra} \cite{HDMSpectra} for a DM decay ($\chi \rightarrow$\parpar{\nu_e}) spectrum in $\nu_e$~ and $\gamma$.
 What is intriguing from this publication is that although photons more readily interact with our detector than neutrinos, the expected photon spectrum is soft enough to be difficult to discern from the background.
 Whereas, I showed that IceCube has exceptional sensitivity for hard neutrino spectra, see \cref{fig:icDM_stact_numu_TS,fig:icDM_sensitivity_2of2}.
-Additionally, the Earth was going to play a role in reducing IceCube's neutrino sensitivity, see \cref{fig:icDM_dec_study} and \cite{IC3:Earth_Attenuation}
+Additionally, the Earth was going to play a role in reducing IceCube's neutrino sensitivity, see \cref{fig:icDM_dec_study} and \cite{IC3:Earth_Attenuation}.
 These known behaviours clued us in on a potentially powerful partnership with HAWC and IceCube.
 
 Here I show some of the preliminary work done to combine HAWC and IceCube data for a multi-messenger DM search.
-My IceCube analysis, \Cref{sec:ic3_dm}, through background simulation, showed that our variables behave mostly like normal variable distributed as a $\chi^2$ distribution with 1 degree of freedom.
-For IceCube we adopt the arguements first made by Fermi-LAT \cite{FermiLAT:dm1}, and later Glory Duck, \cref{sec:gd_joint_llh}.
+My IceCube analysis, \Cref{sec:ic3_dm}, through background simulation, showed that our variables behave mostly like normal variables distributed as a $\chi^2$ distribution with 1 degree of freedom.
+For IceCube we adopt the statistical framework for setting confidence limits first made by Fermi-LAT \cite{FermiLAT:dm1}, and later Glory Duck, \cref{sec:gd_joint_llh}.
 I adopt, in IceCube, the 95\% confidence limit standard defined in \cref{eq:hawc_cl95} with a likelihood combination from \cref{eq:gdJointLLH}.
 This differs from the 90\% confidence limit considered standard within IceCube and used for \Cref{sec:ic3_dm}.
 This statistical definition is standard for HAWC and requires no additional changes than what was presented in \Cref{sec:multithread}.
 
-For IceCube, I perform background simulation and confidence limit calculated identically to \cref{sec:hawc_results} with 300 trials 
+I calculated sensitivities for IceCube on 300 background trials and present the median, 68 and 95 percentile containment on the confidence limit with IceCube NST.
+The source and model selection for IceCube is identical to \cref{sec:ic3_study_selection}.
+I also calculate the confidence limit for HAWC using the methods and dataset from \cref{sec:mtd_srcs_y_chan} but the source models (\GS) from \cref{sec:gd_srcs_y_chan}.
+HAWC did not have an unblinding process, yet IceCube does.
+Therefore, IceCube data is not represented.
+\Cref{fig:nuDuck_sens} features IceCube's sensitivity suerimposed on HAWC's 95\% confidence limit on DM annihilation: $\chi\chi \rightarrow$ \parpar{\nu_\mu}.
+We can see that IceCube's sensitivity is complimented well by HAWC's confidence limit in the DM mass region above and around 1 PeV.
 
-\begin{figure}
-    \centering{
-        \includegraphics[scale=0.6]{figures/numunumu_hawcWic3_sens.pdf}
-    }
-    \caption{Awesome plot}
-    \label{fig:nuDuck_sens}
-\end{figure}
+I also do a mock combination between HAWC and IceCube.
+This mock run was made for the purpose of building the neutrino + gamma data pipeline for DM searches.
+\Cref{fig:nuDuck_mockdata} shows a combined limit between HAWC data and an IceCube simulated background trial treated as data.
+In this exersize we see that we indeed have a powerful combination in the 1 PeV DM mass region.
+We see an improvement to the combined limit to as far down as 100 TeV in DM mass.
+Furthermore, the improvement to this limit stay across two decades in DM mass.
+This preliminary work is evidence of the strength in multi-messenger DM searches and motivates such a study between these instruments.
 
 \begin{figure}
     \centering{
         \includegraphics[scale=0.6]{figures/numunumu_mock_data.pdf}
     }
-    \caption{Second awesome plt}
+    \caption{(orange solid line) HAWC 95\% confidence limit on \sv~using data from 3 sources: Coma Berenices, Segue 1, and Sextans. (blue solid line) IceCube 95\% confidence limit on \sv~from one simulated background trial. (dashed black line) Combined 95\% confidence limit on \sv~with HAWC data and IceCube background trial. Combined limit is stronger than either IceCube and HAWC in the region $m_\chi > 200$ TeV. }
     \label{fig:nuDuck_mockdata}
 \end{figure}
 
