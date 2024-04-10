@@ -1,20 +1,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}\label{sec:conclusions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-This dissertation, "Leveraging Multi-Messenger Astrophysics for Dark Matter Searches," advances our quest to understand dark matter. We used gamma-ray and neutrino observatories alongside advanced computational techniques. Our goal was to enhance the search for dark matter within the universe.
-
-The Glory Duck project was a key part of this work. It involved a multi-instrument analysis using gamma-ray telescopes. These included Fermi-LAT, H.E.S.S., MAGIC, VERITAS, and HAWC. They focused on 20 dwarf spheroidal galaxies (dSphs). The aim was to detect dark matter annihilation signals. Although we found no significant deviations from the null hypothesis, we greatly improved search sensitivity. We set stringent upper limits on the annihilation cross-section for dark matter candidates. This effort represents a major advance, offering the most comprehensive constraints for WIMP dark matter search to date.
-
-Our exploration of multithreading techniques in HAWC analyses showed the benefits of computational methods. By accelerating analysis time, we enhanced the efficiency of dark matter searches. This approach has set the stage for more ambitious studies. It highlights the importance of computational innovation in addressing astrophysical challenges.
-
-Furthermore, our work with IceCube's North Sky Track Data has broken new ground. It aimed at detecting heavy dark matter annihilation. We used parallel programming and spline fitting to improve IceCube's sensitivity. This analysis is a step towards probing dark matter annihilation up to the PeV scale. It demonstrates a significant sensitivity improvement compared to previous efforts. The groundwork laid here is a strong foundation for future discoveries.
-
-This dissertation highlights the potential of multi-messenger astrophysics and computational innovation in dark matter searches. Each analysis has contributed to our understanding and capabilities. Together, they showcase a progressive approach to astrophysical research. By integrating observations and using the latest computational techniques, we have expanded our capabilities. We have also charted a path for future dark matter searches.
-
-Looking back, it's clear that our journey through the dark universe is far from complete. The methods developed and findings reported here significantly contribute to the astrophysical community. They set the stage for future multi-messenger observations and analyses. In this pursuit, the challenges we face and the questions we seek to answer drive us forward. They fuel the continuous evolution of our search for dark matter.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Future Directions: Multi-Messenger Dark Matter Search}\label{sec:future}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -22,12 +6,31 @@ Looking back, it's clear that our journey through the dark universe is far from 
     \centering{
         \includegraphics[scale=0.4]{figures/hdm_gamma_nu.png}
     }
-    \caption{The prompt electron neutrino and photon spectrum resulting from the decay of a 2EeV DM particle to \parpar{\nu_e}, as currently being searched for at IceCube [5]. Solid curves represent the results of this work, and predict orders of magnitude more flux at certain energies than the dashed results of Pythia 8.2, one of the only existing methods to generate spectra at these masses. In both cases energy conservation is satisfied: there is a considerable contribution to a $\delta$-function at x = 1, associated with events where an initial W or Z was never emitted and thus no subsequent shower developed. Large disagreements are generically observed at these masses for electroweak dominated channels, while the agreement is better for colored initial SM states.}
+    \caption{The $\nu_e$ and $\gamma$ spectrum at production from the decay of a 2 EeV DM particle to \parpar{\nu_e}. Solid lines are from the work of Nick Rodd et al. \cite{HDMSpectra}. Dashed lines are previous models produced by the [article physics framework \texttt{PYTHIA}. Notice that the flux for both $\nu_e$ and $\gamma$ are significantly larger than previously predicted, especially at low energies. Similar changes are seen in DM masses above the electroweak scale.}
     \label{fig:nu_and_gam}
 \end{figure}
 
-As I have shown previously in \cref{sec:glory_duck} and \cref{sec:multithread}, we can build a fast and robust analysis that shares tools with the field.
-The hope being that IceCube can eventually combine data with gamma-ray observatories.
+As I have shown previously in \Cref{sec:glory_duck} and \Cref{sec:multithread}, we can build a fast and robust analysis in HAWC that shares tools with the field.
+Myself and the Glory Duck team have established a formalism for the purpose of combining common DM observations.
+These combinations, \Cref{sec:glory_duck}, and accelerations,\Cref{sec:multithread}, laid the groundwork for faster DM searches without sacrificing on the scientific rigor.
+
+Within IceCube, I developed the first DM annihilation search towards dSphs in over a decade, \Cref{sec:ic3_dm}.
+Moreover, this work was developed with the long-term goal: combining with gamma-ray data for a multi-messenger DM search.
+There is already promising developments in DM phenomonalogy in this regard.
+\Cref{fig:nu_and_gam} is the headline figure from \texttt{HDMSpectra} \cite{HDMSpectra} for a DM decay ($\chi \rightarrow$\parpar{\nu_e}) spectrum in $\nu_e$~ and $\gamma$.
+What is intriguing from this publication is that although photons more readily interact with our detector than neutrinos, the expected photon spectrum is soft enough to be difficult to discern from the background.
+Whereas, I showed that IceCube has exceptional sensitivity for hard neutrino spectra, see \cref{fig:icDM_stact_numu_TS,fig:icDM_sensitivity_2of2}.
+Additionally, the Earth was going to play a role in reducing IceCube's neutrino sensitivity, see \cref{fig:icDM_dec_study} and \cite{IC3:Earth_Attenuation}
+These known behaviours clued us in on a potentially powerful partnership with HAWC and IceCube.
+
+Here I show some of the preliminary work done to combine HAWC and IceCube data for a multi-messenger DM search.
+My IceCube analysis, \Cref{sec:ic3_dm}, through background simulation, showed that our variables behave mostly like normal variable distributed as a $\chi^2$ distribution with 1 degree of freedom.
+For IceCube we adopt the arguements first made by Fermi-LAT \cite{FermiLAT:dm1}, and later Glory Duck, \cref{sec:gd_joint_llh}.
+I adopt, in IceCube, the 95\% confidence limit standard defined in \cref{eq:hawc_cl95} with a likelihood combination from \cref{eq:gdJointLLH}.
+This differs from the 90\% confidence limit considered standard within IceCube and used for \Cref{sec:ic3_dm}.
+This statistical definition is standard for HAWC and requires no additional changes than what was presented in \Cref{sec:multithread}.
+
+For IceCube, I perform background simulation and confidence limit calculated identically to \cref{sec:hawc_results} with 300 trials 
 
 \begin{figure}
     \centering{
@@ -44,3 +47,19 @@ The hope being that IceCube can eventually combine data with gamma-ray observato
     \caption{Second awesome plt}
     \label{fig:nuDuck_mockdata}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}\label{sec:conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This dissertation, "Leveraging Multi-Messenger Astrophysics for Dark Matter Searches," advances our quest to understand dark matter. We used gamma-ray and neutrino observatories alongside advanced computational techniques. Our goal was to enhance the search for dark matter within the universe.
+
+The Glory Duck project was a key part of this work. It involved a multi-instrument analysis using gamma-ray telescopes. These included Fermi-LAT, H.E.S.S., MAGIC, VERITAS, and HAWC. They focused on 20 dwarf spheroidal galaxies (dSphs). The aim was to detect dark matter annihilation signals. Although we found no significant deviations from the null hypothesis, we greatly improved search sensitivity. We set stringent upper limits on the annihilation cross-section for dark matter candidates. This effort represents a major advance, offering the most comprehensive constraints for WIMP dark matter search to date.
+
+Our exploration of multithreading techniques in HAWC analyses showed the benefits of computational methods. By accelerating analysis time, we enhanced the efficiency of dark matter searches. This approach has set the stage for more ambitious studies. It highlights the importance of computational innovation in addressing astrophysical challenges.
+
+Furthermore, our work with IceCube's North Sky Track Data has broken new ground. It aimed at detecting heavy dark matter annihilation. We used parallel programming and spline fitting to improve IceCube's sensitivity. This analysis is a step towards probing dark matter annihilation up to the PeV scale. It demonstrates a significant sensitivity improvement compared to previous efforts. The groundwork laid here is a strong foundation for future discoveries.
+
+This dissertation highlights the potential of multi-messenger astrophysics and computational innovation in dark matter searches. Each analysis has contributed to our understanding and capabilities. Together, they showcase a progressive approach to astrophysical research. By integrating observations and using the latest computational techniques, we have expanded our capabilities. We have also charted a path for future dark matter searches.
+
+Looking back, it's clear that our journey through the dark universe is far from complete. The methods developed and findings reported here significantly contribute to the astrophysical community. They set the stage for future multi-messenger observations and analyses. In this pursuit, the challenges we face and the questions we seek to answer drive us forward. They fuel the continuous evolution of our search for dark matter.
