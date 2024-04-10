@@ -5,7 +5,7 @@
 HAWC's current software suite, plugins to 3ML and HAL \cite{2021arXiv211201818M,Abeysekara_2017}, do not fully utilize computational advancements of recent decades.
 Said advancements include the proliferation of Graphical Processing Units (GPUs), and multithreading on multicore processors.
 The analysis described in \Cref{sec:glory_duck} took up to 3 months of wall time waiting for the full gambit of data analysis and simulation of background to compute.
-Additionally, with the updated 2D energy binning scheme, $f_\mathrm{hit}$ and Neural Network (NN), the time needed to compute expected to grow.
+Additionally, with the updated 2D energy binning scheme split by $f_\mathrm{hit}$ and estimated energy from our Neural Network (NN) method, the time needed to compute was expected to grow.
 Although excessive computing time was, in part, from an intense use of a shared computing cluster, it was evident that there was room for improvement.
 In HAWC's next generation dSph DM search, I decided to develop codes that would utilize the multicore processors on modern high performance computing clusters.
 The results of this work are featured in this chapter and brought a human timing improvement to computation that scales approximately as $1/N$ where $N$ is the number of threads.
@@ -14,13 +14,13 @@ The results of this work are featured in this chapter and brought a human timing
 \section{Dataset and Background}\label{sec:mtd_databgd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This section enumerates the data and background methods used for HAWC's multithreaded study of dSphs.
+This section describes the data and background methods used for HAWC's multithreaded study of dSphs.
 \Cref{sec:mtd_data} and \Cref{sec:mtd_tools} are most useful for fellow HAWC collaborators looking to replicate a multithreaded dSph DM search.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Itemized HAWC files}\label{sec:mtd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-These files are only available withing HAWC's internal documentation and collaborators.
+These files are only available within HAWC's internal documentation and collaborators.
 They are not meant for public access, and are presented here so that HAWC collaborators can reproduce results accurately.
 
 \begin{itemize}
@@ -48,12 +48,13 @@ The above repository also incorporates the model inputs used previously in Glory
 
 The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 and 7476.
 They were generated from pass 5.f reconstruction.
-The analysis is performed using the NN energy estimator with bin list:
+The analysis is performed using the NN energy estimator with nominal bin list:
 
 \begin{itemize}
     \item[] \texttt{B1C0Ea}, \texttt{B1C0Eb}, \texttt{B1C0Ec}, \texttt{B1C0Ed}, \texttt{B1C0Ee}, \texttt{B2C0Ea}, \texttt{B2C0Eb}, \texttt{B2C0Ec}, \texttt{B2C0Ed}, \texttt{B2C0Ee}, \texttt{B3C0Ea}, \texttt{B3C0Eb}, \texttt{B3C0Ec}, \texttt{B3C0Ed}, \texttt{B3C0Ee}, \texttt{B3C0Ef}, \texttt{B4C0Eb}, \texttt{B4C0Ec}, \texttt{B4C0Ed}, \texttt{B4C0Ee}, \texttt{B4C0Ef}, \texttt{B5C0Ec}, \texttt{B5C0Ed}, \texttt{B5C0Ee}, \texttt{B5C0Ef}, \texttt{B5C0Eg}, \texttt{B6C0Ed}, \texttt{B6C0Ee}, \texttt{B6C0Ef}, \texttt{B6C0Eg}, \texttt{B6C0Eh}, \texttt{B7C0Ee}, \texttt{B7C0Ef}, \texttt{B7C0Eg}, \texttt{B7C0Eh}, \texttt{B7C0Ei}, \texttt{B8C0Ee}, \texttt{B8C0Ef}, \texttt{B8C0Eg}, \texttt{B8C0Eh}, \texttt{B8C0Ei}, \texttt{B8C0Ej}, \texttt{B9C0Ef}, \texttt{B9C0Eg}, \texttt{B9C0Eh}, \texttt{B9C0Ei}, \texttt{B9C0Ej}, \texttt{B10C0Eg}, \texttt{B10C0Eh}, \texttt{B10C0Ei}, \texttt{B10C0Ej}, \texttt{B10C0Ek}, \texttt{B10C0El}
 \end{itemize}
 Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
+This list was cut down depending on the declination of the source because the PSF of these bins were too large, or the statistics were too low.
 
 Background considerations and source selection was identical to \Cref{sec:gs_data_bkgd}, and no additional arguments are provided here.
 Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply for this DM search and are not added upon here.
@@ -63,7 +64,7 @@ Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The analysis and its systematics are almost identical to \Cref{sec:gd_analysis}.
-Importantly, we use the same \todo{fix this ref} \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
+Importantly, we use the same \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
@@ -89,13 +90,14 @@ The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
     \item[] $e^+e^-$, $\mu^+\mu^-$, $\tau^+\tau^-$,$b\bar{b}$, $t\bar{t}$, $gg$, $W^+W^-$, $ZZ$, $c\bar{c}$, $u\bar{u}$, $d\bar{d}$, $s\bar{s}$, $\nu_e \overline{\nu_e}$, $\nu_\mu \overline{\nu_\mu}$, $\nu_\tau \overline{\nu_\tau}$, $\gamma\gamma$, $hh$.
 \end{itemize}
 For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have $E_\gamma = m_\chi$ \cite{HDMSpectra}.
-This introduces $\delta$-function that is much narrower than the energy resolution of the HAWC detector.
-To ensure that this feature is not lost in the likelihood fits, the 'line' feature is convolved with a Gaussian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
+This introduces a $\delta$-function in the tested spectra, referred to as a spectral line, that is much narrower than the energy resolution of the HAWC detector.
+To ensure that this feature is not lost in the likelihood fits, the `line' feature is convolved with a Gaussian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
+The kernel width was chosen based on the choices made from HAWC's previous gamma-line study \cite{HAWC_dm_gammalines} and the observed energy resolution og the NN enregy estimator \cite{100TEV_Crab_HAWC}.
 This differs from HAWC's previous line study where 30\% of HAWC's energy resolution was used for the kernel \cite{HAWC_dm_gammalines}.
-The NN energy estimator's strength compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{HDMSpectra}.
-$\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
+The NN energy estimator's improved energy resolution compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{HDMSpectra} and see \cref{sec:hawc_nn}.
+The annihilation spectra after Gaussian smoothing for $\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
 We did not explore how well we reconstruct injected signal events for various kernels widths.
-This is a systematic that should be tested before publication to journal.
+This is a systematic that should be tested before publication in a journal.
 Spectral models for the remaining annihilation channels are plotted for each $m_\chi$ in \Cref{fig:apdx_mtd_spectra}.
 
 \begin{figure}[h]
@@ -117,7 +119,7 @@ The \LS catalog fits a Navarro–Frenk–White (NFW) \cite{NFWProfile} spatial D
 $\rho_0$ and the scale radius, $R_s$ are free parameters fit for each dSph.
 $r$ is the distance from the center of the dSph.
 
-Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to an angular separation $\theta = 0.5^{\circ}$ were provided directly from the authors.
+Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to an angular separation $\theta = 0.5^{\circ}$ were provided directly by the authors.
 Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
 \TrapIntegral
 $p$ is the angular side of one pixel in the map.
@@ -132,26 +134,28 @@ $w_{i,j}$ is a weight assigned the following ways:
 \begin{figure}[t]
     \centering{
     \begin{tabular}{cccc}
-        Source & $-1 \sigma$ & Median & $+1 \sigma$ \\
+        &
+        $-1 \sigma$ &
+        Median &
+        $+1 \sigma$ \\
+
         \rotatebox[origin=c]{90}{Coma Berenices} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Jm1_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_J_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/ComaBerenices_Jp1_plot.pdf} }\\
-        \rotatebox[origin=c]{90}{Draco} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Jm1_plot.pdf}} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_J_plot.pdf}} &
-        \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Draco_Jp1_plot.pdf}} \\
+
         \rotatebox[origin=c]{90}{Segue1} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Jm1_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_J_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Segue1_Jp1_plot.pdf}} \\
+
         \rotatebox[origin=c]{90}{Sextans} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jm1_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_J_plot.pdf}} &
         \raisebox{-.5\height}{\includegraphics[scale=0.275]{figures/mtd_hawc_dm/Sextans_Jp1_plot.pdf}} \\
     \end{tabular}
     }
-    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Draco, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the mean value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. Profiles are truncated at 1$^\circ$ and flattened beyond.}
+    \caption{$\frac{d\J}{d\Omega}$ maps for Coma Berenices, Segue1, and Sextans. Columns are divided for the $\pm1 \sigma$ uncertainties in $d\J/d\Omega$ around the mean value from \LS \cite{DM_Strigari20}. Origin is centered on the specific dwarf spheroidal galaxies (dSph). $\theta$ and $\phi$ axes are the angular separation from the center of the dwarf. Profiles are truncated at 1$^\circ$ and flattened beyond.}
     \label{fig:ls20_jfac_maps}
 \end{figure}
 
@@ -159,8 +163,8 @@ $w_{i,j}$ is a weight assigned the following ways:
 \subsection{Source Selection and Annihilation Channels}\label{sec:mtd_srcs_y_chan}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-HAWC's sources for this multithreaded analysis include Coma Berenices, Draco, Segue 1, and Sextans.
-\LS observed up to 43 sources in its publication, however only 4 of the best fit profiles were provided at the time this thesis was written.
+HAWC's sources for this multithreaded analysis include Coma Berenices, Segue 1, and Sextans.
+\LS estimated the DM distributions of 43 sources in its publication, however only 4 of the best fit profiles within HAWC's field of view were provided at the time this thesis was written.
 A full description of each source used in this analysis is found in \Cref{tab:mtd_J_factor}.
 
 \input{tables/mtd_src_summary.tex}
@@ -172,9 +176,11 @@ HDM also models DM to the Planck scale which permits HAWC to probe PeV scale DM.
 For this study, we sample DM masses: $1$ TeV - $10$ PeV with 6 mass bins per decade in DM mass.
 In the case of line spectra ($\chi\chi \rightarrow \gamma\gamma$, or $ZZ$), we double the mass binning to 12 DM mass bins per decade in DM mass.
 
-\LS provides 25 sources within HAWC's field of view.
+\LS published 25 sources' \J-factors within HAWC's field of view.
 Additionally, NFW \cite{NFWProfile} DM distributions have fewer parameters than Zhao \cite{Zhao:1995cp}, so \LS fits ultra-faint dwarves which expands the number of sources.
 However, all sources were not provided by the authors in time for the completion of this dissertation.
+Draco was provided by the authors.
+However, Draco is not included in this study as the PSF of the bins at its declination were wider than what is reasonable for a point source analysis.
 Finally, the gamma-ray ray dataset is much larger.
 The study performed here analyzes 2565 days of data compared to 1017 days analyzed in \Cref{sec:glory_duck}.
 
@@ -230,11 +236,11 @@ Comprehensively, these variables are:
     \item $m_\chi$ : DM rest mass
     \item \texttt{CHAN} : DM annihilation channel in SM.
     \item \texttt{SOURCE} : dSph. Involves a spatial template AND coordinate in HAWC data.
-    \item \sv: Effectively the flux normalization and free parameter in the likelihood fit.
+    \item \sv: Proportional to the flux normalization and free parameter in the likelihood fit.
 \end{itemize}
 Therefore, we develop an asynchronous, functional-parallel coding pattern.
-Asynchronous meaning the instructions within a function are independent and permitted to be out of sync with sibling computations.
-Functional-parallel meaning that instructions are the subject of parallelization rather than threading the likelihood computation.
+Asynchronous means the instructions within a function are independent and permitted to be out of sync with sibling computations.
+Functional-parallel means that instructions are the subject of parallelization rather than threading the likelihood computation.
 This is close to trivial parallelization seen in \Cref{fig:mtd_gd_workflow} except that we seek to consolidate the loading stages (software, data, and detector resolution loading).
 Multiple asynchronous threads are expected to reduce total serial processing time and total overhead across the entire project in addition to saving human time.
 
@@ -408,7 +414,6 @@ The largest excess found in HAWC data was for DM annihilating to $W$-bosons or \
 HAWC's limits and excesses are dominated by Segue1.
 Coma Berenices shows excesses at higher DM mass, yet no similar excesses were observed in Segue1 or Sextans.
 Sextans did not contribute significantly to signal excesses or the combined limit as it is at high zenith.
-Draco was not included as the PDF of some of our analysis bins were wider than what is reasonable for a point source analysis.
 Draco is at a high zenith for HAWC, so the effort required to include it was not justified by the benefits.
 
 \begin{figure}[h]
@@ -436,16 +441,16 @@ Draco is at a high zenith for HAWC, so the effort required to include it was not
 We did not generate background trials in time of writing this thesis.
 These are not shown and are an immediate next step for this analysis before publication.
 
-When comparing these results to \cref{sec:hawc_results}, we see an overall decrease to the confidence limit therefore improvement to HAWC's expected sensitivity.
+When comparing these results to \cref{sec:hawc_results}, we see an overall decrease in the observed confidence limits on \sv, therefore improvement to HAWC's expected sensitivity.
 This improvement is generally stronger than a doubling of data, or a factor $\sqrt{2}$ decrease.
 The comparison is somewhat complex and dependent on the dSph and SM annihilation channel.
 \Cref{fig:mtd_compare2gd} shows the comparisons of limits calculated for this analysis and Glory Duck (\cref{sec:hawc_results}).
-Segue 1 and Coma Berenices are low zenith where improvements to HAWC's analysis come only from energy estimation.
+Segue 1 and Coma Berenices are source at low zenith angles where improvements to HAWC's analysis come almost entirely from energy estimation.
 Differences between these two are dominantly from their differences in \J-factor, half-light radii of the dSphs, and the particle physics inputs.
 Substantial gains in HAWC's analysis methods (pass 5.F) were made at high zenith which is important for sources like Sextans.
 The HDM particle physics model produces almost identical spectra to the PPPC for $\chi\chi \rightarrow e^-e^+$.
 This channel can be used to compare limits between dSph spatial models.
-Overhead sources see minimal improvement to the limits, while high zenith sources see an order of magnitude improvement for all DM masses.
+Overhead sources see modest improvement to the observed limits on \sv, while high zenith sources see an order of magnitude improvement for all DM masses.
 Softer SM annihilation channels see broad improvements to the limit compared to harder channels.
 
 
