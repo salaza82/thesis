@@ -102,11 +102,11 @@ Each PMT signal is compared against preset LOW/HIGH voltage thresholds in the FE
 This differentiation allows the system to gauge the strength of the detected Cherenkov radiation.
 The processed signals are then digitized by Time to Digital Converters (TDCs).
 These converters measure the time over threshold (ToT) for each signal, a parameter that reflects both the duration and amplitude of the signal.
-This digitization facilitates reconstruction of the original event for translating the physical interactions within the detectors into data \cite{HHAWC_NIM,HAWC_DAQ_NIM,Milagro_DAQ}.
+This digitization facilitates reconstruction of the original event for translating the physical interactions within the detectors into data \cite{HAWC_NIM,HAWC_DAQ_NIM,Milagro_DAQ}.
 
 Synchronization across the HAWC observatory is maintained by a central GPS Timing and Control (GTC) system, which achieves a timing resolution of 98 ps.
 This high-resolution timing is vital for accurately reconstructing the timing and location of air showers initiated by cosmic and gamma rays.
-The GTC system ensures that all components of the DAQ operate in unison to preserve the temporal integrity of the detected events \cite{HHAWC_NIM,hawc_daq_thesis}.
+The GTC system ensures that all components of the DAQ operate in unison to preserve the temporal integrity of the detected events \cite{HAWC_NIM,hawc_daq_thesis}.
 
 Once digitized, the data are transferred to an online event reconstruction system.
 This system runs the Reconstruction Client, which utilizes the raw PMT data to reconstruct the characteristics of the air showers, such as their direction and energy \cite{HAWC_DAQ_NIM}.
@@ -116,7 +116,7 @@ Analysis Clients perform specific online analyses that require immediate data, i
 
 The DAQ system is overseen by an Experiment Control system and crew that manage the operational aspects of data collection.
 This includes initiating and terminating data collection runs and monitoring the experiment for errors.
-In the event of a system crash, often caused by environmental factors such as lightning, the Experiment Control system is designed to automatically restart the experiment and minimize downtime \cite{HAWC_NHAWC_NIM,HAWC_DAQ_NIM}.
+In the event of a system crash, often caused by environmental factors such as lightning, the Experiment Control system is designed to automatically restart the experiment and minimize downtime \cite{HAWC_NIM,HAWC_DAQ_NIM}.
 
 %-----------------------------------------------------------------------------------%
 \section{Event Reconstruction} \label{sec:hawc_reconstruction}
