@@ -34,9 +34,9 @@ They are not meant for public access, and are presented here so that HAWC collab
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python3.
-I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{HDMSpectra} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
+I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{Rodd:HDM_spec} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
 A NumPy dictionary of HDM, \texttt{HDMSpectra\_dict\_gamma.npy}, was made for portability within the collaboration.
-These dictionaries were generated from the \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{HDMSpectra}.
+These dictionaries were generated from the \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{Rodd:HDM_spec}.
 The analysis was performed using the Neural Network energy estimator for Pass 5.F.
 A description of this estimator was provided in \Cref{sec:hawc}.\todo{Define a subsection when it's written}, and its key, relevant improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
 All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
@@ -70,7 +70,7 @@ Importantly, we use the same \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for esti
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For these spectra, we import HDM with Electroweak (EW) corrections and additional corrections for neutrinos above the EW scale \cite{HDMSpectra}.
+For these spectra, we import HDM with Electroweak (EW) corrections and additional corrections for neutrinos above the EW scale \cite{Rodd:HDM_spec}.
 The spectra are implemented as a model script in astromodels for 3ML.
 A comprehensive description of EW corrections and neutrino considerations are provided later in \cref{sec:nu_duck}.
 
@@ -78,7 +78,7 @@ A comprehensive description of EW corrections and neutrino considerations are pr
     \centering{
         \includegraphics[scale=0.8]{figures/mtd_hawc_dm/pppc_vs_hdm.png}
     }
-    \caption{Spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{HDMSpectra} for DM annihilation: $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
+    \caption{Spectral hypotheses from PPPC \cite{Cirelli_2011} and HDM \cite{Rodd:HDM_spec} for DM annihilation: $\chi\chi \rightarrow W^-W^+$. Solid lines are spectral models with EW corrections from the PPPC. Dash-dot lines are spectral models from HDM. Red lines are models for $M_\chi = 1$ TeV. Blue lines represent models for $M_\chi = 100$ TeV.}
     \label{fig:pppc_vs_hdm}
 \end{figure}
 
@@ -89,12 +89,12 @@ The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
 \begin{itemize}
     \item[] $e^+e^-$, $\mu^+\mu^-$, $\tau^+\tau^-$,$b\bar{b}$, $t\bar{t}$, $gg$, $W^+W^-$, $ZZ$, $c\bar{c}$, $u\bar{u}$, $d\bar{d}$, $s\bar{s}$, $\nu_e \overline{\nu_e}$, $\nu_\mu \overline{\nu_\mu}$, $\nu_\tau \overline{\nu_\tau}$, $\gamma\gamma$, $hh$.
 \end{itemize}
-For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have $E_\gamma = m_\chi$ \cite{HDMSpectra}.
+For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have $E_\gamma = m_\chi$ \cite{Rodd:HDM_spec}.
 This introduces a $\delta$-function in the tested spectra, referred to as a spectral line, that is much narrower than the energy resolution of the HAWC detector.
 To ensure that this feature is not lost in the likelihood fits, the `line' feature is convolved with a Gaussian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
 The kernel width was chosen based on the choices made from HAWC's previous gamma-line study \cite{HAWC_dm_gammalines} and the observed energy resolution og the NN enregy estimator \cite{100TEV_Crab_HAWC}.
 This differs from HAWC's previous line study where 30\% of HAWC's energy resolution was used for the kernel \cite{HAWC_dm_gammalines}.
-The NN energy estimator's improved energy resolution compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{HDMSpectra} and see \cref{sec:hawc_nn}.
+The NN energy estimator's improved energy resolution compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{Rodd:HDM_spec} and see \cref{sec:hawc_nn}.
 The annihilation spectra after Gaussian smoothing for $\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
 We did not explore how well we reconstruct injected signal events for various kernels widths.
 This is a systematic that should be tested before publication in a journal.
@@ -105,7 +105,7 @@ Spectral models for the remaining annihilation channels are plotted for each $m_
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_gammagamma.png}
     \includegraphics[scale=0.5]{figures/mtd_hawc_dm/hdm_zz.png}
     }
-    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after Gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All spectral models are sourced from the Heavy Dark Matter models \cite{HDMSpectra}. Axes are drawn roughly according to the energy sensitivity of HAWC.}
+    \caption{Photon spectra for $\chi\chi \rightarrow \gamma\gamma$ (left) and $\chi\chi \rightarrow ZZ$ (right) after Gaussian convolution of line features. Both spectra have $\delta$-features at photon energies equal to the DM mass. Bluer lines are annihilation spectra with lower DM mass. Redder lines are spectra from larger DM mass. All spectral models are sourced from the Heavy Dark Matter models \cite{Rodd:HDM_spec}. Axes are drawn roughly according to the energy sensitivity of HAWC.}
     \label{fig:hdm_gamma_lines}
 \end{figure}
 
@@ -171,7 +171,7 @@ A full description of each source used in this analysis is found in \Cref{tab:mt
 
 This analysis improves on \Cref{sec:glory_duck} in the following ways.
 Previously, the particle physics model used for gamma-ray spectra from DM annihilation was from the PPPC \cite{Cirelli_2011} which missed important considerations relevant for the neutrino sector.
-HDM is used to account for this shortfall \cite{HDMSpectra}.
+HDM is used to account for this shortfall \cite{Rodd:HDM_spec}.
 HDM also models DM to the Planck scale which permits HAWC to probe PeV scale DM.
 For this study, we sample DM masses: $1$ TeV - $10$ PeV with 6 mass bins per decade in DM mass.
 In the case of line spectra ($\chi\chi \rightarrow \gamma\gamma$, or $ZZ$), we double the mass binning to 12 DM mass bins per decade in DM mass.
