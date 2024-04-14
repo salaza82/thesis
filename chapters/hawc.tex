@@ -12,18 +12,28 @@
 
 The High Altitude Water Cherenkov (HAWC) Observatory is a specialized instrument designed for the observation of high energy gamma-rays and cosmic rays \cite{HAWC_NIM}.
 Located on the Sierra Negra volcano in Mexico, HAWC observes gamma rays and cosmic rays in the energy range of approximately 100 GeV to 100's of TeV.
-HAWC is strategically situated to maximize observational efficiency due to its high altitude.
 At an elevation of 4,100 meters, it monitors about two-thirds of the sky every day with an uptime above 90\%.
 This capability is essential for studying high-energy astrophysical phenomena.
 
 HAWC consists of 300 water Cherenkov detectors (WCDs) spread over 22,000 $m^2$.
 Each main array detector is filled with purified water and equipped with four, upward-facing photomultiplier tubes (PMTs).
-See \cref{fig:WCD_schematic} for schematic of WCDs.
+See \cref{fig:WCD_schematic} for a schematic of WCDs.
 These PMTs detect Cherenkov radiation from charged particles passing through the tanks.
-These charged particles are generated when a high energy gamma or cosmic ray collides with gas in the atmosphere to create a charged particle shower, see \cref{fig:airshowers}.
-The observatory includes a separate tank configuration which are refered to as the outriggers.
+These charged particles are generated when a high energy gamma or cosmic ray collides with gas in the atmosphere to create a charged particle shower, as shown in \cref{fig:airshowers}.
+Cherenkov radiation occurs when a charged particle traverse a medium faster than the speed of light withing the medium.
+An electromagnetic shockwave is formed, akin to an optic boom, that corresponds with the velocity of the particle, see \cref{fig:Cherenkov_front}.
+
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.2]{figures/Cherenkov.svg.png}
+    }
+    \caption{Geometry of Cherenkov radiation. This occurs when a charged particle traverses a medium faster than the speed of light within the medium. The particle, red arrow, when traversing through water, will create an optical shockwave that emits blue light. The angle of the Cherenkov cone will depend on the speed of the particle ($\beta c$) and the index of refraction ($n$) in the media. Figure from \cite{Cherenkov_front}.}
+    \label{fig:Cherenkov_front}
+\end{figure}
+
+The observatory includes a separate tank configuration which are referred to as the outriggers.
 They are a secondary array of 345 smaller WCD's.
-Surrounding the main array, each outrigger tank measures 1.55 meters in diameter and height and contain a single upward-facing eight-inch PMT.
+Surrounding the main array, each outrigger tank measures 1.55 meters in diameter and height and contain a single upward-facing 8-inch PMT.
 This add-on increases the instrumented footprint fourfold.
 The outriggers are meant to improve the reconstruction of showers extending beyond the main array, especially for events above 10 TeV.
 However, at the time of writing this thesis, the outriggers have not been fully integrated into HAWC's reconstruction software.
@@ -32,7 +42,7 @@ However, at the time of writing this thesis, the outriggers have not been fully 
     \centering{
     \includegraphics[scale=0.5]{figures/hawc/high_energy_air_shower.png}
     }
-    \caption{A particle physics illustration of high energy particle showers. Left shower is an electromagnetic shower from a high energy gamma-ray. Most particles in the shower will be a combination of photons and charged leptons, in this case electrons (e). Right figure shows a cosmic ray particle shower. The cosmic ray will produce many more types of particles including pions ($\pi$), neutrinos, and charged leptons. Figured pulled from \cite{lopez_thesis}.}
+    \caption{A particle physics illustration of high energy particle showers. Left shower is an electromagnetic shower from a high energy gamma-ray. Most particles in the shower will be a combination of photons and charged leptons, in this case electrons and positrons ($e^\pm$). Right figure shows a cosmic ray particle shower. The cosmic ray will produce many more types of particles including pions ($\pi$), neutrinos ($\nu$), and other charged leptons. Figured pulled from \cite{lopez_thesis}.}
     \label{fig:airshowers}
 \end{figure}
 
@@ -51,16 +61,15 @@ However, at the time of writing this thesis, the outriggers have not been fully 
 
 Each main array WCD, see \cref{fig:WCD_schematic}, is a cylindrical tank with dimensions of 7.3 m in diameter and 5.4 m in height and filled with 180,000 L of water \cite{HAWC_NIM}.
 The metal shell of these tanks is made from bolted together, corrugated, galvanized steel panels.
-The tanks are placed into 0.6 m deep trenches filled with rammed earth to secure it against seismic activity \cite{HAWC_NIM}.
 The interior of each tank is lined with a black, low-density polyethylene bladder, designed to be impermeable to external light and to prevent reflection of Cherenkov light within the tank.
-This bladder is approximately 0.4 mm thick and composed of two layers of three-substrate film.
+This bladder is approximately 0.4 mm thick of low-density polyethylene.
 To further minimize light penetration, a black agricultural foil covers the bladder.
 The ground and walls inside the tank are protected with felt and sand to safeguard against punctures.
 The tanks are filled 4.5 m deep of purified water, achieving a photon attenuation length for Cherenkov photons that exceeds the tank's dimensions \cite{HAWC_NIM}.
 This purification level ensures the optimal detection environment for the photons generated by traversing charged particles.
 
-At the base of each tank, four photomultiplier tubes (PMTs) are installed to detect the Cherenkov radiation emitted by charged particles in watre.
-Three 8-inch diameter PMTs surround a larger 10 inch PMT from Hamamatsu \cite{hawc_pmt}.
+At the base of each tank, four photomultiplier tubes (PMTs) are installed to detect the Cherenkov radiation emitted by charged particles in water.
+Three 8-inch diameter PMTs surround a larger 10-inch PMT from Hamamatsu \cite{hawc_pmt}.
 The variation in PMT response is carefully accounted for in event reconstruction algorithms.
 Signals from the PMTs traverse 610 ft cables to the counting house, where they are processed by Front-End Boards (FEBs), see \cref{fig:basic_tanks_schem,fig:dig_schem}.
 These FEBs, along with Time to Digital Converters (TDCs), digitize the signals and manage the high voltage supply to the PMTs.
@@ -92,7 +101,7 @@ This process involves a series of steps from initial signal detection by PMTs to
     \centering{
         \includegraphics[scale=0.6]{figures/hawc/ToT_threshold.png}
     }
-    \caption{How HAWC FEB intially processes analog PMT signals. Signals are split through an amplifier and discriminator circuit. Each path is designated for either the HIGH or LOW threshold for the signal. The 2-edge event corresponds to LOW, while the 4 edge corresponds to HIGH.}
+    \caption{How HAWC FEB intially processes analog PMT signals. Signals are split through an amplifier and discriminator circuit. Each path is designated for either the HIGH or LOW threshold for the signal. The 2-edge event corresponds to LOW, while the 4 edge corresponds to HIGH. Figure from \cite{HAWC_DAQ_NIM}.}
     \label{fig:tot_threholds}
 \end{figure}
 
@@ -128,7 +137,7 @@ Core Fitting determines the geometric center of the air shower on the detector p
 Angle Reconstruction assesses the trajectory of the incoming particle, revealing its origin in the sky.
 Energy Estimation is performed using both \textit{f}-hit and Neural Network (NN) methods to quantify the energy of the detected events.
 Gamma/Hadron discrimination differentiates between gamma-ray and hadronic cosmic ray initiated showers, a vital step for astrophysical interpretations.
-Each of these steps is integral to the observatory's objective of investigating the high-energy universe and enable the transformation of signals into detailed insights about high energy cosmic phenomena.
+Each of these steps is described in more details in the following sections.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Core Fitting} \label{sec:hawc_core_fitting}
@@ -143,9 +152,8 @@ Each of these steps is integral to the observatory's objective of investigating 
 \end{figure}
 
 In the study of air showers, accurately determining the location of the air shower core on the ground is crucial for reconstructing the direction of the originating primary particle.
-An illustration of this can be seen in a HAWC event plot, \cref{fig:airshowers,fig:ldf_particleshower}, where the lateral charge distribution across the array is displayed.
-The core is identified and marked with a red star, reconstructed using a predetermined functional form, \cref{eq:hawc_showercore}.
-
+An illustration of this can be seen in a HAWC event plot, \cref{fig:shower_shape,fig:ldf_particleshower}, where the lateral charge distribution across the array is displayed.
+The core is identified and marked with a red star in \cref{fig:shower_shape}, reconstructed using a predetermined functional form, \cref{eq:hawc_showercore}.
 We model signal $S_i$ from the \textit{i}th PMT is given by the following equation:
 \showercore
 In this model, $\tilde{x}$ represents the core location and $\tilde{x}_i$ is the position of the \textit{i}th PMT.
@@ -159,7 +167,7 @@ This leaves the core location and overall amplitude $A$ as the free parameters t
     \centering{
         \includegraphics[scale=0.5]{figures/hawc/core_fitting.png}
     }
-    \caption{Charge deposition in each PMT for a reconstructed gamma-ray event. WCDs are outlined in black surrounding the 4 smaller circles that represent PMTs. The color scale indicates the charge deposition in each PMT. The best shower core fit from SFCF is noted with a red star in the center of the dashed circle \cite{Abeysekara_2017}.}
+    \caption{Charge deposition in each PMT for a reconstructed gamma-ray event. WCDs are outlined in black surrounding the 4 smaller circles that represent PMTs. The color scale indicates the charge deposition in each PMT. The best shower core fit from Super Fast Core Fit (SFCF) is noted with a red star in the center of the dashed circle \cite{Abeysekara_2017}.}
     \label{fig:core_fitter}
 \end{figure}
 
@@ -189,10 +197,7 @@ Particle sampling decreases with distance from the core.
 This decrease results in measurable delays in arrival times \cite{wcd_Sensitivity,Abeysekara_2017}.
 Simulations provide a corrective measure for these effects.
 The correction is a function of shower parameters \cite{Abeysekara_2017}.
-It adjusts both curvature and sampling.
 The distance from the shower core and the charge recorded by PMTs are crucial to this correction.
-A function based on simulation and Crab Nebula observations is used for this purpose \cite{Abeysekara_2017}.
-This curvature correction allows us to fit the particle front as a plane wave.
 
 Corrections lead to the $\chi^2$ minimization step.
 This technique fits a plane to the timing data of the PMTs.
@@ -231,36 +236,30 @@ The main array consists of about 1200 PMTs, but the count may vary due to mainte
 
 Events are stratified into several $f_{\text{hit}}$ bins.
 Each bin corresponds to a specific range of angular resolutions, enabling a structured approach to event analysis based on the extent of the shower footprint, see \cref{tab:fhit_bins}.
-The $f_{\text{hit}}$ metric, while effective, has several limitations.
-It is dependent on the zenith angle and the spectral characteristics presumed for the observed source.
-The variable also reaches a saturation point around 10 TeV, after which the detector's ability to discriminate between higher energy levels diminishes \cite{Abeysekara_2017}.
-Furthermore, the energy distribution for each $f_{\text{hit}}$ bin is notably broad, see \cref{fig:fhit_bins}.
-In response to these limitations, HAWC has developed more intricate algorithms for energy estimation.
-These algorithms incorporate the zenith angle and the distribution of charge around the shower core for a more accurate assessment of the primary particle's energy, particularly at energies surpassing 10 TeV \cite{wcd_Sensitivity}.
 
 The relationship between $f_{\text{hit}}$ and primary energy is complex.
 Atmospheric attenuation can cause high-energy showers to present a smaller footprint, misrepresenting their energy in the $f_{\text{hit}}$ metric.
 This effect is captured in simulations that chart the actual energy distribution across $f_{\text{hit}}$ categories \cite{wcd_Sensitivity}.
 Such distributions vary with the declination of the source and the theoretical energy spectrum used in the model.
+The $f_{\text{hit}}$ metric, while effective, has several limitations.
+It is dependent on the zenith angle and the spectral characteristics presumed for the observed source.
+The variable also reaches a saturation point around 10 TeV, after which the detector's ability to discriminate between higher energy levels diminishes \cite{Abeysekara_2017}.
+Furthermore, the energy distribution for each $f_{\text{hit}}$ bin is notably broad, see \cref{fig:fhit_bins}.
+
+In response to these limitations, HAWC has developed more intricate algorithms for energy estimation.
+These algorithms incorporate the zenith angle and the distribution of charge around the shower core for a more accurate assessment of the primary particle's energy, particularly at energies surpassing 10 TeV \cite{wcd_Sensitivity}.
+The following section describes the improvements made in energy estimation using a neutral network.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Neural Network Energy Estimation}\label{sec:hawc_nn}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
-
-\begin{figure}
-    \centering{
-        \includegraphics[clip, trim=9.1cm 0cm 0cm 0cm, scale=0.9]{figures/hawc/NN_performance.jpg}
-    }
-    \caption{Neural Network energy estimator performance compared to true energy. The dotted line is the identity line where the estimator and injection agree. Gamma/hadron separation cuts were applied with the energy estimation. Figure pulled from \cite{100TEV_Crab_HAWC}}
-    \label{fig:NN_performance}
-\end{figure}
 
 The energy estimation for photon events at the HAWC Observatory is refined through an artificial neural network (NN) algorithm.
 This method, based on the Toolkit for Multivariate Analysis NN, adopts a multilayer-perceptron model with logistic activation functions across its layers.
 The structure includes two hidden layers, the first with 15 nodes and the second with 14, designed to process input variables through a neural network optimized to estimate primary particle energies \cite{thesis_SamM}.
 
 The NN is trained to minimize a specific error function that measures discrepancies between the NN's energy predictions and the actual energies from Monte Carlo simulations.
-This minimization targets an error function that incorporates the relative importance of each event, weighting more the importance to mimic an $E^{-2}$ power law spectrum.
+This minimization targets an error function that incorporates the relative importance of each event, weighting more an $E^{-2}$ power law spectrum.
 This approach helps achieve a uniform error rate across energies ranging from 1 to 100 TeV.
 The optimization process leverages the Broyden-Fletcher-Goldfarb-Shanno algorithm that calibrates the NN's 479 weights \cite{100TEV_Crab_HAWC}.
 
@@ -272,9 +271,18 @@ However, not all bins contribute to the final estimate.
 Bins with low event populations or insufficient Monte Carlo simulation are excluded.
 This approach focuses on the central 99\% of events by estimated energy within each $f_{\text{hit}}$ bin, effectively removing outliers \cite{100TEV_Crab_HAWC}.
 
+\begin{figure}
+    \centering{
+        \includegraphics[clip, trim=9.1cm 0cm 0cm 0cm, scale=0.9]{figures/hawc/NN_performance.jpg}
+    }
+    \caption{Neural Network energy estimator performance compared to true energy. The dotted line is the identity line where the estimator and injection agree. Gamma/hadron separation cuts were applied with the energy estimation. Figure pulled from \cite{100TEV_Crab_HAWC}}
+    \label{fig:NN_performance}
+\end{figure}
+
 Input variables for the NN are selected to capture key characteristics of the air shower: energy deposition, containment, and atmospheric attenuation.
 The algorithm calculates energy deposition using the fraction of PMTs and tanks activated, alongside the logarithm of the normalization from the lateral distribution fit.
 Containment is inferred from the distance between the shower core and the array's center, while atmospheric attenuation is evaluated using the reconstructed zenith angle and a detailed analysis of the shower's lateral charge distribution \cite{thesis_SamM,100TEV_Crab_HAWC}.
+The performance on this NN is shown in \cref{fig:NN_performance}.
 
 This refined NN energy estimation methodology is an integral component of HAWC's toolkit, enabling precise analysis of high-energy gamma-ray events.
 It represents a significant advancement in the field by more accurately mapping observed shower characteristics to primary particle energies.

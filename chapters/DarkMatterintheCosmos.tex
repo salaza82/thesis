@@ -52,7 +52,7 @@ I set out in my thesis to narrow the possibilities of what this Dark Matter coul
 \section{Dark Matter Basics\label{sec:basicDM}}
 %-----------------------------------------------------------------------------------%
 
-Presently, a more compelling theory of cosmology that includes Dark Matter (DM) in order to explain a variety of observations is $\Lambda$ \textbf{C}old \textbf{D}ark \textbf{M}atter, or \lcdm.
+Presently, a compelling theory of cosmology that includes Dark Matter (DM) in order to explain a variety of observations is $\Lambda$ \textbf{C}old \textbf{D}ark \textbf{M}atter, or \lcdm.
 I present the evidence supporting \lcdm~in \Cref{sec:evidence4dm} yet discuss the conclusions of the \lcdm~model here.
 According to \lcdm~fits to observations on the Cosmic Microwave Background (CMB), DM is 26.8\% of the universe's current energy budget.
 Baryonic matter, stuff like atoms, gas, and stars, contributes to 4.9\% of the universe's current energy budget \cite{Greene:cosmology_dm,Young:cosmology_dm,Bertone:particleDM}.
@@ -92,16 +92,18 @@ The following subsections provide three compelling pieces of evidence in support
 Zwicky, and later Rubin, measured the stellar velocities of various galaxies to estimate their virial mass.
 The Virial Theorem upon which these observations are interpreted is written as \virialtheorem
 Where \textit{T} is the kinetic energy and \textit{V} is the potential energy in a self-gravitating system.
-The classical Newton's law of gravity from stars and gas was use for the gravitational potential modeled in the observed galaxies:
+The classical Newton's law of gravity from stars and gas was used for the gravitational potential modeled in the observed galaxies:
 \newtongravity
+Here $m_{i,j}$ are the \textit{i}th or \textit{j}th masses of the $i$th or $j$th star in the cluster.
+$r_{ij}$ is the distance between these two stars.
 Zwicky et al. measured just apparent velocities of stars apparent from optical observations which provides a measure for $T$ \cite{Zwicky:1933}.
-Rubin et al. added by measuring the velocity of the hydrogen gas via the 21 cm emission line of Hydrogen \cite{Rubin:1978}.
+Rubin et al. added to this by measuring the velocity of the hydrogen gas via the 21 cm emission line of Hydrogen \cite{Rubin:1978}.
 The velocities of the stars and gas are used to infer the total mass of galaxies and galaxy clusters via \Cref{eq:virialtheorem}.
 An inferred mass is obtained from the luminosity of the selected sources.
-The two inferences are compared to each other as a luminosity to mass ratio which typically yielded \cite{Greene:cosmology_dm}
+The two inferences are compared to each other as a luminosity ($L$) to virial mass ($M$) ratio which typically yielded \cite{Greene:cosmology_dm}
 \masslightratio
-$M_{\sun}$ and $L_{\sun}$ referring to stellar mass and stellar luminosity, respectively.
-These observations clearly indicate a discrepancy in apparent light and mass from stars and gas and their velocities.
+with $M_{\sun}$ and $L_{\sun}$ referring to stellar mass and stellar luminosity, respectively.
+These observations clearly indicate a discrepancy in mass from apparent light and mass inferred from the velocity of stars and gas.
 
 Rubin et al. \cite{Rubin:1978} demonstrated that the discrepancy was unlikely to be an underestimation of the mass of the stars and gas.
 The inferred "dark" mass was up to 5 times more than the luminous mass.
@@ -135,8 +137,8 @@ In recent decades we have been able to measure the lensing effects from compact 
 
 \begin{figure}[h!]
     \centering{
-        \includegraphics[scale=0.19]{figures/heic0404b.jpg}
-        \caption{Light from distant galaxy is bent in unique ways depending on the distribution of mass between the galaxy and Earth. Yellow dashed lines indicate where the light would have gone if the matter were not present. Solid yellow is the path the light actually traverses \cite{eas:grav_lensing}.}
+        \includegraphics[scale=0.17]{figures/heic0404b.jpg}
+        \caption{Light from a distant galaxy is bent in unique ways depending on the distribution of mass between the galaxy and Earth. Yellow dashed lines indicate where the light would have gone if the matter were not present. Solid yellow is the path the light actually traverses \cite{eas:grav_lensing}. Spherical densities deform the light to creates a halo around the originating source. Ellipsoidal densities will create nodes in the image. Clumpy aggregations will manifest as complex light streams and aberrations in an image.}
         \label{fig:grav_lensing_explained}
     }
 \end{figure}
@@ -209,7 +211,7 @@ The intensity variations are on the order of 1 in 1000 with respect to the avera
 \end{figure}
 
 The Cosmic Microwave Background shows that the universe had DM in it from an incredibly early stage.
-To measure the DM, Dark Energy, and matter fractions of the universe from the CMB, the image is analyzed into a power spectrum, which shows the amplitude of the fluctuations as a function of spherical multipole moments.
+To measure the DM, Dark Energy, and matter fractions of the universe from the CMB, the image is analyzed into a power spectrum, which shows the amplitude of the fluctuations as a function of spherical multipole moments ($l$).
 \lcdm~provides the best fit to the power spectra of the CMB as shown in \cref{fig:multipole}.
 The CMB power spectrum is quite sensitive to the fraction of each energy contribution in the early universe.
 Low \textit{l} modes are dominated by variations in gravitational potential.
@@ -238,6 +240,9 @@ As Hubble tensions deepen, we may find that perhaps \lcdm, despite its successes
 Overall, the Newtonian motion of stars in galaxies, weak lensing from galactic clusters, and power spectra from primordial light form a compelling body of research in favor of dark matter.
 It takes another leap of theory and experimentation to make observations of DM that are non-gravitational in nature.
 In \cref{sec:evidence4dm}, the evidence for DM implies strongly that the DM is matter and not a lost parameter in the gravitational fields between massive objects.
+In there was a failure in our gravitational modeling, we would not see lensing at the strength observed by \cref{fig:bullet_cluster} \cite{Clowe:BulletCluster} so far from the baryons mass.
+Additionally, the multipole peaks corresponding to the matter fraction, see \cref{fig:CMB_vibratemodes} occur with DM as matter.
+The peaks would soften significantly if DM were a shortfall in gravitational modeling.
 Finally, if we take one axiom: that this matter has quantum behavior, such as being described by some Bohr wavelength and abiding by some fermion or boson statistics; then we arrive at particle dark matter.
 One particle DM hypothesis is the Weakly Interacting Massive Particle (WIMP).
 This DM candidate theory is discussed further in the next section and is the focus of this thesis.
@@ -254,7 +259,7 @@ This DM candidate theory is discussed further in the next section and is the foc
     \label{fig:SM}
 \end{figure}
 
-\Cref{fig:SM} shows the Standard Model of particle physics and is currently the most accurate model for the dynamics of fundamental particles like electrons and photons.
+\Cref{fig:SM} shows the Standard Model (SM) of particle physics, that is currently the most accurate model for the dynamics of fundamental particles like electrons and photons.
 The current status of the SM does not have a viable DM candidate.
 When looking at the standard model, we can immediately exclude any charged particle because charged particles interact strongly with light.
 Specifically, this will rule out the following charged, fundamental particles: $e,\mu, \tau, W, u, d, s, c, t, b$ and their corresponding antiparticles.
@@ -263,7 +268,7 @@ The lifetime constraint additionally eliminates the $Z$ and $H$ bosons.
 Finally, the candidate DM needs to be somewhat massive.
 Recall from \Cref{sec:basicDM} that DM is cold or not relativistic through the universe.
 This eliminates the remaining SM particles: $\nu_{e, \mu, \tau}, g, \gamma$ as DM candidates.
-Because there are no DM candidates within the SM, the DM problem strongly hints to physics beyond the SM (BSM).
+Because there are no DM candidates within the SM, the DM problem strongly hints to physics Beyond the SM (BSM).
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Shake it, Break it, Make it\label{sec:bop_it}}
@@ -277,25 +282,23 @@ Because there are no DM candidates within the SM, the DM problem strongly hints 
     }
 \end{figure}
 
-When considering DM that couples in some way with the SM, the interactions are roughly demonstrated by interaction demonstrated in \Cref{fig:break_it}.
+When considering DM that couples in some way with the SM, the interactions are roughly demonstrated by the interactions shown in \Cref{fig:break_it}.
 The figure is a simplified Feynman diagram where the arrow of time represents the interaction modes of: \textbf{Shake it, Break it, Make it}.
 
 \textbf{Shake it} refers to the direct detection of dark matter.
-Direct detection interactions start with a free DM particle and an SM particle.
-The DM and SM interact via elastic or inelastic collision and recoil away from each other.
-The DM remains in the dark sector and imparts some momentum onto the SM particle.
-The hope is that the momentum imparted onto the SM particle is sufficiently high enough to pick up with extremely sensitive instruments.
-Because we cannot create the DM in the lab, a direct detection experiment must wait until DM is incident on the detector.
+Direct detection interactions start with a free DM particle and a SM particle.
+The DM and SM particle interact via elastic or inelastic collision and recoil away from each other.
+The DM remains in the dark sector and imparts some momentum to the SM particle.
+The hope is that the momentum imparted onto the SM particle is sufficiently high enough to be picked up with extremely sensitive instruments.
+A direct detection experiment must wait until DM is incident on the detector.
 Most direct detection experiments are therefore placed in low-background environments with inert detection media like the noble gas, Xenon. \cite{Cooley:dd_dm}
 
 \textbf{Make it} refers to the production of DM from SM initial states.
-The experiment starts with particles in the SM.
-These SM particles are accelerated to incredibly high energies and then collide with each other.
+The experiment starts with SM particles that are accelerated to incredibly high energies and then collided with each other.
 In the confluence of energy, DM hopefully emerges as a byproduct of the SM annihilation.
 Often it is the collider experiments that are energetic enough to hypothetically produce DM.
 These experiments include the world-wide collaborations, ATLAS and CMS at CERN, where protons collide together at extreme energies.
-The DM searches, however, are complex.
-DM likely does not interact with the detectors and lives long enough to escape the detection apparatus of CERN's colliders.
+DM likely does not interact with the detectors and lives long enough to escape their detection apparatus.
 This means any DM production experiment searches for an excess of events with missing momentum or energy in the events.
 An example event with missing transverse momentum is shown in \Cref{fig:met_atlas}.
 The missing momentum with no particle tracks implies a weakly interacting particle carried the energy out of the detector.
@@ -315,16 +318,16 @@ However, there are other neutral particles in the SM, like neutrons or neutrinos
 
 \textbf{Break it} refers to the creation of SM particles from the dark sector, and it is the primary focus of this thesis.
 The interaction begins with DM in the dark sector.
-The hypothesis is that this DM will either annihilate with itself or decay and produce an SM byproduct.
+The hypothesis is that this DM will either annihilate with itself or decay and produce a SM byproduct.
 This method is often referred to as the Indirect Detection of DM because we have no lab to directly control or manipulate the DM.
 Therefore, most indirect DM searches are performed using observations of known DM densities among astrophysical sources.
-The strength is that we have the whole of the universe and its 13.6-billion-year lifespan to use as a detector and particle accelerator.
+A strength is that we have the whole of the universe and its 13.6-billion-year lifespan to use as a detector and particle accelerator.
 Additionally, locations of dark matter are well cataloged since it was astrophysical observations that presented the problem of DM in the first place.
 
 \begin{figure}[ht]
     \centering{
         \includegraphics[scale=0.4]{figures/DM_annihilation.png}
-        \caption{More detailed pseudo-Feynman diagram of particle cascade from dark matter annihilation into 2 quarks. The quarks hadronize down to stable particles like \textgamma~or the anti-proton ($p^-$). Diagram pulled from ICRC 2021 presentation on DM annihilation search \cite{2021ICRC:glory_duck}.}
+        \caption{More detailed pseudo-Feynman diagram of particle cascade from dark matter annihilation into 2 quarks. The quarks hadronize down to stable particles like photons ($\gamma$) or the anti-proton ($p^-$). Diagram pulled from ICRC 2021 presentation on DM annihilation search \cite{2021ICRC:glory_duck}.}
         \label{fig:id_dm_ann}
     }
 \end{figure}
@@ -337,7 +340,7 @@ Yet, any signal from the galactic center is challenging to parse apart from the 
 Despite the challenges, any DM model that yields evidence in the other two observation methods, \textbf{Shake it} or \textbf{Make it} must be corroborated with indirect observations of the known DM sources.
 Without corroborating evidence, DM observation in the lab is hard-pressed to demonstrate that it is the model contributing to the DM seen at the universal scale.
 
-In the case of WIMP DM, signals are described in terms of primary SM particles produced from DM decay or annihilation.
+In the case of Weakly Interacting Massive Particle (WIMP) DM, signals are described in terms of primary SM particles produced from DM decay or annihilation.
 The SM initial state particles are then simulated down to stable final states such as the $\gamma, \nu, p, \text{or } e$ which can traverse galactic lengths to reach the Earth.
 
 \Cref{fig:id_dm_ann} shows the quagmire of SM particles that emerges from SM initial states that are not stable \cite{2021ICRC:glory_duck}.
@@ -368,8 +371,8 @@ Whereas the integrated astrophysical component of \cref{eq:id_dm_decay} is often
     }
 \end{figure}
 
-Exact $\chi\chi \rightarrow$ \textbf{SM SM} branching ratios are not known, so it is usually assumed to go 100\% into an SM particle/anti-particle.
-Additionally, when a DM annihilation or decay produces one of the neutral, long-lived SM particles ($\nu$ or $\gamma$), the particle can be traced back to a DM source.
+The DM annihilation branching ratios in the SM are not known, so it is usually assumed that DM annihilates 100\% of the time into a given SM particle/anti-particle pair.
+When a DM annihilation or decay produces one of the long-lived, neutral SM particles (neutrinos or photons), the particle can be traced back to the DM source.
 For DM above GeV energies, there are very few SM processes that can produce particles with such a high energy.
 Seeing such a signal would almost certainly be an indication of the presence of dark matter.
 Fortunately, the universe  provides us with the largest volume and lifetime ever for a particle physics experiment.
@@ -381,7 +384,7 @@ Fortunately, the universe  provides us with the largest volume and lifetime ever
 \begin{figure}
     \centering{
         \includegraphics[scale=0.5]{figures/dm_profiles.png}
-        \caption{Different dark matter density profiles compared. Some models produce exceptionally large densities at small r \cite{2010:dm_profiles}.}
+        \caption{Different dark matter density profiles compared. Each model accommodates different assumptions about how a galaxy formed. The Navaro-Frenko-White \cite{NFWProfile} profile is among the more popular models used for dwarf galaxies.  Some models produce exceptionally large densities at small radii ($r$) \cite{2010:dm_profiles}.}
         \label{fig:dm_profile}
     }
 \end{figure}
@@ -389,10 +392,10 @@ Fortunately, the universe  provides us with the largest volume and lifetime ever
 The first detection of DM relied on optical observations.
 Since then, we have developed new techniques to find DM dense regions.
 As described in \cref{sec:ev4dm_stars}, many DM dense regions were discovered through observing galactic rotation curves.
-Our Milky Way galaxy is among DM dense regions discovered, and it is the largest nearby DM dense region to look at.
+Our Milky Way galaxy is among the known DM dense regions discovered, and it is the largest nearby DM dense region to look at.
 Additionally, the DM halo surrounding the Milky Way is clumpy \cite{Tracy:les_houches}.
 There are regions in the DM halo of the Milky Way that have more DM than others that have captured gas over time.
-These sub-halos were dense enough collapse gas and form stars.
+These sub-halos were dense enough to collapse gas and form stars.
 These apparent sub galaxies are known as dwarf spheroidal galaxies (dSphs) and are the main sources studied in this thesis.
 Each source type comes with different trade-offs.
 Galactic Center studies will be very sensitive to the assumed distribution of DM.
@@ -400,9 +403,9 @@ The central DM density can vary substantially as demonstrated in \cref{fig:dm_pr
 At distances close to the center of the galaxy, or small \textit{r}, the differences in DM densities can be 3-4 orders of magnitude.
 Searches toward the galactic center will therefore be quite sensitive to the assumed DM distribution.
 
-Searches dSphs suffer from uncertainties in the DM density less than the galactic center studies.
+Searches dSphs suffer less from uncertainties in the DM density than the galactic center studies.
 This is mostly from their diminutive size being smaller than the angular resolution of most high energy astrophysical observatories \cite{Tracy:les_houches}.
-The DM content of dSphs are typically determined with the Virial theorem, \cref{eq:virialtheorem}, and are usually majority DM \cite{Tracy:les_houches} in mass.
+The DM content of dSphs are typically determined with the Virial theorem, \cref{eq:virialtheorem}, and are usually mostly DM \cite{Tracy:les_houches} in mass.
 DSph's tend to be ideal sources to look at for DM searches.
 Their environments are quiet with little astrophysical background.
 Unlike the galactic center, the most energetic components of dSph's are the stars within them versus a violent accretion disc around a black hole.
@@ -418,16 +421,25 @@ Up until the 21st century, astrophysical observations were performed with photon
 Astrophysics with this 'messenger' is fairly mature now.
 Novel observations of the universe have since only adjusted the sensitivity of the wavelength of light that is observed except at MeV energies.
 Gems like the CMB \cite{Plank:CMB}, and more have ultimately been observations of different wavelengths of light.
-Multi-messenger astrophysics proposes using other SM particles such the $p^{+/-},  \nu$, or gravitation waves predicted by general relativity.
+Multi-messenger astrophysics proposes using other SM particles such the $p^{+/-}$, neutrinos ($\nu$), or gravitational waves predicted by general relativity.
+\Cref{fig:astrophysics_particles} provides a graphic of what kinds of paths stable particles in SM will take on their way to Earth.
+
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.3]{figures/physicus.pdf}
+    }
+    \caption{Stable SM Particles from astrophysical sources are deflected in different ways because of their intrinsic properties. Charged particles like cosmic rays ($p$) are charged and will be bent by magnetic fields as they traverse the universe. Neutrinos ($\nu$) and photons ($\gamma$) are neutral and can traverse almost unimpeded. Photons however can be occluded by dust and other massive objects. Figure from \cite{IceCube_SPGallery}.}
+    \label{fig:astrophysics_particles}
+\end{figure}
 
 The experiment LIGO had a revolutionary discovery in 2016 with the first detection of a binary black hole merger \cite{2016:grav_waves}.
 This opened the collective imagination to observing the universe through gravitational waves.
 There has also been a surge of interest in the neutrino ($\nu$) sector.
-IceCube demonstrated that we are sensitive to neutrinos in regions that correlate with significant photon emission like the galactic plane \cite{2023:IC3_galactic_plane}.
+The IceCube Neutrino Observatory demonstrated that we are sensitive to neutrinos in regions that correlate with significant photon emission like the galactic plane \cite{2023:IC3_galactic_plane}.
 Neutrinos, like gravitational waves and light, travel mostly unimpeded from their source to our observatories.
 This makes pointing to the originating source of these messengers much easier than it is for cosmic rays which are deflected from their source by magnetic fields.
 
-\begin{figure}[h]
+\begin{figure}[t]
     \centering{
         \includegraphics[scale=0.41]{figures/ic3_galacticplane.jpg}
         \caption{The Milky Way Galaxy in photons ($\gamma$) and neutrinos ($\nu$) \cite{2023:IC3_galactic_plane}. The Galactic center is at l = 0\textdegree and is the brightest region in all panels. (top) An Optical color image of the Milky Way galaxy seen from Earth. Clouds of gas and dust obscure some light from stars. (2nd down) Integrated flux of $\gamma$-rays observed by the Fermi-LAT telescope \cite{fermi:mw_plane}. (middle) Expected neutrino emission that corresponds with Fermi-LAT observations. (2nd up) Expected neutrino emission profile after considering detector systematics of IceCube. (bottom) Observed neutrino emission from region of the galactic plane. Substantial neutrino emission was detected.}
@@ -446,7 +458,7 @@ For example, the fit to IceCube data prefers neutrino production from the decay 
 \begin{figure}[h]
     \centering{
         \includegraphics[scale=0.65]{figures/pppc_spectra.png}
-        \caption{Dark Matter annihilation spectra for different final state particles and standard model annihilation channels \cite{pppc}. Photons (red), $e^\pm$ (green), $\bar{p}$ (blue), $\nu$ (black).}
+        \caption{Dark Matter annihilation spectra for different final state particles and standard model annihilation channels \cite{pppc}. Photons, $\gamma$, (red), electrons, $e^\pm$, (green), protons, $\bar{p}$, (blue), neutrinos, $\nu$ (black).}
         \label{fig:pppc_spectra}
     }
 \end{figure}

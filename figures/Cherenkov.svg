@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5-alpha5 -->
+<!-- CreationDate: Thu Mar 16 11:09:42 2006 -->
+<!-- Magnification: 1.050 -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="4.2in"
+   height="3.9in"
+   viewBox="696 1047 5045 4660"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docname="cherenkov.svg"
+   sodipodi:docbase="/mnt/win-fat/wikipedia/fizika-kepek">
+  <metadata
+     id="metadata229">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs227" />
+  <sodipodi:namedview
+     inkscape:window-height="689"
+     inkscape:window-width="1016"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="1.4928775"
+     inkscape:cx="188.99998"
+     inkscape:cy="175.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:current-layer="svg2" />
+  <polyline
+     id="polyline10"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3104,1296 2886,1624 " />
+  <polygon
+     id="polygon12"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3111,1341 3155,1219 3059,1307 3111,1341 " />
+  <polyline
+     id="polyline14"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3300,1427 3082,1755 " />
+  <polygon
+     id="polygon16"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3308,1472 3352,1351 3255,1438 3308,1472 " />
+  <polyline
+     id="polyline18"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3497,1559 3278,1886 " />
+  <polygon
+     id="polygon20"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3504,1604 3548,1482 3451,1569 3504,1604 " />
+  <polyline
+     id="polyline22"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3694,1690 3476,2017 " />
+  <polygon
+     id="polygon24"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3700,1735 3744,1613 3648,1700 3700,1735 " />
+  <polyline
+     id="polyline26"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3890,1821 3672,2148 " />
+  <polygon
+     id="polygon28"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3898,1866 3942,1744 3845,1832 3898,1866 " />
+  <polyline
+     id="polyline30"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4087,1951 3868,2279 " />
+  <polygon
+     id="polygon32"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4094,1996 4138,1875 4041,1962 4094,1996 " />
+  <polyline
+     id="polyline34"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4283,2082 4065,2410 " />
+  <polygon
+     id="polygon36"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4290,2128 4334,2006 4238,2093 4290,2128 " />
+  <polyline
+     id="polyline38"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4479,2214 4261,2541 " />
+  <polygon
+     id="polygon40"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4487,2259 4531,2137 4434,2224 4487,2259 " />
+  <polyline
+     id="polyline42"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4677,2345 4458,2672 " />
+  <polygon
+     id="polygon44"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4683,2390 4727,2268 4630,2355 4683,2390 " />
+  <polyline
+     id="polyline46"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4873,2476 4655,2804 " />
+  <polygon
+     id="polygon48"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4879,2521 4923,2399 4827,2487 4879,2521 " />
+  <polyline
+     id="polyline50"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5069,2607 4851,2935 " />
+  <polygon
+     id="polygon52"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5077,2653 5121,2531 5024,2618 5077,2653 " />
+  <polyline
+     id="polyline54"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5266,2739 5047,3065 " />
+  <polygon
+     id="polygon56"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5273,2784 5317,2662 5220,2749 5273,2784 " />
+  <polyline
+     id="polyline58"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5462,2869 5244,3196 " />
+  <polygon
+     id="polygon60"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5469,2914 5513,2792 5417,2879 5469,2914 " />
+  <polyline
+     id="polyline62"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5659,3000 5441,3328 " />
+  <polygon
+     id="polygon64"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5666,3045 5710,2923 5613,3011 5666,3045 " />
+  <polyline
+     id="polyline66"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2908,1165 2689,1492 " />
+  <polygon
+     id="polygon68"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="2915,1210 2959,1088 2862,1175 2915,1210 " />
+  <path
+     id="path74"
+     d="M 2267,2645 C 2434.7218,2670.0175 2581.4695,2771.1392 2664.5696,2918.9596 C 2747.6697,3066.7799 2757.7946,3244.7068 2692,3401"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt" />
+  <polyline
+     id="polyline80"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="708,3401 5433,3401 " />
+  <polyline
+     id="polyline82"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2551,1511 5433,3401 " />
+  <polyline
+     id="polyline84"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2902,1683 1748,3401 "
+     transform="matrix(0.977077,0,0,0.974221,39.88686,87.88063)" />
+  <polyline
+     id="polyline86"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2902,5119 1748,3401 "
+     transform="matrix(0.984718,0,0,0.979377,26.59124,69.97453)" />
+  <polyline
+     id="polyline88"
+     style="fill:#000000;stroke:#000000;stroke-width:32;stroke-linecap:butt;stroke-linejoin:miter"
+     points="1511,2267 1842,2267 " />
+  <polyline
+     id="polyline90"
+     style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2598,5291 5385,3401 " />
+  <polyline
+     id="polyline92"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3104,1296 2886,1624 " />
+  <polygon
+     id="polygon94"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3111,1341 3155,1219 3059,1307 3111,1341 " />
+  <polyline
+     id="polyline96"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3300,1427 3082,1755 " />
+  <polygon
+     id="polygon98"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3308,1472 3352,1351 3255,1438 3308,1472 " />
+  <polyline
+     id="polyline100"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3497,1559 3278,1886 " />
+  <polygon
+     id="polygon102"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3504,1604 3548,1482 3451,1569 3504,1604 " />
+  <polyline
+     id="polyline104"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3694,1690 3476,2017 " />
+  <polygon
+     id="polygon106"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3700,1735 3744,1613 3648,1700 3700,1735 " />
+  <polyline
+     id="polyline108"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3890,1821 3672,2148 " />
+  <polygon
+     id="polygon110"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3898,1866 3942,1744 3845,1832 3898,1866 " />
+  <polyline
+     id="polyline112"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4087,1951 3868,2279 " />
+  <polygon
+     id="polygon114"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4094,1996 4138,1875 4041,1962 4094,1996 " />
+  <polyline
+     id="polyline116"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4283,2082 4065,2410 " />
+  <polygon
+     id="polygon118"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4290,2128 4334,2006 4238,2093 4290,2128 " />
+  <polyline
+     id="polyline120"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4479,2214 4261,2541 " />
+  <polygon
+     id="polygon122"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4487,2259 4531,2137 4434,2224 4487,2259 " />
+  <polyline
+     id="polyline124"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4677,2345 4458,2672 " />
+  <polygon
+     id="polygon126"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4683,2390 4727,2268 4630,2355 4683,2390 " />
+  <polyline
+     id="polyline128"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4873,2476 4655,2804 " />
+  <polygon
+     id="polygon130"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4879,2521 4923,2399 4827,2487 4879,2521 " />
+  <polyline
+     id="polyline132"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5069,2607 4851,2935 " />
+  <polygon
+     id="polygon134"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5077,2653 5121,2531 5024,2618 5077,2653 " />
+  <polyline
+     id="polyline136"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5266,2739 5047,3065 " />
+  <polygon
+     id="polygon138"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5273,2784 5317,2662 5220,2749 5273,2784 " />
+  <polyline
+     id="polyline140"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5462,2869 5244,3196 " />
+  <polygon
+     id="polygon142"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5469,2914 5513,2792 5417,2879 5469,2914 " />
+  <polyline
+     id="polyline144"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5659,3000 5441,3328 " />
+  <polygon
+     id="polygon146"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5666,3045 5710,2923 5613,3011 5666,3045 " />
+  <polyline
+     id="polyline148"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2908,1165 2689,1492 " />
+  <polygon
+     id="polygon150"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="2915,1210 2959,1088 2862,1175 2915,1210 " />
+  <polyline
+     id="polyline152"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3104,5459 2886,5131 " />
+  <polygon
+     id="polygon154"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3059,5447 3155,5535 3111,5413 3059,5447 " />
+  <polyline
+     id="polyline156"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3300,5328 3082,5000 " />
+  <polygon
+     id="polygon158"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3255,5316 3352,5404 3308,5281 3255,5316 " />
+  <polyline
+     id="polyline160"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3497,5196 3278,4869 " />
+  <polygon
+     id="polygon162"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3451,5185 3548,5273 3504,5150 3451,5185 " />
+  <polyline
+     id="polyline164"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3694,5065 3476,4738 " />
+  <polygon
+     id="polygon166"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3648,5054 3744,5142 3700,5019 3648,5054 " />
+  <polyline
+     id="polyline168"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="3890,4934 3672,4607 " />
+  <polygon
+     id="polygon170"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="3845,4922 3942,5011 3898,4888 3845,4922 " />
+  <polyline
+     id="polyline172"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4087,4804 3868,4476 " />
+  <polygon
+     id="polygon174"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4041,4792 4138,4880 4094,4758 4041,4792 " />
+  <polyline
+     id="polyline176"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4283,4672 4065,4345 " />
+  <polygon
+     id="polygon178"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4238,4661 4334,4749 4290,4626 4238,4661 " />
+  <polyline
+     id="polyline180"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4479,4541 4261,4214 " />
+  <polygon
+     id="polygon182"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4434,4530 4531,4618 4487,4495 4434,4530 " />
+  <polyline
+     id="polyline184"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4677,4410 4458,4082 " />
+  <polygon
+     id="polygon186"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4630,4398 4727,4487 4683,4364 4630,4398 " />
+  <polyline
+     id="polyline188"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="4873,4279 4655,3951 " />
+  <polygon
+     id="polygon190"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="4827,4267 4923,4355 4879,4233 4827,4267 " />
+  <polyline
+     id="polyline192"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5069,4148 4851,3820 " />
+  <polygon
+     id="polygon194"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5024,4136 5121,4224 5077,4101 5024,4136 " />
+  <polyline
+     id="polyline196"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5266,4016 5047,3690 " />
+  <polygon
+     id="polygon198"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5220,4005 5317,4093 5273,3970 5220,4005 " />
+  <polyline
+     id="polyline200"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5462,3886 5244,3559 " />
+  <polygon
+     id="polygon202"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5417,3875 5513,3963 5469,3840 5417,3875 " />
+  <polyline
+     id="polyline204"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="5659,3755 5441,3427 " />
+  <polygon
+     id="polygon206"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="5613,3743 5710,3832 5666,3709 5613,3743 " />
+  <polyline
+     id="polyline208"
+     style="fill:none;stroke:#0000ff;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter"
+     points="2908,5590 2689,5262 " />
+  <polygon
+     id="polygon210"
+     style="fill:#0000ff;stroke:#0000ff;stroke-width:16"
+     points="2862,5579 2959,5667 2915,5544 2862,5579 " />
+  <polyline
+     id="polyline212"
+     style="fill:#ff0000;stroke:#ff0000;stroke-width:32;stroke-linecap:butt;stroke-linejoin:miter;fill-opacity:1;stroke-opacity:1"
+     points="897,3401 1322,3401 " />
+  <polygon
+     id="polygon214"
+     style="fill:#ff0000;stroke:#ff0000;stroke-width:32;fill-opacity:1;stroke-opacity:1"
+     points="1254,3448 1443,3401 1254,3354 1254,3448 " />
+  <text
+     style="font-size:328px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.025in;font-family:Times"
+     id="text216"
+     font-size="328"
+     font-weight="normal"
+     font-style="normal"
+     y="2173"
+     x="1606">c</text>
+  <text
+     style="font-size:328px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.025in;font-family:Times"
+     id="text218"
+     font-size="328"
+     font-weight="normal"
+     font-style="normal"
+     y="2362"
+     x="1984">t</text>
+  <text
+     style="font-size:328px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.025in;font-family:Times"
+     id="text220"
+     font-size="328"
+     font-weight="normal"
+     font-style="normal"
+     y="2551"
+     x="1606">n</text>
+  <text
+     style="font-size:328px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.025in;font-family:Times"
+     id="text222"
+     font-size="328"
+     font-weight="normal"
+     font-style="normal"
+     y="3874"
+     x="2976">βct</text>
+  <text
+     style="font-size:252px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.025in;font-family:Times"
+     id="text224"
+     font-size="252"
+     font-weight="normal"
+     font-style="normal"
+     y="3212"
+     x="2220">θ</text>
+  <rect
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:10.85154724;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4307"
+     width="377.98175"
+     height="370.71286"
+     x="3353.4312"
+     y="-87.949318"
+     transform="matrix(0.842416,0.538828,-0.538828,0.842416,0,0)" />
+  <rect
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:10.85155296;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect5185"
+     width="377.98193"
+     height="370.71304"
+     x="5468.5347"
+     y="88.044769"
+     transform="matrix(0.5607,0.828019,-0.828019,0.5607,0,0)" />
+</svg>
