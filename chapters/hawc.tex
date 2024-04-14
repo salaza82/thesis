@@ -304,27 +304,27 @@ The separation process leverages differences in shower characteristics: electrom
 
 Two primary parameters facilitate the identification of cosmic-ray events \cite{Abeysekara_2017}:
 
-Compactness (C): This parameter evaluates the charge captured by PMTs, particularly focusing on the PMT with the highest effective charge beyond a 40-meter radius from the shower core.
+1) Compactness (C): This parameter evaluates the charge captured by PMTs, particularly focusing on the PMT with the highest effective charge beyond a 40-meter radius from the shower core.
 Compactness is inversely proportional to this effective charge, as higher charges at extended distances from the core are indicative of hadronic showers.
 It is mathematically expressed as:
 \compactness
 where $N_\mathrm{hit}$ is the number of PMTs hit and $CxPE_{40}$ is the effective charge measured outside a 40 m radius from the shower cores \cite{Abeysekara_2017}.
 
-PINCness (P): PINCness quantifies the "clumpiness" of a shower using the charges recorded by PMTs and is short for Parameter for Identifying Nuclear Cosmic Rays.
+2) PINCness (P): PINCness quantifies the "clumpiness" of a shower using the charges recorded by PMTs and is short for Parameter for Identifying Nuclear Cosmic Rays.
 It is computed from the logarithm of the effective charge, $Q_{\mathrm{eff},i}$, of each PMT hit, $i$, compared to an expected average for that annular region.
 A higher PINCness suggests a less smooth distribution, typical of hadronic showers.
 The formula is:
 \pincness
 where $\zeta_i = \log_{10}(Q_{\mathrm{eff},i})$.
-The average, $\langle \zeta \rangle$ is the average over an anular region surrounding the shower core.
+The average, $\langle \zeta \rangle$ is the average over an annular region surrounding the shower core.
 The errors, $\sigma_{\zeta_i}$, are computed and allocated from gamma-ray candidates close to the Crab.
 
 These parameters are tested and modeled in simulations and with observational data near the Crab Nebula.
-\Cref{fig:ldf_particleshower} illustrating the lateral distributions for representative cosmic-ray and photon candidate showers, as well as the distribution of these discrimination parameters, affirm their efficacy \cite{Abeysekara_2017}.
+\Cref{fig:ldf_particleshower} illustrates the lateral distributions for representative cosmic-ray and photon candidate showers, and the Compactness and PINCness distributions \cite{Abeysekara_2017}.
 
 The discrimination technique has remained consistent, but cut values have been reoptimized for the 2D bins based on $f_{\text{hit}}$ and NN estimated energy.
-This refinement enhances the selection of high-energy events.
-Each bin ensures at least 50\% efficiency for gamma-ray detection, with efficiencies extending up to nearly 100\% in certain bins \cite{Abeysekara_2017,100TEV_Crab_HAWC}.
+This refinement, referred to as Pass 5.F, enhances the selection of high-energy events.
+Each bin ensures at least 50\% efficiency for gamma-ray detection, with efficiencies extending up to 99\% at the highest energy bins \cite{Abeysekara_2017,100TEV_Crab_HAWC}.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \section{Background Estimation: Direct Integration}\label{hawc:direc_int}
