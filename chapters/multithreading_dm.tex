@@ -15,13 +15,13 @@ The results of this work are featured in this chapter and brought a human timing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This section describes the data and background methods used for HAWC's multithreaded study of dSphs.
-\Cref{sec:mtd_data} and \Cref{sec:mtd_tools} are most useful for fellow HAWC collaborators looking to replicate a multithreaded dSph DM search.
+\Cref{sec:mtd_data,sec:mtd_tools} are most useful for fellow HAWC collaborators looking to replicate a multithreaded dSph DM search.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Itemized HAWC files}\label{sec:mtd_data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 These files are only available within HAWC's internal documentation and collaborators.
-They are not meant for public access, and are presented here so that HAWC collaborators can reproduce results accurately.
+They are not meant for public access, and are presented here so that HAWC can reproduce results accurately.
 
 \begin{itemize}
     \item Detector Resolution: \texttt{refit-Pass5-Final-NN-detRes-zenith-dependent.root}
@@ -38,8 +38,8 @@ I built software in collaboration with Michael Martin and Letrell Harris to impl
 A NumPy dictionary of HDM, \texttt{HDMSpectra\_dict\_gamma.npy}, was made for portability within the collaboration.
 These dictionaries were generated from the \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{Rodd:HDM_spec}.
 The analysis was performed using the Neural Network energy estimator for Pass 5.F.
-A description of this estimator was provided in \Cref{sec:hawc}.\todo{Define a subsection when it's written}, and its key, relevant improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
-All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
+A description of this estimator was provided in \cref{sec:hawc_nn}. Its key, relevant improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
+All other software used for data analysis, DM profile generation, and job submission to SLURM are kept in my sandbox in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark_matter_hawc}{Dark Matter HAWC} project.
 The above repository also incorporates the model inputs used previously in Glory Duck, described in \Cref{sec:glory_duck}, so Glory Duck remains compatible with modern software.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,24 +47,30 @@ The above repository also incorporates the model inputs used previously in Glory
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The HAWC data maps used for this analysis contain 2565 days of data between runs 2104 and 7476.
-They were generated from pass 5.f reconstruction.
+They were generated from pass 5.F reconstruction.
 The analysis is performed using the NN energy estimator with nominal bin list:
 
 \begin{itemize}
     \item[] \texttt{B1C0Ea}, \texttt{B1C0Eb}, \texttt{B1C0Ec}, \texttt{B1C0Ed}, \texttt{B1C0Ee}, \texttt{B2C0Ea}, \texttt{B2C0Eb}, \texttt{B2C0Ec}, \texttt{B2C0Ed}, \texttt{B2C0Ee}, \texttt{B3C0Ea}, \texttt{B3C0Eb}, \texttt{B3C0Ec}, \texttt{B3C0Ed}, \texttt{B3C0Ee}, \texttt{B3C0Ef}, \texttt{B4C0Eb}, \texttt{B4C0Ec}, \texttt{B4C0Ed}, \texttt{B4C0Ee}, \texttt{B4C0Ef}, \texttt{B5C0Ec}, \texttt{B5C0Ed}, \texttt{B5C0Ee}, \texttt{B5C0Ef}, \texttt{B5C0Eg}, \texttt{B6C0Ed}, \texttt{B6C0Ee}, \texttt{B6C0Ef}, \texttt{B6C0Eg}, \texttt{B6C0Eh}, \texttt{B7C0Ee}, \texttt{B7C0Ef}, \texttt{B7C0Eg}, \texttt{B7C0Eh}, \texttt{B7C0Ei}, \texttt{B8C0Ee}, \texttt{B8C0Ef}, \texttt{B8C0Eg}, \texttt{B8C0Eh}, \texttt{B8C0Ei}, \texttt{B8C0Ej}, \texttt{B9C0Ef}, \texttt{B9C0Eg}, \texttt{B9C0Eh}, \texttt{B9C0Ei}, \texttt{B9C0Ej}, \texttt{B10C0Eg}, \texttt{B10C0Eh}, \texttt{B10C0Ei}, \texttt{B10C0Ej}, \texttt{B10C0Ek}, \texttt{B10C0El}
 \end{itemize}
 Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
-This list was cut down depending on the declination of the source because the PSF of these bins were too large, or the statistics were too low.
+This list was cut down depending on the declination of the source because the Point Spread Function (PSF) of these bins were too large, or the statistics were too low.
 
-Background considerations and source selection was identical to \Cref{sec:gs_data_bkgd}, and no additional arguments are provided here.
-Many of the HAWC systematics explored in \Cref{sec:hawc_systematic} also apply for this DM search and are not added upon here.
+Background considerations and source selection was identical to \cref{sec:gs_data_bkgd}, and no additional arguments are provided here.
+Many of the HAWC systematics explored in \cref{sec:hawc_systematic} also apply for this DM search and are not discussed here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis}\label{sec:mtd_analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The analysis and its systematics are almost identical to \Cref{sec:gd_analysis}.
-Importantly, we use the same \Cref{eq:id_dm_flux} and \Cref{eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources.
+The analysis and its systematics are almost identical to \cref{sec:gd_analysis}.
+Importantly, the same \cref{eq:id_dm_flux,eq:jfactor} for estimating the gamma-ray flux at HAWC from our sources are used here.
+
+This analysis improves on \Cref{sec:glory_duck} in the following ways.
+The particle physics model used for gamma-ray spectra was updated to accomodate recent measurements and constraints in particle physics.
+For this study, HAWC samples DM masses up to $10$ PeV, where previously it stopped at 1 TeV.
+Additionally, we use a new DM density profile catalog.
+Finally, the gamma-ray ray dataset is much larger, almost double the size of the data used in \Cref{sec:glory_duck}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{$\frac{dN_\gamma}{dE_\gamma}$ - Particle Physics Component}\label{sec:mtd_particlephysics}
@@ -92,10 +98,10 @@ The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
 For $\gamma\gamma$ and $ZZ$, a substantial fraction of the signal photons are expected to have $E_\gamma = m_\chi$ \cite{Rodd:HDM_spec}.
 This introduces a $\delta$-function in the tested spectra, referred to as a spectral line, that is much narrower than the energy resolution of the HAWC detector.
 To ensure that this feature is not lost in the likelihood fits, the `line' feature is convolved with a Gaussian kernel with a $1\sigma$ width of $0.05 \cdot m_\chi$ and total kernel window of $\pm4\sigma$.
-The kernel width was chosen based on the choices made from HAWC's previous gamma-line study \cite{HAWC_dm_gammalines} and the observed energy resolution og the NN enregy estimator \cite{100TEV_Crab_HAWC}.
+The kernel width was chosen based on the choices made from HAWC's previous gamma-line study \cite{HAWC_dm_gammalines} and the observed energy resolution of the NN energy estimator \cite{100TEV_Crab_HAWC}.
 This differs from HAWC's previous line study where 30\% of HAWC's energy resolution was used for the kernel \cite{HAWC_dm_gammalines}.
-The NN energy estimator's improved energy resolution compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{Rodd:HDM_spec} and see \cref{sec:hawc_nn}.
-The annihilation spectra after Gaussian smoothing for $\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \Cref{fig:hdm_gamma_lines}.
+The NN energy estimator's improved energy resolution compared to $f_\mathrm{hit}$ at low gamma-ray energy enables narrower kernels \cite{Rodd:HDM_spec} (see \cref{sec:hawc_nn}).
+The annihilation spectra after Gaussian smoothing for $\chi\chi \rightarrow \gamma\gamma$ and $ZZ$ spectral hypotheses are shown in \cref{fig:hdm_gamma_lines}.
 We did not explore how well we reconstruct injected signal events for various kernels widths.
 This is a systematic that should be tested before publication in a journal.
 Spectral models for the remaining annihilation channels are plotted for each $m_\chi$ in \Cref{fig:apdx_mtd_spectra}.
@@ -118,9 +124,12 @@ The \LS catalog fits a Navarro–Frenk–White (NFW) \cite{NFWProfile} spatial D
 \nfwProfile
 $\rho_0$ and the scale radius, $R_s$ are free parameters fit for each dSph.
 $r$ is the distance from the center of the dSph.
+Because the \LS catalog uses fewer parameters for the DM density fits, they are able to fit on ultra-faint dSphs.
+This increases the number of available profiles to 43.
+The updated catalog was considered useful for a future combination with the IceCube neutrino observatory, and is a significant reason we selected this catalog.
 
 Profiles in $\frac{d\J}{d\Omega} (\theta)$ up to an angular separation $\theta = 0.5^{\circ}$ were provided directly by the authors.
-Map generation from these profiles were almost identical to \Cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
+Map generation from these profiles were almost identical to \cref{sec:gd_spatialmodel} except that a higher order trapezoidal integral was used for the normalization of the square, uniformly-spaced map:
 \TrapIntegral
 $p$ is the angular side of one pixel in the map.
 $w_{i,j}$ is a weight assigned the following ways:
@@ -165,7 +174,7 @@ $w_{i,j}$ is a weight assigned the following ways:
 
 HAWC's sources for this multithreaded analysis include Coma Berenices, Segue 1, and Sextans.
 \LS estimated the DM distributions of 43 sources in its publication, however only 4 of the best fit profiles within HAWC's field of view were provided at the time this thesis was written.
-A full description of each source used in this analysis is found in \Cref{tab:mtd_J_factor}.
+A full description of each source used in this analysis is found in \cref{tab:mtd_J_factor}.
 
 \input{tables/mtd_src_summary.tex}
 
@@ -188,28 +197,28 @@ The study performed here analyzes 2565 days of data compared to 1017 days analyz
 \section{Likelihood Methods} \label{sec:mtd_ll_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-These are identical to \Cref{sec:gd_hawc_llh} and no additional changes are made to the likelihood.
+These are identical to \cref{sec:gd_hawc_llh} and no additional changes are made to the likelihood.
 Bins in this analysis are expanded to include HAWC's NN energy estimator.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computational Methods: Multithreading} \label{sec:mtd_comp_methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Previously, as in \Cref{sec:gd_analysis}, the likelihood was minimized for one model at a time.
+Previously, as in \cref{sec:gd_analysis}, the likelihood was minimized for one model at a time.
 One model in this case representing a DM annihilation channel (\texttt{CHAN}), DM mass ($m_\chi$), and dSph (\texttt(SOURCE)).
 In an effort to conserve human and CPU time, jobs submitted for high performance computing contained a list of $m_\chi$ to iterate over for likelihood fitting.
 Jobs were then trivially parallelized for each permutation of the two lists: \texttt{CHANS} and \texttt{SOURCES}.
-The lists for \texttt{CHANS} and \texttt{SOURCES} are found in \Cref{sec:mtd_particlephysics} and \Cref{tab:mtd_J_factor}, respectively.
+The lists for \texttt{CHANS} and \texttt{SOURCES} are found in \cref{sec:mtd_particlephysics,tab:mtd_J_factor}, respectively.
 Initially, 11 $m_\chi$ were serially sampled for one job defined by a [\texttt{CHAN}, \texttt{SOURCE}] tuple.
 Computing the likelihoods would take between 1.5 to 2 hrs, stochastically, for a job.
 We expect to compute likelihoods for data and 300 Poisson background trials.
-The estimated CPU time based on the above for all \texttt{CHAN} (N = 17) and \texttt{SOURCE} (M = 25) was estimated to $127,925$ jobs.
+The estimated CPU time based on the above for all \texttt{CHAN} (N = 17) and \texttt{SOURCE} (M = 25) was estimated to be $127,925$ jobs.
 In total, $1,407,175$ likelihood fits and profiles would be computed for the 11 mass bins we wished to study.
 The estimated CPU time ranged between $8$k CPU days to $10$k CPU days.
 Human time is more challenging to estimate as job allocation is stochastic and highly dependent on what other users are submitting.
 Yet, it is unlikely that all jobs would run simultaneously.
-Therefore, we can expect human time to be about as long as was seen in \Cref{sec:glory_duck} which was on the order of months to fully compute on a smaller analysis.
-A visual aid to describe how jobs were organized is provided in \Cref{fig:mtd_gd_workflow}.
+Therefore, we can expect human time to be about as long as was seen in \Cref{sec:glory_duck}, which was on the order of months to fully compute a smaller analysis.
+A visual aid to describe how jobs were organized is provided in \cref{fig:mtd_gd_workflow}.
 
 \begin{figure}[h]
     \centering{
@@ -218,7 +227,6 @@ A visual aid to describe how jobs were organized is provided in \Cref{fig:mtd_gd
     \caption{Infographic on how jobs and DM computation was organized in \Cref{sec:gd_analysis}. Jobs were built for each permutation of \texttt{CHANS} and \texttt{SOURCES} shown by the left block in the figure. Each job, which took on the order 2 hrs to compute, had the following work flow: 1. Import HAWC analysis software, 2 min to run. 2. Load HAWC count maps, 5 min to run. 3. Load HAWC energy and spatial resolutions, 4 min. 5. Load DM spatial source templates and spectral models, less than 1 s. 6. Perform likelihood fit on data and model, about 8 min per DM mass. 7. Write results to file, less than 1s.}
     \label{fig:mtd_gd_workflow}
 \end{figure}
-
 
 The computational needs for this next generation DM analysis are extreme and is unlike other analyses performed on HAWC.
 It became clear that there was a lot to gain from optimizing how the likelihoods are computed.
@@ -238,10 +246,10 @@ Comprehensively, these variables are:
     \item \texttt{SOURCE} : dSph. Involves a spatial template AND coordinate in HAWC data.
     \item \sv: Proportional to the flux normalization and free parameter in the likelihood fit.
 \end{itemize}
-Therefore, we develop an asynchronous, functional-parallel coding pattern.
+Therefore, an asynchronous, functional-parallel coding pattern was developed.
 Asynchronous means the instructions within a function are independent and permitted to be out of sync with sibling computations.
 Functional-parallel means that instructions are the subject of parallelization rather than threading the likelihood computation.
-This is close to trivial parallelization seen in \Cref{fig:mtd_gd_workflow} except that we seek to consolidate the loading stages (software, data, and detector resolution loading).
+This is close to trivial parallelization seen in \cref{fig:mtd_gd_workflow} except that jobs are joined in the loading stages (software, data, and detector resolution loading).
 Multiple asynchronous threads are expected to reduce total serial processing time and total overhead across the entire project in addition to saving human time.
 
 \begin{figure}[h]
@@ -252,13 +260,13 @@ Multiple asynchronous threads are expected to reduce total serial processing tim
     \label{fig:mtd_gufsta}
 \end{figure}
 
-We need a way to measure and compare the expected speedup and efficiency gain for this asynchronous coding pattern.
-I pull inspiration for timing measurement from \cite{ArtofHPC} and use \textit{Amdahl's law with hybrid programming}.
+A way to measure and compare the expected speedup and efficiency gain is needed for this asynchronous coding pattern.
+Inspiration for timing measurement was pulled from \cite{ArtofHPC} and used \textit{Amdahl's law with hybrid programming}.
 Hybrid programming meaning that the computation is a mix of distributed and shared memory programming.
-If we assume the code is fully parallelizable over $p$ processors and $c$ threads, the ideal speedup is simply $pc$, and ideal run-time is $T_1/(pc)$.
+Assuming the code is fully parallelizable over $p$ processors and $c$ threads, the ideal speedup is simply $pc$, and ideal run-time is $T_1/(pc)$.
 $T_1$ is the total time for a parallel program to run if only 1 processor is allocated.
 However, the coding pattern contains some amount of unavoidable serial computation, as shown in \Cref{fig:mtd_gufsta}.
-In our case, the run time, $T_{p,c}$, is estimated to be
+In this case, the run time, $T_{p,c}$, is estimated to be
 \amdahl
 $F_s$ is the fraction of CPU time dedicated to serial computation.
 The expected speedup, $S_{p,c}$, is
@@ -282,8 +290,8 @@ As the total number of models sampled grows, the speedup will also.
     \label{fig:mtd_multithreads}
 \end{figure}
 
-The multithreaded code was written in Python3 and is documented in the \texttt{dark\_matter\_hawc} \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark\_matter\_hawc}{repository} within the script named \texttt{mpu\_analysis.py}.
-A version of the script as of April 25 \todo{make sure to update on this date} is also provided in \Cref{sec:apx_mpu_script}.
+The multithreaded code was written in Python3 and is documented in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark\_matter\_hawc}{\texttt{dark\_matter\_hawc} repository} within the script named \texttt{mpu\_analysis.py}.
+A version of the script as of April 15 is also provided in \Cref{sec:apx_mpu_script}.
 It has many dependencies including the HAWC analysis software.
 \Cref{fig:mtd_multithreads} displays the workflow of a job with 3 threads.
 Within a job, \texttt{SOURCE} is kept fixed and \texttt{CHANS} remains 17 elements long.
@@ -298,12 +306,12 @@ Although rare, fits that failed are handled on a case by case basis.
 
 \input{tables/mtd_timing.tex}
 
-We see a significant reduction to wall time needed for our dSph analyses to run.
+A significant reduction to wall time is needed for the dSphs analysis to run.
 \Cref{tab:mtd_timing_study} shows the timing summaries for analyses of different sizes and thread counts.
 Additionally, the efficiency gained when consolidating the serial loading of data is also apparent in our ability to study many more tasks in about the same amount of wall time as a smaller serial computation.
 Trials represented in the table were run on an AMD Opteron\textsuperscript{\textregistered} processor 6344 with 48 cores, 2 threads per core; 2.6 GHz clock.
 This is not the same architecture used for analysis on the HAWC computing cluster however they are similar enough that results shown here are reasonably representative of computing on the HAWC computing cluster.
-I use \cref{tab:mtd_timing_study} for the inferences and conclusions in the following paragraphs.
+\Cref{tab:mtd_timing_study} is used for the inferences and conclusions made in the following paragraphs.
 
 First, we want to find $T_s$, the time of serial computation.
 From \cref{fig:mtd_gufsta}, the timing for our coding pattern can be written as
@@ -322,28 +330,27 @@ The maximum M for this study is 473 which evaluates to: $F_s = 0.016$ or 1.6\% o
 \Cref{tab:mtd_speedup_study} shows the resulting speedups.
 \input{tables/mtd_speedup.tex}
 
-We see a speedup that generally exceeds expectations from \cref{eq:amdahlSpeed} for real trail runs.
-We also see that there are diminishing returns as the number of threads increases.
+A speedup that generally exceeds expectations from \cref{eq:amdahlSpeed} is seen for real trail runs.
+There are also diminishing returns as the number of threads increases.
 For small jobs with large $c$, both the expected and observed speedup are significantly smaller than $c$.
 One thing not considered in \cref{eq:amdahlSpeed} is the time incurred via communication latency.
 Communication latency increases with the number of threads and contributes to diminishing returns.
 Additionally, these values are for single runs and do not consider the stochastic variation expected in a shared high performance computing resource.
 Therefor, these results are not strictly conclusive, yet demonstrate the merits of multi-threading.
-We see very clearly that there is a lot to gain, and this new coding pattern will expand HAWC's analysis capabilities.
+There is a lot to gain, and this new coding pattern will expand HAWC's analysis capabilities.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis Results}\label{sec:mtd_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-3 of the 43 \LS dSphs considered for the multithreaded analysis.
+Three of the 43 \LS dSphs are considered for the multithreaded analysis.
 These dSph are analyzed for emission from DM annihilation according to the likelihood method described in \Cref{sec:gd_ll_methods}.
 The three likelihood profiles are then stacked to synthesize a combined limit on the dark matter annihilation cross-section, \sv.
-This combination is done each of the 17 SM annihilation channels.
+This combination is done for each of the 17 SM annihilation channels.
 \Cref{fig:mtd_limits_1of2} and \cref{fig:mtd_limits_2of2} show the combined limits for all annihilation channels with HAWC's observations.
 Test statistics of the best fit \sv~values for each $m_\chi$ and \texttt{CHAN} are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
-We also compare these limits to HAWC's Glory Duck limits shown in \cref{sec:hawc_results}.
-The comparison to Glory Duck are featured in \cref{fig:mtd_compare2gd} for all the DM annihilation channels studied for Glory Duck.
-A full comparison is provided in the appendix in \cref{fig:mtd_compare_ComaB}, \cref{fig:mtd_compare_Seg1}, and \cref{fig:mtd_compare_Sextans}.
+These limits are compared to HAWC's Glory Duck limits from \cref{sec:hawc_results} and shown in \cref{fig:mtd_compare2gd} for all the DM annihilation channels studied for Glory Duck.
+A full comparison is provided in \Cref{apdx:mtd_supp_figures} in \crefrange{fig:mtd_compare_ComaB}{fig:mtd_compare_Sextans}.
 Here, we show updated limits for $\chi\chi \rightarrow$ \parpar{b}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \parpar{t}, $W^+W^-$, \pp{\gamma} and \pp{Z}.
 For the first time ever, we show limits for $\chi\chi \rightarrow$ \parpar{c}, \parpar{s}, \parpar{u}, \parpar{d}, \parpar{\nu_e}, \parpar{\nu_\mu}, \parpar{\nu_\tau}, \pp{g}, and \pp{h}.
 
@@ -445,7 +452,7 @@ When comparing these results to \cref{sec:hawc_results}, we see an overall decre
 This improvement is generally stronger than a doubling of data, or a factor $\sqrt{2}$ decrease.
 The comparison is somewhat complex and dependent on the dSph and SM annihilation channel.
 \Cref{fig:mtd_compare2gd} shows the comparisons of limits calculated for this analysis and Glory Duck (\cref{sec:hawc_results}).
-Segue 1 and Coma Berenices are source at low zenith angles where improvements to HAWC's analysis come almost entirely from energy estimation.
+Segue 1 and Coma Berenices are sources at low zenith angles where improvements to HAWC's analysis come almost entirely from energy estimation.
 Differences between these two are dominantly from their differences in \J-factor, half-light radii of the dSphs, and the particle physics inputs.
 Substantial gains in HAWC's analysis methods (pass 5.F) were made at high zenith which is important for sources like Sextans.
 The HDM particle physics model produces almost identical spectra to the PPPC for $\chi\chi \rightarrow e^-e^+$.
@@ -468,7 +475,7 @@ We are also sensitive to the choice in spatial template, and this was explored i
 In this multithreaded analysis, we have used observations of 3 dSphs from HAWC to perform a collective DM annihilation search towards dSphs.
 The data were combined across sources to significantly increase the sensitivity of the search.
 Advanced computational techniques were deployed to accelerate wall-time spent analyzing by an order of magnitude.
-We have observed no significant deviation from the null, no DM hypothesis, and so present our results in terms of upper limits on the velocity-weighted cross-section, \sv, for seventeen potential DM annihilation channels across four decades of DM mass.
+We have observed no significant deviation from the null DM hypothesis, and so present our results in terms of upper limits on the velocity-weighted cross-section, \sv, for seventeen potential DM annihilation channels across four decades of DM mass.
 
 This analysis serves as a proof of concept for multithreaded HAWC analyses with large parameter spaces.
 Larger datasets with fast techniques will be essential to tackling the DM problem.
