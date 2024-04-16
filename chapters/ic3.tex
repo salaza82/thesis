@@ -31,7 +31,7 @@ The following sections will discuss the observatory's design, data acquisition, 
 
 The IceCube Neutrino Observatory is embedded within a cubic kilometer of Antarctic ice at the South Pole.
 IceCube's modules are designed to detect neutrinos through Cherenkov radiation emitted after neutrino interactions within the ice.
-It comprises of 5160 Digital Optical Modules (DOMs), arranged across 86 strings that span depths of 1450 m to 2450 m beneath the surface.
+It comprises 5160 Digital Optical Modules (DOMs), arranged across 86 strings that span depths of 1450 m to 2450 m beneath the surface.
 This arrangement allows IceCube to capture high-energy neutrinos across a broad neutrino energy spectrum.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
@@ -103,11 +103,11 @@ The waveforms are adjusted by subtracting the common baseline and applying the g
 Within the ICL, the Data Acquisition (DAQ) system employs various trigger algorithms to discern neutrino events from the vast majority of DOM hits caused by dark noise.
 One such mechanism, the Simple Multiplicity Trigger (SMT), requires a specific number of HLC hits within a brief timeframe to recognize a series of hits as an event \cite{IC3_thedetector}.
 
-Further refining the observatory's data, the Processing and Filtering (PnF) system, also housed within the ICL, applies around 25 different filters after initial event detection.
+Further, refining the observatory's data, the Processing and Filtering (PnF) system, also housed within the ICL, applies around 25 different filters after initial event detection.
 Each filter is designed for specific physics analyses.
-The system employs filters such as: The Muon Track Filter to isolate high-quality track events crucial for neutrino source identification;
-the Shower Event Filter to select events with large energy deposits indicative of neutrino interactions;
-and the High-Charge Filter to highlight events with extensive photoelectron deposits \cite{IC3_thedetector}.
+The system employs filters such as: the \textbf{Muon Track Filter} to isolate high-quality track events crucial for neutrino source identification,
+the \textbf{Shower Event Filter} to select events with large energy deposits indicative of neutrino interactions,
+and the \textbf{High-Charge Filter} to highlight events with extensive photoelectron deposits \cite{IC3_thedetector}.
 These filters ensure that the data prepared for further analysis and transmission to researchers in the Northern Hemisphere contains the most significant scientific insights \cite{IC3_thedetector}.
 
 The operational control of the observatory, maintained by the LiveControl system within the ICL, oversees the DAQ and PnF systems.
@@ -131,7 +131,7 @@ I will focus mostly on how IceCube reconstructs track-like events as these are t
     \centering{
         \includegraphics[scale=0.3]{figures/ic3/nn_cc_feynman.png}
     }
-    \caption{Feynman diagrams for W (a/b) and Z (c/d) boson mediated interactions between neutrinos and light quarks. Charged current (CC) interactions are shown in panels a and b. Neutral current (NC) interactions are shown in panels c and d. NC interactions occur between neutrinos and quarks within atomic nucluei in the ice. CC interactions will exchange W bosons and produce a lepton corresponding to the neutrino flavor and a hadronic cascade. NC interactions will exchange a Z boson and produce a hadronic cascades. Figure from \cite{physics_withIC3}.}
+    \caption{Feynman diagrams for W (a/b) and Z (c/d) boson mediated interactions between neutrinos and light quarks. Charged current (CC) interactions are shown in panels a and b. Neutral current (NC) interactions are shown in panels c and d. NC interactions occur between neutrinos and quarks within atomic nuclei in the ice. CC interactions will exchange W bosons and produce a lepton corresponding to the neutrino flavor and a hadronic cascade. NC interactions will exchange a Z boson and produce a hadronic cascades. Figure from \cite{physics_withIC3}.}
     \label{fig:ic2_ccORnc}
 \end{figure}
 
@@ -193,7 +193,7 @@ The double-bang event, posited for $\nu_\tau$ interacting via CC at energies abo
 These events start from an initial interaction and subsequent decay of the $\tau$ lepton over a discernible distance.
 See \cref{fig:ic3_doubleBang} for a simulated track event.
 The double-bang offers a unique marker for high-energy $\nu_\tau$ detection \cite{physics_withIC3}.
-Preliminary whispers of double-bang events IceCube have been observed \cite{IC3_taus}.
+Preliminary whispers of double-bang events have been observed in IceCube \cite{IC3_taus}.
 Yet, efforts are ongoing to isolate such an event.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
@@ -216,7 +216,7 @@ The charge detected by each DOM, $q_i$, factors into the probability calculation
 An alternative to SPE, the Multi-Photoelectron (MPE) likelihood method accounts for all detected photons.
 MPE uses the total observed charge to weight the significance of each hit:
 \mpe
-where $Q_j$ is the sum of charges observed by the j-th DOM, providing a more detailed picture of the $\mu$'s path \cite{AMANDA_trackreco}.
+where $Q_j$ is the sum of charges observed by the $j$th DOM, providing a more detailed picture of the $\mu$'s path \cite{AMANDA_trackreco}.
 
 SplineMPE, is the final step and employs a spline-based parameterization of the photon arrival times.
 These spline fits encode a detailed understanding of the ice's optical properties derived from calibration data \cite{AMANDA_trackreco}.
@@ -239,7 +239,7 @@ $\rho$ is the number of expected noise photons, and $\Lambda$ reflects the light
 The logarithm of the likelihood is minimized with respect to the energy, resulting in a best-fit estimate \cite{IC3_energyReco}.
 
 For a more detailed energy reconstruction, the Millipede algorithm unfolds the muon's energy loss along its path by adapting the Poisson likelihood.
-This approach accounts for the stochastic energy losses due to Bremsstrahlung and pair production, treating the $\mu$ as a series of electromagnetic cascades:
+This approach accounts for the stochastic energy losses due to Bremstrahlung and pair production, treating the $\mu$ as a series of electromagnetic cascades:
 \vecMULLH
 where $k$ denotes the observed photons, $\rho$ the noise, $E$ the energy losses, and \textbf{$\Lambda$} the matrix of predicted light yields throughout the detector.
 By fitting the muon's position, direction, and the vector of energy losses, Millipede achieves a resolution on total deposited energy along the muon track of approximately 10-15\% \cite{IC3_energyReco}.
@@ -264,4 +264,4 @@ IceCube employs selective criteria to reduce this background.
 For instance, downward-moving tracks are scrutinized more heavily, as these are more likely to be related to atmospheric events.
 Upward-moving neutrinos, however, are less likely to be confused with this background because the Earth filters out most other particles, including muons.
 The detector uses the Earth itself as a filter to increase the purity of potential astrophysical neutrino signals.
-This differentiation between upgoing and downgoing events helps IceCube focus on the neutrinos that are of most interest for astronomical observations.
+This differentiation between up-going and down-going events helps IceCube focus on the neutrinos that are of most interest for astronomical observations.

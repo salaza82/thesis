@@ -60,7 +60,7 @@ However, at the time of writing this thesis, the outriggers have not been fully 
 \end{figure}
 
 Each main array WCD, see \cref{fig:WCD_schematic}, is a cylindrical tank with dimensions of 7.3 m in diameter and 5.4 m in height and filled with 180,000 L of water \cite{HAWC_NIM}.
-The metal shell of these tanks is made from bolted together, corrugated, galvanized steel panels.
+The metal shell of these tanks is made from corrugated, galvanized steel panels bolted together.
 The interior of each tank is lined with a black, low-density polyethylene bladder, designed to be impermeable to external light and to prevent reflection of Cherenkov light within the tank.
 This bladder is approximately 0.4 mm thick of low-density polyethylene.
 To further minimize light penetration, a black agricultural foil covers the bladder.
@@ -101,7 +101,7 @@ This process involves a series of steps from initial signal detection by PMTs to
     \centering{
         \includegraphics[scale=0.6]{figures/hawc/ToT_threshold.png}
     }
-    \caption{How HAWC FEB intially processes analog PMT signals. Signals are split through an amplifier and discriminator circuit. Each path is designated for either the HIGH or LOW threshold for the signal. The 2-edge event corresponds to LOW, while the 4 edge corresponds to HIGH. Figure from \cite{HAWC_DAQ_NIM}.}
+    \caption{How HAWC FEB initially processes analog PMT signals. Signals are split through an amplifier and discriminator circuit. Each path is designated for either the HIGH or LOW threshold for the signal. The 2-edge event corresponds to LOW, while the 4 edge corresponds to HIGH. Figure from \cite{HAWC_DAQ_NIM}.}
     \label{fig:tot_threholds}
 \end{figure}
 
@@ -147,14 +147,14 @@ Each of these steps is described in more details in the following sections.
     \centering{
     \includegraphics[scale=0.5]{figures/hawc/shower_shape.png}
     }
-    \caption{An particle shower incident on WCDs. Secondary particles of an air shower travel in a cone centered on primary incident particle. Reconstruction of the initial angle is possible with arrival time of hits in PMTs inside WCDs. Figure from \cite{thesis_Zigg}.}
+    \caption{A particle shower incident on WCDs. Secondary particles of an air shower travel in a cone centered on primary incident particle. Reconstruction of the initial angle is possible with arrival time of hits in PMTs inside WCDs. Figure from \cite{thesis_Zigg}.}
     \label{fig:shower_shape}
 \end{figure}
 
 In the study of air showers, accurately determining the location of the air shower core on the ground is crucial for reconstructing the direction of the originating primary particle.
 An illustration of this can be seen in a HAWC event plot, \cref{fig:shower_shape,fig:ldf_particleshower}, where the lateral charge distribution across the array is displayed.
 The core is identified and marked with a red star in \cref{fig:shower_shape}, reconstructed using a predetermined functional form, \cref{eq:hawc_showercore}.
-We model signal $S_i$ from the \textit{i}th PMT is given by the following equation:
+We model the signal, $S_i$, from the \textit{i}th PMT by following the equation
 \showercore
 In this model, $\tilde{x}$ represents the core location and $\tilde{x}_i$ is the position of the \textit{i}th PMT.
 $R_m$ stands for the Molière radius, which is approximately 120 meters at the altitude of HAWC.
@@ -237,8 +237,7 @@ The main array consists of about 1200 PMTs, but the count may vary due to mainte
 Events are stratified into several $f_{\text{hit}}$ bins.
 Each bin corresponds to a specific range of angular resolutions, enabling a structured approach to event analysis based on the extent of the shower footprint, see \cref{tab:fhit_bins}.
 
-The relationship between $f_{\text{hit}}$ and primary energy is complex.
-Atmospheric attenuation can cause high-energy showers to present a smaller footprint, misrepresenting their energy in the $f_{\text{hit}}$ metric.
+The relationship between $f_{\text{hit}}$ and primary energy is complex; atmospheric attenuation can cause high-energy showers to present a smaller footprint, misrepresenting their energy in the $f_{\text{hit}}$ metric.
 This effect is captured in simulations that chart the actual energy distribution across $f_{\text{hit}}$ categories \cite{wcd_Sensitivity}.
 Such distributions vary with the declination of the source and the theoretical energy spectrum used in the model.
 The $f_{\text{hit}}$ metric, while effective, has several limitations.
