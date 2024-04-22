@@ -7,6 +7,7 @@
 \end{figure}
 
 Located at the South Pole, the IceCube Neutrino Observatory is a pivotal instrument for neutrino astronomy.
+The above and below ice components of the IceCube observatory are shown in \cref{fig:IC3_atPole,fig:IC3_full_detector}.
 IceCube's primary function is the detection and analysis of elusive, high-energy neutrinos.
 These neutrinos carry information from the most energetic and distant cosmic phenomena.
 The observatory uses thousands of digital optical modules embedded in a cubic kilometer of Antarctic ice to detect Cherenkov radiation.
@@ -14,23 +15,23 @@ This radiation occurs when neutrinos interact with the ice, revealing their orig
 
 IceCube is a critical component in the multi-messenger astrophysics toolkit, especially in the search for dark matter and beyond standard model (BSM) astrophysical processes.
 The observatory's analysis of neutrino signals enhances our understanding of the universe by correlating these signals with other cosmic messengers, including electromagnetic, gravitational waves, and cosmic rays.
-
 The following sections will discuss the observatory's design, data acquisition, and event reconstruction methodologies.
-These details will underscore IceCube's role in advancing our understanding of the cosmos through data-driven insights.
 
 %-----------------------------------------------------------------------------------%
 \section{The Detector}
 %-----------------------------------------------------------------------------------%
+
 \begin{figure}
     \centering{
-        \includegraphics[scale=0.37]{figures/ic3/ICL.JPG}
-    }\caption{IceCube Laboratory (ICL) that houses the data acquisition systems. Picture from \cite{IceCube_SPGallery}.}
-    \label{fig:ICL}
+        \includegraphics[scale=0.5]{figures/ic3/icecube.png}
+    }
+    \caption{Graphic of the full IceCube Neutrino Observatory. In-ice array is made up of 86 strings with a total of 5160 optical sensors. Deepcore is a denser arrangement of optical sensors for sensitivity to lower energy neutrinos. Figure from \cite{IceCube_SPGallery}.}
+    \label{fig:IC3_full_detector}
 \end{figure}
 
 The IceCube Neutrino Observatory is embedded within a cubic kilometer of Antarctic ice at the South Pole.
 IceCube's modules are designed to detect neutrinos through Cherenkov radiation emitted after neutrino interactions within the ice.
-It comprises of 5160 Digital Optical Modules (DOMs), arranged across 86 strings that span depths of 1450 m to 2450 m beneath the surface.
+It comprises 5160 Digital Optical Modules (DOMs), arranged across 86 strings that span depths of 1450 m to 2450 m beneath the surface.
 This arrangement allows IceCube to capture high-energy neutrinos across a broad neutrino energy spectrum.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
@@ -60,15 +61,7 @@ DeepCore, with its denser array of DOMs, targets lower energy neutrinos for stud
 IceTop, situated at the ice surface, measures cosmic rays, contributing data that complement the neutrino observations from below the ice.
 \Cref{fig:IC3_full_detector} illustrates the full detector volume and auxiliary systems.
 
-\begin{figure}
-    \centering{
-        \includegraphics[scale=0.5]{figures/ic3/icecube.png}
-    }
-    \caption{Graphic of the full IceCube Neutrino Observatory. In-ice array is made up of 86 strings with a total of 5160 optical sensors. Deepcore is a denser arrangement of optical sensors for sensitivity to lower energy neutrinos. Figure from \cite{IceCube_SPGallery}.}
-    \label{fig:IC3_full_detector}
-\end{figure}
-
-The central hub for IceCube's operations is the IceCube Laboratory (ICL), situated at the surface at the center of the array.
+The central hub for IceCube's operations is the IceCube Laboratory (ICL) and is situated at the surface at the center of the array (see \cref{fig:ICL}).
 This facility houses the servers and computers responsible for data acquisition and online filtering.
 ICL connects to the DOMs via cables routed up from beneath the ice \cite{IC3_thedetector}.
 The ICL manages the data flow from the ice, ensuring continuous operation and data integrity.
@@ -78,6 +71,13 @@ It maintains optimal conditions for its electronic equipment, including temperat
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Data Acquisition}
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
+
+\begin{figure}
+    \centering{
+        \includegraphics[scale=0.37]{figures/ic3/ICL.JPG}
+    }\caption{IceCube Laboratory (ICL) that houses the data acquisition systems. Picture from \cite{IceCube_SPGallery}.}
+    \label{fig:ICL}
+\end{figure}
 
 \begin{figure}
     \centering{
@@ -92,6 +92,7 @@ The importance of the information transmitted to the ICL depends on the detectio
 Isolated signals prompt a Soft Local Coincidence (SLC) response, transmitting only a timestamp and a charge summary.
 In contrast, signals detected by neighboring DOMs initiate a Hard Local Coincidence (HLC).
 The full waveform is compressed and sent along with the timestamp and charge summary to the ICL \cite{IC3_thedetector}.
+\Cref{fig:IC3_dataflow} shows a flow chart of PMT data within the DOMs before being sent to the ICL.
 
 Achieving uniform timing across DOMs is essential for accurate event reconstruction.
 Each DOM's independent clock is finely calibrated and synchronized with the ICL's clocks.
@@ -102,11 +103,11 @@ The waveforms are adjusted by subtracting the common baseline and applying the g
 Within the ICL, the Data Acquisition (DAQ) system employs various trigger algorithms to discern neutrino events from the vast majority of DOM hits caused by dark noise.
 One such mechanism, the Simple Multiplicity Trigger (SMT), requires a specific number of HLC hits within a brief timeframe to recognize a series of hits as an event \cite{IC3_thedetector}.
 
-Further refining the observatory's data, the Processing and Filtering (PnF) system, also housed within the ICL, applies around 25 different filters after initial event detection.
+Further, refining the observatory's data, the Processing and Filtering (PnF) system, also housed within the ICL, applies around 25 different filters after initial event detection.
 Each filter is designed for specific physics analyses.
-The system employs filters such as: The Muon Track Filter to isolate high-quality track events crucial for neutrino source identification;
-the Shower Event Filter to select events with large energy deposits indicative of neutrino interactions;
-and the High-Charge Filter to highlight events with extensive photoelectron deposits \cite{IC3_thedetector}.
+The system employs filters such as: the \textbf{Muon Track Filter} to isolate high-quality track events crucial for neutrino source identification,
+the \textbf{Shower Event Filter} to select events with large energy deposits indicative of neutrino interactions,
+and the \textbf{High-Charge Filter} to highlight events with extensive photoelectron deposits \cite{IC3_thedetector}.
 These filters ensure that the data prepared for further analysis and transmission to researchers in the Northern Hemisphere contains the most significant scientific insights \cite{IC3_thedetector}.
 
 The operational control of the observatory, maintained by the LiveControl system within the ICL, oversees the DAQ and PnF systems.
@@ -120,7 +121,7 @@ It is crucial for ensuring that the observatory operates within its optimal para
 Event Reconstruction within the IceCube Neutrino Observatory transforms signals captured by DOMs into quantifiable scientific insights.
 The goal of event reconstruction is to ascertain the origin, trajectory, and energy of interacting neutrinos.
 This process is pivotal for interpreting signals as either originating from celestial neutrino sources or other phenomena.
-I will focus mostly one how IceCube reconstructs track-like events as these are the most relevant for this dissertation.
+I will focus mostly on how IceCube reconstructs track-like events as these are the most relevant for this dissertation.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Tracks and Cascades}
@@ -130,7 +131,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
     \centering{
         \includegraphics[scale=0.3]{figures/ic3/nn_cc_feynman.png}
     }
-    \caption{Feynman diagrams for W (a/b) and Z (c/d) boson mediated interactions between neutrinos and light quarks. Charged current (CC) interactions are shown in panels a and b. Neutral current (NC) interactions are shown in panels c and d. NC interactions occur between neutrinos and quarks within atomic nucluei in the ice. CC interactions will exchange W bosons and produce a lepton corresponding to the neutrino flavor and a hadronic cascade. NC interactions will exchange a Z boson and produce a hadronic cascades. Figure from \cite{physics_withIC3}.}
+    \caption{Feynman diagrams for W (a/b) and Z (c/d) boson mediated interactions between neutrinos and light quarks. Charged current (CC) interactions are shown in panels a and b. Neutral current (NC) interactions are shown in panels c and d. NC interactions occur between neutrinos and quarks within atomic nuclei in the ice. CC interactions will exchange W bosons and produce a lepton corresponding to the neutrino flavor and a hadronic cascade. NC interactions will exchange a Z boson and produce a hadronic cascades. Figure from \cite{physics_withIC3}.}
     \label{fig:ic2_ccORnc}
 \end{figure}
 
@@ -139,7 +140,7 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
         \includegraphics[scale=0.4]{figures/ic3/event_topologies.png}
     }
     \caption{Event topologies for high energy NC and CC neutrino interactions with ice. Signatures can be split as either: hadronic and electromagnetic cascades; Cherenkov radiation from a charged, long-lived particle. Cascades from $\tau$ decays will depend on its decay products. For energies below 1 PeV the double bang of the $\nu_\tau$ signature overlap and are indistinguishable. Figure from \cite{rene_thesis_nutracks}.}
-    \label{fig:}
+    \label{fig:event_topology}
 \end{figure}
 
 \begin{figure}
@@ -168,6 +169,8 @@ I will focus mostly one how IceCube reconstructs track-like events as these are 
 
 Events in IceCube's detector volume manifest primarily as either tracks or cascades.
 The primary cause of the event topology are both the neutrino flavor and the nature of the primary neutrino's interaction with the ice.
+\Cref{fig:ic2_ccORnc} presents Feynman diagrams of typical neutrino interactions with particles in the ice.
+\Cref{fig:event_topology} illustrates the signatures from various topologies of neutrino interactions in the ice.
 
 Tracks emerge from charged-current (CC) interactions involving muon neutrinos ($\nu_\mu$).
 These events are characterized by the production of a high-energy muon ($\mu$).
@@ -181,14 +184,16 @@ Such precision affords angular resolutions finer than 1$^\circ$ for TeV neutrino
 Cascades are products of both neutral-current (NC) interactions across all neutrino flavors and CC interactions involving electron or tau neutrinos, $\nu_e$ and $\nu_\tau$ respectively.
 Unlike tracks, cascades result in a more localized burst of Cherenkov radiation.
 The burst imprints as a nearly spherical light pattern from the rapid dissipation of energy by the produced particles.
+See \cref{fig:ic3_cascade} for a simulated track event.
 This diffusion creates a distinct event signature with good energy estimation, but worse directional clarity compared to track events.
 The isotropic nature of cascades leads to larger angular uncertainties, typically around 15$^\circ$.
 Yet, cascades excel in providing energy measurements, with resolutions reaching as tight as 15\% from the contained nature of the energy deposition \cite{physics_withIC3,IC3_energyReco}.
 
 The double-bang event, posited for $\nu_\tau$ interacting via CC at energies above 1 PeV, would display as two distinct cascades within the detector.
 These events start from an initial interaction and subsequent decay of the $\tau$ lepton over a discernible distance.
+See \cref{fig:ic3_doubleBang} for a simulated track event.
 The double-bang offers a unique marker for high-energy $\nu_\tau$ detection \cite{physics_withIC3}.
-Preliminary whispers of double-bang events IceCube have been observed \cite{IC3_taus}.
+Preliminary whispers of double-bang events have been observed in IceCube \cite{IC3_taus}.
 Yet, efforts are ongoing to isolate such an event.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
@@ -211,7 +216,7 @@ The charge detected by each DOM, $q_i$, factors into the probability calculation
 An alternative to SPE, the Multi-Photoelectron (MPE) likelihood method accounts for all detected photons.
 MPE uses the total observed charge to weight the significance of each hit:
 \mpe
-where $Q_j$ is the sum of charges observed by the j-th DOM, providing a more detailed picture of the $\mu$'s path \cite{AMANDA_trackreco}.
+where $Q_j$ is the sum of charges observed by the $j$th DOM, providing a more detailed picture of the $\mu$'s path \cite{AMANDA_trackreco}.
 
 SplineMPE, is the final step and employs a spline-based parameterization of the photon arrival times.
 These spline fits encode a detailed understanding of the ice's optical properties derived from calibration data \cite{AMANDA_trackreco}.
@@ -221,7 +226,7 @@ where the parameters $\vec{r_0}, t_0, \theta, \mathrm{ and}~\phi$ describe the r
 
 From the light weight LineFit to the complex SplineMPE, each step incorporates more detailed physics to enhance the reconstruction's accuracy.
 Each hones in on the $\mu$ track to reveal the $\mu$'s cosmic origin.
-This nuanced tracking is crucial for IceCube's mission to map the universe through the lens of high-energy neutrino interactions.
+This multi-stepped tracking is crucial for IceCube's mission to map the universe through the lens of high-energy neutrino interactions.
 
 %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%
 \subsection{Energy}
@@ -234,7 +239,7 @@ $\rho$ is the number of expected noise photons, and $\Lambda$ reflects the light
 The logarithm of the likelihood is minimized with respect to the energy, resulting in a best-fit estimate \cite{IC3_energyReco}.
 
 For a more detailed energy reconstruction, the Millipede algorithm unfolds the muon's energy loss along its path by adapting the Poisson likelihood.
-This approach accounts for the stochastic energy losses due to Bremsstrahlung and pair production, treating the $\mu$ as a series of electromagnetic cascades:
+This approach accounts for the stochastic energy losses due to Bremstrahlung and pair production, treating the $\mu$ as a series of electromagnetic cascades:
 \vecMULLH
 where $k$ denotes the observed photons, $\rho$ the noise, $E$ the energy losses, and \textbf{$\Lambda$} the matrix of predicted light yields throughout the detector.
 By fitting the muon's position, direction, and the vector of energy losses, Millipede achieves a resolution on total deposited energy along the muon track of approximately 10-15\% \cite{IC3_energyReco}.
@@ -259,4 +264,4 @@ IceCube employs selective criteria to reduce this background.
 For instance, downward-moving tracks are scrutinized more heavily, as these are more likely to be related to atmospheric events.
 Upward-moving neutrinos, however, are less likely to be confused with this background because the Earth filters out most other particles, including muons.
 The detector uses the Earth itself as a filter to increase the purity of potential astrophysical neutrino signals.
-This differentiation between upgoing and downgoing events helps IceCube focus on the neutrinos that are of most interest for astronomical observations.
+This differentiation between up-going and down-going events helps IceCube focus on the neutrinos that are of most interest for astronomical observations.

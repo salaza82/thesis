@@ -15,7 +15,7 @@
 % Use \cref instead of \ref to get clever and coherent referencing
 % \Cref for the beginning of a sentence, \cref in the middle of the sentence
 \crefformat{chapter}{Sec.~#2#1#3}
-\Crefformat{chapter}{chapter~#2#1#3}
+\Crefformat{chapter}{Chapter~#2#1#3}
 \crefformat{appendix}{App.~#2#1#3}
 \Crefformat{appendix}{Appendix~#2#1#3}
 \crefformat{table}{Tab.~#2#1#3}
@@ -63,22 +63,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Place holder Macros
-\newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
-
-\newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
-
-\newcommand{\todo}[1]{
-    \color{purple}TODO: #1\color{black}
-}
-
-\newcommand{\tmpfig}[1]{
-    \begin{figure}[h]
-    \centering{
-        \includegraphics[scale=0.15]{figures/prettypluto.jpg}
-        \caption{\todo{#1} \ns \fu}
-    }
-    \end{figure}
-}
+% \newcommand{\ns}{\color{red}[NEEDS A SOURCE]\color{black}}
+%
+% \newcommand{\fu}{\color{orange}[FACT CHECK THIS]\color{black}}
+%
+% \newcommand{\todo}[1]{
+    % \color{purple}TODO: #1\color{black}
+% }
+%
+% \newcommand{\tmpfig}[1]{
+    % \begin{figure}[h]
+    % \centering{
+        % \includegraphics[scale=0.15]{figures/prettypluto.jpg}
+        % \caption{\todo{#1} \ns \fu}
+    % }
+    % \end{figure}
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EVERYTHING BELOW ARE EQUATIONS FOR THE PAPER
@@ -108,7 +108,7 @@
 }
 \newcommand{\iddmannilation}{
     \begin{equation}\label{eq:id_dm_flux}
-        \frac{d\Phi_\gamma}{dE_{\gamma}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_\gamma}{dE_\gamma} \times \int_\text{source}{d\Omega \int_{l.o.s}{\rho^2_\chi dl(r,\theta')}}
+        \frac{d\Phi_\gamma}{dE_{\gamma}} = \frac{\svtex}{8 \pi m^2_{\chi}} \frac{dN_\gamma}{dE_\gamma} \times J
     \end{equation}
 }
 
