@@ -10,7 +10,7 @@
 \usepackage{units}
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{xcolor}
-\usepackage{tabularx,caption,booktabs} % pretty captions and table formatting
+\usepackage{tabularx,booktabs} % pretty captions and table formatting
 \usepackage{gensymb}        % Litterally needed just for degree symbol
 \usepackage{mathtools}
 \usepackage{xspace}         % Helpful for formatting fancy math text
@@ -19,24 +19,23 @@
 \usepackage{afterpage}      % Page breaking for single tables
 \usepackage{pdflscape}      % Page manipulate like landscape/portrait
 \usepackage{arydshln}       % Tables with dashed lines
-\usepackage{lineno}         % line numbers for editting
 \usepackage{newtxtext,newtxmath}
+\usepackage[justification=centering]{caption}
 \usepackage[capitalize]{cleveref}
 \usepackage[style=numeric,sorting=none]{biblatex}
 \usepackage{listings}
 \usepackage{makecell}
 \usepackage{dark_matter}    % User defined macros
 
+% \setlength{\afterchapskip}{\onelineskip}
 \addbibresource{refs.bib}
-% \linenumbers
 
 \title{Leveraging Multi-Messenger Astrophysics for Dark Matter Searches}
-\author{Daniel Nicholas Salazar-Gallegos}
+\author{Daniel Nicolas Salazar-Gallegos}
 \dualmajor{Physics}{Computational Mathematics in Science and Engineering}
-\date{Today}
+\date{2024}
 
 \begin{document}
-
 \frontmatter
 \maketitlepage
 
@@ -105,6 +104,8 @@ Jim has been a role model of scientific rigor who has guided my physics skill se
 He is among the most exposed to my research and has similarly enabled my ambition.
 It's been a pleasure to work with Jim and I thank you tremendously for your input to my research.
 
+\clearpage
+
 Thank you to Kendall Mahn, who saw my potential from the moment of application to MSU.
 You cultivated the fight in me that's been exercised in leadership positions at MSU.
 
@@ -165,23 +166,21 @@ Thank you to HAWC and IceCube for providing me with the resources and expertise 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
+
 \SingleSpacing
 \tableofcontents*
-\clearpage
+% \DoubleSpacing
 
-\listoftables
 \clearpage
-
-\listoffigures
 \mainmatter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Dark Matter in the Cosmos\label{sec:dm_cosmos}}
+\chapter{Dark Matter in the Cosmos}\label{sec:dm_cosmos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/DarkMatterintheCosmos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{High Altitude Water Cherenkov (HAWC) Observatory\label{sec:hawc}}
+\chapter{High Altitude Water Cherenkov (HAWC) Observatory}\label{sec:hawc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/hawc.tex}
 
@@ -196,7 +195,7 @@ Thank you to HAWC and IceCube for providing me with the resources and expertise 
 \input{chapters/multithreading_dm.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{IceCube Neutrino Observatory\label{sec:ice3}}
+\chapter{IceCube Neutrino Observatory}\label{sec:ice3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/ic3.tex}
 
@@ -206,32 +205,33 @@ Thank you to HAWC and IceCube for providing me with the resources and expertise 
 \input{chapters/ice3_darkmatter.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Nu Duck: Conclusions and Future Directions\label{sec:nu_duck}}
+\chapter{Nu Duck: Conclusions and Future Directions}\label{sec:nu_duck}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/nu_duck.tex}
+
+\SingleSpacing
+
+\printbibliography
+
+\DoubleSpacing
 
 \begin{appendices}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Multi-Experiment Supplementary Figures}\label{apdx:gd_spatial_maps}
+% \chapter{Multi-Experiment Supplementary Figures}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{appendices/A1_gd_spatial_maps.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Multithreading Dark Matter Analyses Supplementary Material}\label{apdx:mtd_supp_figures}
+% \chapter{Multithreading Dark Matter Analyses Supplementary Material}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{appendices/A2_mtd_dm_hawc.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{IceCube Heavy Dark Matter Analysis Supplementary Material}\label{apdx:ic3DM_supp}
+% \chapter{IceCube Heavy Dark Matter Analysis Supplementary Material}\label{apdx:ic3DM_supp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{appendices/A3_ic3_dm.tex}
 
-
 \end{appendices}
-
-\backmatter
-\SingleSpacing
-\printbibliography
 
 \end{document}
