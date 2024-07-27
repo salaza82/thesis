@@ -24,9 +24,9 @@ These files are only available within HAWC's internal documentation and collabor
 They are not meant for public access, and are presented here so that HAWC can reproduce results accurately.
 
 \begin{itemize}
-    \item Detector Resolution: \texttt{refit-Pass5-Final-NN-detRes-zenith-dependent.root}
-    \item Data Map: \texttt{Pass5-Final-NN-maptree-ch103-ch1349-zenith-dependent.root}
-    \item Spectral Dictionary: \texttt{HDMSpectra\_dict\_gamma.npy}
+    \item Detector Resolution: refit-Pass5-Final-NN-detRes-zenith-dependent.root
+    \item Data Map: Pass5-Final-NN-maptree-ch103-ch1349-zenith-dependent.root
+    \item Spectral Dictionary: HDMSpectra\_dict\_gamma.npy
 \end{itemize}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,7 +35,7 @@ They are not meant for public access, and are presented here so that HAWC can re
 
 This analysis was performed using HAL and 3ML \cite{Abeysekara_2017, vianello2015multimission} in Python3.
 I built software in collaboration with Michael Martin and Letrell Harris to implement the \emph{Dark Matter Spectra from the Electroweak to the Planck Scale} (HDM) \cite{Rodd:HDM_spec} and dSphs spatial model from \cite{DM_Strigari20} for HAWC analysis.
-A NumPy dictionary of HDM, \texttt{HDMSpectra\_dict\_gamma.npy}, was made for portability within the collaboration.
+A NumPy dictionary of HDM, HDMSpectra\_dict\_gamma.npy, was made for portability within the collaboration.
 These dictionaries were generated from the \href{https://github.com/nickrodd/HDMSpectra/tree/master}{git repository} \cite{Rodd:HDM_spec}.
 The analysis was performed using the Neural Network energy estimator for Pass 5.F.
 A description of this estimator was provided in \cref{sec:hawc_nn}. Its key, relevant improvements are an improved energy estimation and improved sensitivities at higher zenith angles.
@@ -51,7 +51,7 @@ They were generated from pass 5.F reconstruction.
 The analysis is performed using the NN energy estimator with nominal bin list:
 
 \begin{itemize}
-    \item[] \texttt{B1C0Ea}, \texttt{B1C0Eb}, \texttt{B1C0Ec}, \texttt{B1C0Ed}, \texttt{B1C0Ee}, \texttt{B2C0Ea}, \texttt{B2C0Eb}, \texttt{B2C0Ec}, \texttt{B2C0Ed}, \texttt{B2C0Ee}, \texttt{B3C0Ea}, \texttt{B3C0Eb}, \texttt{B3C0Ec}, \texttt{B3C0Ed}, \texttt{B3C0Ee}, \texttt{B3C0Ef}, \texttt{B4C0Eb}, \texttt{B4C0Ec}, \texttt{B4C0Ed}, \texttt{B4C0Ee}, \texttt{B4C0Ef}, \texttt{B5C0Ec}, \texttt{B5C0Ed}, \texttt{B5C0Ee}, \texttt{B5C0Ef}, \texttt{B5C0Eg}, \texttt{B6C0Ed}, \texttt{B6C0Ee}, \texttt{B6C0Ef}, \texttt{B6C0Eg}, \texttt{B6C0Eh}, \texttt{B7C0Ee}, \texttt{B7C0Ef}, \texttt{B7C0Eg}, \texttt{B7C0Eh}, \texttt{B7C0Ei}, \texttt{B8C0Ee}, \texttt{B8C0Ef}, \texttt{B8C0Eg}, \texttt{B8C0Eh}, \texttt{B8C0Ei}, \texttt{B8C0Ej}, \texttt{B9C0Ef}, \texttt{B9C0Eg}, \texttt{B9C0Eh}, \texttt{B9C0Ei}, \texttt{B9C0Ej}, \texttt{B10C0Eg}, \texttt{B10C0Eh}, \texttt{B10C0Ei}, \texttt{B10C0Ej}, \texttt{B10C0Ek}, \texttt{B10C0El}
+    \item[] B1C0Ea, B1C0Eb, B1C0Ec, B1C0Ed, B1C0Ee, B2C0Ea, B2C0Eb, B2C0Ec, B2C0Ed, B2C0Ee, B3C0Ea, B3C0Eb, B3C0Ec, B3C0Ed, B3C0Ee, B3C0Ef, B4C0Eb, B4C0Ec, B4C0Ed, B4C0Ee, B4C0Ef, B5C0Ec, B5C0Ed, B5C0Ee, B5C0Ef, B5C0Eg, B6C0Ed, B6C0Ee, B6C0Ef, B6C0Eg, B6C0Eh, B7C0Ee, B7C0Ef, B7C0Eg, B7C0Eh, B7C0Ei, B8C0Ee, B8C0Ef, B8C0Eg, B8C0Eh, B8C0Ei, B8C0Ej, B9C0Ef, B9C0Eg, B9C0Eh, B9C0Ei, B9C0Ej, B10C0Eg, B10C0Eh, B10C0Ei, B10C0Ej, B10C0Ek, B10C0El
 \end{itemize}
 Bin 0 was excluded as it has substantial hadronic contamination and poor angular resolution.
 This list was cut down depending on the declination of the source because the Point Spread Function (PSF) of these bins were too large, or the statistics were too low.
@@ -90,7 +90,7 @@ A comprehensive description of EW corrections and neutrino considerations are pr
 
 \Cref{fig:pppc_vs_hdm} demonstrates the impact of changes implemented in HDM on DM
 annihilation to W bosons.
-A class in astromodels was developed to include HDM and is aptly named \texttt{HDMSpectra} within \texttt{DM\_models.py}.
+A class in astromodels was developed to include HDM and is aptly named HDMSpectra within DM\_models.py.
 The SM DM annihilation channels studied here are $\chi\chi \rightarrow$:
 \begin{itemize}
     \item[] $e^+e^-$, $\mu^+\mu^-$, $\tau^+\tau^-$,$b\bar{b}$, $t\bar{t}$, $gg$, $W^+W^-$, $ZZ$, $c\bar{c}$, $u\bar{u}$, $d\bar{d}$, $s\bar{s}$, $\nu_e \overline{\nu_e}$, $\nu_\mu \overline{\nu_\mu}$, $\nu_\tau \overline{\nu_\tau}$, $\gamma\gamma$, $hh$.
@@ -205,14 +205,14 @@ Bins in this analysis are expanded to include HAWC's NN energy estimator.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Previously, as in \cref{sec:gd_analysis}, the likelihood was minimized for one model at a time.
-One model in this case representing a DM annihilation channel (\texttt{CHAN}), DM mass ($m_\chi$), and dSph (\texttt(SOURCE)).
+One model in this case representing a DM annihilation channel (\textbf{CHAN}), DM mass ($m_\chi$), and dSph (\textbf(SOURCE)).
 In an effort to conserve human and CPU time, jobs submitted for high performance computing contained a list of $m_\chi$ to iterate over for likelihood fitting.
-Jobs were then trivially parallelized for each permutation of the two lists: \texttt{CHANS} and \texttt{SOURCES}.
-The lists for \texttt{CHANS} and \texttt{SOURCES} are found in \cref{sec:mtd_particlephysics,tab:mtd_J_factor}, respectively.
-Initially, 11 $m_\chi$ were serially sampled for one job defined by a [\texttt{CHAN}, \texttt{SOURCE}] tuple.
+Jobs were then trivially parallelized for each permutation of the two lists: \textbf{CHANS} and \textbf{SOURCES}.
+The lists for \textbf{CHANS} and \textbf{SOURCES} are found in \cref{sec:mtd_particlephysics,tab:mtd_J_factor}, respectively.
+Initially, 11 $m_\chi$ were serially sampled for one job defined by a [\textbf{CHAN}, \textbf{SOURCE}] tuple.
 Computing the likelihoods would take between 1.5 to 2 hrs, stochastically, for a job.
 We expect to compute likelihoods for data and 300 Poisson background trials.
-The estimated CPU time based on the above for all \texttt{CHAN} (N = 17) and \texttt{SOURCE} (M = 25) was estimated to be $127,925$ jobs.
+The estimated CPU time based on the above for all \textbf{CHAN} (N = 17) and \textbf{SOURCE} (M = 25) was estimated to be $127,925$ jobs.
 In total, $1,407,175$ likelihood fits and profiles would be computed for the 11 mass bins we wished to study.
 The estimated CPU time ranged between $8$k CPU days to $10$k CPU days.
 Human time is more challenging to estimate as job allocation is stochastic and highly dependent on what other users are submitting.
@@ -224,7 +224,7 @@ A visual aid to describe how jobs were organized is provided in \cref{fig:mtd_gd
     \centering{
         \includegraphics[scale=0.6]{figures/mtd_hawc_dm/gd_workflow.png}
     }
-    \caption{Infographic on how jobs and DM computation was organized in \Cref{sec:gd_analysis}. Jobs were built for each permutation of \texttt{CHANS} and \texttt{SOURCES} shown by the left block in the figure. Each job, which took on the order 2 hrs to compute, had the following work flow: 1. Import HAWC analysis software, 2 min to run. 2. Load HAWC count maps, 5 min to run. 3. Load HAWC energy and spatial resolutions, 4 min. 5. Load DM spatial source templates and spectral models, less than 1 s. 6. Perform likelihood fit on data and model, about 8 min per DM mass. 7. Write results to file, less than 1s.}
+    \caption{Infographic on how jobs and DM computation was organized in \Cref{sec:gd_analysis}. Jobs were built for each permutation of \textbf{CHANS} and \textbf{SOURCES} shown by the left block in the figure. Each job, which took on the order 2 hrs to compute, had the following work flow: 1. Import HAWC analysis software, 2 min to run. 2. Load HAWC count maps, 5 min to run. 3. Load HAWC energy and spatial resolutions, 4 min. 5. Load DM spatial source templates and spectral models, less than 1 s. 6. Perform likelihood fit on data and model, about 8 min per DM mass. 7. Write results to file, less than 1s.}
     \label{fig:mtd_gd_workflow}
 \end{figure}
 
@@ -242,8 +242,8 @@ The time to compute these values is not predictable or consistent because many v
 Comprehensively, these variables are:
 \begin{itemize}
     \item $m_\chi$ : DM rest mass
-    \item \texttt{CHAN} : DM annihilation channel in SM.
-    \item \texttt{SOURCE} : dSph. Involves a spatial template AND coordinate in HAWC data.
+    \item \textbf{CHAN} : DM annihilation channel in SM.
+    \item \textbf{SOURCE} : dSph. Involves a spatial template AND coordinate in HAWC data.
     \item \sv: Proportional to the flux normalization and free parameter in the likelihood fit.
 \end{itemize}
 Therefore, an asynchronous, functional-parallel coding pattern was developed.
@@ -286,18 +286,18 @@ As the total number of models sampled grows, the speedup will also.
     \centering{
         \includegraphics[scale=0.4]{figures/mtd_hawc_dm/mult-threaded_hawc.png}
     }
-    \caption{Task chart for one multithreaded job developed for this project. Green blocks indicate a shared resource across the threads AND computation performed serially. Red blocks indicate functional parallel processing within each thread. 3 threads are represented here, yet many more can be employed during the full analysis. Jobs are defined by the \texttt{SOURCE} as these require unique maps to be loaded into the likelihood estimator. The $m_\chi$, \texttt{CHAN}, and \sv~variables are entered into the thread pool and allocated as evenly as possible across the threads.}
+    \caption{Task chart for one multithreaded job developed for this project. Green blocks indicate a shared resource across the threads AND computation performed serially. Red blocks indicate functional parallel processing within each thread. 3 threads are represented here, yet many more can be employed during the full analysis. Jobs are defined by the \textbf{SOURCE} as these require unique maps to be loaded into the likelihood estimator. The $m_\chi$, \textbf{CHAN}, and \sv~variables are entered into the thread pool and allocated as evenly as possible across the threads.}
     \label{fig:mtd_multithreads}
 \end{figure}
 
-The multithreaded code was written in Python3 and is documented in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark\_matter\_hawc}{\texttt{dark\_matter\_hawc} repository} within the script named \texttt{mpu\_analysis.py}.
+The multithreaded code was written in Python3 and is documented in the \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/dark\_matter\_hawc}{dark\_matter\_hawc repository} within the script named mpu\_analysis.py.
 A version of the script as of April 15 is also provided in \Cref{sec:apx_mpu_script}.
 It has many dependencies including the HAWC analysis software.
 \Cref{fig:mtd_multithreads} displays the workflow of a job with 3 threads.
-Within a job, \texttt{SOURCE} is kept fixed and \texttt{CHANS} remains 17 elements long.
-More $m_\chi$ are sampled from 11 bins up to 49 (for $\gamma\gamma$ and $ZZ$) and 25 (for remaining \texttt{CHANS}) which amounts to 12 or 6 mass bins per decade.
-$m_\chi$ and \texttt{CHANS} are permuted into a 473 element list which is split evenly across N threads where N is [2, 8, 16].
-For each $m_\chi$-\texttt{CHAN} tuple, 1001 \sv~values are sampled in the likelihood, and the value of \sv~that maximizes the likelihood is found.
+Within a job, \textbf{SOURCE} is kept fixed and \textbf{CHANS} remains 17 elements long.
+More $m_\chi$ are sampled from 11 bins up to 49 (for $\gamma\gamma$ and $ZZ$) and 25 (for remaining \textbf{CHANS}) which amounts to 12 or 6 mass bins per decade.
+$m_\chi$ and \textbf{CHANS} are permuted into a 473 element list which is split evenly across N threads where N is [2, 8, 16].
+For each $m_\chi$-\textbf{CHAN} tuple, 1001 \sv~values are sampled in the likelihood, and the value of \sv~that maximizes the likelihood is found.
 Although rare, fits that failed are handled on a case by case basis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -348,7 +348,7 @@ These dSph are analyzed for emission from DM annihilation according to the likel
 The three likelihood profiles are then stacked to synthesize a combined limit on the dark matter annihilation cross-section, \sv.
 This combination is done for each of the 17 SM annihilation channels.
 \Cref{fig:mtd_limits_1of2} and \cref{fig:mtd_limits_2of2} show the combined limits for all annihilation channels with HAWC's observations.
-Test statistics of the best fit \sv~values for each $m_\chi$ and \texttt{CHAN} are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
+Test statistics of the best fit \sv~values for each $m_\chi$ and \textbf{CHAN} are shown in \cref{fig:mtd_TS_1of2} and \cref{fig:mtd_TS_2of2}.
 These limits are compared to HAWC's Glory Duck limits from \cref{sec:hawc_results} and shown in \cref{fig:mtd_compare2gd} for all the DM annihilation channels studied for Glory Duck.
 A full comparison is provided in \Cref{sec:apx_gd_vs_mtd} in \crefrange{fig:mtd_compare_ComaB}{fig:mtd_compare_Sextans}.
 Here, we show updated limits for $\chi\chi \rightarrow$ \parpar{b}, \parpar{e}, \parpar{\mu}, \parpar{\tau}, \parpar{t}, $W^+W^-$, \pp{\gamma} and \pp{Z}.

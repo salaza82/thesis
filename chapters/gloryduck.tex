@@ -57,8 +57,8 @@ They are not meant for public access, and are presented here so that HAWC collab
 \begin{itemize}
     \item Detector Response: \url{response\_aerie\_svn\_27754\_systematics\_best\_mc\_test\_nobroadpulse
     _10pctlogchargesmearing\_0.63qe\_25kHzNoise\_run5481\_curvature0\_index3.root}
-    \item Data Map: \texttt{maps-20180119/liff/maptree\_1024.root}
-    \item Spectral Dictionary: \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}
+    \item Data Map: maps-20180119/liff/maptree\_1024.root
+    \item Spectral Dictionary: DM\_CirrelliSpectrum\_dict\_gammas.npy
     \item Analysis wiki: \url{https://private.hawc-observatory.org/wiki/index.php/Glory_Duck_Multi-Experiment_Dark_Matter_Search}
 \end{itemize}
 
@@ -77,8 +77,8 @@ The code base for creating this dictionary is linked on my GitLab sandbox:
 \end{itemize}
 
 The analysis was performed using the $f_{\textrm{hit}}$ framework and described in the HAWC Crab paper \cite{Abeysekara_2017} and \cref{sec:hawc_fhit}.
-The Python2 NumPy dictionary file for gamma-ray final states is \texttt{dmCirSpecDict.npy}.
-The corresponding Python3 file is \texttt{DM\_CirrelliSpectrum\_dict\_gammas.npy}.
+The Python2 NumPy dictionary file for gamma-ray final states is dmCirSpecDict.npy.
+The corresponding Python3 file is DM\_CirrelliSpectrum\_dict\_gammas.npy.
 These files can also be used for decay channels and the PPPC describes how in \cite{Cirelli_2011}.
 All other software used for data analysis, DM profile generation, and job submission to SLURM are also kept in my sandbox for \href{https://gitlab.com/hawc-observatory/sandboxes/salaza82/glory-duck-hawc}{the Glory Duck} project.
 
@@ -139,7 +139,7 @@ The EW corrections were previously not considered for HAWC and are significant f
 \Cref{fig:ew_vs_noew} demonstrates the significance of EW corrections for W boson annihilation.
 Across EW SM channels, the gamma-ray spectra become harder than spectra without EW corrections.
 Tables from the PPPC were reformatted into Python NumPy dictionaries for collaboration-wide use.
-A class in astromodels was developed to include the EW correction from the PPPC and is aptly named \texttt{PPPCSpectra} within \texttt{DM\_models.py}.
+A class in astromodels was developed to include the EW correction from the PPPC and is aptly named PPPCSpectra within DM\_models.py.
 
 \begin{figure}[t]
 \centering{
@@ -184,7 +184,7 @@ The 2D integral was a simple height of bins, Newton's integral:
 \newtonIntegral
 Here, $p$ is the side length of a HEALpix pixel used for the map.
 $\theta_i$ and $\phi_i$ are the discrete coordinates whose origin is the center of the modeled dSph.
-These maps are HEALpix maps with NSIDE 16384 and saved in the \texttt{.fits} format.
+These maps are HEALpix maps with NSIDE 16384 and saved in the ".fits" format.
 The hyper fine resolution was selected to better preserve the total expected counts after integrating \cref{eq:id_dm_flux} with the detector response.
 
 \begin{figure}
@@ -223,6 +223,7 @@ The SM annihilation channels probed for the Glory Duck combination include $b\ba
 A summary of all sources, with a description of each experiments' sensitivity to the source, is provided in \Cref{tab:gd_tabSummary}.
 
 \input{tables/gd_exp_sens_summary.tex}
+
 \input{tables/gd_src_summary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,7 +311,7 @@ We compute the values for the likelihood functions $\mathcal{L}_{lk}$ (see~\cref
 Then, values of $\lambda$ from \cref{eq:gd_LLH_test} are computed as a function of \sv, and shared using a common format.
 Results are computed for seven annihilation channels, $W^+W^-$, $ZZ$, $b\bar{b}$, $t\bar{t}$, $e^+e^-$, $\mu^+\mu^-$, and $\tau^+\tau^-$ over 62 $m_{\chi}$ values between 5 GeV and 100 TeV provided in~\cite{Cirelli_2011}.
 The \sv range is defined between $10^{-28}$ and $10^{-18}\mathrm{cm}^{3}\cdot \mathrm{s}^{-1}$, with 1001 logarithmically spaced values.
-The likelihood combination, i.e. \cref{eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{eq:gd_LLH_test}, are carried out with two different public analysis software packages, namely \texttt{gLike}~\cite{javier_rico_2021_4601451} and \texttt{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
+The likelihood combination, i.e. \cref{eq:dSph_combination}, and profile over the \J-factor to compute the profile likelihood ratio $\lambda$, \cref{eq:gd_LLH_test}, are carried out with two different public analysis software packages, namely \textbf{gLike}~\cite{javier_rico_2021_4601451} and \textbf{LklCom}~\cite{tjark_miener_2021_4597500}, that provide the same results~\cite{2021arXiv211201818M}.
 
 As mentioned previously, each experiment computes the $\mathcal{L}_{lk}$ from \cref{eq:gd_LLH_test} differently.
 The remainder of this section highlights the differences in this calculation across the experiments.

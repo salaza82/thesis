@@ -35,8 +35,8 @@ These files are only available within IceCube's internal documentation and wikis
 They are not meant for public access, and are presented here so that IceCube collaborators can reproduce results accurately.
 
 \begin{itemize}
-    \item Software Environment: \texttt{CVMFS Py3-v4.1.1}
-    \item Data Sample: Northern Tracks \texttt{NY86v5p1}
+    \item Software Environment: \textbf{CVMFS Py3-v4.1.1}
+    \item Data Sample: Northern Tracks \textbf{NY86v5p1}
     \item Likelihood Software: csky (\href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{nu\_dark\_matter})
     \item Analysis wiki: \href{https://wiki.icecube.wisc.edu/index.php/Dark\_Matter\_Annihilation\_Search\_towards\_dwarf\_spheroidals\_with\_NST\_and\_DNN\_Cascades}{Dark Matter Annihilation Search towards dwarf spheroidals with NST}
     \item Project Repository: \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{IceCube\_dark\_matter\_dsph}
@@ -52,7 +52,7 @@ It importantly has multi-threading capabilities which will be essential as we se
 Csky at first did not come with dark matter spectral models nor could it accommodate custom flux models.
 We developed these capacities for single source and stacked source studies for this analysis.
 The analysis code is held in a separate repository from csky.
-The \texttt{nu\_dark\_matter} \href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{branch of csky} manages the input of custom dark matter spectra and accompanied DM astrophysical sources.
+The nu\_dark\_matter \href{https://github.com/icecube/csky/tree/nu\_dark\_matter}{branch of csky} manages the input of custom dark matter spectra and accompanied DM astrophysical sources.
 Csky also enables the use of multithreading which was shown to be crucial for DM searches (see \cref{sec:multithread}).
 Csky then calculates the likelihood of a DM signal from a location in the sky within a selected data sample.
 The \href{https://github.com/salaza82/IceCube_dark_matter_dsph}{IceCube Dark Matter dSph repository} manages the generation of spectral models for neutrinos, physics parameter extraction from fitted $n_{\mathrm{s}}$, \J-factor per source inputs, and bookkeeping for the large parameter space.
